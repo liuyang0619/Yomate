@@ -172,7 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="welcome-info">
 				<div class="col-md-6 welcome-info-left">
 					<div class="col-xs-5 welcome-info-leftl">
-						<img src="images/1.jpg" alt=" " class="img-responsive" />
+						<img src="ressources/images/1.jpg" alt=" " class="img-responsive" />
 					</div>
 					<div class="col-xs-7 welcome-info-leftr">
 						<h4>voluptas nulla pariatur</h4>
@@ -183,7 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-6 welcome-info-left">
 					<div class="col-xs-5 welcome-info-leftl">
-						<img src="images/2.jpg" alt=" " class="img-responsive" />
+						<img src="ressources/images/2.jpg" alt=" " class="img-responsive" />
 					</div>
 					<div class="col-xs-7 welcome-info-leftr">
 						<h4>voluptas nulla pariatur</h4>
@@ -207,7 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="col-md-4 welcome-grid">
-					<img src="images/2.png" alt=" " class="img-responsive" />
+					<img src="ressources/images/2.png" alt=" " class="img-responsive" />
 				</div>
 				<div class="col-md-4 welcome-grid">
 					<div class="welcome-grid1">
