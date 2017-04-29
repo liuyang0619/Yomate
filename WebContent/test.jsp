@@ -13,16 +13,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="cpts_570_wr/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="cpts_570_wr/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="ressources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="cpts_570_wr/js/jquery-1.11.1.min.js"></script>
+<script src="ressources/js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
 <link href='https://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,600italic,700,400' rel='stylesheet' type='text/css'>
 <!-- FlexSlider -->
-<link rel="stylesheet" href="cpts_570_wr/css/flexslider.css" type="text/css" media="screen" />
-<script defer src="cpts_570_wr/js/jquery.flexslider.js"></script>
+<link rel="stylesheet" href="ressources/css/flexslider.css" type="text/css" media="screen" />
+<script defer src="ressources/js/jquery.flexslider.js"></script>
 <script type="text/javascript">
 						$(window).load(function(){
 						  $('.flexslider').flexslider({
