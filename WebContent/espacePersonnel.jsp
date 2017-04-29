@@ -105,6 +105,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<span>here</span>
 											</td>
 										</tr>
+										<tr>
+											<td>
+												<span>here</span>
+											</td>
+											<td>
+												<a>Editer</a>
+											</td>
+										</tr>
 									</table>
 								</div>
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
@@ -114,6 +122,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="col-md-4">
+					<a>Créer une annonce</a>
 				</div>
 			</div>
 			
@@ -129,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 									<ul class="list-group">
-										<li class="list-group-item">Annonce1 <button class = ""></button></li>
+										<li class="list-group-item">Annonce1</li>
 										<li class="list-group-item">Annonce2</li>
 										<li class="list-group-item">Annonce3</li>
 										<li class="list-group-item">Annonce4</li>
@@ -148,6 +159,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="col-md-4">
+					<ul class="list-group" style = "border-radius:5px 5px 5px 5px; border:3px solid #FF66FF;">
+						<li class="list-group-item">Avis 1</li>
+						<li class="list-group-item">Avis 2</li>
+						<li class="list-group-item">Avis 3</li>
+						<li class="list-group-item">Avis 1</li>
+						<li class="list-group-item">Avis 1</li>
+					</ul>		
 				</div>
 			</div>
 			
