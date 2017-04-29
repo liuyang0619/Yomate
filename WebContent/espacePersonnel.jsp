@@ -88,6 +88,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</ul>				  	 
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+									<div class="container">
+										<div class = "col-md-4">
+											<span>here</span>	
+										</div>
+									</div>
 									<table style = "width:100%">
 										<tr>
 											<td>
@@ -124,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="col-md-4">
-					<a>Créer une annonce</a>
+					<button class = "button button-caution button-rounded button-jumbo">Créer une annonce</button>
 				</div>
 			</div>
 			
