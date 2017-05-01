@@ -8,8 +8,7 @@
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Deliccio Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="keywords" content="Yomate"/>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -52,18 +51,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"></span>
 					  </button>
 						<div class="logo">
-							<a class="navbar-brand" href="index.html">Deliccio <span>Healthy And Tasty Food</span></a>
+							<a class="navbar-brand" href="index.html">Yomate <span>Trouvez vos colocataires parfaits</span></a>
 						</div>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					  <ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="services.html">Services</a></li>
-						<li><a href="typo.html">Typo</a></li>
-						<li><a href="menu.html">Menu</a></li>
-						<li class="active"><a href="contact.html">Contact Us</a></li>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="recherche.jsp">Recherche</a></li>
+						<li class="active"><a href="espacePersonnel.jsp">Espace personel</a></li>
 					  </ul>
 					</div><!-- /.navbar-collapse -->
 				</nav>
@@ -74,8 +71,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- contact -->
 	<div class="contact">
 		<div class="container">
-			<div class="col-md-4">
-				<h1 style= "color:#FF66FF; margin-left:10px">Espace Personnel</h1>
+			<div class = "row">
+				<div class="col-md-4">
+					<h1 style= "color:#FF66FF; margin-left:10px">Espace Personnel</h1>
+				</div>
+			</div>
+			<div class = "row">
+				<br>
+			</div>
+			<div class = "row">
+				<div class="col-md-2" style = "text-align:center">
+					<img src="ressources/images/4.png" class="img-thumbnail" style = "width:100px;height:100px">
+				</div>
+				<div class="col-md-4">
+					<p style = "font-weight:bolder;font-size:25px">Paul Babiste</p>
+					<p>Homme, 23 ans</p>
+				</div>
+			</div class = "row">
+			<div class = "row">
+				<br>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-8">
@@ -88,48 +102,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</ul>				  	 
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-									<div class="container">
-										<div class = "col-md-4">
-											<span>here</span>	
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Région:</span>
+											<span id = "region">Paris, France</span>
+										</div>
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Animal de compagnie:</span>
+											<span id = "haspet">Non</span>
 										</div>
 									</div>
-									<table style = "width:100%">
-										<tr>
-											<td>
-												<span>here</span>
-											</td>
-											<td>
-												<span>here</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<span>here</span>
-											</td>
-											<td>
-												<span>here</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<span>here</span>
-											</td>
-											<td>
-												<a>Editer</a>
-											</td>
-										</tr>
-									</table>
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Situation:</span>
+											<span id = "situation">Etudiant</span>
+										</div>
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Langue:</span>
+											<span id = "langue">Français, Chinois</span>
+										</div>
+									</div>
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Nationnalité:</span>
+											<span id = "nationnalite">Française</span>
+										</div>
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Loisir:</span>
+											<span id = "loisir">Basketball</span>
+										</div>
+									</div>
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Situation familiale:</span>
+											<span>Célibataire</span>
+										</div>
+										
+									</div>
+									<div class = "row">
+										<div class = "col-md-6"></div>
+										<div class = "col-md-2">
+											<button class = "button button-action button-rounded button-small">Editer</button>
+										</div>
+									</div>
 								</div>
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<img src="ressources/images/1.png" class="img-thumbnail">
-									<img src="ressources/images/1.png" class="img-thumbnail">
+									<img src="ressources/images/6.jpg" class="img-thumbnail" style= "height: 100px; width: 100px">
+									<img src="ressources/images/8.jpg" class="img-thumbnail" style= "height: 100px; width: 100px">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
-					<button class = "button button-caution button-rounded button-jumbo">Créer une annonce</button>
+					<div class="row" style = "text-align:center">
+		                <button class = "button button-caution button-rounded button-large">Créer une annonce</button>					
+		            </div>
 				</div>
 			</div>
 			
@@ -145,20 +173,69 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 									<ul class="list-group">
-										<li class="list-group-item">Annonce1</li>
-										<li class="list-group-item">Annonce2</li>
-										<li class="list-group-item">Annonce3</li>
-										<li class="list-group-item">Annonce4</li>
-										<li class="list-group-item">Annonce5</li>
+										<a class="list-group-item">
+											<div>
+										    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1113</h4>
+											    <div style = "height:100px">
+											    	<div style="float: left;">
+											    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+													</div>
+													<div style="float: left;margin-left:10px">
+														<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
+														<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
+														<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
+													</div>
+													<div style="float: left;margin-left:200px">
+														<button class = "button button-caution button-circle button-small" style = "font-weight : bolder; font-size:20px">X</button> 
+													</div>
+												</div>
+										    </div>
+										</a>
+										<a class="list-group-item">
+											<div>
+										    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
+											    <div style = "height:100px">
+											    	<div style="float: left;">
+											    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+													</div>
+													<div style="float: left;margin-left:10px">
+														<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
+														<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
+														<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
+													</div>
+													<div style="float: left;margin-left:200px">
+														<button class = "button button-caution button-circle button-small" style = "font-weight : bolder; font-size:20px">X</button> 
+													</div>
+												</div>
+										    </div>
+										</a>
+										<a class="list-group-item">
+											<div>
+										    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
+											    <div style = "height:100px">
+											    	<div style="float: left;">
+											    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+													</div>
+													<div style="float: left;margin-left:10px">
+														<p class = "list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
+														<p class = "list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
+														<p class = "list-group-item-text">Je cherche une colocataire...</p>					  
+													</div>
+													<div style="float: left;margin-left:200px">
+														<button class = "button button-caution button-circle button-small" style = "font-weight : bolder; font-size:20px">X</button> 
+													</div>
+												</div>
+										    </div>
+										</a>
 									</ul>
 								</div>
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
 									<ul class="list-group">
-										<li class="list-group-item">AnnonceH1</li>
-										<li class="list-group-item">Annonce2</li>
-										<li class="list-group-item">Annonce3</li>
-										<li class="list-group-item">Annonce4</li>
-										<li class="list-group-item">Annonce5</li>
+										<a class="list-group-item">AnnonceH1</a>
+										<a class="list-group-item">Annonce2</a>
+										<a class="list-group-item">Annonce3</a>
+										<a class="list-group-item">Annonce4</a>
+										<a class="list-group-item">Annonce5</a>
 									</ul>
 								</div>
 							</div>
