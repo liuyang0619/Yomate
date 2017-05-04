@@ -15,10 +15,11 @@
 <link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/buttons.css" rel="stylesheet" type="text/css" media="all" />
+
 <!-- js -->
 <script src="ressources/js/jquery-1.11.1.min.js"></script>
-<script src="ressources/js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
+
 <!-- FlexSlider -->
 <link rel="stylesheet" href="ressources/css/flexslider.css" type="text/css" media="screen" />
 <script defer src="ressources/js/jquery.flexslider.js"></script>
@@ -33,42 +34,25 @@
 						});
 					  </script>
 <!-- //FlexSlider -->
+
+<!-- header & footer -->
+<script type="text/javascript"> 
+	$(function(){
+		$("#header").load("header.jsp");
+		$("#footer").load("footer.jsp");
+	});
+</script>
+<!-- //header & footer -->
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
 	
 <body>
-<!-- banner -->
-	<div class="banner1">
-		<div class="container">
-			<div class="header-nav">
-				<nav class="navbar navbar-default">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					  </button>
-						<div class="logo">
-							<a class="navbar-brand" href="index.html">Yomate <span>Trouvez vos colocataires parfaits</span></a>
-						</div>
-					</div>
+<!-- header -->
+	<div id="header"></div>
+<!-- //header -->
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-					  <ul class="nav navbar-nav">
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="recherche.jsp">Recherche</a></li>
-						<li class="active"><a href="espacePersonnel.jsp">Espace personel</a></li>
-					  </ul>
-					</div><!-- /.navbar-collapse -->
-				</nav>
-			</div>
-		</div>
-	</div>
-<!-- //banner -->
-<!-- contact -->
+<!-- Info perso -->
 	<div class="contact">
 		<div class="container">
 			<div class = "row">
@@ -256,71 +240,14 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //contact -->
-<!--footer-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-row">
-				<div class="col-md-3 footer-grids">
-					<h4><a href="index.html">Deliccio</a></h4>
-					<p><a href="mailto:info@example.com">mail@example.com</a></p>
-					<p>+2 000 222 1111</p>
-				</div>
-				<div class="col-md-3 footer-grids">
-					<h3>Navigation</h3>					
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="index.html">About us</a></li>
-						<li><a href="menu.html">Menu</a></li>
-						<li><a href="typo.html">Typo</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 footer-grids">
-					<h3>Support</h3>
-					<ul>
-						<li><a href="services.html">Services</a></li>
-						<li><a href="#">Help Center</a></li>
-						<li><a href="#">Lemollisollis</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 footer-grids">	
-					<h3>Newsletter</h3>
-					<p>It was popularised in the 1960s with the release Ipsum. <p>
-					<form>					 
-					    <input type="text" class="text" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
-						<input type="submit" value="Go">					 
-				 </form>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<div class="container">		
-			<p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>					
-		</div>
-	</div>
-	<script src="ressources/js/easyResponsiveTabs.js" type="text/javascript"></script>
-						<script type="text/javascript">
-							$(document).ready(function () {
-								$('#horizontalTabProfilPhoto').easyResponsiveTabs({
-									type: 'default', //Types: default, vertical, accordion           
-									width: 'auto', //auto or any width like 600px
-									fit: true   // 100% fit in a container
-								});
-							});
-							$(document).ready(function () {
-								$('#horizontalTabAnnonce').easyResponsiveTabs({
-									type: 'default', //Types: default, vertical, accordion           
-									width: 'auto', //auto or any width like 600px
-									fit: true   // 100% fit in a container
-								});
-							});
-						</script>
-<!--//footer-->	
+<!-- //Info perso -->
+
+<!-- footer -->
+	<div id="footer"></div>
+<!-- //footer -->
+
 <!-- for bootstrap working -->
-		<script src="ressources/js/bootstrap.js"> </script>
+	<script src="ressources/js/bootstrap.js"> </script>
 <!-- //for bootstrap working -->
 </body>
 </html>

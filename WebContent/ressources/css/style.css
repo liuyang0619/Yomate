@@ -33,7 +33,7 @@ body a:hover{
     min-height:800px;
 }
 .banner1{
-	background:url(../images/color_orange.jpg) no-repeat 0px 0px;
+	background:url(../images/color_green.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -42,7 +42,7 @@ body a:hover{
 	min-height:300px;
 }
 .navbar-brand{
-color:#fff!important;
+color:#ffff00!important;
     font-size: 3.5em;
     text-decoration: none;
 	font-family: 'YesevaOne-Regular';
@@ -50,7 +50,7 @@ color:#fff!important;
 .navbar-brand span{
 	display:block;
 	font-size:14px;
-	color:#803F5F;
+	color:#ffffff;
 	line-height: 3em;
     padding: 0 0 0 0.4em;
 }
@@ -68,18 +68,28 @@ color:#fff!important;
 	font-size:0;
 	overflow:hidden;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus {
     color: #fff;
-    background:  #803F5F;
+    background:  #5e9d60;
+}
+.navbar-default .navbar-nav > .active > a:hover {
+	color: #ffff00;
+    background:  #5e9d60;
+    text-decoration: underline;
 }
 .navbar-default .navbar-nav > li > a {
-       color: #fff;
-   font-family: 'Open Sans', sans-serif;
+	color: #fff;
+	font-family: 'Open Sans', sans-serif;
     font-size: 18px;
 }
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:hover {
+	color: #ffff00;
+	background:  #aa5e9d60;
+    text-decoration: underline;
+}
+.navbar-default .navbar-nav > li > a:focus {
     color: #fff;
-    background-color: #803F5F;
+    background-color: #5e9d60;
 }
 .header-nav {
     padding: 3em 0 0;
