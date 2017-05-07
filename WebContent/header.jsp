@@ -44,9 +44,9 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					  <ul class="nav navbar-nav">
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="recherche.jsp">Recherche</a></li>
-						<li><a href="espacePersonnel.jsp">Espace personel</a></li>
+						<li><a href="index.jsp"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+						<li><a href="recherche.jsp"><i class="glyphicon glyphicon-search"></i>Recherche</a></li>
+						<li><a href="espacePersonnel.jsp"><i class="glyphicon glyphicon-user"></i>Espace personel</a></li>
 					  </ul>
 					</div><!-- /.navbar-collapse -->
 				</nav>

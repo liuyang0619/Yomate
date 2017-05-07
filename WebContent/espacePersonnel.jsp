@@ -20,21 +20,6 @@
 <script src="ressources/js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
 
-<!-- FlexSlider -->
-<link rel="stylesheet" href="ressources/css/flexslider.css" type="text/css" media="screen" />
-<script defer src="ressources/js/jquery.flexslider.js"></script>
-<script type="text/javascript">
-						$(window).load(function(){
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							start: function(slider){
-							  $('body').removeClass('loading');
-							}
-						  });
-						});
-					  </script>
-<!-- //FlexSlider -->
-
 <!-- header & footer -->
 <script type="text/javascript"> 
 	$(function(){
