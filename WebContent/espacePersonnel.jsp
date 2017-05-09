@@ -13,7 +13,7 @@
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="ressources/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="ressources/css/yomate-style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/buttons.css" rel="stylesheet" type="text/css" media="all" />
 
 <!-- js -->
