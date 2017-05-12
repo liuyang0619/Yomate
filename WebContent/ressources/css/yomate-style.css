@@ -115,6 +115,9 @@ color:#ffff00!important;
 .navbar-nav > li {
     margin: 0 1em 0 0;
 }
+/*--//banner--*/
+
+/*--footer--*/
 .copyrights{
 	text-indent:-9999px;
 	height:0;
@@ -122,6 +125,24 @@ color:#ffff00!important;
 	font-size:0;
 	overflow:hidden;
 }
+.footer-bottom {
+	background-color: #201F1F;
+	padding: 2em 0;
+	text-align: center;
+}
+.footer-bottom p {
+	color: #868686;
+	font-size: 14px;
+}
+.footer-bottom p a{
+	color:#868686;
+}
+.footer-bottom p a:hover{
+	color: #803F5F;
+	border-bottom:1px solid #fff;
+}
+/*--//footer--*/
+
 /*-- buttons --*/
 .btn-default,.btn-primary,.btn-success,.btn-info,.btn-warning,.btn-danger {
     -webkit-box-shadow: 2px 3px 0px rgba(4, 4, 4, 0.3);
@@ -146,6 +167,7 @@ color:#ffff00!important;
 .icon-button:hover .glyphicon {
 	color: #ff8000;
 }
+
 /*-- search page --*/
 .search-notices-filter {
 	background: #efd583;
@@ -229,4 +251,89 @@ color:#ffff00!important;
 .search-result {
 	margin-top: 10px;
     padding: 4px;
+}
+/*-- //search page --*/
+
+/******** SAP ************/
+.sap_tabs {
+	clear:both;
+	font-style: normal;
+	position:relative;
+}
+.facts {
+	border: none;
+	text-align: center;
+	padding:1.5em;
+}
+.top1{
+	margin-top: 2%;
+}
+ul.resp-tabs-list {
+	list-style: none;
+    margin: 0;
+}
+div#horizontalTab {
+  background:none;
+  }
+.tab_list li:nth-child(2){
+	margin: 2em 0 0;
+}
+.resp-tab-item:first-child{
+	border-left:none;
+}
+.resp-tab-item{
+	font-family: 'Open Sans', sans-serif;
+	    color:#803F5F;
+	font-size: 16px;
+	cursor: pointer;
+	    padding: 10px 105.5px;
+	display: inline-block;
+	margin: 0;
+	text-align: center;
+	list-style: none;
+	float: none;
+	outline: none;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	text-transform: capitalize;
+}
+.resp-tab-item:hover {
+	text-shadow: none;
+}
+.resp-tab-active{
+	color: #FFFFFF;
+	background-color:  #803F5F;
+	text-shadow: none;
+}
+.resp-tabs-container {
+	padding: 0px;
+	clear: left;
+	border-top:none;
+}
+h2.resp-accordion {
+	cursor: pointer;
+	padding: 5px;
+	display: none;
+}
+.resp-tab-content {
+	display: none;
+}
+.resp-content-active, .resp-accordion-active {
+   display: block;
+}
+h2.resp-accordion {
+	font-size:1em;
+	margin: 0px;
+	padding: 10px 15px;
+	background:#f77462;
+	margin:10px 0;
+	color:#fff;
+}
+h2.resp-accordion:hover{
+	background:#6CC5D9;
+	text-shadow: none;
+	color: #FFF;
 }

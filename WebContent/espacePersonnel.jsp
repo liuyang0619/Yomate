@@ -18,6 +18,7 @@
 
 <!-- js -->
 <script src="ressources/js/jquery-1.11.1.min.js"></script>
+<script src="ressources/js/bootstrap.js"> </script>
 <!-- //js -->
 
 <!-- header & footer -->
@@ -41,7 +42,7 @@
 	<div class="contact">
 		<div class="container">
 			<div class = "row">
-				<div class="col-md-4">
+				<div class="col-md-8">
 					<h1 style= "color:#FF66FF; margin-left:10px">Espace Personnel</h1>
 				</div>
 			</div>
@@ -230,9 +231,5 @@
 <!-- footer -->
 	<div id="footer"></div>
 <!-- //footer -->
-
-<!-- for bootstrap working -->
-	<script src="ressources/js/bootstrap.js"> </script>
-<!-- //for bootstrap working -->
 </body>
 </html>
