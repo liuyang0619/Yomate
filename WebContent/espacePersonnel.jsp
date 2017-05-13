@@ -1,24 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
 <title>Espace Personnel</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset=utf-8" />
 <meta name="keywords" content="Yomate"/>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
+
+<!-- css -->
 <link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/yomate-style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/buttons.css" rel="stylesheet" type="text/css" media="all" />
+<link href="ressources/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+<!-- //css -->
 
 <!-- js -->
 <script src="ressources/js/jquery-1.11.1.min.js"></script>
 <script src="ressources/js/bootstrap.js"> </script>
+<script src="ressources/js/moment.min.js"></script>
+<script src="ressources/js/bootstrap-datetimepicker.min.js"></script>
 <!-- //js -->
 
 <!-- header & footer -->
@@ -30,6 +36,14 @@
 </script>
 <!-- //header & footer -->
 
+<!-- birthday picker -->
+<script type="text/javascript">
+$(function () {
+    $('#birthdaypicker').datetimepicker({format: 'DD/MM/YYYY'});
+});
+</script>
+<!-- //birthday picker -->
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
 	
@@ -39,7 +53,7 @@
 <!-- //header -->
 
 <!-- Info perso -->
-	<div class="contact">
+	<div class="perso-info">
 		<div class="container">
 			<div class = "row">
 				<div class="col-md-8">
@@ -57,20 +71,19 @@
 					<p style = "font-weight:bolder;font-size:25px">Paul Babiste</p>
 					<p>Homme, 23 ans</p>
 				</div>
-			</div class = "row">
+			</div>
 			<div class = "row">
 				<br>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-8">
-					<div class="sap_tabs"  style = "border-radius:5px 5px 5px 5px; border:3px solid #FF66FF;">	
-						<div id="horizontalTabProfilPhoto" style="display: block; width: 100%; margin: 0px;">
+					<div class="sap_tabs perso-profile">	
+						<div id="horizontalTabProfilPhoto">
 							<ul class="resp-tabs-list">
-							  <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Mon profile</span></li>
-							  <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab" style = "padding:10px 10px 10px 10px"><span>Mes photos</span></li>
-							  <div class="clear"></div>
+							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Mon profile</span></li>
+							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-1" role="tab" style = "padding:10px 10px 10px 10px"><span>Mes photos</span></li>
 							</ul>				  	 
-							<div class="resp-tabs-container">
+							<div class="resp-tabs-container perso-profile-info">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 									<div class = "row">
 										<div class = "col-md-6">
@@ -109,16 +122,16 @@
 										</div>
 										
 									</div>
+									<!-- Trigger the personal info modal with a button -->
 									<div class = "row">
-										<div class = "col-md-6"></div>
-										<div class = "col-md-2">
-											<button class = "button button-action button-rounded button-small">Editer</button>
+										<div class = "col-md-12">
+											<button class = "button button-action button-rounded button-small perso-edit-btn" data-toggle="modal" data-target="#editInfo">Editer</button>
 										</div>
 									</div>
 								</div>
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<img src="ressources/images/6.jpg" class="img-thumbnail" style= "height: 100px; width: 100px">
-									<img src="ressources/images/8.jpg" class="img-thumbnail" style= "height: 100px; width: 100px">
+									<img src="ressources/images/6.jpg" class="img-thumbnail perso-profile-photo">
+									<img src="ressources/images/8.jpg" class="img-thumbnail perso-profile-photo">
 								</div>
 							</div>
 						</div>
@@ -133,75 +146,62 @@
 			
 			<div class="col-md-12" style = "margin-top:10px;">
 				<div class="col-md-8">
-					<div class="sap_tabs" style = "border-radius:5px 5px 5px 5px; border:3px solid #FF66FF;">	
-						<div id="horizontalTabAnnonce" style="display: block; width: 100%; margin: 0px;">
+					<div class="sap_tabs perso-posts">	
+						<div id="horizontalTabAnnonce">
 							<ul class="resp-tabs-list">
-							  <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Annonces favoris</span></li>
-							  <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab" style = "padding:10px 10px 10px 10px"><span>Mes annonces</span></li>
-							  <div class="clear"></div>
+							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Annonces favoris</span></li>
+							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-1" role="tab"><span>Mes annonces</span></li>
 							</ul>				  	 
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 									<ul class="list-group">
 										<a class="list-group-item">
-											<div>
-										    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1113</h4>
-											    <div style = "height:100px">
-											    	<div style="float: left;">
-											    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-													</div>
-													<div style="float: left;margin-left:10px">
-														<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-														<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-														<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
-													</div>
-													<div style="float: left;margin-left:200px">
-														<button class = "button button-caution button-circle button-small" style = "font-weight : bolder; font-size:20px">X</button> 
-													</div>
+									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1113</h4>
+										    <div style = "height:100px">
+										    	<div style="float: left;">
+										    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 												</div>
-										    </div>
+												<div style="float: left;margin-left:10px">
+													<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
+													<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
+													<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
+												</div>
+												<button class = "button button-caution button-circle button-small perso-rm-btn"><i class="glyphicon glyphicon-trash"></i></button> 
+											</div>
 										</a>
 										<a class="list-group-item">
-											<div>
-										    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
-											    <div style = "height:100px">
-											    	<div style="float: left;">
-											    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-													</div>
-													<div style="float: left;margin-left:10px">
-														<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-														<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-														<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
-													</div>
-													<div style="float: left;margin-left:200px">
-														<button class = "button button-caution button-circle button-small" style = "font-weight : bolder; font-size:20px">X</button> 
-													</div>
+									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
+										    <div style = "height:100px">
+										    	<div style="float: left;">
+										    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 												</div>
-										    </div>
+												<div style="float: left;margin-left:10px">
+													<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
+													<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
+													<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
+												</div>
+												<button class = "button button-caution button-circle button-small perso-rm-btn"><i class="glyphicon glyphicon-trash"></i></button> 
+											</div>
 										</a>
 										<a class="list-group-item">
-											<div>
-										    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
-											    <div style = "height:100px">
-											    	<div style="float: left;">
-											    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-													</div>
-													<div style="float: left;margin-left:10px">
-														<p class = "list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-														<p class = "list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-														<p class = "list-group-item-text">Je cherche une colocataire...</p>					  
-													</div>
-													<div style="float: left;margin-left:200px">
-														<button class = "button button-caution button-circle button-small" style = "font-weight : bolder; font-size:20px">X</button> 
-													</div>
+									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
+										    <div style = "height:100px">
+										    	<div style="float: left;">
+										    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 												</div>
-										    </div>
+												<div style="float: left;margin-left:10px">
+													<p class = "list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
+													<p class = "list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
+													<p class = "list-group-item-text">Je cherche une colocataire...</p>					  
+												</div>
+												<button class = "button button-caution button-circle button-small perso-rm-btn"><i class="glyphicon glyphicon-trash"></i></button> 
+											</div>
 										</a>
 									</ul>
 								</div>
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
 									<ul class="list-group">
-										<a class="list-group-item">AnnonceH1</a>
+										<a class="list-group-item">Annonce1</a>
 										<a class="list-group-item">Annonce2</a>
 										<a class="list-group-item">Annonce3</a>
 										<a class="list-group-item">Annonce4</a>
@@ -228,8 +228,114 @@
 	</div>
 <!-- //Info perso -->
 
+
+<!-- Personal info Modal -->
+<div class="modal fade" id="editInfo" role="dialog">
+	<div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	    	<div class="modal-header">
+	    		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    		<h4 class="modal-title">Editer votre profil</h4>
+	    	</div>
+	    	<div class="modal-body">
+	    		<!-- Nom & prénom -->
+	    		<div class="row">
+	    			<div class="col-md-6">
+						<input type="text" class="form-control input-sm" placeholder="Nom" required></input>
+					</div>
+					<div class="col-md-6">
+						<input type="text" class="form-control input-sm" placeholder="Prénom" required></input>
+					</div>
+	    		</div>
+	    		<!-- //Nom & prénom -->
+	    		
+	    		<!-- Sexe -->
+	    		<div class="row perso-edit-sex top-margin-5">
+	    			<div class="col-md-6">
+		    			<label class="radio-inline"><input type="radio" name="optradio">Homme</label>
+		    		</div>
+		    		<div class="col-md-6">
+						<label class="radio-inline"><input type="radio" name="optradio">Femme</label>
+					</div>
+	    		</div>
+	    		<!-- //Sexe -->
+	    		
+	    		<!-- Date de naissance -->
+	    		<div class="row top-margin-5">
+	    			<div class="col-md-12">
+		    			<div class="input-group" id="birthdaypicker">
+		                    <input type="text" class="form-control input-sm" placeholder="Date de naissance"/>
+		                    <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+		                </div>
+					</div>
+	    		</div>
+	    		<!-- //Date de naissance -->
+	    		
+	    		<!-- Situation -->
+	    		<div class="row top-margin-5">
+	    			<div class="col-md-12">
+		    			
+					</div>
+	    		</div>
+	    		<!-- //Situation -->
+	    		
+	    		<!-- Situation Familiale-->
+	    		<div class="row top-margin-5">
+	    			<div class="col-md-12">
+		    			
+					</div>
+	    		</div>
+	    		<!-- //Situation Familiale-->
+	    		
+	    		<!-- Nationalité-->
+	    		<div class="row top-margin-5">
+	    			<div class="col-md-12">
+		    			
+					</div>
+	    		</div>
+	    		<!-- //Nationalité-->
+	    	</div>
+	    	<div class="modal-footer">
+	    		<div class = "row">
+	    			<div class="perso-edit-footer">
+	    				<button type="button" class="btn button-caution button-pill" data-dismiss="modal">Annuler</button>
+	    				<button type="button" class="btn button-action button-pill" data-dismiss="modal">Valider</button>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- //Modal content-->
+  	</div>
+</div>
+<!-- //Personal info Modal -->
+
+
 <!-- footer -->
 	<div id="footer"></div>
 <!-- //footer -->
+
+<!-- tab switching-->
+<script src="ressources/js/easyResponsiveTabs.js" type="text/javascript"></script>		
+<script type="text/javascript">		
+	$(document).ready(function () {		
+		$('#horizontalTabProfilPhoto').easyResponsiveTabs({		
+			type: 'default', //Types: default, vertical, accordion           		
+			width: 'auto', //auto or any width like 600px		
+			fit: true   // 100% fit in a container		
+		});		
+	});		
+	$(document).ready(function () {		
+		$('#horizontalTabAnnonce').easyResponsiveTabs({		
+			type: 'default', //Types: default, vertical, accordion           		
+			width: 'auto', //auto or any width like 600px		
+			fit: true   // 100% fit in a container		
+		});		
+	});		
+</script>
+<!-- //tab switching -->
+
 </body>
 </html>
