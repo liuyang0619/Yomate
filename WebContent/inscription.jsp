@@ -44,7 +44,7 @@
 					<ul class="list-group top-margin-3">
 						<a class="list-group-item">
 							<div>
-								<div style="height: 100px">
+								<div style="min-height:100px">
 									<div style="float: left;">
 										<img src="ressources/images/time_clock.png"
 											class="img-thumbnail" style="height: 100px; height: 100px;">
@@ -63,7 +63,7 @@
 						</a>
 						<a class="list-group-item">
 							<div>
-								<div style="height: 100px">
+								<div style="min-height:100px">
 									<div style="float: left;">
 										<img src="ressources/images/bell.png" class="img-thumbnail"
 											style="height: 100px; height: 100px;">
@@ -82,7 +82,7 @@
 						</a>
 						<a class="list-group-item">
 							<div>
-								<div style="height: 100px">
+								<div style="min-height:100px">
 									<div style="float: left;">
 										<img src="ressources/images/fantasy.png" class="img-thumbnail"
 											style="height: 100px; height: 100px;">
@@ -101,7 +101,7 @@
 						</a>
 						<a class="list-group-item">
 							<div>
-								<div style="height: 100px">
+								<div style="min-height:100px">
 									<div style="float: left;">
 										<img src="ressources/images/eye.png" class="img-thumbnail"
 											style="height: 100px; height: 100px;">
