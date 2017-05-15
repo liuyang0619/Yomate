@@ -126,6 +126,26 @@ input:checked + .slider .off
   border-radius: 50%;
 }
 </style>
+
+
+<script type="text/javascript">
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
 </head>
 
 <!-- <body style="background-color:#ffffaa"> -->
@@ -216,26 +236,35 @@ input:checked + .slider .off
 				<br />
 			</div>
 			<div class="col-md-12" style="border:1px dashed red">
-				<div style="font-size:30px">Filtre de profil</div>
-				<div class="col-md-8">
-					<div style="font-size:20px">Obligatoires:</div>
+				<div class="col-md-8" style="border:1px dashed red">
+					<div style="font-size:30px">Filtre de profil</div>
+					<div class="col-md-12">
+						<div style="font-size:20px" id="obligatoire" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</div>
+					</div>
+					<div class="col-md-12">
+						<div style="font-size:20px" id="important" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</div>
+					</div>
+					<div class="col-md-12">
+						<div style="font-size:20px" id="vautMieux" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</div>
+					</div>
+					</div>
+				<div class="col-md-4" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px dashed red">
+					<p draggable="true" ondragstart="drag(event)" id="tag1" style="color: #8a6d3b; background-color: #fcf8e3; display: inline-block" >sexe</p>
+					<!-- <p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p> -->
 				</div>
-				<div class="col-md-8">
-					<div style="font-size:20px">Importants:</div>
-				</div>
-				<div class="col-md-8">
-					<div style="font-size:20px">Vaut mieux:</div>
+				<div class="col-md-4" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px dashed red">
+					<p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
-			<div class="col-md-12"> 
+			<!-- <div class="col-md-12"> 
 					<br />
 					<div style="font-size:20px">Status d'annonce</div> 
 					<br />
 					<div style="background-color: lightblue; text-align:center;  color: #FFFFFF">Ouverte</div>
 					<br />
-			</div>
+			</div> -->
 			<div class="col-md-12">
 				<p style="text-align:center;  color:red">---------------------------------------------</p>
 			</div>
@@ -252,12 +281,15 @@ input:checked + .slider .off
 						    });
 						</script>
 					</div> -->
-						<label class="switch" style="float:center" > 
-						  	<input type="checkbox"  style="float:center" checked>
-						  	<div class="slider" style="float:center">
-						  	<span class="on">Ouvert</span><span class="off">Fermé</span>
-						  </div>
-						</label>
+						<center>
+							<label class="switch" style="float:center" > 
+							  	<input type="checkbox" checked>
+							  	<div class="slider">
+							  	<span class="on">Ouvert</span><span class="off">Fermé</span>
+							  </div>
+							</label>
+						</center>
+						
 					
 					</div>
 					<br />
