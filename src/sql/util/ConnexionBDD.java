@@ -17,22 +17,15 @@ public class ConnexionBDD {
 			Properties p = new Properties();
 			p.load(Thread.currentThread().getContextClassLoader().
 						getResourceAsStream("sqlproperties"));
-			
-			
-				
 			//chargement du driver
 			Class.forName(p.getProperty("driver"));
 			cnx = DriverManager.getConnection(p.getProperty("url"),
 					p.getProperty("user"), p.getProperty("pwd"));
-			//Class.forName("com.mysql.jdbc.Driver");  
-			//cnx=DriverManager.getConnection("jdbc:mysql://localhost:3306/sys","root","zy19931115"); 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	} 
@@ -40,7 +33,6 @@ public class ConnexionBDD {
 	public static synchronized ConnexionBDD getInstance() {
 		if(instance==null)
 			instance = new ConnexionBDD();
-		
 		return instance;
 	}
 
