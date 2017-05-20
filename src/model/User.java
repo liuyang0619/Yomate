@@ -4,6 +4,21 @@ import java.util.List;
 
 public class User {
 	private String id;
+	public User(String id, String nom, String prenom, String email, String situationFam, String ecole,
+			String profession, String nationnalite, boolean sex, boolean haspet) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.situationFam = situationFam;
+		this.ecole = ecole;
+		this.profession = profession;
+		this.nationnalite = nationnalite;
+		this.sex = sex;
+		this.haspet = haspet;
+		//construxtor of the lists
+	}
 	private String nom;
 	private String prenom;
 	private String email;

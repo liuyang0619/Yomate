@@ -22,7 +22,27 @@ public class Annonce {
 	private List<String> listPeutEtre;
 	private List<UserSimple> listUserIn;
 	
-	
+	public Annonce(String id, String date_proposer, String date_debut, String date_fin, String description, String lieu,
+			String description_logement, ProfileFiltre profileFiltre, int budget, int nbPersonneBesoin,
+			UserSimple owner, boolean status) {
+		super();
+		this.id = id;
+		this.date_proposer = date_proposer;
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+		this.description = description;
+		this.lieu = lieu;
+		this.description_logement = description_logement;
+		this.profileFiltre = profileFiltre;
+		this.budget = budget;
+		this.nbPersonneBesoin = nbPersonneBesoin;
+		this.owner = owner;
+		this.status = status;
+		//constructor of the lists
+	}
+
+
+
 	public String getId() {
 		return id;
 	}

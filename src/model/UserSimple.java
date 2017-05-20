@@ -4,6 +4,12 @@ public class UserSimple {
 	private String id;
 	private String nom;
 	private String prenom;
+	public UserSimple(String id, String nom, String prenom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
 	public String getId() {
 		return id;
 	}

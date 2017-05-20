@@ -6,7 +6,14 @@ public class Evaluation {
 	private String description;
 	private UserSimple userCommenter;
 	private UserSimple userCommented;
-	
+	public Evaluation(int note, String date, String description, UserSimple userCommenter, UserSimple userCommented) {
+		super();
+		this.note = note;
+		this.date = date;
+		this.description = description;
+		this.userCommenter = userCommenter;
+		this.userCommented = userCommented;
+	}
 	public int getNote() {
 		return note;
 	}

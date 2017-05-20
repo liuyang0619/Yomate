@@ -7,6 +7,15 @@ public class LigneHistoireColo {
 	private AnnonceSimple annonce;
 	private UserSimple user1;
 	private UserSimple user2;
+	public LigneHistoireColo(String dateDebut, String dateFin, AnnonceSimple annonce, UserSimple user1,
+			UserSimple user2) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.annonce = annonce;
+		this.user1 = user1;
+		this.user2 = user2;
+	}
 	public String getDateDebut() {
 		return dateDebut;
 	}

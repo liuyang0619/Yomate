@@ -6,7 +6,14 @@ public class AnnonceSimple {
 	private String description;
 	private int budget;
 	private UserSimple owner;
-	
+	public AnnonceSimple(String id, String lieu, String description, int budget, UserSimple owner) {
+		super();
+		this.id = id;
+		this.lieu = lieu;
+		this.description = description;
+		this.budget = budget;
+		this.owner = owner;
+	}
 	public String getId() {
 		return id;
 	}
