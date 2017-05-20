@@ -1,0 +1,5 @@
+#données de connexion - DB connection infos
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/test
+user=root
+pwd=a13241324
