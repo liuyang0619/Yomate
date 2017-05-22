@@ -64,18 +64,6 @@ CREATE TABLE user_loisir (
 	FOREIGN KEY (loisir) REFERENCES loisir(id)
 );
 
-
-CREATE TABLE HistoireColo (
-    user1 INT NOT NULL,
-    user2 INT NOT NULL,
-    dateDebut DATE,
-    dateFin DATE,
-    annonce INT NOT NULL,
-    FOREIGN KEY (user1) REFERENCES User(idUser),
-	FOREIGN KEY (user2) REFERENCES User(idUser),
-    FOREIGN KEY (annonce) REFERENCES Annonce(idAnnonce)
-);
-
 CREATE TABLE Evaluation (
     user_commenter INT NOT NULL,
     user_commented INT NOT NULL ,
@@ -119,6 +107,17 @@ CREATE TABLE Annonce (
     FOREIGN KEY (profession) REFERENCES Profession(id),
     FOREIGN KEY (proposer) REFERENCES User(idUser),
     FOREIGN KEY (nationnalite) REFERENCES Nationnalite(id)
+);
+
+CREATE TABLE HistoireColo (
+    user1 INT NOT NULL,
+    user2 INT NOT NULL,
+    dateDebut DATE,
+    dateFin DATE,
+    annonce INT NOT NULL,
+    FOREIGN KEY (user1) REFERENCES User(idUser),
+	FOREIGN KEY (user2) REFERENCES User(idUser),
+    FOREIGN KEY (annonce) REFERENCES Annonce(idAnnonce)
 );
 
 CREATE TABLE Annonc_user(
