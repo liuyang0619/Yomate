@@ -1,11 +1,4 @@
 /agents/
+/json/
 /model/
 /sql/
-/creation.sql
-/json/
-/InsertExample.sql
-/nationnalite.csv
-/InitialTheData.sql
-/langue.csv
-/loisir.csv
-/profession.csv
