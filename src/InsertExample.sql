@@ -53,34 +53,52 @@ VALUES
 INSERT INTO yomate.annonce_language
 (annonce, language)
 values
-(5, 2),
-(5, 3),
-(6, 4);
+(1, 2),
+(1, 3),
+(2, 4);
 
 INSERT INTO yomate.annonce_loisir
 (annonce, loisir)
 values
-(5, 2),
-(6, 4),
-(6, 3);
+(1, 2),
+(2, 4),
+(2, 3);
 
 INSERT INTO yomate.annonce_obligatoire
 (annonce, critere)
 values
-(5, "budget"),
-(5, "sex");
+(1, "budget"),
+(1, "sex");
 
 INSERT INTO yomate.annonce_important
 (annonce, critere)
 values
-(5, "ecole"),
-(5, "age");
+(1, "ecole"),
+(1, "age");
 
 INSERT INTO yomate.annonce_peutetre
 (annonce, critere)
 values
-(5, "haspet");
+(1, "haspet");
 
 commit;
 
+start transaction;
+
+INSERT INTO yomate.histoirecolo
+(user1, user2, dateDebut, dateFin, annonce)
+values
+(1, 2, "2016-09-01","2017-02-01", 1);
+
+INSERT INTO yomate.favoriser
+(user, annonce)
+values
+(2, 2);
+
+INSERT INTO yomate.evaluation
+(user_commenter, user_commented, note, desription, date_evaluation)
+values
+(1, 2, 3, "Bon colocataire", "2017-09-01");
+
+commit;
 
