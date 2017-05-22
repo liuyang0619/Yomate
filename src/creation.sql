@@ -18,6 +18,11 @@ CREATE TABLE Profession (
     profession varchar(255)
 );
 
+CREATE TABLE Nationnalite (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nationnalite varchar(255)
+);
+
 CREATE TABLE User (
     idUser INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nom varchar(20) NOT NULL,
@@ -59,10 +64,6 @@ CREATE TABLE user_loisir (
 	FOREIGN KEY (loisir) REFERENCES loisir(id)
 );
 
-CREATE TABLE Nationnalite (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nationnalite varchar(255)
-);
 
 CREATE TABLE HistoireColo (
     user1 INT NOT NULL,
