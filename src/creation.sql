@@ -1,3 +1,22 @@
+CREATE DATABASE yomate;
+
+CREATE USER 'javadb'@'localhost' IDENTIFIED BY 'javapwd';
+GRANT ALL ON yomate.* TO 'javadb'@'localhost' IDENTIFIED BY 'javapwd';
+
+CREATE TABLE Language (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    language varchar(255)
+);
+
+CREATE TABLE loisir (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    loisir varchar(255)
+);
+
+CREATE TABLE Profession (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    profession varchar(255)
+);
 
 CREATE TABLE User (
     idUser INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -23,10 +42,6 @@ CREATE TABLE user_photo(
     FOREIGN KEY(user) REFERENCES User(idUser)
 );
 
-CREATE TABLE Language (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    language varchar(255)
-);
 
 CREATE TABLE user_language (
     user INT NOT NULL ,
@@ -34,11 +49,6 @@ CREATE TABLE user_language (
     PRIMARY KEY (user, language),
     FOREIGN KEY (user) REFERENCES User(idUser),
 	FOREIGN KEY (language) REFERENCES language(id)
-);
-
-CREATE TABLE loisir (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    loisir varchar(255)
 );
 
 CREATE TABLE user_loisir (
@@ -53,13 +63,6 @@ CREATE TABLE Nationnalite (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nationnalite varchar(255)
 );
-
-
-CREATE TABLE Profession (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    profession varchar(255)
-);
-
 
 CREATE TABLE HistoireColo (
     user1 INT NOT NULL,
@@ -87,8 +90,8 @@ CREATE TABLE HistoireMessage (
     receiver INT NOT NULL,
     time dateTime,
     contenu varchar(25),
-    FOREIGN KEY (user1) REFERENCES User(idUser),
-	FOREIGN KEY (user2) REFERENCES User(idUser)
+    FOREIGN KEY (sender) REFERENCES User(idUser),
+	FOREIGN KEY (receiver) REFERENCES User(idUser)
 );
 
 
@@ -129,7 +132,7 @@ CREATE TABLE Annonce_language(
 	annonce INT NOT NULL ,
     language INT NOT NULL,
     PRIMARY KEY (annonce, language),
-    FOREIGN KEY (annonce) REFERENCES Annoncer(idAnnonce),
+    FOREIGN KEY (annonce) REFERENCES Annonce(idAnnonce),
 	FOREIGN KEY (language) REFERENCES language(id)
 );
 
@@ -137,7 +140,7 @@ CREATE TABLE Annonce_loisir(
 	annonce INT NOT NULL ,
     loisir INT NOT NULL,
     PRIMARY KEY (annonce, loisir),
-    FOREIGN KEY (annonce) REFERENCES Annoncer(idAnnonce),
+    FOREIGN KEY (annonce) REFERENCES Annonce(idAnnonce),
 	FOREIGN KEY (loisir) REFERENCES Loisir(id)
 );
 
