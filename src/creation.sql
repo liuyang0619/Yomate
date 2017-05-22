@@ -1,6 +1,6 @@
 CREATE DATABASE yomate;
 
-USE yomate
+USE yomate;
 
 CREATE TABLE Language (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,

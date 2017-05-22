@@ -7,19 +7,24 @@ delete from yomate.user;
 
 
 INSERT INTO yomate.user 
-(idUser, nom, prenom, birthday, sex, email, password, haspet, situationFam, ecole, profession, nationnalite)  
+(nom, prenom, birthday, sex, email, password, haspet, situationFam, ecole, profession, nationnalite)  
 VALUES				
-(1, "ZHU", "Jiawei", "1993-09-14", "0", "olivier_zhu@163.com", "1234", "0", "célibataire", "utc", 1, 2);
+("ZHU", "Jiawei", "1993-09-14", "0", "olivier_zhu@163.com", "1234", "0", "célibataire", "utc", 1, 2), 
+("LOU", "GOU", "1993-10-04", "0", "Gou_lou@163.com", "1234", "1", "couple", "shu", 5, 12);
 
 INSERT INTO yomate.user_language
 (user, language)
-value
-(1, 2);
+values
+(1, 2),
+(1, 3),
+(2, 4);
 
 INSERT INTO yomate.user_loisir
 (user, loisir)
 value
-(1, 2);
+(1, 2),
+(2, 4),
+(2, 3);
 
 INSERT INTO yomate.user_photo
 (user, image)
@@ -27,3 +32,55 @@ value
 (1, "photo/1.jpg");
 
 commit;
+
+start transaction;
+
+delete from yomate.annonce;
+delete from yomate.annonce_language;
+delete from yomate.annonce_loisir;
+delete from yomate.annonce_obligatoire;
+delete from yomate.annonce_important;
+delete from yomate.annonce_peutetre;
+delete from yomate.annonc_user;
+
+
+INSERT INTO yomate.annonce 
+(date_proposer, date_debut, date_fin, proposer, description, budget, nbPersonneBesoin, lieu, description_logement, sex, age_min, age_max, status, haspet, situationFam, ecole, profession, nationnalite)  
+VALUES				
+("2016-08-01", "2016-09-01","2017-02-01", 1, "je cherche une colocataire qui est jolie!", 450, 2, "Paris", null, 1, 18, 25, 1, 0, "couple", "utc", 5, 1), 
+("2013-08-01", "2014-09-01","2015-09-01", 1, "me contacter par email, svp", 570, 1, "compiegne", null, 1, 18, 25, 1, 0, "couple", "shu", 6, 5);
+
+INSERT INTO yomate.annonce_language
+(annonce, language)
+values
+(5, 2),
+(5, 3),
+(6, 4);
+
+INSERT INTO yomate.annonce_loisir
+(annonce, loisir)
+values
+(5, 2),
+(6, 4),
+(6, 3);
+
+INSERT INTO yomate.annonce_obligatoire
+(annonce, critere)
+values
+(5, "budget"),
+(5, "sex");
+
+INSERT INTO yomate.annonce_important
+(annonce, critere)
+values
+(5, "ecole"),
+(5, "age");
+
+INSERT INTO yomate.annonce_peutetre
+(annonce, critere)
+values
+(5, "haspet");
+
+commit;
+
+
