@@ -1,7 +1,6 @@
 CREATE DATABASE yomate;
 
-CREATE USER 'javadb'@'localhost' IDENTIFIED BY 'javapwd';
-GRANT ALL ON yomate.* TO 'javadb'@'localhost' IDENTIFIED BY 'javapwd';
+USE yomate
 
 CREATE TABLE Language (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
