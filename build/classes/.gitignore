@@ -1,4 +1,13 @@
+/InitialTheData.sql
+/InsertExample.sql
 /agents/
+/controllers/
+/creation.sql
 /json/
+/langue.csv
+/loisir.csv
 /model/
+/nationnalite.csv
+/profession.csv
 /sql/
+/sqlproperties
