@@ -42,6 +42,7 @@ public class SqlRequestAgent  extends Agent{
 					sql.util.ConnexionBDD.getInstance().closeCnx();			
 				} catch (SQLException e) {
 					e.printStackTrace();
+					reply.setContent("Erreur: something wrong with the database");
 					reply.setPerformative(ACLMessage.FAILURE);
 				}
 				send(reply);
@@ -89,6 +90,7 @@ public class SqlRequestAgent  extends Agent{
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				System.out.println(jsonResult);
 				reply.setContent(jsonResult);
 				send(reply);
 			}
