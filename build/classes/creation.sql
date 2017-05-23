@@ -192,3 +192,9 @@ CREATE TABLE Favoriser(
 
 
 
+ALTER TABLE User
+ADD lieu VARCHAR(255);
+
+ALTER TABLE Matching
+ADD rate INT;
+
