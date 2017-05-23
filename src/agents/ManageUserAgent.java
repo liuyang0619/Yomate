@@ -31,10 +31,7 @@ public class ManageUserAgent extends Agent {
 					break;
 				case "Login":
 					break;
-				case "ModifyProfile":
-					break;
 				}
-				//addBehaviour(new sendActionToAgentBehaviour(msg, agentName));
 			}
 		}
 
