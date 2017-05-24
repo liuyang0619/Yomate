@@ -17,10 +17,13 @@ public class MainBoot {
 		try {
 			p = new ProfileImpl(MAIN_PROPERTIES_FILE);
 			AgentContainer mc = rt.createMainContainer(p);
-			AgentController SqlRequestAgent = mc.createNewAgent("SqlRequestAgent", "agents.SqlRequestAgent", null);
-			SqlRequestAgent.start();
-			AgentController AdminAgent = mc.createNewAgent("AdminAgent", "agents.AdminAgent", null);
+			AgentController AdminAgent = mc.createNewAgent(Constants.ADMIN_AGENT, "agents.AdminAgent", null);
 			AdminAgent.start();
+			AgentController ManageUserAgent = mc.createNewAgent(Constants.MANAGE_USER_AGENT, "agents.ManageUserAgent", null);
+			ManageUserAgent.start();
+			AgentController SqlRequestAgent = mc.createNewAgent(Constants.SQL_REQUEST_AGENT, "agents.SqlRequestAgent", null);
+			SqlRequestAgent.start();
+			
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();

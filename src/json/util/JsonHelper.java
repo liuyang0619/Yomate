@@ -29,4 +29,30 @@ public class JsonHelper {
 		}
 		return map;
 	}
+	
+	public static String serilisation(Object object, Class inputClass){
+		ObjectMapper mapper = new ObjectMapper();
+		String s = null;
+		try {
+			s = mapper.writeValueAsString(object);
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return s;
+	}
+
+	public static Object deserilisation(String s, Class inputClass){
+		
+		Object object = null;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			object = mapper.readValue(s, inputClass);
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return object;
+		
+	}
 }

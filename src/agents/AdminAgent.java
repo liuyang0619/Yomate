@@ -24,33 +24,33 @@ public class AdminAgent extends Agent{
 			ACLMessage msg = receive(mt);
 			if(msg != null){
 				String content = msg.getContent();
-				Map <String, Object> map = JsonHelper.deserilisation(content);
-				String action = (String) map.get("action");
+				ActionMessageContent amc = (ActionMessageContent) JsonHelper.deserilisation(content, ActionMessageContent.class);
+				String action = amc.getAction();
 				String agentName = "";
 				switch(action){
-				case "CreateAccount":
-					agentName = "ManageUserAgent";
+				case Constants.CREATE_ACCOUNT:
+					agentName = Constants.MANAGE_USER_AGENT;
 					break;
-				case "Login":
-					agentName = "ManageUserAgent";
+				case Constants.LOGIN:
+					agentName = Constants.MANAGE_USER_AGENT;
 					break;
-				case "ModifyProfile":
-					agentName = "ManageProfilAgent";
+				case Constants.MODIFY_PROFILE:
+					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
-				case "AddPhoto":
-					agentName = "ManageProfilAgent";
+				case Constants.ADD_PHOTO:
+					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
-				case "DeletePhoto":
-					agentName = "ManageProfilAgent";
+				case Constants.DELETE_PHOTO:
+					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
-				case "CreateAnnonce":
-					agentName = "ManageAnnonceAgent";
+				case Constants.CREATE_ANNONCE:
+					agentName = Constants.MANAGE_ANNONCE_AGENT;
 					break;
-				case "AddFavoriteAnnonce":
-					agentName = "ManageProfilAgent";
+				case Constants.ADD_FAVORITE_ANNONCE:
+					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
-				case "DeleteFavoriteAnnonce":
-					agentName = "ManageProfilAgent";
+				case Constants.DELETE_FAVORITE_ANNONCE:
+					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
 				}
 				addBehaviour(new sendActionToAgentBehaviour(msg, agentName));
@@ -65,14 +65,14 @@ public class AdminAgent extends Agent{
 	}
 	protected class sendActionToAgentBehaviour extends Behaviour{
 		boolean flag = false;
-		String content;
 		String conversationId;
 		String agentName;
-		ACLMessage msgFromServer = null;
+		ACLMessage msgReceived = null;
 		int step = 1;
-		sendActionToAgentBehaviour(ACLMessage msgFromServer, String agentName){
+		sendActionToAgentBehaviour(ACLMessage msgReceived, String agentName){
 			this.agentName = agentName;
-			this.msgFromServer = msgFromServer;
+			this.msgReceived = msgReceived;
+			conversationId = msgReceived.getConversationId();
 		}
 		@Override
 		public void action() {
@@ -81,19 +81,18 @@ public class AdminAgent extends Agent{
 				ACLMessage msg = new ACLMessage();
 				msg.setPerformative(ACLMessage.REQUEST);
 				msg.addReceiver(new AID(agentName, AID.ISLOCALNAME));
-				msg.setContent(content);
+				msg.setContent(msgReceived.getContent());
 				msg.setConversationId(conversationId);
 				send(msg);
 				step++;
 				break;
 			case 2:
-				MessageTemplate mt = MessageTemplate.and(MessageTemplate.MatchPerformative(ACLMessage.REQUEST), 
-						MessageTemplate.MatchConversationId(conversationId)); 
+				MessageTemplate mt = MessageTemplate.MatchConversationId(conversationId); 
 				ACLMessage response = receive(mt);
 				if(response != null){
-					ACLMessage reply = msgFromServer.createReply();
+					ACLMessage reply = msgReceived.createReply();
 					reply.setContent(response.getContent());
-					reply.setPerformative(ACLMessage.INFORM);
+					reply.setPerformative(response.getPerformative());
 					send(reply);
 					flag = true;
 				}
