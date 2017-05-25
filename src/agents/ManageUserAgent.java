@@ -16,7 +16,9 @@ public class ManageUserAgent extends Agent {
 		addBehaviour(new ReceiveActionFromAdminBehaviour());
 	}
 	protected class ReceiveActionFromAdminBehaviour extends Behaviour{
-
+		String email;
+		String password;
+		String sql;
 		@Override
 		public void action() {
 			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST); 
@@ -29,13 +31,24 @@ public class ManageUserAgent extends Agent {
 				
 				switch(action){
 				case Constants.CREATE_ACCOUNT:
-	
+					String nom = (String) params.get("nom");
+					String prenom = (String) params.get("prenom");
+					email = (String) params.get("email");
+					password = (String) params.get("password");
+					int sex =  Integer.parseInt(params.get("sex"));
+					sql = SqlRequest.CREATE_USER_COMPTE;
+					sql = sql.replaceFirst("###", "\""+ nom + "\"");
+					sql = sql.replaceFirst("###", "\""+ prenom + "\"");
+					sql = sql.replaceFirst("###", "\""+ email + "\"");
+					sql = sql.replaceFirst("###", "\""+ password + "\"");
+					sql = sql.replaceFirst("###", "\""+ sex + "\"");
+					System.out.println(sql);
+					addBehaviour(new SendToSqlBehaviour(msg, sql, ACLMessage.REQUEST));
 					break;
 				case Constants.LOGIN:
-					System.out.println("login");
-					String email = (String) params.get("email");
-					String password = (String) params.get("password");
-					String sql = SqlRequest.CHECK_IF_USER_EXIST_BY_EMAIL_PW;
+					email = (String) params.get("email");
+					password = (String) params.get("password");
+					sql = SqlRequest.CHECK_IF_USER_EXIST_BY_EMAIL_PW;
 					System.out.println(email + password);
 					sql = sql.replaceFirst("###", "\""+ email + "\"");
 					sql = sql.replaceFirst("###", "\""+ password + "\"");
