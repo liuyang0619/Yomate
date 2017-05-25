@@ -25,7 +25,7 @@ public class SqlRequest {
 			+ "GROUP BY temp.idUser;";
 	public final static String CHECK_IF_USER_EXIST_BY_EMAIL_PW = "SELECT idUser FROM yomate.user "
 			+ "WHERE email= ### AND password= ###;";
-	public final static String CREATE_USER_COMPTE = "INSERT INTO yomate.user (nom, prenom, email, passward, sex) VALUES "
+	public final static String CREATE_USER_COMPTE = "INSERT INTO yomate.user (nom, prenom, email, password, sex) VALUES "
 			+ "(###, ###, ###, ###, ###);";
 	public final static String UPDATE_USER_PROFILE_MAIN_BY_ID = "UPDATE yomate.user SET nom = ###, prenom = ###, email = ###, passward = ###, "
 			+ "sex = ###, haspet = ###, situationFam = ###, ecole = ###, profession = ###, nationnalite = ### "

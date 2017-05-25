@@ -21,9 +21,18 @@ public class SimulationJadegateWay {
     	JadeGateway.init(null, pp);
     	
     	Map<String, String> map = new HashMap<String, String>();
-    	map.put("email", "olivier_zhu@163.com");
-    	map.put("password", "1234");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.LOGIN, map);
+//Test the "Login" method 
+//    	map.put("email", "olivier_zhu@163.com");
+//    	map.put("password", "1234");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.LOGIN, map);
+//Test the "Create account" method
+    	map.put("nom", "LOU");
+    	map.put("prenom", "H");
+    	map.put("email", "Lou_Lou@163.com");
+    	map.put("password", "azer");
+    	map.put("sex", "1");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.CREATE_ACCOUNT, map);
+    	
     	String content = JsonHelper.serilisation(amc);
     	
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);

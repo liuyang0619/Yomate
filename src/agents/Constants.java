@@ -20,4 +20,8 @@ public class Constants {
 	public final static String MESSAGERIE_AGENT = "MessagerieAgent";
 	public final static String RESEACH_AGENT = "ReseachAgent";
 	public final static String ADMIN_AGENT = "AdminAgent";
+	
+	//list of string contents
+	public final static String ERROR_WITH_DATABASE = "Erreur: something wrong with the database";
+	public final static String SUCCESS_MODIFY_DATABASE = "Votre modification est stockée";
 }

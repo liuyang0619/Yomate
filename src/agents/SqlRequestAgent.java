@@ -57,16 +57,17 @@ public class SqlRequestAgent  extends Agent{
 		public void action() {
 			String sqlRequest = msgReceived.getContent();
 			ACLMessage reply = msgReceived.createReply();
-			reply.setPerformative(ACLMessage.INFORM);
 			Connection cnx=null;
 			try {
 				cnx = sql.util.ConnexionBDD.getInstance().getCnx();
 				PreparedStatement ps = cnx.prepareStatement(sqlRequest);
 				ps.execute();
-				sql.util.ConnexionBDD.getInstance().closeCnx();			
+				sql.util.ConnexionBDD.getInstance().closeCnx();
+				reply.setContent(Constants.SUCCESS_MODIFY_DATABASE);
+				reply.setPerformative(ACLMessage.INFORM);
 			} catch (SQLException e) {
 				e.printStackTrace();
-				reply.setContent("Erreur: something wrong with the database");
+				reply.setContent(Constants.ERROR_WITH_DATABASE);
 				reply.setPerformative(ACLMessage.FAILURE);
 			}
 			send(reply);
