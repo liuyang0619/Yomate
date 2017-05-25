@@ -34,6 +34,9 @@ public class AdminAgent extends Agent{
 				case Constants.LOGIN:
 					agentName = Constants.MANAGE_USER_AGENT;
 					break;
+				case Constants.SELECT_PROFILE:
+					agentName = Constants.MANAGE_PROFIL_AGENT;
+					break;
 				case Constants.MODIFY_PROFILE:
 					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
@@ -43,14 +46,14 @@ public class AdminAgent extends Agent{
 				case Constants.DELETE_PHOTO:
 					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
-				case Constants.CREATE_ANNONCE:
-					agentName = Constants.MANAGE_ANNONCE_AGENT;
-					break;
 				case Constants.ADD_FAVORITE_ANNONCE:
 					agentName = Constants.MANAGE_PROFIL_AGENT;
 					break;
 				case Constants.DELETE_FAVORITE_ANNONCE:
 					agentName = Constants.MANAGE_PROFIL_AGENT;
+					break;
+				case Constants.CREATE_ANNONCE:
+					agentName = Constants.MANAGE_ANNONCE_AGENT;
 					break;
 				}
 				addBehaviour(new sendActionToAgentBehaviour(msg, agentName));

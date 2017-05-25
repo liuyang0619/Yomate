@@ -2,6 +2,7 @@ package agents;
 import java.util.HashMap;
 import java.util.Map;
 
+import agents.behaviour.ProcessBehaviour;
 import jade.core.AID;
 import jade.core.Profile;
 import jade.core.behaviours.Behaviour;
@@ -26,12 +27,15 @@ public class SimulationJadegateWay {
 //    	map.put("password", "1234");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.LOGIN, map);
 //Test the "Create account" method
-    	map.put("nom", "LOU");
-    	map.put("prenom", "H");
-    	map.put("email", "Lou_Lou@163.com");
-    	map.put("password", "azer");
-    	map.put("sex", "1");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.CREATE_ACCOUNT, map);
+//    	map.put("nom", "LOU");
+//    	map.put("prenom", "H");
+//    	map.put("email", "Lou_Lou@163.com");
+//    	map.put("password", "azer");
+//    	map.put("sex", "1");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.CREATE_ACCOUNT, map);
+//Test the "select user's profil by using id" method 
+    	map.put("idUser", "1");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.SELECT_PROFILE, map);
     	
     	String content = JsonHelper.serilisation(amc);
     	
