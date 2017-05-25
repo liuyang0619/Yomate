@@ -25,34 +25,43 @@
 
 <!-- js -->
 <script src="ressources/js/jquery-1.11.1.min.js"></script>
-<script src="ressources/js/bootstrap.js">
-	
-</script>
+<script src="ressources/js/bootstrap.js"></script>
 <!-- //js -->
+
+<!-- initAutocomplete -->
+<script>
+      function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+        (document.getElementById('search-city')),
+            {types: ['(cities)'], componentRestrictions: {country: "fr"}});
+      }
+</script>
+<!-- //initAutocomplete -->
 
 <!-- header & footer -->
 <script type="text/javascript">
 	$(function() {
-		$("#header").load("header_index.jsp");
+		$("#header").load("header.jsp");
 		$("#footer").load("footer.jsp");
 	});
 </script>
 <!-- //header & footer -->
+
 <body>
 	<!-- header -->
 	<div id="header"></div>
 	<!-- //header -->
 	<!-- page content -->
-	<div class="container">
-		<!-- researche  -->
-		<div class="col-md-12" >
-			<div class="col-md-12 banner-info-left " style="margin-bottom:25px; margin-top:200px;">
+	<div class="container-fluid home-page">
+		<!-- research -->
+		<div class="col-md-12">
+			<div class="col-md-12 text-center" style="margin-bottom:25px; margin-top:80px;">
 				<h1>Trouvez votre colocataire ideal</h1>
 			</div>
-			<div class="  input-group" style="margin-top: 0px; positon:relative; margin-bottom:100px">
-				<input type="text" class=" form-control" placeholder="postal,ville">
+			<div class="input-group" style="margin-top: 0px; positon:relative; margin-bottom:80px">
+				<input type="text" id="search-city" class="form-control" placeholder="Nom de ville" autocomplete="on">
 				<span class="input-group-btn">
-					<button class="btn btn-info btn-search">Recherche</button>
+					<button class="btn button-action btn-search">Recherche</button>
 				</span>
 			</div>
 			<div class="row bottom-margin-20">
@@ -148,6 +157,11 @@
 	<!-- footer -->
 	<div id="footer"></div>
 	<!-- //footer -->
+	
+	<!-- for autoComplete working -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBYWCDw3df4KmbFKZ-9e51hPizIipPnlM&libraries=places&callback=initAutocomplete"
+        async defer></script>
+	<!-- //for autoComplete working -->
 
 </body>
 </html>

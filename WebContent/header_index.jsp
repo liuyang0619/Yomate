@@ -36,8 +36,7 @@
 							class="icon-bar"></span>
 					</button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.jsp">YoMate! <span>Trouvez
-								vos colocataires parfaits</span></a>
+						<a class="navbar-brand" href="index.jsp">YoMate! <span>Trouvez vos colocataires parfaits</span></a>
 					</div>
 				</div>
 
@@ -45,12 +44,9 @@
 				<div class="collapse navbar-collapse nav-wil"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="aide.jsp"><i
-								class="glyphicon glyphicon-home"></i>Aide</a></li>
-						<li><a href="inscription.jsp"><i
-								class="glyphicon glyphicon-user"></i>Creer un compte</a></li>
-						<li><a data-toggle="modal" data-target="#login "><i
-								class="glyphicon glyphicon-user" ></i>Connectez-vous</a></li>
+						<li>
+							<a data-toggle="modal" data-target="#login "><i class="glyphicon glyphicon-user" ></i>Connectez-vous</a>							
+						</li>
 
 					</ul>
 				</div>
@@ -110,13 +106,13 @@
 	    		<h3 style= "text-align :center;">____________________________________________________________</h3>
 	    		<!-- pas encore le compte -->
 	    		<div class= "row top-margin-5" >
-	    			<p style= "text-align :center;">Vous n'avez pas de compte?</p>
+	    			<p style= "text-align :center;">Vous n'avez pas de compte ?</p>
 	    		</div>
 	    		<!-- //pas encore le compte -->
 	    		<!-- creer un compte -->
 	    		<div class= "row top-margin-0" >
 					<div class="col-md-12 inscription-text-padding" style="text-align :center;">
-						<a class="btn btn-warning btn-search" href="#">
+						<a class="btn btn-warning btn-search" href="inscription.jsp">
 						<i class="icon-edit icon-white" ></i>Creer mon compte</a> 
 					</div>
 				</div> 

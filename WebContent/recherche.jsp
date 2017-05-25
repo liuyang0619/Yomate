@@ -26,7 +26,6 @@
 <script src="ressources/js/bootstrap.js"></script>
 <script src="ressources/js/moment.min.js"></script>
 <script src="ressources/js/bootstrap-datetimepicker.min.js"></script>
-
 <!-- //js -->
 
 <!-- initAutocomplete -->
@@ -86,7 +85,7 @@ $(function () {
 					<div class = "row top-margin-3">
 						<div class = "col-md-3 search-filter-item-name">Ville</div>
 						<div class = "col-md-9">
-							<input type="text" class="form-control input-sm" id="search-city" placeholder="Nom de ville, code postale" autocomplete="on"></input>
+							<input type="text" class="form-control input-sm" id="search-city" placeholder="Nom de ville" autocomplete="on"></input>
   						</div>
 					</div>
 					
@@ -104,7 +103,7 @@ $(function () {
 
 					<!-- begin datepicker -->
 					<div class = "row top-margin-3">
-						<div class = "col-md-3 search-filter-item-name">Période</div>
+						<div class = "col-md-3 search-filter-item-name">P��riode</div>
 						<div class = "col-md-9">
 							<div class="col-md-2 padding-0" style="font-weight:bold;vertical-align:middle;">Du</div>
 							<div class="col-md-10 padding-0">
@@ -160,7 +159,7 @@ $(function () {
 					<hr class="margin-0"/>
 					<div class="search-profile-priority">Important : </div>
 					<hr class="margin-0"/>
-					<div class="search-profile-priority">Vaut mieux être : </div>
+					<div class="search-profile-priority">Vaut mieux ��tre : </div>
 				</div>
 				<!-- //filtre de profil -->
 				
@@ -175,7 +174,7 @@ $(function () {
 					
 					<!-- create annonce button -->
 					<div class = "row top-margin-5">
-						<a class="btn btn-warning search-btn" href="#"><i class="icon-edit icon-white"></i>Créer votre Annonce</a>
+						<a class="btn btn-warning search-btn" href="#"><i class="icon-edit icon-white"></i>Cr��er votre Annonce</a>
 					</div>
 					<!-- create annonce button -->
 					</div>				
@@ -187,9 +186,9 @@ $(function () {
 			 <!-- RIGHT COLUMN -->
 			 <div class = "col-md-8">
 			 
-				<!-- amélioration de profil -->
+				<!-- am��lioration de profil -->
 				<div class="search-improve-profile">
-						<h3>3 étapes pour un meilleur matching de profile</h3>
+						<h3>3 ��tapes pour un meilleur matching de profile</h3>
 					<div class="row top-margin-5">
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
@@ -201,21 +200,21 @@ $(function () {
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-question-sign search-improve-icon"></span>
 							</div>
-							<p>Répondre aux 5 questions</p>
+							<p>R��pondre aux 5 questions</p>
 						</div>
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-th-list search-improve-icon"></span>
 							</div>
-							<p>Compléter votre profile</p>
+							<p>Compl��ter votre profile</p>
 						</div>
 					</div>
 				</div>
-				<!-- //amélioration de profil -->
+				<!-- //am��lioration de profil -->
 	
-				<!-- résultats de recherche -->
+				<!-- r��sultats de recherche -->
 				<div class="search-result">
-					<h3>Résultats :</h3>
+					<h3>R��sultats :</h3>
 					<ul class="list-group top-margin-3">
 						<a class="list-group-item">
 							<div>
@@ -264,7 +263,7 @@ $(function () {
 						</a>
 					</ul>
 				</div>
-				<!-- //résultats de recherche -->
+				<!-- //r��sultats de recherche -->
 			</div>
 			 <!-- //RIGHT COLUMN -->
 	 	</div>
@@ -278,6 +277,6 @@ $(function () {
 <!-- for autoComplete working -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBYWCDw3df4KmbFKZ-9e51hPizIipPnlM&libraries=places&callback=initAutocomplete"
         async defer></script>
-<!-- for autoComplete working -->
+<!-- //for autoComplete working -->
 </body>
 </html>

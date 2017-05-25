@@ -15,9 +15,9 @@
 
 <!-- css -->
 <link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="ressources/css/yomate-style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/buttons.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+<link href="ressources/css/yomate-style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- //css -->
 
 <!-- js -->
@@ -55,25 +55,14 @@ $(function () {
 <!-- Info perso -->
 	<div class="perso-info">
 		<div class="container">
-			<div class = "row">
-				<div class="col-md-8">
-					<h1 style= "color:#FF66FF; margin-left:10px">Espace Personnel</h1>
-				</div>
-			</div>
-			<div class = "row">
-				<br>
-			</div>
-			<div class = "row">
+			<div class = "row top-margin-20 bottom-margin-20">
 				<div class="col-md-2" style = "text-align:center">
 					<img src="ressources/images/4.png" class="img-thumbnail" style = "width:100px;height:100px">
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-10">
 					<p style = "font-weight:bolder;font-size:25px">Paul Babiste</p>
 					<p>Homme, 23 ans</p>
 				</div>
-			</div>
-			<div class = "row">
-				<br>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-8">
@@ -87,8 +76,8 @@ $(function () {
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 									<div class = "row">
 										<div class = "col-md-6">
-											<span style = "font-weight: bold">Région:</span>
-											<span id = "region">Paris, France</span>
+											<span style = "font-weight: bold">Situation:</span>
+											<span id = "situation">Etudiant</span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Animal de compagnie:</span>
@@ -97,8 +86,8 @@ $(function () {
 									</div>
 									<div class = "row">
 										<div class = "col-md-6">
-											<span style = "font-weight: bold">Situation:</span>
-											<span id = "situation">Etudiant</span>
+											<span style = "font-weight: bold">Nationnalité:</span>
+											<span id = "nationnalite">Française</span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Langue:</span>
@@ -107,25 +96,19 @@ $(function () {
 									</div>
 									<div class = "row">
 										<div class = "col-md-6">
-											<span style = "font-weight: bold">Nationnalité:</span>
-											<span id = "nationnalite">Française</span>
+											<span style = "font-weight: bold">Situation familiale:</span>
+											<span>Célibataire</span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Loisir:</span>
 											<span id = "loisir">Basketball</span>
 										</div>
 									</div>
-									<div class = "row">
-										<div class = "col-md-6">
-											<span style = "font-weight: bold">Situation familiale:</span>
-											<span>Célibataire</span>
-										</div>
-										
-									</div>
+									
 									<!-- Trigger the personal info modal with a button -->
 									<div class = "row">
 										<div class = "col-md-12">
-											<button class = "button button-action button-rounded button-small perso-edit-btn" data-toggle="modal" data-target="#editInfo">Editer</button>
+											<button class = "button button-action button-pill button-small perso-edit-btn" data-toggle="modal" data-target="#editInfo">Editer  <span class="glyphicon glyphicon-edit"></span></button>
 										</div>
 									</div>
 								</div>
@@ -275,28 +258,59 @@ $(function () {
 	    		<!-- //Date de naissance -->
 	    		
 	    		<!-- Situation -->
-	    		<div class="row top-margin-5">
-	    			<div class="col-md-12">
-		    			
+	    		<div class="row top-margin-10">
+	    			<label class="col-md-4" for="situation">Situation/Profession</label>
+	    			<div class="form-group col-md-8">
+						<select id="selectSituation" name="selectSituation" class="form-control">
+							<option value="0" selected disabled></option>
+							<option value="1">Etudiant</option>
+							<option value="2">Salarié</option>
+							<option value="3">Retraité(e)</option>
+							<option value="4">APL</option>
+							<option value="5">Autre</option>
+					    </select>
 					</div>
 	    		</div>
 	    		<!-- //Situation -->
 	    		
 	    		<!-- Situation Familiale-->
-	    		<div class="row top-margin-5">
-	    			<div class="col-md-12">
-		    			
+	    		<div class="row">
+	    			<label class="col-md-4" for="situ-fam">Situation Familiale</label>
+	    			<div class="form-group col-md-8">
+						<select id="selectSituation" name="selectSituationFamiliale" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="1">Célibataire</option>
+							<option value="2">En couple</option>
+							<option value="3">Marié(e)</option>
+					    </select>
 					</div>
 	    		</div>
 	    		<!-- //Situation Familiale-->
 	    		
 	    		<!-- Nationalité-->
-	    		<div class="row top-margin-5">
-	    			<div class="col-md-12">
-		    			
+	    		<div class="row">
+	    			<label class="col-md-4" for="nationalite">Nationalité</label>
+	    			<div class="col-md-8">
+	    				
 					</div>
 	    		</div>
 	    		<!-- //Nationalité-->
+	    		
+	    		<!-- Langue parlée & Loisirs-->
+	    		<div class="row">
+	    			<!-- Langue parlée-->
+	    			<div class="col-md-6">
+	    			
+	    			</div>
+	    			<!-- Langue parlée-->
+	    			
+	    			<!-- Loisirs-->
+	    			<div class="col-md-6">
+	    			</div>
+	    			<!-- //Loisirs-->
+	    		</div>
+	    		<!-- //Langue parlée & Loisirs-->
+
 	    	</div>
 	    	<div class="modal-footer">
 	    		<div class = "row">
