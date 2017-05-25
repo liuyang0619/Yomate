@@ -8,6 +8,7 @@ import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import json.util.JsonHelper;
+import model.User;
 import sql.util.SqlRequest;
 
 public class ManageProfilAgent extends Agent{
@@ -15,8 +16,6 @@ public class ManageProfilAgent extends Agent{
 		addBehaviour(new ReceiveActionFromAdminBehaviour());
 	}
 	protected class ReceiveActionFromAdminBehaviour extends Behaviour{
-		String email;
-		String password;
 		String sql;
 		@Override
 		public void action() {
@@ -27,24 +26,27 @@ public class ManageProfilAgent extends Agent{
 				ActionMessageContent amc = (ActionMessageContent) JsonHelper.deserilisation(content, ActionMessageContent.class);
 				String action = amc.getAction();
 				Map<String, String> params = amc.getParams();
-				
 				switch(action){
 				case Constants.SELECT_PROFILE:
-					String idUser = (String) params.get("idUser");
-					String sql = SqlRequest.SELECT_PROFIL_BY_ID;
-					sql = sql.replaceFirst("###", "\""+ idUser + "\"");
-					System.out.println(sql);
+					sql = SqlRequest.SELECT_PROFIL_BY_ID;
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
 					addBehaviour(new SendToSqlBehaviour(msg, sql, ACLMessage.QUERY_REF));
 					break;
-				case Constants.LOGIN:
-//					email = (String) params.get("email");
-//					password = (String) params.get("password");
-//					sql = SqlRequest.CHECK_IF_USER_EXIST_BY_EMAIL_PW;
-//					System.out.println(email + password);
-//					sql = sql.replaceFirst("###", "\""+ email + "\"");
-//					sql = sql.replaceFirst("###", "\""+ password + "\"");
-//					System.out.println(sql);
-//					addBehaviour(new SendToSqlBehaviour(msg, sql, ACLMessage.QUERY_REF));
+				case Constants.MODIFY_PROFILE:
+					sql = SqlRequest.UPDATE_USER_PROFILE_MAIN_BY_ID;
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("nom") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("prenom") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("password") + "\"");
+					sql = sql.replaceFirst("###", "\""+ Integer.parseInt((String) params.get("sex")) + "\"");
+					sql = sql.replaceFirst("###", "\""+ Integer.parseInt((String) params.get("haspet")) + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("situationFam") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("ecole") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("profession") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("nationnalite") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("lieu") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("birthday") + "\"");
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
+					addBehaviour(new SendToSqlBehaviour(msg, sql, ACLMessage.REQUEST));
 					break;
 				}
 			}

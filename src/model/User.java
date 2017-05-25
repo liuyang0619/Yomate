@@ -4,30 +4,16 @@ import java.util.List;
 
 public class User {
 	private String id;
-	public User(String id, String nom, String prenom, String email, String situationFam, String ecole,
-			String profession, String nationnalite, boolean sex, boolean haspet) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.situationFam = situationFam;
-		this.ecole = ecole;
-		this.profession = profession;
-		this.nationnalite = nationnalite;
-		this.sex = sex;
-		this.haspet = haspet;
-		//construxtor of the lists
-	}
 	private String nom;
 	private String prenom;
 	private String email;
+	private String password;
 	private String situationFam;
 	private String ecole;
 	private String profession;
 	private String nationnalite;
-	private boolean sex;
-	private boolean haspet;
+	private int sex;
+	private int haspet;
 	private List<AnnonceSimple> listAnnonceFavoris;
 	private List<AnnonceSimple> listAnnonceHist;
 	private List<Evaluation> listEvaluation;
@@ -35,6 +21,13 @@ public class User {
 	private List<String> listLangue;
 	private List<String> listLoisir;
 	
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getId() {
 		return id;
 	}
@@ -83,16 +76,16 @@ public class User {
 	public void setNationnalite(String nationnalite) {
 		this.nationnalite = nationnalite;
 	}
-	public boolean isSex() {
+	public int isSex() {
 		return sex;
 	}
-	public void setSex(boolean sex) {
+	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public boolean isHaspet() {
+	public int isHaspet() {
 		return haspet;
 	}
-	public void setHaspet(boolean haspet) {
+	public void setHaspet(int haspet) {
 		this.haspet = haspet;
 	}
 	public List<AnnonceSimple> getListAnnonceFavoris() {

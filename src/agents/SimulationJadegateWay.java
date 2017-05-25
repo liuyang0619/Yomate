@@ -34,8 +34,22 @@ public class SimulationJadegateWay {
 //    	map.put("sex", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.CREATE_ACCOUNT, map);
 //Test the "select user's profil by using id" method 
-    	map.put("idUser", "1");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.SELECT_PROFILE, map);
+//    	map.put("idUser", "1");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.SELECT_PROFILE, map);
+//Test the "Create account" method
+    	map.put("idUser", "3");
+    	map.put("nom", "LOU");
+    	map.put("prenom", "Hhhhh");
+    	map.put("password", "12345678");
+    	map.put("sex", "0");
+    	map.put("haspet", "1");
+    	map.put("situationFam", "couple");
+    	map.put("ecole", "xiaoxue");
+    	map.put("profession", "13");
+    	map.put("nationnalite", "14");
+    	map.put("birthday", "1940-11-11");
+    	map.put("lieu", "compiègne");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.MODIFY_PROFILE, map);
     	
     	String content = JsonHelper.serilisation(amc);
     	
