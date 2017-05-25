@@ -9,12 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Yomate" />
-<script type="application/x-javascript">
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } 
-
-</script>
 <!-- //for-mobile-apps -->
 <link href="ressources/css/bootstrap.css" rel="stylesheet"
 	type="text/css" media="all" />
@@ -30,11 +24,15 @@
 
 <!-- initAutocomplete -->
 <script>
-      function initAutocomplete() {
-        autocomplete = new google.maps.places.Autocomplete(
-        (document.getElementById('search-city')),
-            {types: ['(cities)'], componentRestrictions: {country: "fr"}});
-      }
+function initAutocomplete() {
+	autocomplete = new google.maps.places.Autocomplete((document
+			.getElementById('search-city')), {
+		types : [ '(cities)' ],
+		componentRestrictions : {
+			country : "fr"
+		}
+	});
+}
 </script>
 <!-- //initAutocomplete -->
 
@@ -47,6 +45,14 @@
 </script>
 <!-- //header & footer -->
 
+<!-- search by city -->
+<script type="text/javascript">
+function search() {
+	
+}
+</script>
+<!-- //search by city -->
+
 <body>
 	<!-- header -->
 	<div id="header"></div>
@@ -54,14 +60,17 @@
 	<!-- page content -->
 	<div class="container-fluid home-page">
 		<!-- research -->
-		<div class="col-md-12">
-			<div class="col-md-12 text-center" style="margin-bottom:25px; margin-top:80px;">
+		<div class="row index-search">
+			<div class="col-md-12 text-center"
+				style="margin-bottom: 25px; margin-top: 80px;">
 				<h1>Trouvez votre colocataire ideal</h1>
 			</div>
-			<div class="input-group" style="margin-top: 0px; positon:relative; margin-bottom:80px">
-				<input type="text" id="search-city" class="form-control" placeholder="Nom de ville" autocomplete="on">
-				<span class="input-group-btn">
-					<button class="btn button-action btn-search">Recherche</button>
+			<div class="input-group"
+				style="margin-top: 0px; positon: relative; margin-bottom: 80px">
+				<input type="text" id="search-city" class="form-control"
+					placeholder="Nom de ville" autocomplete="on"> <span
+					class="input-group-btn">
+					<button class="btn button-action btn-search" onclick="search()">Recherche</button>
 				</span>
 			</div>
 			<div class="row bottom-margin-20">
@@ -69,28 +78,28 @@
 					<h2>Les villes populaires</h2>
 				</div>
 			</div>
-			<div class="row bottom-margin-20" style="text-align :center;">
+			<div class="row bottom-margin-20" style="text-align: center;">
 				<span class=" index-span col-md-12 text-center"> <span
 					class=" index-span " style="padding-right: 20px"> <a
 						href="http://localhost:8080/Yomate/">Paris</a>
-				</span> <span class="index-span" style="padding-right: 20px">
-						<a href="http://localhost:8080/Yomate/">Lyon</a>
-				</span> <span class="index-span " style="padding-right: 20px">
-						<a href="http://localhost:8080/Yomate/">ile de France</a>
-				</span> <span class="index-span " style="padding-right: 20px">
-						<a href="http://localhost:8080/Yomate/">Compiegne</a>
+				</span> <span class="index-span" style="padding-right: 20px"> <a
+						href="http://localhost:8080/Yomate/">Lyon</a>
+				</span> <span class="index-span " style="padding-right: 20px"> <a
+						href="http://localhost:8080/Yomate/">ile de France</a>
+				</span> <span class="index-span " style="padding-right: 20px"> <a
+						href="http://localhost:8080/Yomate/">Compiegne</a>
 				</span>
 				</span>
 			</div>
 		</div>
 		<!-- //researche  -->
 		<!-- introduction of users  -->
-		<div class="index-utilisateurs col-md-12">
+		<div class="index-utilisateurs row">
 			<div class="text-center col-md-12">
 				<span class="red ">5729 </span> <span> utilisateurs sont a la
 					recherche de colocataire </span>
 			</div>
-			<div class="col-md-12 clearfix" style="text-align:center;">
+			<div class="col-md-12 clearfix" style="text-align: center;">
 				<div class="col-md-3 inline-block">
 					<img src="ressources/images/4.png" class="img "
 						style="width: 70px; height: 70px">
@@ -131,25 +140,10 @@
 			</div>
 		</div>
 		<!-- //introduction of users  -->
+
 		<!-- about us  -->
-		<div class="col-md-12 banner-info-left text-center">
-			<h3>YoMate! Trouvez le colocataire ideal</h3>
-		</div>
-		<div class="col-md-12 index-nous ">
-			<div class="row bottom-margin-20" style="text-align:center;">
-				<span class=" index-span "> <span
-					class=" index-span " style="padding-right: 30px"> <a
-						href="http://localhost:8080/Yomate/">A propose de nous</a>
-				</span> <span class="index-span " style="padding-right: 30px">
-						<a href="http://localhost:8080/Yomate/">FAQ</a>
-				</span> <span class="index-span " style="padding-right: 30px">
-						<a href="http://localhost:8080/Yomate/">Contact</a>
-				</span> <span class="index-span" style="padding-right: 30px">
-						<a href="http://localhost:8080/Yomate/">Politiaue de
-							confidentialite</a>
-				</span>
-				</span>
-			</div>
+		<div class="row banner-info-left text-center bottom-margin-20">
+			<h3>YoMate! Trouvez votre colocataire ideal</h3>
 		</div>
 		<!-- //about us  -->
 	</div>
@@ -157,10 +151,11 @@
 	<!-- footer -->
 	<div id="footer"></div>
 	<!-- //footer -->
-	
+
 	<!-- for autoComplete working -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBYWCDw3df4KmbFKZ-9e51hPizIipPnlM&libraries=places&callback=initAutocomplete"
-        async defer></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBYWCDw3df4KmbFKZ-9e51hPizIipPnlM&libraries=places&callback=initAutocomplete"
+		async defer></script>
 	<!-- //for autoComplete working -->
 
 </body>
