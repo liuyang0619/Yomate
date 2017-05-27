@@ -10,16 +10,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Yomate" />
 <!-- //for-mobile-apps -->
-<link href="ressources/css/bootstrap.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="ressources/css/yomate-style.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="ressources/css/buttons.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="<c:url value="ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="ressources/css/yomate-style.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="ressources/css/buttons.css" />" rel="stylesheet" type="text/css" media="all" />
 
 <!-- js -->
-<script src="ressources/js/jquery-1.11.1.min.js"></script>
-<script src="ressources/js/bootstrap.js"></script>
+<script src=<c:url value="ressources/js/jquery-1.11.1.min.js" /> ></script>
+<script src=<c:url value="ressources/js/bootstrap.js" /> ></script>
 <!-- //js -->
 
 <!-- initAutocomplete -->

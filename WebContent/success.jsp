@@ -10,6 +10,7 @@
 <body>
 <h1>Success!</h1>
 <h>${msg}</h>
-<img src="<c:url value="/ressources/images/1.png" />" />
+	<img src="<c:url value="/ressources/images/4.png" />" /> 
+<%-- <img src="<c:url value="/ressources/images/2.png" />" /> --%>
 </body>
 </html>
