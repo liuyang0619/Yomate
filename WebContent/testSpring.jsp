@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="test/one">
-	<input type="text" name="userName">
+<form action="test/one" method = "POST">
+	<input type="text" name="email">
+	<input type="password" name = "password">
 	<input type="submit" value="ok">
 	
 </form>
