@@ -28,9 +28,9 @@ public class ManageUserAgent extends Agent {
 				ActionMessageContent amc = (ActionMessageContent) JsonHelper.deserilisation(content, ActionMessageContent.class);
 				String action = amc.getAction();
 				Map<String, String> params = amc.getParams();
-				
+				int performative = 0;
 				switch(action){
-				case Constants.CREATE_ACCOUNT:
+				case Constants.Action.CREATE_ACCOUNT:
 					String nom = (String) params.get("nom");
 					String prenom = (String) params.get("prenom");
 					email = (String) params.get("email");
@@ -42,20 +42,18 @@ public class ManageUserAgent extends Agent {
 					sql = sql.replaceFirst("###", "\""+ email + "\"");
 					sql = sql.replaceFirst("###", "\""+ password + "\"");
 					sql = sql.replaceFirst("###", "\""+ sex + "\"");
-					System.out.println(sql);
-					addBehaviour(new SendToSqlBehaviour(msg, sql, ACLMessage.REQUEST));
+					performative = ACLMessage.REQUEST;
 					break;
-				case Constants.LOGIN:
+				case Constants.Action.LOGIN:
 					email = (String) params.get("email");
 					password = (String) params.get("password");
 					sql = SqlRequest.CHECK_IF_USER_EXIST_BY_EMAIL_PW;
-					System.out.println(email + password);
 					sql = sql.replaceFirst("###", "\""+ email + "\"");
 					sql = sql.replaceFirst("###", "\""+ password + "\"");
-					System.out.println(sql);
-					addBehaviour(new SendToSqlBehaviour(msg, sql, ACLMessage.QUERY_REF));
+					performative = ACLMessage.QUERY_REF;
 					break;
 				}
+				addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
 			}
 		}
 
@@ -87,7 +85,7 @@ public class ManageUserAgent extends Agent {
 			case 1:
 				ACLMessage msg = new ACLMessage();
 				msg.setPerformative(performative);
-				msg.addReceiver(new AID(Constants.SQL_REQUEST_AGENT, AID.ISLOCALNAME));
+				msg.addReceiver(new AID(Constants.Agent.SQL_REQUEST_AGENT, AID.ISLOCALNAME));
 				msg.setContent(sql);
 				msg.setConversationId(conversationId);
 				send(msg);

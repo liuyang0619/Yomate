@@ -42,7 +42,7 @@ public class Test {
     	//Test the "Login" method 
     	map.put("email", email);
     	map.put("password", password);
-    	ActionMessageContent amc = new ActionMessageContent(Constants.LOGIN, map);
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.LOGIN, map);
     	
     	String content = JsonHelper.serilisation(amc);
     	

@@ -30,11 +30,13 @@ public class SqlRequest {
 	public final static String UPDATE_USER_PROFILE_MAIN_BY_ID = "UPDATE yomate.user SET nom = ###, prenom = ###, password = ###, "
 			+ "sex = ###, haspet = ###, situationFam = ###, ecole = ###, profession = ###, nationnalite = ###, lieu = ###, birthday = ### "
 			+ "WHERE idUser = ###;";
-	public final static String DELETE_USER_PROFILE_PHOTO_BY_ID = "DELETE FROM yomate.user_photo WHERE user = ###;";
+	public final static String DELETE_USER_PROFILE_PHOTO_BY_ID_URL = "DELETE FROM yomate.user_photo WHERE user = ### AND image = ###;";
 	public final static String UPDATE_USER_PROFILE_PHOTO = "INSERT INTO yomate.user_photo (user, image) values (###, ###);";
 	public final static String DELETE_USER_PROFILE_LOISIR_BY_ID = "DELETE FROM yomate.user_loisir WHERE user = ###;";
-	public final static String UPDATE_USER_PROFILE_LOISIR = "INSERT INTO yomate.user_loisir (user, loisir) values (###, ###);";
+	public final static String UPDATE_USER_PROFILE_LOISIR = "INSERT INTO yomate.user_loisir (user, loisir) values (###, ###)";
 	public final static String DELETE_USER_PROFILE_LANGUAGE_BY_ID = "DELETE FROM yomate.user_language WHERE user = ###;";
-	public final static String UPDATE_USER_PROFILE_LANGUAGE = "INSERT INTO yomate.user_language (user, language) values (###, ###);";
-	
+	public final static String UPDATE_USER_PROFILE_LANGUAGE = "INSERT INTO yomate.user_language (user, language) values (###, ###)";
+	public final static String ADD_ANNONCE_FAVORI = "INSERT INTO yomate.favoriser (user, annonce) values (###, ###)";
+	public final static String DELETE_ANNONCE_FAVORI = "DELETE FROM yomate.favoriser WHERE user = ### AND annonce = ###;";
+	public final static String ADD_EVALUATION = "INSERT INTO yomate.evaluation (user_commenter, user_commented, note, desription, date_evaluation) values (###, ###, ###, ###, ###)";
 }

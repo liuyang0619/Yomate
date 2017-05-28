@@ -29,7 +29,7 @@ public class ProcessBehaviour extends Behaviour {
 		switch (step) {
 		case 0:
 			final ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
-			AID receiver = new AID(Constants.ADMIN_AGENT, false);
+			AID receiver = new AID(Constants.Agent.ADMIN_AGENT, false);
 			msg.addReceiver(receiver);
 			msg.setContent(content);
 			msg.setConversationId(convId);

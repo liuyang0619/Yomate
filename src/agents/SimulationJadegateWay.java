@@ -20,37 +20,60 @@ public class SimulationJadegateWay {
     	pp.setProperty(Profile.MAIN_HOST, "localhost");
     	pp.setProperty(Profile.MAIN_PORT, "2000");
     	JadeGateway.init(null, pp);
-    	
     	Map<String, String> map = new HashMap<String, String>();
 //Test the "Login" method 
 //    	map.put("email", "olivier_zhu@163.com");
 //    	map.put("password", "1234");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.LOGIN, map);
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.LOGIN, map);
 //Test the "Create account" method
 //    	map.put("nom", "LOU");
 //    	map.put("prenom", "H");
 //    	map.put("email", "Lou_Lou@163.com");
 //    	map.put("password", "azer");
 //    	map.put("sex", "1");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.CREATE_ACCOUNT, map);
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ACCOUNT, map);
 //Test the "select user's profil by using id" method 
 //    	map.put("idUser", "1");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.SELECT_PROFILE, map);
-//Test the "Create account" method
-    	map.put("idUser", "3");
-    	map.put("nom", "LOU");
-    	map.put("prenom", "Hhhhh");
-    	map.put("password", "12345678");
-    	map.put("sex", "0");
-    	map.put("haspet", "1");
-    	map.put("situationFam", "couple");
-    	map.put("ecole", "xiaoxue");
-    	map.put("profession", "13");
-    	map.put("nationnalite", "14");
-    	map.put("birthday", "1940-11-11");
-    	map.put("lieu", "compiègne");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.MODIFY_PROFILE, map);
-    	
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map);
+//Test the "update the profil" method
+//    	map.put("idUser", "3");
+//    	map.put("nom", "LOU");
+//    	map.put("prenom", "Hhhhh");
+//    	map.put("password", "12345678");
+//    	map.put("sex", "0");
+//    	map.put("haspet", "1");
+//    	map.put("situationFam", "couple");
+//    	map.put("ecole", "xiaoxue");
+//    	map.put("profession", "13");
+//    	map.put("nationnalite", "14");
+//    	map.put("birthday", "1940-11-11");
+//    	map.put("lieu", "compiègne");
+//    	map.put("loisir", "1, 3, 5");
+//    	map.put("language", "4, 7");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
+//Test the "add photo" method 
+//    	map.put("idUser", "1");
+//    	map.put("urlPhoto", "photo/1231JHKJH123.jpg");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_PHOTO, map);
+//Test the "delete photo" method 
+//    	map.put("idUser", "1");
+//    	map.put("urlPhoto", "photo/1231JHKJH123.jpg");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.DELETE_PHOTO, map);
+//Test the "add interesting annonce" method 
+//    	map.put("idUser", "1");
+//    	map.put("idAnnonce", "5");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_FAVORITE_ANNONCE, map);
+//Test the "delete interesting annonce" method 
+//    	map.put("idUser", "1");
+//    	map.put("idAnnonce", "5");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.DELETE_FAVORITE_ANNONCE, map);
+//Test the "add evaluation" method 
+    	map.put("idcommenter", "1");
+    	map.put("idcommented", "2");
+    	map.put("note", "5");
+    	map.put("desription", "Hhhh");
+    	map.put("date_evaluation", "1940-11-11");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_EVALUATION_TO_USER, map);
     	String content = JsonHelper.serilisation(amc);
     	
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);
