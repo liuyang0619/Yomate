@@ -24,8 +24,5 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
-	<!-- <mvc:resources mapping="/Yomate/WebContent/ressources/css/" location="/css/**" />
-    <mvc:resources mapping="/images/**" location="/Yomate/WebContent/ressources/images" /> -->
-    <!-- <mvc:resources mapping="/ressources/**" location="/Yomate/WebContent/ressources"/> -->
-    <mvc:resources mapping="/ressources/**" location="/Yomate/WebContent/ressources"/>
+    <mvc:resources mapping="/ressources/**" location="/ressources/"/>
 </beans>  

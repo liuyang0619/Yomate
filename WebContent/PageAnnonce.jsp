@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%-- <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> --%>
+<%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 
-<!-- <spring:url value="/resources/css/main.css" var="mainCss" /> -->
+	<spring:url value="ressources/css/animate.css" var="animateCss" /> 
+	<spring:url value="ressources/css/bootstrap.css" var="bootstrapCss" /> 
+	<spring:url value="ressources/css/style.css" var="styleCss" /> 
+	<spring:url value="ressources/js/jquery-1.11.1.min.js" var="jqueryJs" /> 
+	<spring:url value="ressources/css/flexslider.css" var="flexsliderCss" /> 
+	<spring:url value="ressources/js/jquery.flexslider.js" var="jqueryFlexsliderJs" /> 
 
 <title>Page d'annonce</title>
 <!-- for-mobile-apps -->
@@ -18,19 +23,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="<c:url value="ressources/css/animate.css" />" rel="stylesheet" type="text/css" media="all" />
-<link href="<c:url value="ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" /> 
+
+<%-- <link href="<c:url value="ressources/css/animate.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />  --%>
+
+<link href="${animateCss}" rel="stylesheet" type="text/css" media="all" />
+<link href="${bootstrapCss}" rel="stylesheet" type="text/css" media="all" /> 
+
 <!-- <link href="ressources/bootstrap-switch-master/dist/css/bootstrap2/bootstrap-switch.css" rel="stylesheet" type="text/css" media="all" /> --> 
-<link href="<c:url value="ressources/css/style.css" />" rel="stylesheet" type="text/css" media="all" /> 
+<%-- <link href="<c:url value="ressources/css/style.css" />" rel="stylesheet" type="text/css" media="all" />  --%>
+<link href="${styleCss}"  rel="stylesheet" type="text/css" media="all" /> 
 <!-- js -->
-<script src="<c:url value="ressources/js/jquery-1.11.1.min.js" />" ></script>
+<%-- <script src="<c:url value="ressources/js/jquery-1.11.1.min.js" />" ></script> --%>
+<script src="${jqueryJs}"></script>
 <!-- <script src="ressources/bootstrap-switch-master/src/js/bootstrap-switch.js"></script> -->
 <!-- //js -->
 <link href='https://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,600italic,700,400' rel='stylesheet' type='text/css'>
 <!-- FlexSlider -->
-<link rel="stylesheet" href="<c:url value="ressources/css/flexslider.css" />" type="text/css" media="screen" />
-<script defer src="<c:url value="ressources/js/jquery.flexslider.js" />" ></script>
+<%-- <link rel="stylesheet" href="<c:url value="ressources/css/flexslider.css" />" type="text/css" media="screen" /> --%>
+<link rel="stylesheet" href="${flexsliderCss}" type="text/css" media="screen" />
+<%-- <script defer src="<c:url value="ressources/js/jquery.flexslider.js" />" ></script> --%>
+<script defer src="${jqueryFlexsliderJs}" ></script>
 <script type="text/javascript">
 						$(window).load(function(){
 						  $('.flexslider').flexslider({

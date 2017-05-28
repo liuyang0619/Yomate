@@ -8,7 +8,7 @@
 
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Yomate"/>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -174,7 +174,7 @@ $(function () {
 					
 					<!-- create annonce button -->
 					<div class = "row top-margin-5">
-						<a class="btn btn-warning search-btn" href="#"><i class="icon-edit icon-white"></i>Crï¿½ï¿½er votre Annonce</a>
+						<a class="btn btn-warning search-btn" href="PageAnnonce.jsp"><i class="icon-edit icon-white"></i>Créer votre Annonce</a>
 					</div>
 					<!-- create annonce button -->
 					</div>				
@@ -188,7 +188,7 @@ $(function () {
 			 
 				<!-- amï¿½ï¿½lioration de profil -->
 				<div class="search-improve-profile">
-						<h3>3 ï¿½ï¿½tapes pour un meilleur matching de profile</h3>
+						<h3>3 étapes pour un meilleur matching de profile</h3>
 					<div class="row top-margin-5">
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
@@ -200,13 +200,13 @@ $(function () {
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-question-sign search-improve-icon"></span>
 							</div>
-							<p>Rï¿½ï¿½pondre aux 5 questions</p>
+							<p>Répondre aux 5 questions</p>
 						</div>
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-th-list search-improve-icon"></span>
 							</div>
-							<p>Complï¿½ï¿½ter votre profile</p>
+							<p>Compléter votre profile</p>
 						</div>
 					</div>
 				</div>
@@ -214,7 +214,7 @@ $(function () {
 	
 				<!-- rï¿½ï¿½sultats de recherche -->
 				<div class="search-result">
-					<h3>Rï¿½ï¿½sultats :</h3>
+					<h3>Résultats :</h3>
 					<ul class="list-group top-margin-3">
 						<a class="list-group-item">
 							<div>

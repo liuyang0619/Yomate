@@ -122,7 +122,7 @@ $(function () {
 				</div>
 				<div class="col-md-4">
 					<div class="row" style = "text-align:center">
-		                <button class = "button button-caution button-rounded button-large">Créer une annonce</button>					
+		                <a class = "button button-caution button-rounded button-large" href="PageAnnonce.jsp">Créer une annonce</a>					
 		            </div>
 				</div>
 			</div>
