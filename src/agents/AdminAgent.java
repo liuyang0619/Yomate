@@ -28,32 +28,35 @@ public class AdminAgent extends Agent{
 				String action = amc.getAction();
 				String agentName = "";
 				switch(action){
-				case Constants.CREATE_ACCOUNT:
-					agentName = Constants.MANAGE_USER_AGENT;
+				case Constants.Action.CREATE_ACCOUNT:
+					agentName = Constants.Agent.MANAGE_USER_AGENT;
 					break;
-				case Constants.LOGIN:
-					agentName = Constants.MANAGE_USER_AGENT;
+				case Constants.Action.LOGIN:
+					agentName = Constants.Agent.MANAGE_USER_AGENT;
 					break;
-				case Constants.SELECT_PROFILE:
-					agentName = Constants.MANAGE_PROFIL_AGENT;
+				case Constants.Action.SELECT_PROFILE:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
-				case Constants.MODIFY_PROFILE:
-					agentName = Constants.MANAGE_PROFIL_AGENT;
+				case Constants.Action.MODIFY_PROFILE:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
-				case Constants.ADD_PHOTO:
-					agentName = Constants.MANAGE_PROFIL_AGENT;
+				case Constants.Action.ADD_PHOTO:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
-				case Constants.DELETE_PHOTO:
-					agentName = Constants.MANAGE_PROFIL_AGENT;
+				case Constants.Action.DELETE_PHOTO:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
-				case Constants.ADD_FAVORITE_ANNONCE:
-					agentName = Constants.MANAGE_PROFIL_AGENT;
+				case Constants.Action.ADD_FAVORITE_ANNONCE:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
-				case Constants.DELETE_FAVORITE_ANNONCE:
-					agentName = Constants.MANAGE_PROFIL_AGENT;
+				case Constants.Action.DELETE_FAVORITE_ANNONCE:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
-				case Constants.CREATE_ANNONCE:
-					agentName = Constants.MANAGE_ANNONCE_AGENT;
+				case Constants.Action.ADD_EVALUATION_TO_USER:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
+					break;
+				case Constants.Action.CREATE_ANNONCE:
+					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
 					break;
 				}
 				addBehaviour(new sendActionToAgentBehaviour(msg, agentName));

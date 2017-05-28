@@ -60,14 +60,24 @@ public class SqlRequestAgent  extends Agent{
 			Connection cnx=null;
 			try {
 				cnx = sql.util.ConnexionBDD.getInstance().getCnx();
-				PreparedStatement ps = cnx.prepareStatement(sqlRequest);
-				ps.execute();
+				cnx.setAutoCommit(false);
+				for(String s : sqlRequest.split(";")){
+					PreparedStatement ps = cnx.prepareStatement(s);
+					ps.execute();
+				}
+				cnx.commit();
 				sql.util.ConnexionBDD.getInstance().closeCnx();
-				reply.setContent(Constants.SUCCESS_MODIFY_DATABASE);
+				reply.setContent(Constants.Message.SUCCESS_MODIFY_DATABASE);
 				reply.setPerformative(ACLMessage.INFORM);
 			} catch (SQLException e) {
 				e.printStackTrace();
-				reply.setContent(Constants.ERROR_WITH_DATABASE);
+				System.out.println(e.getMessage());
+				try {
+					cnx.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				reply.setContent(Constants.Message.ERROR_WITH_DATABASE);
 				reply.setPerformative(ACLMessage.FAILURE);
 			}
 			send(reply);
@@ -88,6 +98,7 @@ public class SqlRequestAgent  extends Agent{
 			Connection cnx=null;
 			try {
 				cnx = sql.util.ConnexionBDD.getInstance().getCnx();
+				cnx.setAutoCommit(true);
 				PreparedStatement ps = cnx.prepareStatement(sqlRequest);
 				ResultSet resultSet = ps.executeQuery();
 				ResultSetMetaData metaData = (ResultSetMetaData) resultSet.getMetaData();
