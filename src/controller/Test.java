@@ -28,7 +28,7 @@ public class Test {
 		System.out.println("------------------------------");
 	}*/
 
-	@RequestMapping(value = "/one", method = {RequestMethod.POST, RequestMethod.POST})
+	@RequestMapping(value = "/one", method = {RequestMethod.GET, RequestMethod.POST})
 	public String test(
 			@RequestParam(value="email", required=false) String email,
 			@RequestParam(value="password", required=false) String password,

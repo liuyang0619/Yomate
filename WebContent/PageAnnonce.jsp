@@ -18,19 +18,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="<c:url value="/ressources/css/animate.css" />" rel="stylesheet" type="text/css" media="all" />
-<link href="<c:url value="/ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" /> 
+<link href="<c:url value="ressources/css/animate.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" /> 
 <!-- <link href="ressources/bootstrap-switch-master/dist/css/bootstrap2/bootstrap-switch.css" rel="stylesheet" type="text/css" media="all" /> --> 
-<link href="<c:url value="/ressources/css/style.css" />" rel="stylesheet" type="text/css" media="all" /> 
+<link href="<c:url value="ressources/css/style.css" />" rel="stylesheet" type="text/css" media="all" /> 
 <!-- js -->
-<script src="<c:url value="/ressources/js/jquery-1.11.1.min.js" />" ></script>
+<script src="<c:url value="ressources/js/jquery-1.11.1.min.js" />" ></script>
 <!-- <script src="ressources/bootstrap-switch-master/src/js/bootstrap-switch.js"></script> -->
 <!-- //js -->
 <link href='https://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,600italic,700,400' rel='stylesheet' type='text/css'>
 <!-- FlexSlider -->
-<link rel="stylesheet" href="<c:url value="/ressources/css/flexslider.css" />" type="text/css" media="screen" />
-<script defer src="<c:url value="/ressources/js/jquery.flexslider.js" />" ></script>
+<link rel="stylesheet" href="<c:url value="ressources/css/flexslider.css" />" type="text/css" media="screen" />
+<script defer src="<c:url value="ressources/js/jquery.flexslider.js" />" ></script>
 <script type="text/javascript">
 						$(window).load(function(){
 						  $('.flexslider').flexslider({
