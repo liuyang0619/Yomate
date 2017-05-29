@@ -15,6 +15,8 @@
 <link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/yomate-style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="ressources/css/buttons.css" rel="stylesheet" type="text/css" media="all" />
+<link href="ressources/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+<link href="ressources/css/bootstrap-social.css" rel="stylesheet" type="text/css" media="all" />
 
 <!-- js -->
 <script src="ressources/js/jquery-1.11.1.min.js"></script>
@@ -168,7 +170,7 @@
 				</div>
 				<div class= "row top-margin-3">
 					<div class="col-md-12 inscription-text-padding" style="padding-left:30px">
-						<p><input type="checkbox" name="accept" value="0" />J'accept Les conditions generales </p>  
+						<p><input type="checkbox" name="accept" value="0" /> J'accept Les conditions generales </p>  
 					</div>
 				</div> 
 				<div class= "row top-margin-3" >
@@ -179,8 +181,7 @@
 				</div> 
 				<div class= "row top-margin-3 bottom-margin-20" >
 					<div class="col-md-12 inscription-text-padding" style="text-align :center;">
-						<a class="btn btn-info btn-search" href="#">
-						<i class="icon-edit icon-white" ></i>Se connecter avec Facebook</a> 
+						<a class="btn btn-social btn-facebook" ><span class="fa fa-facebook"></span>Se connecter avec Facebook</a> 
 					</div>
 				</div> 
 				
