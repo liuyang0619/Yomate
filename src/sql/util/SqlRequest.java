@@ -36,7 +36,19 @@ public class SqlRequest {
 	public final static String UPDATE_USER_PROFILE_LOISIR = "INSERT INTO yomate.user_loisir (user, loisir) values (###, ###)";
 	public final static String DELETE_USER_PROFILE_LANGUAGE_BY_ID = "DELETE FROM yomate.user_language WHERE user = ###;";
 	public final static String UPDATE_USER_PROFILE_LANGUAGE = "INSERT INTO yomate.user_language (user, language) values (###, ###)";
-	public final static String ADD_ANNONCE_FAVORI = "INSERT INTO yomate.favoriser (user, annonce) values (###, ###)";
-	public final static String DELETE_ANNONCE_FAVORI = "DELETE FROM yomate.favoriser WHERE user = ### AND annonce = ###;";
+	public final static String ADD_FAVORITE_ANNONCE = "INSERT INTO yomate.favoriser (user, annonce) values (###, ###)";
+	public final static String SELECT_FAVORITE_ANNONCE = "SELECT a.idAnnonce, a.proposer, u.nom, u.prenom, a.budget, a.lieu, a.description "
+			+ "FROM yomate.favoriser as f, yomate.annonce as a, yomate.user as u "
+			+ "WHERE f.user = ### AND a.idAnnonce = f.annonce AND a.proposer = u.idUser";
+	public final static String DELETE_FAVORITE_ANNONCE = "DELETE FROM yomate.favoriser WHERE user = ### AND annonce = ###;";
 	public final static String ADD_EVALUATION = "INSERT INTO yomate.evaluation (user_commenter, user_commented, note, desription, date_evaluation) values (###, ###, ###, ###, ###)";
+//	public final static String ADD_HISTORY_COLO = "INSERT INTO yomate.histoirecolo "
+//			+ "(user1, user2, dateDebut, dateFin, annonce) "
+//			+ "values"
+//			+ "(###, ###, ###,###, ###);";
+//	public final static String SELECT_HISTORY_COLO = "SELECT h.dateDebut, h.dateFin, h.annonce, a.lieu, a.budget, u.nom, u.prenom, u.idUser "
+//			+ "FROM yomate.histoirecolo as h, yomate.user as u, annonce as a "
+//			+ "WHERE (h.user1 = ### OR h.user2 = ###) AND (h.user1 = u.idUser OR h.user2 = u.idUser) "
+//			+ "AND (u.idUser <> ###) AND a.idAnnonce = h.annonce;";
+
 }

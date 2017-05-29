@@ -52,6 +52,15 @@ public class AdminAgent extends Agent{
 				case Constants.Action.DELETE_FAVORITE_ANNONCE:
 					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
+				case Constants.Action.SELECT_FAVORITE_ANNONCES:
+					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
+					break;
+//				case Constants.Action.SELECT_HISTORYS_COLO:
+//					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
+//					break;
+//				case Constants.Action.INSERT_HISTORY_COLO:
+//					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
+//					break;
 				case Constants.Action.ADD_EVALUATION_TO_USER:
 					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;

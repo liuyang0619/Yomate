@@ -53,13 +53,13 @@ public class ManageProfilAgent extends Agent{
 					performative = ACLMessage.REQUEST;
 					break;
 				case Constants.Action.ADD_FAVORITE_ANNONCE:
-					sql = SqlRequest.ADD_ANNONCE_FAVORI;
+					sql = SqlRequest.ADD_FAVORITE_ANNONCE;
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					performative = ACLMessage.REQUEST;
 					break;
 				case Constants.Action.DELETE_FAVORITE_ANNONCE:
-					sql = SqlRequest.DELETE_ANNONCE_FAVORI;
+					sql = SqlRequest.DELETE_FAVORITE_ANNONCE;
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					performative = ACLMessage.REQUEST;
@@ -72,8 +72,24 @@ public class ManageProfilAgent extends Agent{
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("desription") + "\"");
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("date_evaluation") + "\"");
 					performative = ACLMessage.REQUEST;
+					break;
+				case Constants.Action.SELECT_FAVORITE_ANNONCES:
+					sql = SqlRequest.SELECT_FAVORITE_ANNONCE;
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
+					performative = ACLMessage.QUERY_REF;
+					break;
+//				case Constants.Action.INSERT_HISTORY_COLO:
+//					sql = SqlRequest.ADD_HISTORY_COLO;
+//					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
+//					performative = ACLMessage.REQUEST;
+//					break;
+//				case Constants.Action.SELECT_HISTORYS_COLO:
+//					sql = SqlRequest.SELECT_HISTORY_COLO;
+//					sql = sql.replaceAll("###", "\""+ (String) params.get("idUser") + "\"");
+//					performative = ACLMessage.QUERY_REF;
+//					break;
+					
 				}
-				
 				addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
 			}
 		}

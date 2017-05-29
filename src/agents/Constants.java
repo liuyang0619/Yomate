@@ -7,6 +7,9 @@ public class Constants {
 		public final static String LOGIN = "Login";
 		public final static String MODIFY_PROFILE = "ModifyProfile";
 		public final static String SELECT_PROFILE = "SelectProfile";
+		public final static String SELECT_FAVORITE_ANNONCES = "SelectFavoriteAnnonces";
+		public final static String SELECT_HISTORYS_COLO = "SelectHistorysColo";
+		public final static String INSERT_HISTORY_COLO = "InsertHistoryColo";
 		public final static String ADD_PHOTO = "AddPhoto";
 		public final static String DELETE_PHOTO = "DeletePhoto";
 		public final static String CREATE_ANNONCE = "CreateAnnonce";

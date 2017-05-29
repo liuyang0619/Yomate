@@ -68,12 +68,17 @@ public class SimulationJadegateWay {
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.DELETE_FAVORITE_ANNONCE, map);
 //Test the "add evaluation" method 
-    	map.put("idcommenter", "1");
-    	map.put("idcommented", "2");
-    	map.put("note", "5");
-    	map.put("desription", "Hhhh");
-    	map.put("date_evaluation", "1940-11-11");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_EVALUATION_TO_USER, map);
+//    	map.put("idcommenter", "1");
+//    	map.put("idcommented", "2");
+//    	map.put("note", "5");
+//    	map.put("desription", "Hhhh");
+//    	map.put("date_evaluation", "1940-11-11");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_EVALUATION_TO_USER, map);
+//Test the "select the favorite annonces" method 
+    	map.put("idUser", "2");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_FAVORITE_ANNONCES, map);
+  	
+    	
     	String content = JsonHelper.serilisation(amc);
     	
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);
