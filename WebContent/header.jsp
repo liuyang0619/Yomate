@@ -119,7 +119,7 @@ function checkCookie() {
            	$('#navbar-NotLoggedIn').show();
        	} else {
            	// jump to index page
-       		window.location.href = "index.jsp";
+       		window.location.href = "/Yomate/index.jsp";
          }
     }
 }
