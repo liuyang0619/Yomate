@@ -22,8 +22,8 @@ public class SimulationJadegateWay {
     	JadeGateway.init(null, pp);
     	Map<String, String> map = new HashMap<String, String>();
 //Test the "Login" method 
-//    	map.put("email", "olivier_zhu@163.com");
-//    	map.put("password", "1234");
+    	map.put("email", "olivier_zhu@163.com");
+    	map.put("password", "1234");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.LOGIN, map);
 //Test the "Create account" method
 //    	map.put("nom", "LOU");
@@ -47,7 +47,7 @@ public class SimulationJadegateWay {
 //    	map.put("profession", "13");
 //    	map.put("nationnalite", "14");
 //    	map.put("birthday", "1940-11-11");
-//    	map.put("lieu", "compiègne");
+//    	map.put("lieu", "compiï¿½gne");
 //    	map.put("loisir", "1, 3, 5");
 //    	map.put("language", "4, 7");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
@@ -68,12 +68,12 @@ public class SimulationJadegateWay {
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.DELETE_FAVORITE_ANNONCE, map);
 //Test the "add evaluation" method 
-    	map.put("idcommenter", "1");
-    	map.put("idcommented", "2");
-    	map.put("note", "5");
-    	map.put("desription", "Hhhh");
-    	map.put("date_evaluation", "1940-11-11");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_EVALUATION_TO_USER, map);
+//    	map.put("idcommenter", "1");
+//    	map.put("idcommented", "2");
+//    	map.put("note", "5");
+//    	map.put("desription", "Hhhh");
+//    	map.put("date_evaluation", "1940-11-11");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.LOGIN, map);
     	String content = JsonHelper.serilisation(amc);
     	
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);
