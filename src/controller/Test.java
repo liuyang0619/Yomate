@@ -23,11 +23,6 @@ import json.util.JsonHelper;
 @Controller
 @RequestMapping(value = "/test")
 public class Test {
-
-	/*public Test() {
-		System.out.println("------------------------------");
-	}*/
-
 	@RequestMapping(value = "/one", method = {RequestMethod.GET, RequestMethod.POST})
 	public String test(
 			@RequestParam(value="email", required=false) String email,
@@ -62,6 +57,7 @@ public class Test {
 		model.addAttribute("msg", result);
 		return "success";
 	}
+	
 	/*@RequestMapping(value = "/one", method = RequestMethod.GET)
 	public String test(String username, Model model) {
 		System.out.println("in controller");

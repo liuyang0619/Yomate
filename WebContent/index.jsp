@@ -12,6 +12,8 @@
 <meta name="keywords" content="Yomate" />
 <!-- //for-mobile-apps -->
 <link href="<c:url value="ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="ressources/css/font-awesome.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="ressources/css/bootstrap-social.css" />" rel="stylesheet" type="text/css" media="all" />
 <link href="<c:url value="ressources/css/yomate-style.css" />" rel="stylesheet" type="text/css" media="all" />
 <link href="<c:url value="ressources/css/buttons.css" />" rel="stylesheet" type="text/css" media="all" />
 
