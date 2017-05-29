@@ -78,6 +78,11 @@ public class ManageProfilAgent extends Agent{
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
 					performative = ACLMessage.QUERY_REF;
 					break;
+				case Constants.Action.SELECT_HISTORY_ANNONCES:
+					sql = SqlRequest.SELECT_HISTORY_ANNONCES;
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
+					performative = ACLMessage.QUERY_REF;
+					break;
 //				case Constants.Action.INSERT_HISTORY_COLO:
 //					sql = SqlRequest.ADD_HISTORY_COLO;
 //					sql = sql.replaceFirst("###", "\""+ (String) params.get("idUser") + "\"");
