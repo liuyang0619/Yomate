@@ -1,5 +1,5 @@
-#données de connexion - DB connection infos
+#donnï¿½es de connexion - DB connection infos
 driver=com.mysql.jdbc.Driver
 url=jdbc:mysql://localhost:3306/Yomate
 user=root
-pwd=a13241324
+pwd=19940914

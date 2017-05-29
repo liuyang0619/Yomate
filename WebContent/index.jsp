@@ -11,13 +11,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Yomate" />
 <!-- //for-mobile-apps -->
-<link href="<c:url value="ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />
-<link href="<c:url value="ressources/css/yomate-style.css" />" rel="stylesheet" type="text/css" media="all" />
-<link href="<c:url value="ressources/css/buttons.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/font-awesome.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/bootstrap-social.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/yomate-style.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/buttons.css" />" rel="stylesheet" type="text/css" media="all" />
 
 <!-- js -->
-<script src=<c:url value="ressources/js/jquery-1.11.1.min.js" /> ></script>
-<script src=<c:url value="ressources/js/bootstrap.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/jquery-1.11.1.min.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/bootstrap.js" /> ></script>
 <!-- //js -->
 
 <!-- initAutocomplete -->
@@ -37,8 +39,8 @@ function initAutocomplete() {
 <!-- header & footer -->
 <script type="text/javascript">
 	$(function() {
-		$("#header").load("header.jsp");
-		$("#footer").load("footer.jsp");
+		$("#header").load("/Yomate/header.jsp");
+		$("#footer").load("/Yomate/footer.jsp");
 	});
 </script>
 <!-- //header & footer -->
@@ -99,7 +101,7 @@ function search() {
 			</div>
 			<div class="col-md-12 clearfix" style="text-align: center;">
 				<div class="col-md-3 inline-block">
-					<img src="ressources/images/4.png" class="img "
+					<img src="/Yomate/ressources/images/4.png" class="img "
 						style="width: 70px; height: 70px">
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Paul Babiste</p>
@@ -109,7 +111,7 @@ function search() {
 				</div>
 
 				<div class="col-md-3 inline-block">
-					<img src="ressources/images/4.png" class="img"
+					<img src="/Yomate/ressources/images/4.png" class="img"
 						style="width: 70px; height: 70px">
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Paul Babiste</p>
@@ -118,7 +120,7 @@ function search() {
 					</div>
 				</div>
 				<div class="col-md-3 inline-block">
-					<img src="ressources/images/4.png" class="img"
+					<img src="/Yomate/ressources/images/4.png" class="img"
 						style="width: 70px; height: 70px">
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Paul Babiste</p>
@@ -127,7 +129,7 @@ function search() {
 					</div>
 				</div>
 				<div class="col-md-3 inline-block">
-					<img src="ressources/images/4.png" class="img"
+					<img src="/Yomate/ressources/images/4.png" class="img"
 						style="width: 70px; height: 70px">
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Paul Babiste</p>

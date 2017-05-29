@@ -8,6 +8,7 @@
 
 <!-- set user session -->
 <script type="text/javascript">
+var rememberMe = false;
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -15,22 +16,62 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-function login() {
+function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+            form.appendChild(hiddenField);
+         }
+    }
+    
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function SendLoginRequest() {
+	// Hide warning message
+	$('#warning-msg').hide();
 	// Get input value
 	var email = document.getElementById("email_login").value;
 	var pwd = document.getElementById("pwd_login").value;
-	var remember = document.getElementById('remember_login').checked;
+	window.rememberMe = document.getElementById('remember_login').checked;
+	//alert("email :" + email + " psd : " + pwd);
+	
 	// Verify login & pwd
+	if (email == "" || pwd == "") {
+		$('#warning-msg').show();
+		document.getElementById("warning-msg").innerHTML="Saisissez votre email et mot de passe, svp";
+	} else {
+		var loginInfo = new Object();
+		loginInfo.email = email;
+		loginInfo.password = pwd;
+		post('account/login', loginInfo);
+	}
+}
 
+function GetLoginResult() {
+	var id = "ii";
 	// Set user session
-	if (remember) {
-		setCookie("email", email, 7);
+	if (window.rememberMe) {
+		setCookie("idUser", id, 7);
 		window.location.reload();
 	} else {
-		setCookie("email", email, 0.5);
+		setCookie("idUser", id, 0.5);
 		window.location.reload();
 	}
 }
+
 </script>
 <!-- //save user session -->
 
@@ -52,7 +93,7 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-    var user = getCookie("email");
+    var user = getCookie("idUser");
     if (user != "") {
         // user has logged in
         $('#navbar-loggedIn').show();
@@ -78,7 +119,7 @@ function checkCookie() {
            	$('#navbar-NotLoggedIn').show();
        	} else {
            	// jump to index page
-       		window.location.href = "index.jsp";
+       		window.location.href = "/Yomate/index.jsp";
          }
     }
 }
@@ -92,7 +133,7 @@ function deleteCookie(cname) {
 }
 
 function logout() {
-	deleteCookie("email");
+	deleteCookie("idUser");
 	window.location.reload();
 }
 </script>
@@ -101,14 +142,14 @@ function logout() {
 <!-- banner -->
 	<div class="banner1">
 		<script type="text/javascript">
-			//checkCookie();
+			checkCookie();
 		</script>
 		<div class="container-fluid">
 			<div class="header-nav">
 				<nav class="navbar navbar-default">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
-					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavBar">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -120,23 +161,17 @@ function logout() {
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse nav-wil">
-						<div id="navbar-loggedIn">
-							<ul class="nav navbar-nav row">
-								<li><a href="index.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
-								<li><a href="recherche.jsp"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
-								<li><a href="espacePersonnel.jsp"><i class="glyphicon glyphicon-user"></i>  Espace personel</a></li>
-							</ul>
-							<ul class="nav navbar-nav row" style="float:right;">
-								<li><a onclick="logout()" style="font-size: 12px;">Déconnectez-vous</a></li>
-							</ul>
-						</div>
+					<div class="collapse navbar-collapse nav-wil" id="myNavBar">
+						<ul class="nav navbar-nav navbar-right" id="navbar-loggedIn">
+							<li><a href="index.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+							<li><a href="recherche.jsp"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
+							<li><a href="espacePersonnel.jsp"><i class="glyphicon glyphicon-user"></i>  Espace personel</a></li>
+							<li><a onclick="logout()" style="font-size: 12px;">Déconnectez-vous</a></li>
+						</ul>
 					  	
-					  	<div id="navbar-NotLoggedIn">
-						  	<ul class="nav navbar-nav" id="navbar-NotLoggedIn">
-								<li><a data-toggle="modal" data-target="#login"><i class="glyphicon glyphicon-user"></i>Connectez-vous</a>							</li>
-							</ul>
-						</div>
+					  	<ul class="nav navbar-nav navbar-right" id="navbar-NotLoggedIn">
+							<li><a data-toggle="modal" data-target="#login"><i class="glyphicon glyphicon-user"></i>Connectez-vous</a>							</li>
+						</ul>
 					</div>
 					<!-- /.navbar-collapse -->
 					
@@ -148,6 +183,11 @@ function logout() {
 
 <!-- Personal info Modal -->
 <div class="modal fade" id="login" role="dialog">
+	<!-- Hide warning message-->
+	<script type="text/javascript">
+		$('#warning-msg').hide();
+	</script>
+	<!-- //Hide warning message-->
 	<div class="modal-dialog">
 	    <!-- Modal content-->
 	    <div class="modal-content">
@@ -156,7 +196,14 @@ function logout() {
 	    		<h4 class="modal-title">Connectez-vous</h4>
 	    	</div>
 	    	<div class="modal-body">
-	    		<!-- email -->
+	    		<!-- //warning -->
+				<div class="row top-margin-0">
+					<div class="col-md-12" style="text-align:center;color:#ff0000;" id="warning-msg">
+						This is some text in a div element.
+					</div>
+				</div>
+				<!-- //warning -->
+				<!-- email -->
 	    		<div class="row top-margin-3">
 	    			<div class="col-md-12 ">
 						<input type="text" name="email" id="email_login" class="form-control input-sm" placeholder="Votre email" style="height: 51px; width: 550px; font-size: 20px;" required></input>
@@ -182,7 +229,7 @@ function logout() {
 	    		<!-- button connectez-vous -->
 	    		<div class= "row top-margin-0" >
 					<div class="col-md-12 inscription-text-padding" style="text-align :center;">
-						<a class="btn button-action btn-search" onclick="login()">
+						<a class="btn button-action btn-search" onclick="SendLoginRequest()">
 						<i class="icon-edit icon-white"></i>Connectez-vous</a> 
 					</div>
 				</div> 
@@ -211,8 +258,7 @@ function logout() {
 	    		<!-- facebook -->
 	    		<div class= "row top-margin-3 bottom-margin-20" >
 					<div class="col-md-12 inscription-text-padding" style="text-align :center;">
-						<a class="btn btn-info btn-search" href="#">
-						<i class="icon-edit icon-white" ></i>Se connecter avec Facebook</a> 
+						<a class="btn btn-social btn-facebook" ><span class="fa fa-facebook"></span>Se connecter avec Facebook</a> 
 					</div>
 				</div> 
 	    		<!-- //facebook -->
