@@ -42,6 +42,21 @@ public class SqlRequest {
 			+ "WHERE f.user = ### AND a.idAnnonce = f.annonce AND a.proposer = u.idUser";
 	public final static String DELETE_FAVORITE_ANNONCE = "DELETE FROM yomate.favoriser WHERE user = ### AND annonce = ###;";
 	public final static String ADD_EVALUATION = "INSERT INTO yomate.evaluation (user_commenter, user_commented, note, desription, date_evaluation) values (###, ###, ###, ###, ###)";
+	public final static String SELECT_HISTORY_ANNONCES  = "SELECT idAnnonce, budget, lieu, description "
+			+ "FROM yomate.annonce "
+			+ "WHERE proposer = ###;";
+	public final static String CREATE_ANNONCE = "INSERT INTO yomate.annonce "
+			+ "(date_proposer, date_debut, date_fin, proposer, description, budget, nbPersonneBesoin, lieu, description_logement, sex, age_min, age_max, status, haspet, situationFam, ecole, profession, nationnalite)  "
+			+ "VALUES "
+			+ "(###, ###,###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###);";
+	public final static String DELETE_ANNONCE_PROFILE_LOISIR_BY_ID = "DELETE FROM yomate.annonce_loisir WHERE annonce = ###;";
+	public final static String UPDATE_ANNONCE_PROFILE_LOISIR = "INSERT INTO yomate.annonce_loisir (annonce, loisir) values (###, ###)";
+	public final static String DELETE_ANNONCE_PROFILE_LANGUAGE_BY_ID = "DELETE FROM yomate.annonce_language WHERE annonce = ###;";
+	public final static String UPDATE_ANNONCE_PROFILE_LANGUAGE = "INSERT INTO yomate.annonce_language (annonce, language) values (###, ###)";
+	public final static String SELECT_LAST_INSERT_ID = "SELECT LAST_INSERT_ID();";
+	public final static String UPDATE_ANNONCE_PROFILE_PEUTETRE = "INSERT INTO yomate.annonce_peutetre (annonce, critere) values (###, ###)";
+	public final static String UPDATE_ANNONCE_PROFILE_OBLIGATOIRE = "INSERT INTO yomate.annonce_obligatoire (annonce, critere) values (###, ###)";
+	public final static String UPDATE_ANNONCE_PROFILE_IMPORTANT = "INSERT INTO yomate.annonce_important (annonce, critere) values (###, ###)";
 //	public final static String ADD_HISTORY_COLO = "INSERT INTO yomate.histoirecolo "
 //			+ "(user1, user2, dateDebut, dateFin, annonce) "
 //			+ "values"
