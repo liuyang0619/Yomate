@@ -75,36 +75,9 @@ public class SimulationJadegateWay {
 //    	map.put("date_evaluation", "1940-11-11");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_EVALUATION_TO_USER, map);
 //Test the "select the favorite annonces" method 
-//    	map.put("idUser", "2");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_FAVORITE_ANNONCES, map);
-//Test the "select the history of annonces" method 
-//    	map.put("idUser", "1");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_HISTORY_ANNONCES, map);
-//Test the "create annonce" method
-    	map.put("dateProposer", "1940-11-11");
-		map.put("dateDebut", "1940-11-11");
-		map.put("dateFin", "1940-11-11");
-		map.put("proposer", "1");
-		map.put("description", "asdfadsf");
-		map.put("budget", "344");
-		map.put("nbPersonneBesoin", "3");
-		map.put("lieu", "wenzhou");
-		map.put("descriptionLogement", "good location");
-		map.put("sex", "0");
-		map.put("ageMin", "1");
-		map.put("ageMax", "78");
-		map.put("status", "1");
-		map.put("haspet", "0");
-		map.put("situationFam", "celibataire");
-		map.put("ecole", "UTC");
-		map.put("profession", "11");
-		map.put("nationnalite", "6");
-    	map.put("loisir", "1, 3, 5");
-    	map.put("language", "4, 7");
-    	map.put("peutetre", "sex, haspet");
-    	map.put("obligatoire", "age, language");
-    	map.put("important", "nationnalite");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ANNONCE, map);
+    	map.put("idUser", "2");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_FAVORITE_ANNONCES, map);
+  	
     	
     	String content = JsonHelper.serilisation(amc);
     	

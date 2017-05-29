@@ -61,22 +61,10 @@ public class AdminAgent extends Agent{
 //				case Constants.Action.INSERT_HISTORY_COLO:
 //					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 //					break;
-				case Constants.Action.SELECT_HISTORY_ANNONCES:
-					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
-					break;
 				case Constants.Action.ADD_EVALUATION_TO_USER:
 					agentName = Constants.Agent.MANAGE_PROFIL_AGENT;
 					break;
 				case Constants.Action.CREATE_ANNONCE:
-					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
-					break;
-				case Constants.Action.MODIFY_ANNONCE:
-					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
-					break;
-				case Constants.Action.CLOSE_ANNONCE:
-					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
-					break;
-				case Constants.Action.ADD_ROOMMATE_ANNONCE:
 					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
 					break;
 				}
