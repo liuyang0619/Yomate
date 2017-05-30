@@ -42,8 +42,8 @@
 <!-- header & footer -->
 <script type="text/javascript"> 
 	$(function(){
-		$("#header").load("header.jsp");
-		$("#footer").load("footer.jsp");
+		$("#header").load("/Yomate/header.jsp");
+		$("#footer").load("/Yomate/footer.jsp");
 	});
 </script>
 <!-- //header & footer -->
@@ -222,7 +222,7 @@ $(function () {
 						    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1113</h4>
 							    <div style = "height:100px">
 							    	<div style="float: left;">
-							    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+							    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 									</div>
 									<div style="float: left;margin-left:10px">
 										<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
@@ -237,7 +237,7 @@ $(function () {
 						    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
 							    <div style = "height:100px">
 							    	<div style="float: left;">
-							    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+							    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 									</div>
 									<div style="float: left;margin-left:10px">
 										<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
@@ -252,7 +252,7 @@ $(function () {
 						    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
 							    <div style = "height:100px">
 							    	<div style="float: left;">
-							    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+							    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 									</div>
 									<div style="float: left;margin-left:10px">
 										<p class = "list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>

@@ -49,7 +49,7 @@ function initAutocomplete() {
 <!-- login -->
 <script type="text/javascript">
 function GetRequestResult(id, remember) {
-	if (id !="") {
+	if (id != "") {
 		if (id == "NonValid") {
 			alert("Email ou mot de passe incorrect. Vérifiez, svp.");
 		} else {
@@ -73,7 +73,10 @@ function search() {
     if (user == "") {
     	$('#header #login').modal('show');
     } else {
-    	window.location.href = "/Yomate/recherche.jsp";
+    	var city = document.getElementById("search-city").value;
+    	if (city != "") {
+    		post('search/' + city);
+        }
    	}
 }
 </script>
