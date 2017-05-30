@@ -45,15 +45,44 @@ function initAutocomplete() {
 </script>
 <!-- //header & footer -->
 
-<!-- search by city -->
+<!-- login -->
+<script type="text/javascript">
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function GetRequestResult(id, remember) {
+	if (id !="") {
+		if (id == "NonValid") {
+			alert("Email ou mot de passe incorrect. Vérifiez, svp.");
+		} else {
+			// Set user session
+			if (remember) {
+				setCookie("idUser", id, 7);
+			} else {
+				setCookie("idUser", id, 0.5);
+			}
+			// reload to index page
+	   		window.location.href = "/Yomate/index.jsp";
+		}
+	}
+}
+</script>
+<!-- //login -->
+
 <script type="text/javascript">
 function search() {
 	
 }
 </script>
-<!-- //search by city -->
 
 <body>
+	<script type="text/javascript">
+		GetRequestResult('${idUser}', '${remember}');
+	</script>
 	<!-- header -->
 	<div id="header"></div>
 	<!-- //header -->

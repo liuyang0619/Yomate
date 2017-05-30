@@ -5,10 +5,8 @@
 <html>
 <head/>
 <body>
-
 <!-- set user session -->
 <script type="text/javascript">
-var rememberMe = false;
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -45,7 +43,7 @@ function SendLoginRequest() {
 	// Get input value
 	var email = document.getElementById("email_login").value;
 	var pwd = document.getElementById("pwd_login").value;
-	window.rememberMe = document.getElementById('remember_login').checked;
+	var remember = document.getElementById('remember_login').checked;
 	//alert("email :" + email + " psd : " + pwd);
 	
 	// Verify login & pwd
@@ -56,22 +54,10 @@ function SendLoginRequest() {
 		var loginInfo = new Object();
 		loginInfo.email = email;
 		loginInfo.password = pwd;
-		post('account/login', loginInfo);
+		loginInfo.remember = remember;
+		post('user/login', loginInfo);
 	}
 }
-
-function GetLoginResult() {
-	var id = "ii";
-	// Set user session
-	if (window.rememberMe) {
-		setCookie("idUser", id, 7);
-		window.location.reload();
-	} else {
-		setCookie("idUser", id, 0.5);
-		window.location.reload();
-	}
-}
-
 </script>
 <!-- //save user session -->
 
@@ -142,6 +128,7 @@ function logout() {
 <!-- banner -->
 	<div class="banner1">
 		<script type="text/javascript">
+			//GetRequestResult();
 			checkCookie();
 		</script>
 		<div class="container-fluid">
