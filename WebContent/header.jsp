@@ -128,7 +128,6 @@ function logout() {
 <!-- banner -->
 	<div class="banner1">
 		<script type="text/javascript">
-			//GetRequestResult();
 			checkCookie();
 		</script>
 		<div class="container-fluid">
@@ -256,7 +255,6 @@ function logout() {
 	    </div>
 	    <!-- //Modal content-->
   	</div>
-</div>
 <!-- //Personal info Modal -->
 </body>
 </html>

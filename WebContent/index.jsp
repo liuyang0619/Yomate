@@ -54,10 +54,25 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 function GetRequestResult(id, remember) {
 	if (id !="") {
 		if (id == "NonValid") {
-			alert("Email ou mot de passe incorrect. Vérifiez, svp.");
+			alert("Email ou mot de passe incorrect. VÃ©rifiez, svp.");
 		} else {
 			// Set user session
 			if (remember) {
@@ -75,7 +90,12 @@ function GetRequestResult(id, remember) {
 
 <script type="text/javascript">
 function search() {
-	
+	var user = getCookie("idUser");
+    if (user == "") {
+    	$('#header #login').modal('show');
+    } else {
+    	window.location.href = "/Yomate/recherche.jsp";
+   	}
 }
 </script>
 
@@ -125,8 +145,7 @@ function search() {
 		<!-- introduction of users  -->
 		<div class="index-utilisateurs row">
 			<div class="text-center col-md-12">
-				<span class="red ">5729 </span> <span> utilisateurs sont a la
-					recherche de colocataire </span>
+				<span class="red ">5729</span> <span> colocataires recherchant une colocation - France</span>
 			</div>
 			<div class="col-md-12 clearfix" style="text-align: center;">
 				<div class="col-md-3 inline-block">
