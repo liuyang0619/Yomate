@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
-
 <html>
 <head>
 <title>Page de Recherche</title>
@@ -15,17 +15,18 @@
 <!-- //for-mobile-apps -->
 
 <!-- css -->
-<link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="ressources/css/yomate-style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="ressources/css/buttons.css" rel="stylesheet" type="text/css" media="all" />
-<link href="ressources/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+<link href="<c:url value="${path}/ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/yomate-style.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/buttons.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" type="text/css" media="all" />
 <!-- //css -->
 
 <!-- js -->
-<script src="ressources/js/jquery-1.11.1.min.js"></script>
-<script src="ressources/js/bootstrap.js"></script>
-<script src="ressources/js/moment.min.js"></script>
-<script src="ressources/js/bootstrap-datetimepicker.min.js"></script>
+<script src=<c:url value="${path}/ressources/js/jquery-1.11.1.min.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/bootstrap.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/moment.min.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/bootstrap-datetimepicker.min.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/yomate.js" /> ></script>
 <!-- //js -->
 
 <!-- initAutocomplete -->
@@ -174,7 +175,7 @@ $(function () {
 					
 					<!-- create annonce button -->
 					<div class = "row top-margin-5">
-						<a class="btn btn-warning search-btn" href="PageAnnonce.jsp"><i class="icon-edit icon-white"></i>Créer votre Annonce</a>
+						<a class="btn btn-warning search-btn" href="PageAnnonce.jsp"><i class="icon-edit icon-white"></i>Crï¿½er votre Annonce</a>
 					</div>
 					<!-- create annonce button -->
 					</div>				
@@ -188,7 +189,7 @@ $(function () {
 			 
 				<!-- amï¿½ï¿½lioration de profil -->
 				<div class="search-improve-profile">
-						<h3>3 étapes pour un meilleur matching de profile</h3>
+						<h3>3 ï¿½tapes pour un meilleur matching de profile</h3>
 					<div class="row top-margin-5">
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
@@ -200,13 +201,13 @@ $(function () {
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-question-sign search-improve-icon"></span>
 							</div>
-							<p>Répondre aux 5 questions</p>
+							<p>Rï¿½pondre aux 5 questions</p>
 						</div>
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-th-list search-improve-icon"></span>
 							</div>
-							<p>Compléter votre profile</p>
+							<p>Complï¿½ter votre profile</p>
 						</div>
 					</div>
 				</div>
@@ -214,7 +215,7 @@ $(function () {
 	
 				<!-- rï¿½ï¿½sultats de recherche -->
 				<div class="search-result">
-					<h3>Résultats :</h3>
+					<h3>Rï¿½sultats :</h3>
 					<ul class="list-group top-margin-3">
 						<a class="list-group-item">
 							<div>

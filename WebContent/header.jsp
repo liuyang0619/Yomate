@@ -7,36 +7,6 @@
 <body>
 <!-- set user session -->
 <script type="text/javascript">
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function post(path, params, method) {
-    method = method || "post"; // Set method to post by default if not specified.
-
-    // The rest of this code assumes you are not using a library.
-    // It can be made less wordy if you use one.
-    var form = document.createElement("form");
-    form.setAttribute("method", method);
-    form.setAttribute("action", path);
-
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
-            form.appendChild(hiddenField);
-         }
-    }
-    
-    document.body.appendChild(form);
-    form.submit();
-}
-
 function SendLoginRequest() {
 	// Hide warning message
 	$('#warning-msg').hide();
@@ -63,21 +33,6 @@ function SendLoginRequest() {
 
 <!-- check user session -->
 <script type="text/javascript">
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
 function checkCookie() {
     var user = getCookie("idUser");
     if (user != "") {
@@ -114,10 +69,6 @@ function checkCookie() {
 
 <!-- delete user session -->
 <script type="text/javascript">
-function deleteCookie(cname) {
-  document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
-
 function logout() {
 	deleteCookie("idUser");
 	window.location.reload();
