@@ -57,8 +57,8 @@ public class UserController {
 		if (result.isEmpty()) {
 			model.addAttribute("idUser", "NonValid");
 		} else {
-			//Map<String, String> res = JsonHelper.deserilisation(result);
-			model.addAttribute("idUser", result);
+			Map<String, Object>[] res = JsonHelper.deserilisationArray(result);			
+			model.addAttribute("idUser", (String)res[0].get("idUser"));
 		}
 		model.addAttribute("rememberMe", remember);
 		return "index";
