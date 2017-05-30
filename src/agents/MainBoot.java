@@ -21,6 +21,8 @@ public class MainBoot {
 			AdminAgent.start();
 			AgentController ManageProfilAgent = mc.createNewAgent(Constants.Agent.MANAGE_PROFIL_AGENT, "agents.ManageProfilAgent", null);
 			ManageProfilAgent.start();
+			AgentController ManageAnnonceAgent = mc.createNewAgent(Constants.Agent.MANAGE_ANNONCE_AGENT, "agents.ManageAnnonceAgent", null);
+			ManageAnnonceAgent.start();
 			AgentController ManageUserAgent = mc.createNewAgent(Constants.Agent.MANAGE_USER_AGENT, "agents.ManageUserAgent", null);
 			ManageUserAgent.start();
 			AgentController SqlRequestAgent = mc.createNewAgent(Constants.Agent.SQL_REQUEST_AGENT, "agents.SqlRequestAgent", null);
