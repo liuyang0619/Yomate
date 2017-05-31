@@ -149,7 +149,8 @@ h2.resp-accordion:hover{
 
 /*-- banner --*/
 .banner1{
-	background:url(../images/b.png) no-repeat 0px 0px;
+	/* background:url(../images/b.png) no-repeat 0px 0px; */
+	background: #cbe2c0;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -158,7 +159,7 @@ h2.resp-accordion:hover{
 	min-height:150px;
 }
 .navbar-brand{
-color:#ffff00!important;
+ color:#9bc1e3!important; 
     font-size: 3.5em;
     text-decoration: none;
 	font-family: 'YesevaOne-Regular';
@@ -409,7 +410,7 @@ h2.resp-accordion:hover{
 	padding: 20px 20px 20px 20px;
 }
 .index-utilisateurs {
-	background: #b6d7a8;
+	background: #cbe2c0;
 	font-size: 20px;
 	border: 2px #008000 solid;
 	margin-top: 20px;
