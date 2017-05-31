@@ -459,11 +459,11 @@ to {background-position: -400px 0;}
 
 .home-page {
 	/*--background:#008000;--*/
-	background:url("../images/friends.jpg");*
+	background:url("../images/a1.png");*
 	width: 100%;
     color:#fff !important;
 	-webkit-animation: backgroundScroll 80s linear infinite;
-	animation: backgroundScroll 40s linear infinite;
+	animation: backgroundScroll 40s linear infinite; 
 	background-size:100% 100%;
 	background-position:top;
 	background-attachment:fixed;
