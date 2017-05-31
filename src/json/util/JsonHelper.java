@@ -30,6 +30,18 @@ public class JsonHelper {
 		return map;
 	}
 	
+	public static Map<String, Object>[] deserilisationArray(String s){
+		Map<String, Object>[] map = null;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			map = mapper.readValue(s, Map[].class);
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return map;
+	}
+	
 	public static String serilisation(Object object, Class inputClass){
 		ObjectMapper mapper = new ObjectMapper();
 		String s = null;
