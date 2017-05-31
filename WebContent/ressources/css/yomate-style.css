@@ -149,7 +149,7 @@ h2.resp-accordion:hover{
 
 /*-- banner --*/
 .banner1{
-	background:url(../images/color_green.jpg) no-repeat 0px 0px;
+	background:url(../images/b.png) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -459,25 +459,26 @@ to {background-position: -400px 0;}
 
 .home-page {
 	/*--background:#008000;--*/
-	/* background:url("../images/a1.png");*
+	background:url("../images/a1.png");*
+	height: 100%;
 	width: 100%;
     color:#fff !important;
 	-webkit-animation: backgroundScroll 80s linear infinite;
 	animation: backgroundScroll 40s linear infinite; 
 	background-size:100% 100%;
 	background-position:top;
-	background-attachment:fixed; */
+	background-attachment:fixed; 
 	
-	display:block;
+	/* display:block;
     position:absolute;
     background:url(../images/a1.png);
     background-repeat:no-repeat;
     background-size: 100% 100%;
     width:100%;
     height:100%;
-    /* float:right; */
+    float:right;
     bottom:0;
-    right:0;
+    right:0; */
 }
 /*-- //index page --*/
 /*-- inscription page --*/
