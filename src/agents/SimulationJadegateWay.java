@@ -81,30 +81,52 @@ public class SimulationJadegateWay {
 //    	map.put("idUser", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_HISTORY_ANNONCES, map);
 //Test the "create annonce" method
-    	map.put("dateProposer", "1940-11-11");
-		map.put("dateDebut", "1940-11-11");
-		map.put("dateFin", "1940-11-11");
-		map.put("proposer", "1");
-		map.put("description", "asdfadsf");
-		map.put("budget", "344");
-		map.put("nbPersonneBesoin", "3");
-		map.put("lieu", "wenzhou");
-		map.put("descriptionLogement", "good location");
-		map.put("sex", "0");
-		map.put("ageMin", "1");
-		map.put("ageMax", "78");
-		map.put("status", "1");
-		map.put("haspet", "0");
-		map.put("situationFam", "celibataire");
-		map.put("ecole", "UTC");
-		map.put("profession", "11");
-		map.put("nationnalite", "6");
-    	map.put("loisir", "1, 3, 5");
-    	map.put("language", "4, 7");
-    	map.put("peutetre", "sex, haspet");
-    	map.put("obligatoire", "age, language");
-    	map.put("important", "nationnalite");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ANNONCE, map);
+//    	map.put("dateProposer", "1940-11-11");
+//		map.put("dateDebut", "1940-11-11");
+//		map.put("dateFin", "1940-11-11");
+//		map.put("proposer", "1");
+//		map.put("description", "asdfadsf");
+//		map.put("budget", "344");
+//		map.put("nbPersonneBesoin", "3");
+//		map.put("lieu", "wenzhou");
+//		map.put("descriptionLogement", "good location");
+//		map.put("sex", "0");
+//		map.put("ageMin", "1");
+//		map.put("ageMax", "78");
+//		map.put("status", "1");
+//		map.put("haspet", "0");
+//		map.put("situationFam", "celibataire");
+//		map.put("ecole", "UTC");
+//		map.put("profession", "11");
+//		map.put("nationnalite", "6");
+//    	map.put("loisir", "1, 3, 5");
+//    	map.put("language", "4, 7");
+//    	map.put("peutetre", "sex, haspet");
+//    	map.put("obligatoire", "age, language");
+//    	map.put("important", "nationnalite");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ANNONCE, map);
+//Test the "search the annonces" method 
+    	map.put("lieu", "paris");
+    	map.put("budgetMax", "600");
+    	map.put("budgetMin", "250");
+    	map.put("dateDebut", "2016-09-01");
+    	map.put("dateFin", "2017-02-01");
+
+    	map.put("sex", "1");
+    	map.put("ageMin", "18");
+    	map.put("ageMax", "30");
+    	map.put("keyWordLoge", "good,quite");
+    	map.put("haspet", "0");
+		map.put("situationFam", "couple");
+		map.put("ecole", "utc");
+		map.put("profession", "5");
+		map.put("nationnalite", "1");
+    	map.put("loisir", "voyage");
+    	map.put("language", "anglais");
+    	
+    	
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
+
     	
     	String content = JsonHelper.serilisation(amc);
     	

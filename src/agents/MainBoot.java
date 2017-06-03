@@ -27,6 +27,8 @@ public class MainBoot {
 			ManageUserAgent.start();
 			AgentController SqlRequestAgent = mc.createNewAgent(Constants.Agent.SQL_REQUEST_AGENT, "agents.SqlRequestAgent", null);
 			SqlRequestAgent.start();
+			AgentController SearchAgent = mc.createNewAgent(Constants.Agent.SEARCH_AGENT, "agents.SearchAgent", null);
+			SearchAgent.start();
 			
 		}
 		catch (Exception ex) {

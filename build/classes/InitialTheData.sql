@@ -26,6 +26,9 @@ update yomate.profession set profession = REPLACE (profession,"\"","");
 update yomate.nationnalite set nationnalite = REPLACE (nationnalite,"\r","");
 update yomate.loisir set loisir = REPLACE (loisir,"\r",""); 
 update yomate.language set language = REPLACE (language,"\r",""); 
-update yomate.profession set profession = REPLACE (profession,"\r","");  
+update yomate.profession set profession = REPLACE (profession,"\r","");
 
+update yomate.loisir set loisir = substring(loisir, 2); 
+update yomate.language set language = substring(language, 2); 
+update yomate.profession set profession = substring(profession, 2);
 commit;
