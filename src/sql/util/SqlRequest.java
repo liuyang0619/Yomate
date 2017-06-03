@@ -65,5 +65,21 @@ public class SqlRequest {
 //			+ "FROM yomate.histoirecolo as h, yomate.user as u, annonce as a "
 //			+ "WHERE (h.user1 = ### OR h.user2 = ###) AND (h.user1 = u.idUser OR h.user2 = u.idUser) "
 //			+ "AND (u.idUser <> ###) AND a.idAnnonce = h.annonce;";
-
+	public final static String SEARCH_ANNONCE_MAIN = "SELECT  a.*, lan.language as language, loi.loisir as loisir "
+			+ "FROM yomate.annonce as a, yomate.annonce_loisir as aloi, yomate.annonce_language as alan, yomate.loisir as loi, yomate.language as lan "
+			+ "WHERE a.idAnnonce = aloi.annonce AND a.idAnnonce = alan.annonce AND aloi.loisir = loi.id AND alan.language = lan.id ";
+	public final static String SEARCH_ANNONCE_BUDGET = "AND budget<= ### AND budget >= ### ";
+	public final static String SEARCH_ANNONCE_LIEU = "AND lieu = ### ";
+	public final static String SEARCH_ANNONCE_SEX = "AND sex = ### ";
+	public final static String SEARCH_ANNONCE_AGE = "AND age_min >= ### AND age_max < ### ";
+	public final static String SEARCH_ANNONCE_PET = "AND haspet = ### ";
+	public final static String SEARCH_ANNONCE_SITUATIONFAM = "AND situationFam = ### ";
+	public final static String SEARCH_ANNONCE_SCHOOL = "AND ecole = ### ";
+	public final static String SEARCH_ANNONCE_PROFESSION = "AND profession = ### ";
+	public final static String SEARCH_ANNONCE_NATIONNALITY = "AND nationnalite = ### ";
+	public final static String SEARCH_ANNONCE_DATE_DEBUT = "AND date_debut >= ### AND  date_debut <= ### ";
+	public final static String SEARCH_ANNONCE_DATE_FIN = "AND date_fin >= ### AND  date_fin <= ### ";
+	public final static String SEARCH_ANNONCE_HOBBY = "AND aloi.loisir = ### ";
+	public final static String SEARCH_ANNONCE_LANGUAGE = "AND alan.language = ### ";
+	public final static String SEARCH_ANNONCE_DESCRIPTION_LOGE = "AND description_logement LIKE ### ";
 }

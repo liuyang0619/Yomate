@@ -20,6 +20,7 @@ public class Constants {
 		public final static String MODIFY_ANNONCE = "ModifyAnnonce";
 		public final static String CLOSE_ANNONCE = "CloseAnnonce";
 		public final static String ADD_ROOMMATE_ANNONCE = "AddRoommateAnnonce";
+		public final static String SEARCH_ANNONCE = "SearchAnnonce";
 	}
 	
 	public class Agent{
@@ -30,7 +31,7 @@ public class Constants {
 		public final static String CALCULATE_MATCH_AGENT = "CalculateMatchAgent";
 		public final static String MANAGE_ANNONCE_AGENT = "ManageAnnonceAgent";
 		public final static String MESSAGERIE_AGENT = "MessagerieAgent";
-		public final static String RESEACH_AGENT = "ReseachAgent";
+		public final static String SEARCH_AGENT = "SearchAgent";
 		public final static String ADMIN_AGENT = "AdminAgent";
 	}
 	
