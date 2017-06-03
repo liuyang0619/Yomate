@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 
 <html>
@@ -9,29 +10,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset=utf-8" />
 <meta name="keywords" content="Yomate"/>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
 
 <!-- css -->
-<link href="ressources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="ressources/css/buttons.css" rel="stylesheet" type="text/css" media="all" />
-<link href="ressources/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
-<link href="ressources/css/yomate-style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/yomate-style.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/buttons.css" />" rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value="${path}/ressources/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" type="text/css" media="all" />
 <!-- //css -->
 
 <!-- js -->
-<script src="ressources/js/jquery-1.11.1.min.js"></script>
-<script src="ressources/js/bootstrap.js"> </script>
-<script src="ressources/js/moment.min.js"></script>
-<script src="ressources/js/bootstrap-datetimepicker.min.js"></script>
+<script src=<c:url value="${path}/ressources/js/jquery-1.11.1.min.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/bootstrap.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/moment.min.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/bootstrap-datetimepicker.min.js" /> ></script>
+<script src=<c:url value="${path}/ressources/js/yomate.js" /> ></script>
 <!-- //js -->
+
+<!-- variable -->
+
 
 <!-- header & footer -->
 <script type="text/javascript"> 
 	$(function(){
-		$("#header").load("header.jsp");
-		$("#footer").load("footer.jsp");
+		$("#header").load("/Yomate/header.jsp");
+		$("#footer").load("/Yomate/footer.jsp");
 	});
 </script>
 <!-- //header & footer -->
@@ -44,10 +46,71 @@ $(function () {
 </script>
 <!-- //birthday picker -->
 
+<!-- check sex -->
+<script type="text/javascript">
+function checkSex(strSex) {
+	var sexe;
+	if (strSex === "0")
+	{
+		sexe = "homme";
+	}
+	else if (strSex === "1")
+	{
+		sexe = "femme";
+	}
+	return sexe;
+}
+</script>
+<!-- //check sex -->
+
+<!-- calculate age -->
+<script type="text/javascript">
+/*根据出生日期算出年龄*/
+function jsGetAge(strBirthday) {var returnAge;
+			var strBirthdayArr = strBirthday.split("-");
+			var birthYear = strBirthdayArr[0];
+			var birthMonth = strBirthdayArr[1];
+			var birthDay = strBirthdayArr[2];
+
+			d = new Date();
+			var nowYear = d.getFullYear();
+			var nowMonth = d.getMonth() + 1;
+			var nowDay = d.getDate();
+
+			if (nowYear == birthYear) {
+				returnAge = 0;//同年 则为0岁  
+			} else {
+				var ageDiff = nowYear - birthYear; //年之差  
+				if (ageDiff > 0) {
+					if (nowMonth == birthMonth) {
+						var dayDiff = nowDay - birthDay;//日之差  
+						if (dayDiff < 0) {
+							returnAge = ageDiff - 1;
+						} else {
+							returnAge = ageDiff;
+						}
+					} else {
+						var monthDiff = nowMonth - birthMonth;//月之差  
+						if (monthDiff < 0) {
+							returnAge = ageDiff - 1;
+						} else {
+							returnAge = ageDiff;
+						}
+					}
+				} else {
+					returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天  
+				}
+			}
+			return returnAge;//返回周岁年龄  
+		}
+</script>
+<!-- //calculate age -->
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
 	
 <body>
+
 <!-- header -->
 	<div id="header"></div>
 <!-- //header -->
@@ -57,11 +120,11 @@ $(function () {
 		<div class="container">
 			<div class = "row top-margin-20 bottom-margin-20">
 				<div class="col-md-2" style = "text-align:center">
-					<img src="ressources/images/4.png" class="img-thumbnail" style = "width:100px;height:100px">
+					<img src="/Yomate/ressources/images/4.png" class="img-thumbnail" style = "width:100px;height:100px">
 				</div>
 				<div class="col-md-10">
-					<p style = "font-weight:bolder;font-size:25px">Paul Babiste</p>
-					<p>Homme, 23 ans</p>
+					<p style = "font-weight:bolder;font-size:25px"><span id="nom"></span> <span id="prenom"></span></p>
+					<p><span id="sexe"></span>, <span id="age"></span> ans</p>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -86,18 +149,18 @@ $(function () {
 									</div>
 									<div class = "row">
 										<div class = "col-md-6">
-											<span style = "font-weight: bold">Nationnalit�:</span>
-											<span id = "nationnalite">Fran�aise</span>
+											<span style = "font-weight: bold">Nationnalité:</span>
+											<span id = "nationnalite">Française</span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Langue:</span>
-											<span id = "langue">Fran�ais, Chinois</span>
+											<span id = "langue">Français, Chinois</span>
 										</div>
 									</div>
 									<div class = "row">
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Situation familiale:</span>
-											<span>C�libataire</span>
+											<span>Célibataire</span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Loisir:</span>
@@ -108,13 +171,13 @@ $(function () {
 									<!-- Trigger the personal info modal with a button -->
 									<div class = "row">
 										<div class = "col-md-12">
-											<button class = "button button-action button-pill button-small perso-edit-btn" data-toggle="modal" data-target="#editInfo">Editer  <span class="glyphicon glyphicon-edit"></span></button>
+											<button class = "btn btn-success search-btn perso-edit-btn" data-toggle="modal" data-target="#editInfo">Editer  <span class="glyphicon glyphicon-edit"></span></button>
 										</div>
 									</div>
 								</div>
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<img src="ressources/images/6.jpg" class="img-thumbnail perso-profile-photo">
-									<img src="ressources/images/8.jpg" class="img-thumbnail perso-profile-photo">
+									<img src="/Yomate/ressources/images/6.jpg" class="img-thumbnail perso-profile-photo">
+									<img src="/Yomate/ressources/images/8.jpg" class="img-thumbnail perso-profile-photo">
 								</div>
 							</div>
 						</div>
@@ -122,7 +185,7 @@ $(function () {
 				</div>
 				<div class="col-md-4">
 					<div class="row" style = "text-align:center">
-		                <a class = "button button-caution button-rounded button-large" href="PageAnnonce.jsp">Cr�er une annonce</a>					
+		                <a class = "btn btn-warning search-btn href="/Yomate/PageAnnonce.jsp">Créer une annonce</a>					
 		            </div>
 				</div>
 			</div>
@@ -142,7 +205,7 @@ $(function () {
 									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1113</h4>
 										    <div style = "height:100px">
 										    	<div style="float: left;">
-										    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+										    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 												</div>
 												<div style="float: left;margin-left:10px">
 													<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
@@ -156,7 +219,7 @@ $(function () {
 									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
 										    <div style = "height:100px">
 										    	<div style="float: left;">
-										    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+										    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 												</div>
 												<div style="float: left;margin-left:10px">
 													<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
@@ -170,7 +233,7 @@ $(function () {
 									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
 										    <div style = "height:100px">
 										    	<div style="float: left;">
-										    		<img src="ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
+										    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
 												</div>
 												<div style="float: left;margin-left:10px">
 													<p class = "list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
@@ -222,16 +285,16 @@ $(function () {
 	    		<h4 class="modal-title">Editer votre profil</h4>
 	    	</div>
 	    	<div class="modal-body">
-	    		<!-- Nom & pr�nom -->
+	    		<!-- Nom & prénom -->
 	    		<div class="row">
 	    			<div class="col-md-6">
 						<input type="text" class="form-control input-sm" placeholder="Nom" required></input>
 					</div>
 					<div class="col-md-6">
-						<input type="text" class="form-control input-sm" placeholder="Pr�nom" required></input>
+						<input type="text" class="form-control input-sm" placeholder="Prénom" required></input>
 					</div>
 	    		</div>
-	    		<!-- //Nom & pr�nom -->
+	    		<!-- //Nom & prénom -->
 	    		
 	    		<!-- Sexe -->
 	    		<div class="row perso-edit-sex top-margin-5">
@@ -264,8 +327,8 @@ $(function () {
 						<select id="selectSituation" name="selectSituation" class="form-control">
 							<option value="0" selected disabled></option>
 							<option value="1">Etudiant</option>
-							<option value="2">Salari�</option>
-							<option value="3">Retrait�(e)</option>
+							<option value="2">Salarié</option>
+							<option value="3">Retraité(e)</option>
 							<option value="4">APL</option>
 							<option value="5">Autre</option>
 					    </select>
@@ -279,37 +342,37 @@ $(function () {
 	    			<div class="form-group col-md-8">
 						<select id="selectSituation" name="selectSituationFamiliale" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="1">C�libataire</option>
+							<option value="1">Célibataire</option>
 							<option value="2">En couple</option>
-							<option value="3">Mari�(e)</option>
+							<option value="3">Marié(e)</option>
 					    </select>
 					</div>
 	    		</div>
 	    		<!-- //Situation Familiale-->
 	    		
-	    		<!-- Nationalit�-->
+	    		<!-- Nationalité-->
 	    		<div class="row">
-	    			<label class="col-md-4" for="nationalite">Nationalit�</label>
+	    			<label class="col-md-4" for="nationalite">Nationalité</label>
 	    			<div class="col-md-8">
 	    				
 					</div>
 	    		</div>
-	    		<!-- //Nationalit�-->
+	    		<!-- //Nationalité-->
 	    		
-	    		<!-- Langue parl�e & Loisirs-->
+	    		<!-- Langue parlée & Loisirs-->
 	    		<div class="row">
-	    			<!-- Langue parl�e-->
+	    			<!-- Langue parlée-->
 	    			<div class="col-md-6">
 	    			
 	    			</div>
-	    			<!-- Langue parl�e-->
+	    			<!-- Langue parlée-->
 	    			
 	    			<!-- Loisirs-->
 	    			<div class="col-md-6">
 	    			</div>
 	    			<!-- //Loisirs-->
 	    		</div>
-	    		<!-- //Langue parl�e & Loisirs-->
+	    		<!-- //Langue parlée & Loisirs-->
 
 	    	</div>
 	    	<div class="modal-footer">
@@ -332,7 +395,7 @@ $(function () {
 <!-- //footer -->
 
 <!-- tab switching-->
-<script src="ressources/js/easyResponsiveTabs.js" type="text/javascript"></script>		
+<script src=<c:url value="${path}/ressources/js/easyResponsiveTabs.js" /> ></script>	
 <script type="text/javascript">		
 	$(document).ready(function () {		
 		$('#horizontalTabProfilPhoto').easyResponsiveTabs({		
@@ -349,7 +412,28 @@ $(function () {
 		});		
 	});		
 </script>
+<!-- variable -->
+	<script type="text/javascript"> 
+		//alert('${userProfile}');
+		//var str = '${userProfile}';
+		//var user = eval('(' + str + ')');
+		var json = '${userProfile}';
+		//alert(json);
+		var user = JSON.parse(json);
+		document.getElementById("nom").innerHTML = user[0]['nom'];
+		document.getElementById("prenom").innerHTML = user[0]['prenom'];
+		document.getElementById("age").innerHTML = jsGetAge(user[0]['birthday']);
+		document.getElementById("sexe").innerHTML = checkSex(user[0]['sex']);
+		
+		
+		
+		
+		
+	</script>
+<!-- //variable -->
 <!-- //tab switching -->
 
 </body>
+
+
 </html>
