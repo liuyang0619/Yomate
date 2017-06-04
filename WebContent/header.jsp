@@ -45,6 +45,10 @@ function checkCookie() {
 			var url = window.location.href;
 			// passes on every "a" tag
 			$(".navbar-default .navbar-nav a").each(function() {
+				// set espacePersonnel href
+				var a = document.getElementById('espacePersonnel-href'); //or grab it by tagname etc
+				a.href = "/Yomate/espacePersonnel/"+user;
+				
 				// checks if its the same on the address bar
 				if (url == (this.href)) {
 				    $(this).closest("li").addClass("active");
@@ -100,9 +104,9 @@ function logout() {
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse nav-wil" id="myNavBar">
 						<ul class="nav navbar-nav navbar-right" id="navbar-loggedIn">
-							<li><a href="index.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
-							<li><a href="recherche.jsp"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
-							<li><a href="espacePersonnel.jsp"><i class="glyphicon glyphicon-user"></i>  Espace personel</a></li>
+							<li><a href="/Yomate/index.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+							<li><a href="/Yomate/recherche.jsp"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
+							<li><a id="espacePersonnel-href"><i class="glyphicon glyphicon-user"></i>  Espace personel</a></li>
 							<li><a onclick="logout()" style="font-size: 12px;">Déconnectez-vous</a></li>
 						</ul>
 					  	
