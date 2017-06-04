@@ -34,12 +34,21 @@ public class ManageAnnonceAgent extends Agent{
 					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
 					break;	
 				case Constants.Action.MODIFY_ANNONCE:
-					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
+					sql = sqlModifyAnnonce(params);
+					performative = ACLMessage.REQUEST;
+					System.out.println(sql);
+					//addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
 					break;
 				case Constants.Action.CLOSE_ANNONCE:
+					sql = SqlRequest.CLOSE_ANNONCE;
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
+					performative = ACLMessage.REQUEST;
 					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
 					break;
-				case Constants.Action.ADD_ROOMMATE_ANNONCE:
+				case Constants.Action.REOPEN_ANNONCE:
+					sql = SqlRequest.REOPEN_ANNONCE;
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
+					performative = ACLMessage.REQUEST;
 					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
 					break;
 				}
@@ -163,7 +172,69 @@ public class ManageAnnonceAgent extends Agent{
 			
 			return sql;
 		}
-		
+		protected String sqlModifyAnnonce(Map<String, String> params){
+			//date_debut = ###, date_fin = ###, description = ###, budget = ###, nbPersonneBesoin = ###, 
+			//lieu = ###, description_logement = ###, sex = ###, age_min = ###, age_max = ###, 
+			//haspet = ###, situationFam = ###, ecole = ###, profession = ###, nationnalite = ###  WHERE idAnnonce = ###;"
+			sql = SqlRequest.UPDATE_ANNONCE_MAIN_BY_ID;
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("dateDebut") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("dateFin") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("description") + "\"");
+			sql = sql.replaceFirst("###", "\""+ Integer.parseInt((String) params.get("budget")) + "\"");
+			sql = sql.replaceFirst("###", "\""+ Integer.parseInt((String) params.get("nbPersonneBesoin")) + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("lieu") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("descriptionLogement") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("sex") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMin") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMax") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("haspet") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("situationFam") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("ecole") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("profession") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("nationnalite") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
+			
+			sql += SqlRequest.DELETE_ANNONCE_PROFILE_LOISIR_BY_ID;
+			sql = sql.replaceFirst("###",  "\""+ (String) params.get("idAnnonce") + "\"");
+			sql += SqlRequest.UPDATE_ANNONCE_PROFILE_LOISIR;
+			String [] listLoisir = ((String) params.get("loisir")).split(",");
+			for(int i = 0; i < listLoisir.length; i++){
+				listLoisir[i] = listLoisir[i].replaceAll(" ", "");
+				System.out.println("Loisir: "+listLoisir[i] + ", "+(String) params.get("idAnnonce"));
+				if(i == 0){
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
+					sql = sql.replaceFirst("###", "\""+ listLoisir[i] + "\"");
+					sql += ", ";
+				}
+				else{
+					sql += "(" + "\""+ (String) params.get("idAnnonce") + "\"" + ", " + "\""+ listLoisir[i] + "\"" +")";
+					sql += ", ";
+				}
+			}
+			sql = sql.substring(0, sql.length() - 2); //delete the last ","
+			sql += ";";
+			sql += SqlRequest.DELETE_ANNONCE_PROFILE_LANGUAGE_BY_ID;
+			sql = sql.replaceFirst("###",  "\""+ (String) params.get("idAnnonce") + "\"");
+			sql += SqlRequest.UPDATE_ANNONCE_PROFILE_LANGUAGE;
+			
+			String [] listLanguage = ((String) params.get("language")).split(",");
+			for(int i = 0; i < listLanguage.length; i++){
+				listLanguage[i] = listLanguage[i].replaceAll(" ", "");
+				System.out.println("Language: "+listLanguage[i] + ", "+(String) params.get("idAnnonce"));
+				if(i == 0){
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
+					sql = sql.replaceFirst("###", "\""+ listLanguage[i] + "\"");
+					sql += ", ";
+				}
+				else{
+					sql += "(" + "\""+ (String) params.get("idAnnonce") + "\"" + ", " + "\""+ listLanguage[i] + "\"" +")";
+					sql += ", ";
+				}
+			}
+			sql = sql.substring(0, sql.length() - 2); //delete the last ","
+			sql += ";";
+			return sql;
+		}
 	}
 	protected class SendToSqlBehaviour extends Behaviour{
 		String sql;

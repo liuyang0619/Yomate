@@ -67,7 +67,19 @@ public class AdminAgent extends Agent{
 				case Constants.Action.CREATE_ANNONCE:
 					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
 					break;
+				case Constants.Action.MODIFY_ANNONCE:
+					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
+					break;
+				case Constants.Action.CLOSE_ANNONCE:
+					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
+					break;
+				case Constants.Action.REOPEN_ANNONCE:
+					agentName = Constants.Agent.MANAGE_ANNONCE_AGENT;
+					break;
 				case Constants.Action.SEARCH_ANNONCE:
+					agentName = Constants.Agent.SEARCH_AGENT;
+					break;
+				case Constants.Action.GET_ANNONCE:
 					agentName = Constants.Agent.SEARCH_AGENT;
 					break;
 				}

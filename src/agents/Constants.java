@@ -19,8 +19,10 @@ public class Constants {
 		public final static String CREATE_ANNONCE = "CreateAnnonce";
 		public final static String MODIFY_ANNONCE = "ModifyAnnonce";
 		public final static String CLOSE_ANNONCE = "CloseAnnonce";
+		public final static String REOPEN_ANNONCE = "ReopenAnnonce";
 		public final static String ADD_ROOMMATE_ANNONCE = "AddRoommateAnnonce";
 		public final static String SEARCH_ANNONCE = "SearchAnnonce";
+		public final static String GET_ANNONCE = "GetAnnonce";
 	}
 	
 	public class Agent{

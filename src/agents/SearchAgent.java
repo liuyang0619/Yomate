@@ -35,6 +35,12 @@ public class SearchAgent extends Agent{
 				switch(action){
 				case Constants.Action.SEARCH_ANNONCE:
 					sql = sqlSearchAnnonce(params);
+					performative = ACLMessage.QUERY_REF;
+					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
+					break;
+				case Constants.Action.GET_ANNONCE:
+					sql = SqlRequest.SELECT_ANNONCE_BY_ID;
+					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					System.out.println(sql);
 					performative = ACLMessage.QUERY_REF;
 					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
@@ -125,6 +131,14 @@ public class SearchAgent extends Agent{
 			if (params.get("nationnalite") != null){
 				sql += SqlRequest.SEARCH_ANNONCE_NATIONNALITY;
 				sql = sql.replaceFirst("###", "\""+ (String) params.get("nationnalite") + "\"");
+			}
+			if (params.get("loisir") != null){
+				sql += SqlRequest.SEARCH_ANNONCE_HOBBY;
+				sql = sql.replaceFirst("###", "\""+ (String) params.get("loisir") + "\"");
+			}
+			if (params.get("language") != null){
+				sql += SqlRequest.SEARCH_ANNONCE_LANGUAGE;
+				sql = sql.replaceFirst("###", "\""+ (String) params.get("language") + "\"");
 			}
 			if (params.get("keyWordLoge") != null){
 				String[] keywords = params.get("keyWordLoge").split(",");

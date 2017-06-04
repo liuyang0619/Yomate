@@ -57,6 +57,25 @@ public class SqlRequest {
 	public final static String UPDATE_ANNONCE_PROFILE_PEUTETRE = "INSERT INTO yomate.annonce_peutetre (annonce, critere) values (###, ###)";
 	public final static String UPDATE_ANNONCE_PROFILE_OBLIGATOIRE = "INSERT INTO yomate.annonce_obligatoire (annonce, critere) values (###, ###)";
 	public final static String UPDATE_ANNONCE_PROFILE_IMPORTANT = "INSERT INTO yomate.annonce_important (annonce, critere) values (###, ###)";
+	public final static String CLOSE_ANNONCE = "update yomate.annonce set status = 0 WHERE idAnnonce = ###;";
+	public final static String REOPEN_ANNONCE = "update yomate.annonce set status = 1 WHERE idAnnonce = ###;";
+	public final static String UPDATE_ANNONCE_MAIN_BY_ID = "UPDATE yomate.annonce SET "
+			+ "date_debut = ###, date_fin = ###, description = ###, "
+			+ "budget = ###, nbPersonneBesoin = ###, lieu = ###, description_logement = ###, "
+			+ "sex = ###, age_min = ###, age_max = ###, haspet = ###, situationFam = ###, "
+			+ "ecole = ###, profession = ###, nationnalite = ###  "
+			+ "WHERE idAnnonce = ###;";
+	public final static String SELECT_ANNONCE_BY_ID = "SELECT temp.*, GROUP_CONCAT(la.language SEPARATOR ',') as language "
+			+ " FROM (SELECT u.*, "
+			+ "p.profession as professionName, n.nationnalite as nationnaliteName, GROUP_CONCAT(l.loisir SEPARATOR ',') as loisir "
+			+ "FROM YOMATE.annonce as u, YOMATE.nationnalite as n, YOMATE.profession as p, "
+			+ "YOMATE.annonce_loisir as ul, YOMATE.loisir as l "
+			+ "where u.nationnalite = n.id and u.profession = p.id and u.idAnnonce = ul.annonce "
+			+ "and ul.loisir = l.id AND u.idAnnonce = ### "
+			+ "GROUP BY u.idAnnonce) as temp, "
+			+ "YOMATE.annonce_language as ula, YOMATE.language as la "
+			+ "WHERE temp.idAnnonce = ula.annonce AND ula.language = la.id "
+			+ "GROUP BY temp.idAnnonce;";
 //	public final static String ADD_HISTORY_COLO = "INSERT INTO yomate.histoirecolo "
 //			+ "(user1, user2, dateDebut, dateFin, annonce) "
 //			+ "values"
