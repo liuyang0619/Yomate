@@ -124,4 +124,5 @@ public class SqlRequest {
 	public final static String SEARCH_ANNONCE_HOBBY = "AND aloi.loisir = ### ";
 	public final static String SEARCH_ANNONCE_LANGUAGE = "AND alan.language = ### ";
 	public final static String SEARCH_ANNONCE_DESCRIPTION_LOGE = "AND description_logement LIKE ### ";
+	public final static String ADD_USER_TO_ANNONCE = "INSERT INTO annonc_user (annonce, user) VALUES (###, ###);";
 }

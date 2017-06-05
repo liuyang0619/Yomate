@@ -23,6 +23,7 @@ public class Constants {
 		public final static String ADD_ROOMMATE_ANNONCE = "AddRoommateAnnonce";
 		public final static String SEARCH_ANNONCE = "SearchAnnonce";
 		public final static String GET_ANNONCE = "GetAnnonce";
+		public final static String ADD_USER_TO_ANNONCE = "AddUserToAnnonce";
 	}
 	
 	public class Agent{
@@ -35,6 +36,7 @@ public class Constants {
 		public final static String MESSAGERIE_AGENT = "MessagerieAgent";
 		public final static String SEARCH_AGENT = "SearchAgent";
 		public final static String ADMIN_AGENT = "AdminAgent";
+		public final static String INVITATION_AGENT = "InvitationAgent";
 	}
 	
 	public class Message{

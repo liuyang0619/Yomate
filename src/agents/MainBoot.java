@@ -29,7 +29,8 @@ public class MainBoot {
 			SqlRequestAgent.start();
 			AgentController SearchAgent = mc.createNewAgent(Constants.Agent.SEARCH_AGENT, "agents.SearchAgent", null);
 			SearchAgent.start();
-			
+			AgentController InvitationAgent = mc.createNewAgent(Constants.Agent.INVITATION_AGENT, "agents.InvitationAgent", null);
+			InvitationAgent.start();
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();

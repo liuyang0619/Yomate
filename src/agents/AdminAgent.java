@@ -82,6 +82,9 @@ public class AdminAgent extends Agent{
 				case Constants.Action.GET_ANNONCE:
 					agentName = Constants.Agent.SEARCH_AGENT;
 					break;
+				case Constants.Action.ADD_USER_TO_ANNONCE:
+					agentName = Constants.Agent.INVITATION_AGENT;
+					break;
 				}
 				addBehaviour(new sendActionToAgentBehaviour(msg, agentName));
 			}
