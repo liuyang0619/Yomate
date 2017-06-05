@@ -8,8 +8,7 @@
 <head>
 
 	<spring:url value="ressources/css/animate.css" var="animateCss" /> 
-	<spring:url value="ressources/css/bootstrap.css" var="bootstrapCss" /> 
-	<spring:url value="ressources/css/style.css" var="styleCss" /> 
+	<spring:url value="ressources/css/bootstrap.css" var="bootstrapCss" />  
 	<spring:url value="ressources/css/yomate-style.css" var="yomateCss" />
 	<spring:url value="ressources/js/jquery-1.11.1.min.js" var="jqueryJs" /> 
 	<spring:url value="ressources/css/flexslider.css" var="flexsliderCss" /> 
@@ -36,7 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- <link href="ressources/bootstrap-switch-master/dist/css/bootstrap2/bootstrap-switch.css" rel="stylesheet" type="text/css" media="all" /> --> 
 <%-- <link href="<c:url value="ressources/css/style.css" />" rel="stylesheet" type="text/css" media="all" />  --%>
-<link href="${styleCss}"  rel="stylesheet" type="text/css" media="all" /> 
+
 <!-- js -->
 <%-- <script src="<c:url value="ressources/js/jquery-1.11.1.min.js" />" ></script> --%>
 <script src="${jqueryJs}"></script>
@@ -192,50 +191,41 @@ ev.target.appendChild(document.getElementById(data));
 				<br />
 			</div>
 	<div class="container" style="border:1px dashed red">
-	<div class="col-md-12"> 
+	<div class="row top-margin-20 bottom-margin-20"> 
 		<div class="col-md-8" >
-			<div class="raw" style="vertical-align:middle">
-			<div class="col-md-12">
-				<div class="col-md-6">
+			<div class="row" style="vertical-align:middle">
+				<div class="col-md-4">
 					<div id="id_avatar">
-			   			<img src="ressources/images/1.png">
+				   		<img src="ressources/images/1.png">
 					</div>
-				</div>
-							
+				</div>		
 				<div class="col-md-6">
-					<div style="font-size:30px"><strong>LIU Yang</strong></div>
-					<div>Sexe</div>
-					<div>Age</div>
-					<div>Description</div>
+					<label style="font-size:30px"><strong><span id="nomEtPrenom"></strong></label>
+					<div><span id="sexe"></div>
+					<div><span id="age"></div>
+					<div><span id="description"></div>
 				</div>
 			</div>
-			</div>
-			<div class="col-md-12">
-				<br />
+			<div class="row">
 				<br />
 			</div>
-			<div class="col-md-12" style="border:1px dashed red">
-				 <div class="col-md-12">
-				 	<div style="font-size:30px">Profil personnel</div>
-				 </div>
-				
-				<div class="raw">
+			<div class="row" style="border:1px dashed red">
+				<div style="font-size:30px">Profil personnel</div>
+				<div class="row">
 					<div class="col-md-6">
-						<div>Région:</div>
-						<div>Profession:</div>
-						<div>Nationnalité:</div>
-						<div>Situation familiale:</div>
+						<div class="top-margin-5">Lieu:<span id="lieu"></span></div>
+						<div class="top-margin-5">Profession:<span id="profession"></span></div>
+						<div class="top-margin-5">Nationnalite:<span id="nationnalite"></div>
+						<div class="top-margin-5">Situation familiale:</div>
 					</div>
-				</div>
-				<div class="raw">
 					<div class="col-md-6"  >
-						<div>Langue(s):<!-- <div id="langue">test</div> --></div>
-						<div>Loisirs:<div id="loisir"></div></div>
-						<div>Habitude horaire:</div>
-						<div>Animaux d'accompagnie:</div>
+						<div class="top-margin-5">Langue(s):<span id="langues"></span><!-- <div id="langue">test</div> --></div>
+						<div class="top-margin-5">Loisirs:<span id="loisir"></span></div>
+						<div class="top-margin-5">Habitude horaire:<span id="habitude"></span></div>
+						<div class="top-margin-5">Animaux d'accompagnie:<span id="animal"></span></div>
 					</div>
 				</div>
-				<div class="col-md-12">
+				<div class="row">
 					<br />
 				</div>
 				<!-- <div class="col-md-12">
@@ -243,69 +233,54 @@ ev.target.appendChild(document.getElementById(data));
 				 	<a data-toggle="modal" data-target="#annonce">Editer</a>
 				 </div> -->
 			</div>
-			<div class="col-md-12">
+			<div class="row">
 				<br />
 				<br />
 			</div>
-			<div class="col-md-12" style="border:1px dashed red"> 
+			<div class="row" style="border:1px dashed red">
 				<div style="font-size:30px">Informations d'annonce</div>
-				<div class="raw top-margin-5">
+				<div class="row top-margin-5">
 					<div class="col-md-6">
-						<div>Lieu:<span id="lieu"></span></div>
+						<div>Lieu:<span id="lieuA"></span></div>
 					</div>
 					<div class="col-md-6">
-						<div>Sexe:</div>
+						<div>Sexe:<span id="sexeA"></span></div>
 					</div>
 				</div>
-				<div class="col-md-12 top-margin-5">
-					<div>Budget:</div>
-				</div>
-				<div class="col-md-12 top-margin-5">
-					<div>Durée:</div>
-				</div>
-				<div class="col-md-12 top-margin-5">
-					<div>Age:</div>
-				</div>
-				<div class="raw">
-					<div class="col-md-6 top-margin-5">
-						<div>Animal d'accompagnie:</div>
-					</div>
-					<div class="col-md-6 top-margin-5">
-						<div>Nationnalité:</div>
-					</div>
-				</div>
-				<div class="col-md-12 top-margin-5">
-					<div>Langues parlées:</div>
-				</div>
-				<div class="col-md-12 top-margin-5">
-					<div>Ecole:</div>
-				</div> 
+				
+				<div class="top-margin-5">Budget:<span id="budget"></span></div>
+				<div class="top-margin-5">Duree:<span id="dateD"></span><span> - </span><span id="dateF"></span></div>
+				<div class="top-margin-5">Age:<span id="ageMin"></span><span> - </span><span id="ageMax"></span></div>
+				<div class="top-margin-5">Animal d'accompagnie:<span id="animalA"></span></div>
+				<div class="top-margin-5">Nationnalite:<span id="nationnaliteA"></span></div>
+				<div class="top-margin-5">Langues parlees:<span id="langueA"></span></div>
+				<div class="top-margin-5">Ecole:<span id="ecole"></span></div>
 				
 				<div class="col-md-12 top-margin-5">
 					<br />
 				</div>
 				<div class="col-md-12 top-margin-5">
 				 	<!-- <button class = "button button-action button-rounded button-small" style="align:right; float:right">Editer</button> -->
-				 	<button type="button" class="btn btn-primary btn-large" data-toggle="modal" data-target="#annonce">Editer</button>
+				 	<button type="button" id="editerAnnonce" class="btn btn-primary btn-large" data-toggle="modal" data-target="#annonce">Editer</button>
 				 </div>
 			</div>
 			<div class="col-md-12">
 				<br />
 				<br />
 			</div>
-			<div class="col-md-12" style="border:1px dashed red">
+			<div class="row" style="border:1px dashed red">
 				<div class="col-md-8" style="border:1px dashed red">
 					<div style="font-size:30px">Filtre de profil</div>
-					<div class="col-md-12">
+					<div class="row top-margin-5">
 						<div style="font-size:20px" id="obligatoire" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</div>
 					</div>
-					<div class="col-md-12">
+					<div class="row top-margin-5">
 						<div style="font-size:20px" id="important" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</div>
 					</div>
-					<div class="col-md-12">
+					<div class="row top-margin-5">
 						<div style="font-size:20px" id="vautMieux" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</div>
 					</div>
-					</div>
+				</div>
 				<div class="col-md-4" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px dashed red">
 					<p draggable="true" ondragstart="drag(event)" id="tag1" style="color: #8a6d3b; background-color: #fcf8e3; display: inline-block" >sexe</p>
 					<!-- <p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p> -->
@@ -323,42 +298,31 @@ ev.target.appendChild(document.getElementById(data));
 					<div style="background-color: lightblue; text-align:center;  color: #FFFFFF">Ouverte</div>
 					<br />
 			</div> -->
-			<div class="col-md-12">
+			<div class="row">
 				<p style="text-align:center;  color:red">---------------------------------------------</p>
 			</div>
-			<div class="col-md-12"> 
-					<br />
-					<div style="font-size:20px">Status d'annonce</div> 
-					<br />
-					<div class="col-md-12">
-					<!-- <div class="switch">
-						<input type="checkbox"  class="switch" name="mybox" checked>
-						<script>
-							$(document).ready(function() {
-						        $("[name='mybox']").bootstrapSwitch();
-						    });
-						</script>
-					</div> -->
-						<center>
-							<label class="switch" style="float:center" > 
-							  	<input type="checkbox" checked>
-							  	<div class="slider">
-							  	<span class="on">Ouvert</span><span class="off">Fermé</span>
-							  </div>
-							</label>
-						</center>
-						
-					
-					</div>
-					<br />
+			<div class="row"> 
+				<br />
+				<div style="font-size:20px">Status d'annonce</div> 
+				<br />
+				<div class="row">
+					<center>
+						<label class="switch" style="float:center" > 
+							  <input type="checkbox" checked>
+							  <div class="slider">
+							  <span class="on">Ouvert</span><span class="off">Ferme</span>
+							 </div>
+						</label>
+					</center>
+				</div>
+				<br />
 			</div>
-			
-			<div class="col-md-12">
+			<div class="row">
 				<p style="text-align:center;  color:red">---------------------------------------------</p>
 			</div>
-			<div class="col-md-12">
+			<div class="row">
 				<div style="font-size:20px">Vue par</div>
-				<div class="col-md-12" style="margin: 30px">
+				<div class="row" style="margin: 30px">
 					<div id="id_avatar1" style="display: inline">
 				   		<img style="height: 50px; width: 50px" src="ressources/images/1.png">
 					</div>
@@ -370,34 +334,31 @@ ev.target.appendChild(document.getElementById(data));
 					</div>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="row">
 				<p style="text-align:center;  color:red">---------------------------------------------</p>
 			</div>
-			<div class="col-md-12">
-				<div style="font-size:20px">Colocataires concernés</div>
-				<div class="col-md-12" style="margin: 30px">
+			<div class="row">
+				<div style="font-size:20px">Colocataires concernes</div>
+				<div class="row" style="margin: 30px">
 					<div id="id_avatar4" style="display: inline">
 				   		<img style="height: 50px; width: 50px" src="ressources/images/1.png">
 					</div>
 					<div id="id_avatar5" style="display: inline">
 				   		<img style="height: 50px; width: 50px" src="ressources/images/1.png">
 					</div>
-					<div id="id_avatar6" style="display: inline">
-				   		<img style="height: 50px; width: 50px" src="ressources/images/1.png">
-					</div>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="row">
 				<p style="text-align:center;  color:red">---------------------------------------------</p>
 			</div>
-			<div class="col-md-12" >
-					<div style="font-size:20px">Correspondance à votre profil:</div>
-					<div id="correspondance" style="font-size:30px; background-color: lightblue; text-align:center; margin:30px">78%</div>
+			<div class="row" >
+				<div style="font-size:20px">Correspondance à votre profil:</div>
+				<div id="correspondance" style="font-size:30px; background-color: lightblue; text-align:center; margin:30px">78%</div>
 			</div>
-			<div class="col-md-12">
+			<div class="row">
 				<p style="text-align:center;  color:red">---------------------------------------------</p>
 			</div>
-			<div class="col-md-12">
+			<div class="row">
 				<script>
 					//document.getElementById("interet").onclick=function(){displayDate()};
 					function changeColor(x){
@@ -409,7 +370,7 @@ ev.target.appendChild(document.getElementById(data));
 						}   
 					}
 				</script>
-				<button id="interet" type="button" class="btn btn-primary" style="text-align:center; color:rgb(255, 255, 255); margin: 30px" onclick="changeColor(this)">Je suis intéressé(e)</button>
+				<button id="interet" type="button" class="btn btn-primary" style="text-align:center; color:rgb(255, 255, 255); margin: 30px" onclick="changeColor(this)">Je suis interesse(e)</button>
 			</div>
 			
 		</div>
@@ -427,113 +388,112 @@ ev.target.appendChild(document.getElementById(data));
                     <h4 class="modal-title" id="purchaseLabel">Editez votre annonce</h4>
                 </div>
                 <div class="modal-body">
-	    			<!-- Lieu & sexe -->
-		    		<div class="row">
-		    			<div class="col-md-6">
-							<input type="text" class="form-control input-sm" placeholder="Lieu" required></input>
-						</div>
-						<div class="col-md-6">
-							<div class="row perso-edit-sex top-margin-5">
-				    			<div class="col-md-6">
-					    			<label class="radio-inline"><input type="radio" name="optradio">Homme</label>
-					    		</div>
-					    		<div class="col-md-6">
-									<label class="radio-inline"><input type="radio" name="optradio">Femme</label>
-								</div>
-	    					</div>
-						</div>
-		    		</div>
-		    		
-		    		<div class="raw top-margin-5">
-		    			<label class="col-md-2">Budget</label>
-
-		    			<div class="col-md-3">
-		    				<input type="text" class="form-control input-sm" placeholder="Min"></input>
-		    			</div>
-		    			<div class="col-md-2">
-		    				<p>-</p>
-		    			</div>
-		    			<div class="col-md-3">
-		    				<input type="text" class="form-control input-sm" placeholder="Max"></input>
-		    			</div>
-		    			<div class="col-md-2">
-		    				<p>euros</p>
-		    			</div>
-		    		</div>
-		    		
-		    		<!-- Date de naissance -->
-		    		<div class="raw top-margin-5">
-		    			<label class="col-md-2">Durée</label>
-		    			
-			    		
-			    			<div class="col-md-4">
-				    			<div class="input-group" id="birthdaypicker">
-				                    <input type="text" class="form-control input-sm" placeholder="Date de début"/>
-				                    <span class="input-group-addon">
-				                        <span class="glyphicon glyphicon-calendar"></span>
-				                    </span>
-				                </div>
+                	<div class="container-fluid">
+                		
+                		<!-- Lieu & sexe -->
+	                	<div class="row">
+			    			<div class="col-md-6">
+								<input type="text" class="form-control input-sm" placeholder="Lieu" required></input>
 							</div>
-							<div class="col-md-4">
-				    			<div class="input-group" id="birthdaypicker">
-				                    <input type="text" class="form-control input-sm" placeholder="Date de fin"/>
-				                    <span class="input-group-addon">
-				                        <span class="glyphicon glyphicon-calendar"></span>
-				                    </span>
-				                </div>
-							
+							<div class="col-md-6">
+								<div class="row perso-edit-sex top-margin-5">
+					    			<div class="col-md-6">
+						    			<label class="radio-inline"><input type="radio" name="optradio">Homme</label>
+						    		</div>
+						    		<div class="col-md-6">
+										<label class="radio-inline"><input type="radio" name="optradio">Femme</label>
+									</div>
+		    					</div>
+							</div>
 			    		</div>
-	    		
-		    		</div>
-		    		<!-- //Date de naissance -->
-		    		
-		    		<div class="raw top-margin-5">
-		    			<label class="col-md-2">Age</label>
-		    			
-			    		<div class="col-md-3">
-		    				<input type="text" class="form-control input-sm" placeholder="Min"></input>
-		    			</div>
-		    			<div class="col-md-2">
-		    				<p>-</p>
-		    			</div>
-		    			<div class="col-md-3">
-		    				<input type="text" class="form-control input-sm" placeholder="Max"></input>
-		    			</div>
-		    			<div class="col-md-2">
-		    				<p>ans</p>
-		    			</div>
-	    		
-		    		</div>
-		    		
-		    		<div class="raw top-margin-5">
-		    			<div class="col-md-6">
-		    				<label class="col-md-2">Animaux d'accompagnie</label>
-		    				<div class="row perso-edit-sex top-margin-5">
-				    			<div class="col-md-6">
-					    			<label class="radio-inline"><input type="radio" name="optradio">oui</label>
-					    		</div>
-					    		<div class="col-md-6">
-									<label class="radio-inline"><input type="radio" name="optradio">non</label>
+                	
+	                	<div class="row top-margin-10">
+			    			<label class="col-md-2">Budget</label>
+	
+			    			<div class="col-md-3">
+			    				<input type="text" class="form-control input-sm" placeholder="Min"></input>
+			    			</div>
+			    			<div class="col-md-1">
+			    				<p>-</p>
+			    			</div>
+			    			<div class="col-md-3">
+			    				<input type="text" class="form-control input-sm" placeholder="Max"></input>
+			    			</div>
+			    			<div class="col-md-1">
+			    				<p>euros</p>
+			    			</div>
+			    		</div>
+			    		
+			    		<!-- Date de naissance -->
+			    		<div class="row top-margin-10">
+			    			<label class="col-md-2">Duree</label>
+			    			
+				    		
+				    			<div class="col-md-4">
+					    			<div class="input-group" id="birthdaypicker">
+					                    <input type="text" class="form-control input-sm" placeholder="Date de debut"/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
 								</div>
-	    					</div>
-		    			</div>
-		    			<div class="col-md-6">
-		    				<label class="col-md-2">Animaux d'accompagnie</label>
-		    				<!-- nationnalite -->
-		    			</div>
-		    		</div>
+								<div class="col-md-4">
+					    			<div class="input-group" id="birthdaypicker">
+					                    <input type="text" class="form-control input-sm" placeholder="Date de fin"/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+								
+				    		</div>
 		    		
-		    		<div class="raw top-margin-5">
-		    			<label class="col-md-4">Langues parlées</label>
-		    		</div>
+			    		</div>
+			    		<!-- //Date de naissance -->
+			    		
+			    		<div class="row top-margin-10">
+			    			<label class="col-md-2">Age</label>
+			    			
+				    		<div class="col-md-3">
+			    				<input type="text" class="form-control input-sm" placeholder="Min"></input>
+			    			</div>
+			    			<div class="col-md-1">
+			    				<p>-</p>
+			    			</div>
+			    			<div class="col-md-3">
+			    				<input type="text" class="form-control input-sm" placeholder="Max"></input>
+			    			</div>
+			    			<div class="col-md-1">
+			    				<p>ans</p>
+			    			</div>
 		    		
-		    		<div class="raw top-margin-5">
-		    			<label class="col-md-4">Ecole</label>
-		    		</div>
+			    		</div>
+			    		
+			    		<div class="row top-margin-10">
+			    			<label class="col-md-6">Animaux d'accompagnie</label>
+					    	<div class="col-md-2">
+						    	<label class="radio-inline"><input type="radio" name="optradio">oui</label>
+						    </div>
+						    <div class="col-md-2">
+								<label class="radio-inline"><input type="radio" name="optradio">non</label>
+							</div>
+		    			</div>
+			    		<div class="row top-margin-10">
+			    				<!-- nationnalite -->
+			    				<label class="col-md-2">Nationnalite</label>
+			    		</div>
+			    		
+			    		<div class="row top-margin-10">
+			    			<label class="col-md-4">Langues parlees</label>
+			    		</div>
+			    		
+			    		<div class="row top-margin-10">
+			    			<label class="col-md-4">Ecole</label>
+			    		</div>
+                	</div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Purchase</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Appliquer</button>
                 </div>
             </div>
         </div>
@@ -542,6 +502,37 @@ ev.target.appendChild(document.getElementById(data));
 	
 	<div id="footer">footer</div>
 	
+	<script type="text/javascript"> 
+		//alert('${userProfile}');
+		//var str = '${userProfile}';
+		//var user = eval('(' + str + ')');
+		var json = '${annonceInfo}';
+		//alert(json);
+		var annonce = JSON.parse(json);
+		document.getElementById("budget").innerHTML = annonce[0]['budget'];
+		document.getElementById("dateD").innerHTML = annonce[0]['date_debut'];
+		document.getElementById("dateF").innerHTML = annonce[0]['date_fin'];
+		document.getElementById("description").innerHTML = annonce[0]['description'];
+		document.getElementById("lieuA").innerHTML = annonce[0]['lieu'];
+		document.getElementById("ageMin").innerHTML = annonce[0]['age_min'];
+		document.getElementById("ageMax").innerHTML = annonce[0]['age_max'];
+		//document.getElementById("situationF").innerHTML = annonce[0]['situationFam'];
+		document.getElementById("langueA").innerHTML = annonce[0]['language'];
+		document.getElementById("ecole").innerHTML = annonce[0]['ecole'];
+		document.getElementById("nationnaliteA").innerHTML = annonce[0]['nationnaliteName'];
+		if(annonce[0]['haspet']==="0")
+			document.getElementById("animalA").innerHTML = "non";
+		else
+			document.getElementById("animalA").innerHTML = "oui";
+		if(annonce[0]['sex']==="1")
+			document.getElementById("sexeA").innerHTML = "Homme";
+		else if(annonce[0]['sex']==="0")
+			document.getElementById("animal").innerHTML = "Femme"; 
+		
+		/* document.getElementById("age").innerHTML = jsGetAge(user[0]['birthday']);
+		document.getElementById("sexe").innerHTML = checkSex(user[0]['sex']);  */
+		
+	</script>
 
 </body>
 </html>

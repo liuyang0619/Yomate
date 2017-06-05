@@ -285,7 +285,7 @@ function jsGetAge(strBirthday) {var returnAge;
 	    		<h4 class="modal-title">Editer votre profil</h4>
 	    	</div>
 	    	<div class="modal-body">
-	    		<!-- Nom & prénom -->
+	    		<!--  & prénom -->
 	    		<div class="row">
 	    			<div class="col-md-6">
 						<input type="text" class="form-control input-sm" placeholder="Nom" required></input>

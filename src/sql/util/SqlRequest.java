@@ -49,6 +49,9 @@ public class SqlRequest {
 			+ "(date_proposer, date_debut, date_fin, proposer, description, budget, nbPersonneBesoin, lieu, description_logement, sex, age_min, age_max, status, haspet, situationFam, ecole, profession, nationnalite)  "
 			+ "VALUES "
 			+ "(###, ###,###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###);";
+	public final static String DELETE_ANNONCE_IMPORTANT_BY_ID = "DELETE FROM yomate.annonce_important WHERE annonce = ###;";
+	public final static String DELETE_ANNONCE_OBLIGATOIRE_BY_ID = "DELETE FROM yomate.annonce_obligatoire WHERE annonce = ###;";
+	public final static String DELETE_ANNONCE_PEUTETRE_BY_ID = "DELETE FROM yomate.annonce_peutetre WHERE annonce = ###;";
 	public final static String DELETE_ANNONCE_PROFILE_LOISIR_BY_ID = "DELETE FROM yomate.annonce_loisir WHERE annonce = ###;";
 	public final static String UPDATE_ANNONCE_PROFILE_LOISIR = "INSERT INTO yomate.annonce_loisir (annonce, loisir) values (###, ###)";
 	public final static String DELETE_ANNONCE_PROFILE_LANGUAGE_BY_ID = "DELETE FROM yomate.annonce_language WHERE annonce = ###;";
@@ -57,6 +60,45 @@ public class SqlRequest {
 	public final static String UPDATE_ANNONCE_PROFILE_PEUTETRE = "INSERT INTO yomate.annonce_peutetre (annonce, critere) values (###, ###)";
 	public final static String UPDATE_ANNONCE_PROFILE_OBLIGATOIRE = "INSERT INTO yomate.annonce_obligatoire (annonce, critere) values (###, ###)";
 	public final static String UPDATE_ANNONCE_PROFILE_IMPORTANT = "INSERT INTO yomate.annonce_important (annonce, critere) values (###, ###)";
+	public final static String CLOSE_ANNONCE = "update yomate.annonce set status = 0 WHERE idAnnonce = ###;";
+	public final static String REOPEN_ANNONCE = "update yomate.annonce set status = 1 WHERE idAnnonce = ###;";
+	public final static String UPDATE_ANNONCE_MAIN_BY_ID = "UPDATE yomate.annonce SET "
+			+ "date_debut = ###, date_fin = ###, description = ###, "
+			+ "budget = ###, nbPersonneBesoin = ###, lieu = ###, description_logement = ###, "
+			+ "sex = ###, age_min = ###, age_max = ###, haspet = ###, situationFam = ###, "
+			+ "ecole = ###, profession = ###, nationnalite = ###  "
+			+ "WHERE idAnnonce = ###;";
+	public final static String SELECT_ANNONCE_BY_ID = "SELECT temp4.idAnnonce, temp4.date_proposer, temp4.date_debut, temp4.date_fin, temp4.proposer, "
+			+ "temp4.description, temp4.budget, temp4.nbPersonneBesoin, temp4.lieu, temp4.description_logement, "
+			+ "temp4.sex, temp4.age_min, temp4.age_max, temp4.status, temp4.haspet, temp4.situationFam, temp4.ecole, "
+			+ "temp4.professionName, temp4.nationnaliteName, GROUP_CONCAT(temp4.loisir SEPARATOR ',') as loisirs, "
+			+ "temp4.languages, temp4.importantcritere, temp4.obligatoirecritere, temp4.peutetrecritere "
+			+ "FROM("
+			+ "SELECT temp3.*, GROUP_CONCAT(temp3.language SEPARATOR ',') as languages "
+			+ "FROM("
+			+ "SELECT temp2.*, GROUP_CONCAT(temp2.important SEPARATOR ',') as importantcritere "
+			+ "FROM("
+			+ "SELECT temp.*, GROUP_CONCAT(temp.obligatoire SEPARATOR ',') as obligatoirecritere "
+			+ "FROM("
+			+ "SELECT u.*, p.profession as professionName, n.nationnalite as nationnaliteName, la.language, "
+			+ "l.loisir, ai.critere as important, ao.critere as obligatoire, GROUP_CONCAT(ap.critere SEPARATOR ',') as peutetrecritere "
+			+ "FROM YOMATE.annonce as u, YOMATE.nationnalite as n, YOMATE.profession as p, "
+			+ "YOMATE.annonce_loisir as ul, YOMATE.loisir as l, YOMATE.annonce_language as ula, "
+			+ "YOMATE.language as la, yomate.annonce_important as ai, yomate.annonce_peutetre as ap, "
+			+ "yomate.annonce_obligatoire as ao "
+			+ "WHERE u.nationnalite = n.id AND u.profession = p.id AND u.idAnnonce = ul.annonce "
+			+ "AND ul.loisir = l.id AND u.idAnnonce = ula.annonce "
+			+ "AND ai.annonce = u.idAnnonce AND ao.annonce = u.idAnnonce AND ap.annonce = u.idAnnonce "
+			+ "AND ula.language = la.id AND u.idAnnonce = ### "
+			+ "group by u.idAnnonce, la.language, l.loisir, ai.critere, ao.critere "
+			+ ") as temp "
+			+ "GROUP BY temp.idAnnonce, temp.loisir, temp.language, temp.important "
+			+ ") as temp2 "
+			+ "GROUP BY temp2.idAnnonce, temp2.loisir, temp2.language"
+			+ ") as temp3 "
+			+ "GROUP BY temp3.idAnnonce, temp3.loisir"
+			+ ") as temp4 "
+			+ "GROUP BY temp4.idAnnonce;";
 //	public final static String ADD_HISTORY_COLO = "INSERT INTO yomate.histoirecolo "
 //			+ "(user1, user2, dateDebut, dateFin, annonce) "
 //			+ "values"
