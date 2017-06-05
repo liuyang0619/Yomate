@@ -37,7 +37,6 @@ public class UserController {
     	pp.setProperty(Profile.MAIN_PORT, "2000");
     	JadeGateway.init(null, pp);
     	Map<String, String> map = new HashMap<String, String>();
-    	//Test the "Login" method 
     	map.put("email", email);
     	map.put("password", password);
     	ActionMessageContent amc = new ActionMessageContent(Constants.Action.LOGIN, map);
@@ -65,9 +64,62 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/signup", method = {RequestMethod.GET, RequestMethod.POST}) //inscription
-	public String inscription(){
-		String pageName = null;
-		//retourner sur la meme page
-		return pageName;
+	public String inscription(
+			@RequestParam(value="nom", required=false) String nom,
+			@RequestParam(value="prenom", required=false) String prenom,
+			@RequestParam(value="email", required=false) String email,
+			@RequestParam(value="password", required=false) String password,
+			@RequestParam(value="sex", required=false) String sex,
+			Model model) {
+
+		Properties pp = new Properties();
+    	pp.setProperty(Profile.MAIN_HOST, "localhost");
+    	pp.setProperty(Profile.MAIN_PORT, "2000");
+    	JadeGateway.init(null, pp);
+    	Map<String, String> map = new HashMap<String, String>();
+    	map.put("nom", nom);
+    	map.put("prenom", prenom);
+    	map.put("email", email);
+    	map.put("password", password);
+    	map.put("sex", sex);
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ACCOUNT, map);
+    	String content = JsonHelper.serilisation(amc);
+    	ProcessBehaviour behaviour = new ProcessBehaviour(content);
+		try {
+			JadeGateway.execute(behaviour);
+		} catch (StaleProxyException e) {
+			e.printStackTrace();
+		} catch (ControllerException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		String result = behaviour.getAnswer();		
+		
+		if (result.equals(Constants.Message.ERROR_WITH_DATABASE)) {
+			model.addAttribute("result", "error");
+			return "inscription";
+		} else {
+			Map<String, String> map2 = new HashMap<String, String>();
+			map2.put("email", email);
+			map2.put("password", password);
+	    	ActionMessageContent amc2 = new ActionMessageContent(Constants.Action.LOGIN, map2);
+	    	String content2 = JsonHelper.serilisation(amc2);
+	    	ProcessBehaviour behaviour2 = new ProcessBehaviour(content2);
+			try {
+				JadeGateway.execute(behaviour2);
+			} catch (StaleProxyException e) {
+				e.printStackTrace();
+			} catch (ControllerException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			String result2 = behaviour2.getAnswer();
+			Map<String, Object>[] res = JsonHelper.deserilisationArray(result2);			
+			model.addAttribute("idUser", (String)res[0].get("idUser"));
+			model.addAttribute("rememberMe", false);
+			return "index";
+		}
 	}
 }

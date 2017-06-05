@@ -58,8 +58,10 @@ function checkCookie() {
     } else {
         // user hasn't logged in
         var p = window.location.href.split("/").pop();
-       	if (p === "" || p === "index.jsp") {
-           	// on the index page
+       	if (p === "" || p.indexOf("index") !== -1 
+       	       	|| p.indexOf("inscription") !== -1 
+       	       	|| p.indexOf("signup") !== -1) {
+           	// on the index/inscription page
            	$('#navbar-loggedIn').hide();
            	$('#navbar-NotLoggedIn').show();
        	} else {
