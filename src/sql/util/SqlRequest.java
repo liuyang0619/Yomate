@@ -49,6 +49,9 @@ public class SqlRequest {
 			+ "(date_proposer, date_debut, date_fin, proposer, description, budget, nbPersonneBesoin, lieu, description_logement, sex, age_min, age_max, status, haspet, situationFam, ecole, profession, nationnalite)  "
 			+ "VALUES "
 			+ "(###, ###,###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###);";
+	public final static String DELETE_ANNONCE_IMPORTANT_BY_ID = "DELETE FROM yomate.annonce_important WHERE annonce = ###;";
+	public final static String DELETE_ANNONCE_OBLIGATOIRE_BY_ID = "DELETE FROM yomate.annonce_obligatoire WHERE annonce = ###;";
+	public final static String DELETE_ANNONCE_PEUTETRE_BY_ID = "DELETE FROM yomate.annonce_peutetre WHERE annonce = ###;";
 	public final static String DELETE_ANNONCE_PROFILE_LOISIR_BY_ID = "DELETE FROM yomate.annonce_loisir WHERE annonce = ###;";
 	public final static String UPDATE_ANNONCE_PROFILE_LOISIR = "INSERT INTO yomate.annonce_loisir (annonce, loisir) values (###, ###)";
 	public final static String DELETE_ANNONCE_PROFILE_LANGUAGE_BY_ID = "DELETE FROM yomate.annonce_language WHERE annonce = ###;";
