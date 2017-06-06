@@ -179,7 +179,8 @@ CREATE TABLE Matching(
 	annonce INT,
     user INT,
     FOREIGN KEY (annonce) REFERENCES Annonce(idAnnonce),
-    FOREIGN KEY (user) REFERENCES User(idUser)
+    FOREIGN KEY (user) REFERENCES user(idUser)
+	UNIQUE(annonce, user)
 );
 
 
