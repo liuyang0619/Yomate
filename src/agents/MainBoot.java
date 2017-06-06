@@ -31,6 +31,8 @@ public class MainBoot {
 			SearchAgent.start();
 			AgentController InvitationAgent = mc.createNewAgent(Constants.Agent.INVITATION_AGENT, "agents.InvitationAgent", null);
 			InvitationAgent.start();
+			AgentController CalculateMatchAgent = mc.createNewAgent(Constants.Agent.CALCULATE_MATCH_AGENT, "agents.CalculateMatchAgent", null);
+			CalculateMatchAgent.start();
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();

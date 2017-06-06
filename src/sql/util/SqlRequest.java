@@ -129,4 +129,6 @@ public class SqlRequest {
 	public final static String SEARCH_ANNONCE_LANGUAGE = "AND alan.language = ### ";
 	public final static String SEARCH_ANNONCE_DESCRIPTION_LOGE = "AND description_logement LIKE ### ";
 	public final static String ADD_USER_TO_ANNONCE = "INSERT INTO annonc_user (annonce, user) VALUES (###, ###);";
+	public final static String GET_USER_RECOMMENDED_BY_ID_ANNONCE = "select u.*, m.rate from yomate.matching as m, yomate.user as u "
+			+ "where m.user = u.idUser AND m.annonce = ###;";
 }
