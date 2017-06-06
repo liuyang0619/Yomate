@@ -100,5 +100,7 @@ INSERT INTO yomate.evaluation
 values
 (1, 2, 3, "Bon colocataire", "2017-09-01");
 
+insert into yomate.matching (annonce, user, rate) values (5, 1, 70), (5, 3, 65), (5, 2, 55);
+
 commit;
 
