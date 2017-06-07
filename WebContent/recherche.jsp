@@ -128,7 +128,7 @@ function setResultList(resultNb, results) {
 
 					<!-- begin datepicker -->
 					<div class = "row top-margin-3">
-						<div class = "col-md-3 search-filter-item-name">PÃ©riode</div>
+						<div class = "col-md-3 search-filter-item-name">Période</div>
 						<div class = "col-md-9">
 							<div class="col-md-2 padding-0" style="font-weight:bold;vertical-align:middle;">Du</div>
 							<div class="col-md-10 padding-0">
@@ -184,7 +184,7 @@ function setResultList(resultNb, results) {
 					<hr class="margin-0"/>
 					<div class="search-profile-priority">Important : </div>
 					<hr class="margin-0"/>
-					<div class="search-profile-priority">Vaut mieux Ãªtre : </div>
+					<div class="search-profile-priority">Vaut mieux être : </div>
 				</div>
 				<!-- //filtre de profil -->
 				
@@ -199,7 +199,7 @@ function setResultList(resultNb, results) {
 					
 					<!-- create annonce button -->
 					<div class = "row top-margin-5">
-						<a class="btn btn-warning search-btn" href="PageAnnonce.jsp"><i class="icon-edit icon-white"></i>Crï¿½ï¿½er votre Annonce</a>
+						<a class="btn btn-warning search-btn" href="PageAnnonce.jsp"><i class="icon-edit icon-white"></i>Créer votre Annonce</a>
 					</div>
 					<!-- create annonce button -->
 					</div>				
@@ -213,7 +213,7 @@ function setResultList(resultNb, results) {
 			 
 				<!-- amelioration de profil -->
 				<div class="search-improve-profile" id="clickable-">
-						<h3>3 Ã©tapes pour un meilleur matching de profile</h3>
+						<h3>3 étapes pour un meilleur matching de profile</h3>
 					<div class="row top-margin-5">
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
@@ -225,13 +225,13 @@ function setResultList(resultNb, results) {
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-question-sign search-improve-icon"></span>
 							</div>
-							<p>RÃ©pondre aux 5 questions</p>
+							<p>Répondre aux 5 questions</p>
 						</div>
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-th-list search-improve-icon"></span>
 							</div>
-							<p>ComplÃ©ter votre profile</p>
+							<p>Compléter votre profile</p>
 						</div>
 					</div>
 				</div>
@@ -239,11 +239,11 @@ function setResultList(resultNb, results) {
 	
 				<!-- resultats de recherche -->
 				<div class="search-result">
-					<div id="result-nb" style="font-size:">RÃ©sultats :</div>
+					<div id="result-nb" style="font-size:">Résultats :</div>
 					<ul class="list-group top-margin-3" id="result-list-group">
 					</ul>
 					<div class="col-md-12" style="text-align:center;color:#000000;" id="no-result">
-						DÃ©solÃ©, aucun rÃ©sultat ne correspond a vos critÃ¨res de sÃ©lection.
+						Désolé, aucun résultat ne correspond a vos critères de sélection.
 					</div>
 				</div>
 				<!-- //resultats de recherche -->
