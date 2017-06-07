@@ -49,3 +49,56 @@ function post(path, params, method) {
     document.body.appendChild(form);
     form.submit();
 }
+
+// CALCULATE BIRTHDAY
+function jsGetAge(strBirthday) {
+	var returnAge;
+	var strBirthdayArr = strBirthday.split("-");
+	var birthYear = strBirthdayArr[0];
+	var birthMonth = strBirthdayArr[1];
+	var birthDay = strBirthdayArr[2];
+
+	d = new Date();
+	var nowYear = d.getFullYear();
+	var nowMonth = d.getMonth() + 1;
+	var nowDay = d.getDate();
+
+	if (nowYear == birthYear) {
+		returnAge = 0;
+	} else {
+		var ageDiff = nowYear - birthYear;
+		if (ageDiff > 0) {
+			if (nowMonth == birthMonth) {
+				var dayDiff = nowDay - birthDay;
+				if (dayDiff < 0) {
+					returnAge = ageDiff - 1;
+				} else {
+					returnAge = ageDiff;
+				}
+			} else {
+				var monthDiff = nowMonth - birthMonth;
+				if (monthDiff < 0) {
+					returnAge = ageDiff - 1;
+				} else {
+					returnAge = ageDiff;
+				}
+			}
+		} else {
+			returnAge = -1;
+		}
+	}
+	return returnAge;
+}
+
+function getSex(string) {
+	if (string === "0")
+		return "Homme";
+	return "Femme";
+}
+
+
+// CAPTICAL LETTER
+function setUCfirst(string) 
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

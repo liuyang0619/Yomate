@@ -464,27 +464,13 @@ from {background-position: 0 0;}
 to {background-position: -400px 0;}
 }
 
-.home-page {
-/*  background:url("../images/a1.png");
-	height: 100%;
-	width: 100%;
-    color:#fff !important;
+.inscription-page {
+	background:url("../images/a1.png");
+	height: auto;
+	width: auto;
 	-webkit-animation: backgroundScroll 80s linear infinite;
 	animation: backgroundScroll 40s linear infinite; 
 	background-size:100% 100%;
-	background-position:top;
-	background-attachment:fixed; 
-	
-	display:block;
-    position:absolute;
-    background:url(../images/a1.png);
-    background-repeat:no-repeat;
-    background-size: 100% 100%;
-    width:100%;
-    height:100%;
-    float:right;
-    bottom:0;
-    right:0; */
 }
 
 .home-text {
@@ -514,13 +500,19 @@ to {background-position: -400px 0;}
 /*-- inscription page --*/
 .inscription-advantage {
 	font-size: 20px;
-	margin-top: 20px;
 	padding-top: 15px;
 	padding-bottom: 5px;
-	margin-bottom:20px;
 	vertical-align: middle;
 }
 
+.inscription-content {
+	margin-top: 20px;
+	margin-bottom:20px;
+	margin-left: 25px;
+	margin-right: 25px;
+	padding-right: 15px;
+	background: rgba(255,255,255,0.95);
+}
 
 .inscription-icon {
 	float: left;
@@ -540,8 +532,8 @@ to {background-position: -400px 0;}
     font-weight: bold;
 }
 .inscription-text-padding {
-    padding-right:10;
-    padding-left:10;
+    padding-right:0;
+    padding-left:0;
     padding-top:20px;
     padding-bottom:0;
    }

@@ -5,14 +5,13 @@
 <!DOCTYPE>
 <html>
 <head>
-<title>Inscription</title>
+<title>Yomate - Inscription</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8" />
 <meta name="keywords" content="Yomate"/>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
+
 <link href="<c:url value="${path}/ressources/css/bootstrap.css" />" rel="stylesheet" type="text/css" media="all" />
 <link href="<c:url value="${path}/ressources/css/font-awesome.css" />" rel="stylesheet" type="text/css" media="all" />
 <link href="<c:url value="${path}/ressources/css/bootstrap-social.css" />" rel="stylesheet" type="text/css" media="all" />
@@ -118,97 +117,81 @@ function hideAllwarnings() {
 <!-- header -->
 	<div id="header"></div>
 <!-- //header -->
-	<div class="container">
-		<div class="row">
+	<div class="container inscription-page">
+		<div class="row inscription-content">
 			<!-- LEFT COLUMN -->
 			<div class="col-md-6">
 				<div class="inscription-advantage">
-					<h3>Pourquoi creer un compte?</h3>
-					<ul class="list-group top-margin-3">
-						<a class="list-group-item">
-							<div style="min-height:100px">
-								<div style="float: left;">
-									<img src="/Yomate/ressources/images/time_clock.png"
-										class="img-thumbnail" style="height: 100px; height: 100px;">
-								</div>
-								<div style="float: left; margin-left: 10px">
-									<p class="list-group-item-text"
-										style="font-weight: bolder; font-size: 25px">Gagner du
-										temps</p>
-									<p class="list-group-item-text" style="font-size: 18px">dans
-										vos recherches</p>
-									<p class="list-group-item-text" style="font-size: 15px">effectuer
-										simplement des recherches ciblees blabalabla</p>
-								</div>
+					<h3>Pourquoi créer un compte ?</h3>
+					<!-- time -->
+					<div class="row top-margin-20" style="min-height:120px">
+						<div class="col-md-12 padding-0">
+							<div class = "col-md-3">
+								<img src="/Yomate/ressources/images/time_clock.png" class="img-thumbnail"
+										style="max-height:100px; max-width:100px">
 							</div>
-						</a>
-						<a class="list-group-item">
-							<div style="min-height:100px">
-								<div style="float: left;">
-									<img src="/Yomate/ressources/images/bell.png" class="img-thumbnail"
-										style="height: 100px; height: 100px;">
-								</div>
-								<div style="float: left; margin-left: 10px">
-									<p class="list-group-item-text"
-										style="font-weight: bolder; font-size: 25px">Soyez les
+							<div class = "col-md-9">
+								<p class="list-group-item-text"
+									style="font-weight: bolder; font-size: 20px">Gagner du temps</p>
+								<p class="list-group-item-text" style="font-size: 18px">dans vos recherches</p>
+								<p class="list-group-item-text" style="font-size: 15px">effectuer
+									simplement des recherches ciblees blabalabla</p>
+							</div>
+						</div>
+					</div>
+					<!-- //time -->
+					
+					<!-- notification -->
+					<div class="row top-margin-3" style="min-height:120px">
+						<div class="col-md-12 padding-0">
+							<div class = "col-md-3">
+								<img src="/Yomate/ressources/images/bell.png" class="img-thumbnail" 
+										style="max-height:100px; max-width:100px">
+							</div>
+							<div class = "col-md-9">
+								<p class="list-group-item-text"
+									style="font-weight: bolder; font-size: 20px">Soyez les
 										premiers informes</p>
-									<p class="list-group-item-text" style="font-size: 18px">dans
-										vos recherches</p>
-									<p class="list-group-item-text" style="font-size: 15px">effectuer
-										simplement des recherches ciblees blabalabla</p>
-								</div>
+								<p class="list-group-item-text" style="font-size: 18px">dans vos recherches</p>
+								<p class="list-group-item-text" style="font-size: 15px">effectuer
+									simplement des recherches ciblees blabalabla</p>
 							</div>
-						</a>
-						<a class="list-group-item">
-							<div style="min-height:100px">
-								<div style="float: left;">
-									<img src="/Yomate/ressources/images/fantasy.png" class="img-thumbnail"
-										style="height: 100px; height: 100px;">
-								</div>
-								<div style="float: left; margin-left: 10px">
-									<p class="list-group-item-text"
-										style="font-weight: bolder; font-size: 25px">Profile
-										matching intellectuel</p>
-									<p class="list-group-item-text" style="font-size: 18px">dans
-										vos recherches</p>
-									<p class="list-group-item-text" style="font-size: 15px">effectuer
-										simplement des recherches ciblees blabalabla</p>
-								</div>
+						</div>
+					</div>
+					<!-- //notification -->
+					
+					<!-- time -->
+					<div class="row top-margin-3" style="min-height:120px">
+						<div class="col-md-12 padding-0">
+							<div class = "col-md-3">
+								<img src="/Yomate/ressources/images/fantasy.png" class="img-thumbnail"
+										style="max-height:100px; max-width:100px">
 							</div>
-						</a>
-						<a class="list-group-item">
-							<div style="min-height:100px">
-								<div style="float: left;">
-									<img src="/Yomate/ressources/images/eye.png" class="img-thumbnail"
-										style="height: 100px; height: 100px;">
-								</div>
-								<div style="float: left; margin-left: 10px">
-									<p class="list-group-item-text"
-										style="font-weight: bolder; font-size: 25px">Visibilité</p>
-									<p class="list-group-item-text" style="font-size: 18px">dans
-										vos recherches</p>
-									<p class="list-group-item-text" style="font-size: 15px">effectuer
-										simplement des recherches ciblees blabalabla</p>
-								</div>
+							<div class = "col-md-9">
+								<p class="list-group-item-text"
+									style="font-weight: bolder; font-size: 20px">Visibilité</p>
+								<p class="list-group-item-text" style="font-size: 18px">dans vos recherches</p>
+								<p class="list-group-item-text" style="font-size: 15px">effectuer
+									simplement des recherches ciblees blabalabla</p>
 							</div>
-						</a>
-
-					</ul>
-				</div>
+						</div>
+					</div>
+					<!-- //time -->
+					</div>
 			</div>
 			<!-- //RIGHT COLUMN -->
 			<div class="col-md-6">
-				<div class="row top-margin-3">
-					<div class="col-md-12 inline-block">
-						<div class="col-md-6 inscription-text-padding inline-block" style="padding-top:100px">
+				<div class="row">
+					<div class="col-md-12 inline-block padding-0">
+						<div class="col-md-6 inscription-text-padding inline-block">
 							<input type="text" class="form-control input-sm" id="nom_signup"
-								style="height: 51px; width: 300px; font-size: 20px;"
+								style="height: 51px; font-size: 20px;"
 								placeholder="Nom"></input>
 						</div>
-						<div class="col-md-6 inscription-text-padding inline-block" style="padding-top:100px">
+						<div class="col-md-6 inscription-text-padding inline-block">
 							<input type="text" class="form-control input-sm" id="prenom_signup"
-								style="height: 51px; width: 300px; font-size: 20px;"
-								placeholder="Prenom"></input>
+								style="height: 51px; font-size: 20px;"
+								placeholder="Prénom"></input>
 						</div>
 					</div>
 				</div>
@@ -219,10 +202,9 @@ function hideAllwarnings() {
 				</div> 
 				
 				<div class="row top-margin-3">
-					<div class="col-md-6 inscription-text-padding"
-						style="padding-left: 30px">
+					<div class="col-md-12 inscription-text-padding">
 						<input type="text" class="form-control input-sm" id="email_signup"
-							style="height: 51px; width: 575px; font-size: 20px;"
+							style="height: 51px; font-size: 20px;"
 							placeholder="Votre email"></input>
 					</div>
 				</div>
@@ -233,15 +215,15 @@ function hideAllwarnings() {
 				</div> 
 				
 				<div class="row top-margin-3">
-					<div class="col-md-12 inline-block">
+					<div class="col-md-12 inline-block padding-0">
 						<div class="col-md-6 inscription-text-padding inline-block">
 							<input type="password" class="form-control input-sm" id="mdp_signup"
-								style="height: 51px; width: 300px; font-size: 20px;"
+								style="height: 51px; font-size: 20px;"
 								placeholder="Mot de passe"></input>
 						</div>
 						<div class="col-md-6 inscription-text-padding inline-block">
 							<input type="password" class="form-control input-sm" id="re_mdp_signup"
-								style="height: 51px; width: 300px; font-size: 20px;"
+								style="height: 51px; font-size: 20px;"
 								placeholder="Confirmation"></input>
 						</div>
 					</div>

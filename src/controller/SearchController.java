@@ -47,14 +47,10 @@ public class SearchController {
 			e.printStackTrace();
 		}
 		String result = behaviour.getAnswer();
-    	
-		if (result.isEmpty()) {
-			model.addAttribute("resultNb", 0);
-		} else {
-			Map<String, Object>[] res = JsonHelper.deserilisationArray(result);			
-			model.addAttribute("resultNb", res.length);
-			model.addAttribute("results", result);
-		}
+
+		System.out.println(result);
+		model.addAttribute("results", result);
+		model.addAttribute("city", city);
 		return "recherche";
 	}
 	

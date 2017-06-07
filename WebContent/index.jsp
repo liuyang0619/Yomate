@@ -106,7 +106,7 @@ function searchcity(city) {
 	     <div class="overlay-desc">
 	     	<div class ="container">
 		        <div class="row">
-		        	<div class="col-md-12 home-text">Trouvez votre colocataire idéal</div>
+		        	<div class="col-md-12 home-text">Trouvez votre colocataire idï¿½al</div>
 		        </div>
 		        <div class="row top-margin-20">
 			        <div class="col-md-12 input-group"
@@ -124,7 +124,7 @@ function searchcity(city) {
 	<!-- //video background -->
 	
 	<!-- page content -->
-	<div class="container-fluid home-page">	
+	<div class="container-fluid">	
 		<!-- research -->		
 		<div class="row index-search">
 			<div class="row bottom-margin-20">
@@ -196,7 +196,7 @@ function searchcity(city) {
 
 		<!-- about us  -->
 		<div class="row banner-info-left text-center bottom-margin-25">
-			<h3>YoMate! Trouvez votre colocataire idéal</h3>
+			<h3>YoMate! Trouvez votre colocataire idï¿½al</h3>
 		</div>
 		<!-- //about us  -->
 	</div>

@@ -108,8 +108,8 @@ function logout() {
 						<ul class="nav navbar-nav navbar-right" id="navbar-loggedIn">
 							<li><a href="/Yomate/index.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
 							<li><a href="/Yomate/search/"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
-							<li><a id="espacePersonnel-href"><i class="glyphicon glyphicon-user"></i>  Espace personel</a></li>
-							<li><a style="cursor: pointer;" onclick="logout()" style="font-size: 12px;">Déconnectez-vous</a></li>
+							<li><a id="espacePersonnel-href"><i class="glyphicon glyphicon-user"></i>  Espace perso</a></li>
+							<li><a style="cursor: pointer; font-size: 12px;" onclick="logout()">Déconnectez-vous</a></li>
 						</ul>
 					  	
 					  	<ul class="nav navbar-nav navbar-right" id="navbar-NotLoggedIn">
@@ -149,7 +149,7 @@ function logout() {
 				<!-- email -->
 	    		<div class="row top-margin-3">
 	    			<div class="col-md-12 ">
-						<input type="text" name="email" id="email_login" class="form-control input-sm" placeholder="Votre email" style="height: 51px; width: 550px; font-size: 20px;" required></input>
+						<input type="text" name="email" id="email_login" class="form-control input-lg" placeholder="Votre email" required></input>
 					</div>
 					
 	    		</div>
@@ -157,7 +157,7 @@ function logout() {
 	    		<!-- mote de passe -->
 	    		<div class="row top-margin-3">
 	    			<div class="col-md-12">
-						<input type="password" name="password" id="pwd_login" class="form-control input-sm" placeholder="Mot de passe" style="height: 51px; width: 550px; font-size: 20px;" required></input>
+						<input type="password" name="password" id="pwd_login" class="form-control input-lg" placeholder="Mot de passe" required></input>
 					</div>
 					
 	    		</div>
@@ -184,7 +184,7 @@ function logout() {
 					</span>
 				</div>
 	    		<!-- //mot de passe oublie -->
-	    		<h3 style= "text-align :center;">____________________________________________________________</h3>
+	    		<hr style="width: 100%; color: black; height: 1px; background-color:#A9A9A9;" />
 	    		<!-- pas encore le compte -->
 	    		<div class= "row top-margin-5" >
 	    			<p style= "text-align :center;">Vous n'avez pas de compte ?</p>
