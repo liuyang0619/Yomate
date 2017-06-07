@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
@@ -98,7 +98,7 @@ function search() {
 	     <div class="overlay-desc">
 	     	<div class ="container">
 		        <div class="row">
-		        	<div class="col-md-12 home-text">Trouvez votre colocataire ideal</div>
+		        	<div class="col-md-12 home-text">Trouvez votre colocataire idéal</div>
 		        </div>
 		        <div class="row top-margin-20">
 			        <div class="col-md-12 input-group"
@@ -188,7 +188,7 @@ function search() {
 
 		<!-- about us  -->
 		<div class="row banner-info-left text-center bottom-margin-25">
-			<h3>YoMate! Trouvez votre colocataire ideal</h3>
+			<h3>YoMate! Trouvez votre colocataire idéal</h3>
 		</div>
 		<!-- //about us  -->
 	</div>
