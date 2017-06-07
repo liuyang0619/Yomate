@@ -111,7 +111,7 @@ public class SqlRequest {
 //			+ "FROM yomate.histoirecolo as h, yomate.user as u, annonce as a "
 //			+ "WHERE (h.user1 = ### OR h.user2 = ###) AND (h.user1 = u.idUser OR h.user2 = u.idUser) "
 //			+ "AND (u.idUser <> ###) AND a.idAnnonce = h.annonce;";
-	public final static String SEARCH_ANNONCE_MAIN = "SELECT  a.*, lan.language as language, loi.loisir as loisir , u.nom as proposer_nom, u.prenom as proposer_prenom, u.age as proposer_age, u.sex as proposer_sex , uphoto.image "
+	public final static String SEARCH_ANNONCE_MAIN = "SELECT  a.*, lan.language as language, loi.loisir as loisir , u.nom as proposer_nom, u.prenom as proposer_prenom, u.birthday as proposer_birthday, u.sex as proposer_sex , uphoto.image "
 			+ "FROM yomate.annonce as a, yomate.annonce_loisir as aloi, yomate.annonce_language as alan, yomate.loisir as loi, yomate.language as lan, yomate.user as u , yomate.user_photo as uphoto "
 			+ "WHERE a.idAnnonce = aloi.annonce AND a.idAnnonce = alan.annonce AND aloi.loisir = loi.id AND alan.language = lan.id AND u.idUser = a.proposer AND uphoto.user = u.idUser ";
 	public final static String SEARCH_ANNONCE_BUDGET = "AND budget<= ### AND budget >= ### ";
