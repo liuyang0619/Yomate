@@ -148,6 +148,7 @@ public class SearchAgent extends Agent{
 				}
 				
 			}
+			sql += " GROUP BY a.idAnnonce ";
 			sql += ";";
 			return sql;
 		}

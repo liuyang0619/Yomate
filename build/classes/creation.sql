@@ -199,3 +199,4 @@ ADD lieu VARCHAR(255);
 ALTER TABLE Matching
 ADD rate INT;
 
+ALTER TABLE yomate.user ADD COLUMN age int;

@@ -113,8 +113,8 @@ public class SimulationJadegateWay {
 //    	map.put("dateFin", "2017-02-01");
 //
 //    	map.put("sex", "1");
-//    	map.put("ageMin", "18");
-//    	map.put("ageMax", "30");
+    	map.put("ageMin", "18");
+    	map.put("ageMax", "30");
 //    	map.put("keyWordLoge", "good,quite");
 //    	map.put("haspet", "0");
 //		map.put("situationFam", "couple");
@@ -123,7 +123,7 @@ public class SimulationJadegateWay {
 //		map.put("nationnalite", "1");
 //    	map.put("loisir", "2");
 //    	map.put("language", "3");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
 //Test the "close annonce" method 
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CLOSE_ANNONCE, map);
@@ -162,8 +162,8 @@ public class SimulationJadegateWay {
 //    	map.put("idUser", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_USER_TO_ANNONCE, map);
 //Test the "get the users recommended by idAnnonce" method 
-    	map.put("idAnnonce", "5");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.GET_USER_MATCHED, map);
+//    	map.put("idAnnonce", "5");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.GET_USER_MATCHED, map);
       	
     	String content = JsonHelper.serilisation(amc);
     	
