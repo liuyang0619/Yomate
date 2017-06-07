@@ -24,6 +24,8 @@ public class Constants {
 		public final static String SEARCH_ANNONCE = "SearchAnnonce";
 		public final static String GET_ANNONCE = "GetAnnonce";
 		public final static String ADD_USER_TO_ANNONCE = "AddUserToAnnonce";
+		public final static String MATCH_ANNONCE = "MatchAnnonce";
+		public final static String GET_USER_MATCHED = "GetUserMatched";
 	}
 	
 	public class Agent{

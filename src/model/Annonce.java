@@ -1,272 +1,252 @@
 package model;
 
 import java.util.List;
+import java.util.Map;
 
 public class Annonce {
-	private String id;
+	private String idAnnonce;
 	private String date_proposer;
 	private String date_debut;
 	private String date_fin;
 	private String description;
 	private String lieu;
 	private String description_logement;
-	private ProfileFiltre profileFiltre;
-	private int budget;
-	private int nbPersonneBesoin;
-	private UserSimple owner;
-	private boolean status;
-	private List<String> listLangue;
-	private List<String> listLoisir;
-	private List<String> listOblig;
-	private List<String> listImport;
-	private List<String> listPeutEtre;
-	private List<UserSimple> listUserIn;
+	private String budget;
+	private String nbPersonneBesoin;
+	private String proposer;
+	private String status;
+	private String languages;
+	private String loisirs;
+	private String obligatoirecritere;
+	private String importantcritere;
+	private String peutEtreCritere;
+	private String sex;
+	private String haspet;
+	private String situationFam;
+	private String ecole;
+	private String professionName;
+	private String nationnaliteName;
+	private String age_min;
+	private String age_max;
 	
-	public Annonce(String id, String date_proposer, String date_debut, String date_fin, String description, String lieu,
-			String description_logement, ProfileFiltre profileFiltre, int budget, int nbPersonneBesoin,
-			UserSimple owner, boolean status) {
-		super();
-		this.id = id;
-		this.date_proposer = date_proposer;
-		this.date_debut = date_debut;
-		this.date_fin = date_fin;
-		this.description = description;
-		this.lieu = lieu;
-		this.description_logement = description_logement;
-		this.profileFiltre = profileFiltre;
-		this.budget = budget;
-		this.nbPersonneBesoin = nbPersonneBesoin;
-		this.owner = owner;
-		this.status = status;
-		//constructor of the lists
+	public Annonce(Map<String, Object> map){
+		idAnnonce = (String) map.get("idAnnonce");
+		date_proposer = (String) map.get("date_proposer");
+		date_debut = (String) map.get("date_debut");
+		date_fin = (String) map.get("date_fin");
+		description = (String) map.get("description");
+		lieu = (String) map.get("lieu");
+		description_logement = (String) map.get("description_logement");
+		budget = (String) map.get("budget");
+		nbPersonneBesoin = (String) map.get("nbPersonneBesoin");
+		proposer = (String) map.get("proposer");
+		status = (String) map.get("status");
+		languages = (String) map.get("languages");
+		loisirs = (String) map.get("loisirs");
+		obligatoirecritere = (String) map.get("obligatoirecritere");
+		importantcritere = (String) map.get("importantcritere");
+		peutEtreCritere = (String) map.get("peutEtreCritere");
+		sex = (String) map.get("sex");
+		haspet = (String) map.get("haspet");
+		situationFam = (String) map.get("situationFam");
+		ecole = (String) map.get("ecole");
+		professionName = (String) map.get("professionName");
+		nationnaliteName = (String) map.get("nationnaliteName");
+		age_min = (String) map.get("age_min");
+		age_max = (String) map.get("age_max");
 	}
 
-
-
-	public String getId() {
-		return id;
+	public String getIdAnnonce() {
+		return idAnnonce;
 	}
 
-
-
-	public void setId(String id) {
-		this.id = id;
+	public void setIdAnnonce(String idAnnonce) {
+		this.idAnnonce = idAnnonce;
 	}
-
-
 
 	public String getDate_proposer() {
 		return date_proposer;
 	}
 
-
-
 	public void setDate_proposer(String date_proposer) {
 		this.date_proposer = date_proposer;
 	}
-
-
 
 	public String getDate_debut() {
 		return date_debut;
 	}
 
-
-
 	public void setDate_debut(String date_debut) {
 		this.date_debut = date_debut;
 	}
-
-
 
 	public String getDate_fin() {
 		return date_fin;
 	}
 
-
-
 	public void setDate_fin(String date_fin) {
 		this.date_fin = date_fin;
 	}
-
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
 
 	public String getLieu() {
 		return lieu;
 	}
 
-
-
 	public void setLieu(String lieu) {
 		this.lieu = lieu;
 	}
-
-
 
 	public String getDescription_logement() {
 		return description_logement;
 	}
 
-
-
 	public void setDescription_logement(String description_logement) {
 		this.description_logement = description_logement;
 	}
 
-
-
-	public ProfileFiltre getProfileFiltre() {
-		return profileFiltre;
-	}
-
-
-
-	public void setProfileFiltre(ProfileFiltre profileFiltre) {
-		this.profileFiltre = profileFiltre;
-	}
-
-
-
-	public int getBudget() {
+	public String getBudget() {
 		return budget;
 	}
 
-
-
-	public void setBudget(int budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
 
-
-
-	public int getNbPersonneBesoin() {
+	public String getNbPersonneBesoin() {
 		return nbPersonneBesoin;
 	}
 
-
-
-	public void setNbPersonneBesoin(int nbPersonneBesoin) {
+	public void setNbPersonneBesoin(String nbPersonneBesoin) {
 		this.nbPersonneBesoin = nbPersonneBesoin;
 	}
 
-
-
-	public UserSimple getOwner() {
-		return owner;
+	public String getProposer() {
+		return proposer;
 	}
 
-
-
-	public void setOwner(UserSimple owner) {
-		this.owner = owner;
+	public void setProposer(String proposer) {
+		this.proposer = proposer;
 	}
 
-
-
-	public boolean isStatus() {
+	public String isStatus() {
 		return status;
 	}
 
-
-
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-
-
-	public List<String> getListLangue() {
-		return listLangue;
+	public String getLanguages() {
+		return languages;
 	}
 
-
-
-	public void setListLangue(List<String> listLangue) {
-		this.listLangue = listLangue;
+	public void setLanguages(String languages) {
+		this.languages = languages;
 	}
 
-
-
-	public List<String> getListLoisir() {
-		return listLoisir;
+	public String getLoisirs() {
+		return loisirs;
 	}
 
-
-
-	public void setListLoisir(List<String> listLoisir) {
-		this.listLoisir = listLoisir;
+	public void setLoisirs(String loisirs) {
+		this.loisirs = loisirs;
 	}
 
-
-
-	public List<String> getListOblig() {
-		return listOblig;
+	public String getObligatoirecritere() {
+		return obligatoirecritere;
 	}
 
-
-
-	public void setListOblig(List<String> listOblig) {
-		this.listOblig = listOblig;
+	public void setObligatoirecritere(String obligatoirecritere) {
+		this.obligatoirecritere = obligatoirecritere;
 	}
 
-
-
-	public List<String> getListImport() {
-		return listImport;
+	public String getImportantcritere() {
+		return importantcritere;
 	}
 
-
-
-	public void setListImport(List<String> listImport) {
-		this.listImport = listImport;
+	public void setImportantcritere(String importantcritere) {
+		this.importantcritere = importantcritere;
 	}
 
-
-
-	public List<String> getListPeutEtre() {
-		return listPeutEtre;
+	public String getPeutEtreCritere() {
+		return peutEtreCritere;
 	}
 
-
-
-	public void setListPeutEtre(List<String> listPeutEtre) {
-		this.listPeutEtre = listPeutEtre;
+	public void setPeutEtreCritere(String peutEtreCritere) {
+		this.peutEtreCritere = peutEtreCritere;
 	}
 
-
-
-	public List<UserSimple> getListUserIn() {
-		return listUserIn;
+	public String isSex() {
+		return sex;
 	}
 
-
-
-	public void setListUserIn(List<UserSimple> listUserIn) {
-		this.listUserIn = listUserIn;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
+	public String isHaspet() {
+		return haspet;
+	}
+
+	public void setHaspet(String haspet) {
+		this.haspet = haspet;
+	}
+
+	public String getSituationFam() {
+		return situationFam;
+	}
+
+	public void setSituationFam(String situationFam) {
+		this.situationFam = situationFam;
+	}
+
+	public String getEcole() {
+		return ecole;
+	}
+
+	public void setEcole(String ecole) {
+		this.ecole = ecole;
+	}
+
+	public String getProfessionName() {
+		return professionName;
+	}
+
+	public void setProfessionName(String professionName) {
+		this.professionName = professionName;
+	}
+
+	public String getNationnaliteName() {
+		return nationnaliteName;
+	}
+
+	public void setNationnaliteName(String nationnaliteName) {
+		this.nationnaliteName = nationnaliteName;
+	}
+
+	public String getAgeMin() {
+		return age_min;
+	}
+
+	public void setAgeMin(String age_min) {
+		this.age_min = age_min;
+	}
+
+	public String getAgeMax() {
+		return age_max;
+	}
+
+	public void setAgeMax(String age_max) {
+		this.age_max = age_max;
+	}
 	
 	
-	public class ProfileFiltre{
-		protected boolean sex;
-		protected boolean haspet;
-		protected String situationFam;
-		protected String ecole;
-		protected String profession;
-		protected String nationnalite;
-		protected int ageMin;
-		protected int ageMax;
-	}
 }

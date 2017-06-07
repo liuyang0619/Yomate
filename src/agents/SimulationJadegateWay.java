@@ -33,7 +33,7 @@ public class SimulationJadegateWay {
 //    	map.put("sex", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ACCOUNT, map);
 //Test the "select user's profil by using id" method 
-//    	map.put("idUser", "1");
+//    	map.put("idUser", "2");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map);
 //Test the "update the profil" method
 //    	map.put("idUser", "3");
@@ -157,10 +157,13 @@ public class SimulationJadegateWay {
 //Test the "find the annonce by id" method 
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.GET_ANNONCE, map);
-//Test the "find the annonce by id" method 
+//Test the "add user to annonce" method 
+//    	map.put("idAnnonce", "5");
+//    	map.put("idUser", "1");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_USER_TO_ANNONCE, map);
+//Test the "get the users recommended by idAnnonce" method 
     	map.put("idAnnonce", "5");
-    	map.put("idUser", "1");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_USER_TO_ANNONCE, map);
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.GET_USER_MATCHED, map);
       	
     	String content = JsonHelper.serilisation(amc);
     	

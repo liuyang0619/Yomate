@@ -12,16 +12,20 @@ public class SqlRequest {
 			+ "YOMATE.user_language as ula, YOMATE.language as la "
 			+ "WHERE temp.idUser = ula.user AND ula.language = la.id "
 			+ "GROUP BY temp.idUser;";
-	public final static String SELECT_PROFIL_BY_ID = "SELECT temp.*, GROUP_CONCAT(la.language SEPARATOR ',') as language "
-			+ " FROM (SELECT u.idUser, u.nom, u.prenom, u.birthday, u.sex, u.email, u.haspet, "
-			+ "u.situationFam, u.ecole, p.profession, n.nationnalite, GROUP_CONCAT(l.loisir SEPARATOR ',') as loisir "
-			+ "FROM YOMATE.USER as u, YOMATE.nationnalite as n, YOMATE.profession as p, "
-			+ "YOMATE.user_loisir as ul, YOMATE.loisir as l "
-			+ "where u.nationnalite = n.id and u.profession = p.id and u.idUser = ul.user "
-			+ "and ul.loisir = l.id AND u.idUser = ### "
-			+ "GROUP BY u.idUser) as temp, "
-			+ "YOMATE.user_language as ula, YOMATE.language as la "
-			+ "WHERE temp.idUser = ula.user AND ula.language = la.id "
+	public final static String SELECT_PROFIL_BY_ID = "SELECT temp.*, GROUP_CONCAT(la.language SEPARATOR ',') as language  FROM "
+			+ "("
+			+ "SELECT u.idUser, u.nom, u.prenom, u.birthday, u.sex, u.email, u.haspet, u.situationFam, u.ecole, p.profession, n.nationnalite, up.image, GROUP_CONCAT(l.loisir SEPARATOR ',') as loisir "
+			+ "FROM YOMATE.USER as u "
+			+ "LEFT JOIN YOMATE.user_loisir as ul on u.idUser = ul.user "
+			+ "LEFT JOIN YOMATE.loisir as l on ul.loisir = l.id "
+			+ "LEFT JOIN YOMATE.nationnalite as n ON u.nationnalite = n.id "
+			+ "LEFT JOIN  YOMATE.profession as p ON u.profession = p.id "
+			+ "LEFT JOIN  YOMATE.user_photo as up ON u.idUser = up.user "
+			+ "where u.idUser = ### "
+			+ "GROUP BY u.idUser "
+			+ ") as temp "
+			+ "LEFT JOIN  YOMATE.user_language as ula on temp.idUser = ula.user "
+			+ "LEFT JOIN  YOMATE.language as la on ula.language = la.id "
 			+ "GROUP BY temp.idUser;";
 	public final static String CHECK_IF_USER_EXIST_BY_EMAIL_PW = "SELECT idUser FROM yomate.user "
 			+ "WHERE email= ### AND password= ###;";
@@ -125,4 +129,6 @@ public class SqlRequest {
 	public final static String SEARCH_ANNONCE_LANGUAGE = "AND alan.language = ### ";
 	public final static String SEARCH_ANNONCE_DESCRIPTION_LOGE = "AND description_logement LIKE ### ";
 	public final static String ADD_USER_TO_ANNONCE = "INSERT INTO annonc_user (annonce, user) VALUES (###, ###);";
+	public final static String GET_USER_RECOMMENDED_BY_ID_ANNONCE = "select u.*, m.rate from yomate.matching as m, yomate.user as u "
+			+ "where m.user = u.idUser AND m.annonce = ###;";
 }
