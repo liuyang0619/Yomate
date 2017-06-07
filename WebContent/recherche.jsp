@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
@@ -8,10 +8,8 @@
 
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="keywords" content="Yomate"/>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 
 <!-- css -->
@@ -48,7 +46,6 @@
 </script>
 <!-- //header & footer -->
 
-
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
 <!-- datepicker1 -->
@@ -66,6 +63,33 @@ $(function () {
 });
 </script>
 <!-- //datepicker2 -->
+
+<!-- set result list -->
+<script type="text/javascript">
+function setResultList(resultNb, results) {
+ 	if (resultNb === 0) {
+		
+	} else {
+		var listitem = 
+			"<a class='list-group-item'>" +
+				"<div>" +
+		    	"<h4 class='list-group-item-heading' style = 'font-size:18px'>Annonce 1113</h4>" +
+			    "<div style = 'height:100px'>" +
+			    	"<div style='float: left;'>" +
+			    		"<img src='/Yomate/ressources/images/1.png' class='img-thumbnail' style = 'height:100px;height:100px;'>" +
+					"</div>" +
+					"<div style='float: left;margin-left:10px'>" +
+						"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>Jean Gregory </p>" +
+						"<p class='list-group-item-text'  style = 'font-weight: bolder'>26 ans, Paris, france</p>" +
+					"</div>" +
+				"</div>" +
+		    "</div>" +
+			"</a>";
+		$('#result-list-group').append(listitem);
+	}
+}
+</script>
+<!-- //set result list -->
 
 </head>
 
@@ -104,7 +128,7 @@ $(function () {
 
 					<!-- begin datepicker -->
 					<div class = "row top-margin-3">
-						<div class = "col-md-3 search-filter-item-name">P��riode</div>
+						<div class = "col-md-3 search-filter-item-name">Période</div>
 						<div class = "col-md-9">
 							<div class="col-md-2 padding-0" style="font-weight:bold;vertical-align:middle;">Du</div>
 							<div class="col-md-10 padding-0">
@@ -160,7 +184,7 @@ $(function () {
 					<hr class="margin-0"/>
 					<div class="search-profile-priority">Important : </div>
 					<hr class="margin-0"/>
-					<div class="search-profile-priority">Vaut mieux ��tre : </div>
+					<div class="search-profile-priority">Vaut mieux être : </div>
 				</div>
 				<!-- //filtre de profil -->
 				
@@ -175,7 +199,7 @@ $(function () {
 					
 					<!-- create annonce button -->
 					<div class = "row top-margin-5">
-						<a class="btn btn-warning search-btn" href="PageAnnonce.jsp"><i class="icon-edit icon-white"></i>Cr�er votre Annonce</a>
+						<a class="btn btn-warning search-btn" href="PageAnnonce.jsp"><i class="icon-edit icon-white"></i>Cr��er votre Annonce</a>
 					</div>
 					<!-- create annonce button -->
 					</div>				
@@ -187,9 +211,9 @@ $(function () {
 			 <!-- RIGHT COLUMN -->
 			 <div class = "col-md-8">
 			 
-				<!-- am��lioration de profil -->
-				<div class="search-improve-profile">
-						<h3>3 �tapes pour un meilleur matching de profile</h3>
+				<!-- amelioration de profil -->
+				<div class="search-improve-profile" id="clickable-">
+						<h3>3 étapes pour un meilleur matching de profile</h3>
 					<div class="row top-margin-5">
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
@@ -201,70 +225,28 @@ $(function () {
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-question-sign search-improve-icon"></span>
 							</div>
-							<p>R�pondre aux 5 questions</p>
+							<p>Répondre aux 5 questions</p>
 						</div>
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-th-list search-improve-icon"></span>
 							</div>
-							<p>Compl�ter votre profile</p>
+							<p>Compléter votre profile</p>
 						</div>
 					</div>
 				</div>
-				<!-- //am��lioration de profil -->
+				<!-- //am??lioration de profil -->
 	
-				<!-- r��sultats de recherche -->
+				<!-- resultats de recherche -->
 				<div class="search-result">
-					<h3>R�sultats :</h3>
-					<ul class="list-group top-margin-3">
-						<a class="list-group-item">
-							<div>
-						    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1113</h4>
-							    <div style = "height:100px">
-							    	<div style="float: left;">
-							    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-									</div>
-									<div style="float: left;margin-left:10px">
-										<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-										<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-										<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
-									</div>
-								</div>
-						    </div>
-						</a>
-						<a class="list-group-item">
-							<div>
-						    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
-							    <div style = "height:100px">
-							    	<div style="float: left;">
-							    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-									</div>
-									<div style="float: left;margin-left:10px">
-										<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-										<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-										<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
-									</div>
-								</div>
-						    </div>
-						</a>
-						<a class="list-group-item">
-							<div>
-						    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
-							    <div style = "height:100px">
-							    	<div style="float: left;">
-							    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-									</div>
-									<div style="float: left;margin-left:10px">
-										<p class = "list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-										<p class = "list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-										<p class = "list-group-item-text">Je cherche une colocataire...</p>					  
-									</div>
-								</div>
-						    </div>
-						</a>
+					<div id="result-nb" style="font-size:">Résultats :</div>
+					<ul class="list-group top-margin-3" id="result-list-group">
 					</ul>
+					<div class="col-md-12" style="text-align:center;color:#000000;" id="no-result">
+						Désolé, aucun résultat ne correspond a vos critères de sélection.
+					</div>
 				</div>
-				<!-- //r��sultats de recherche -->
+				<!-- //resultats de recherche -->
 			</div>
 			 <!-- //RIGHT COLUMN -->
 	 	</div>
@@ -274,6 +256,21 @@ $(function () {
 <!-- footer -->
 	<div id="footer"></div>
 <!-- //footer -->
+
+<!-- for autoComplete working -->
+<script type="text/javascript">
+	setResultList('${resultNb}', '${results}');
+</script>
+<!-- //for autoComplete working -->
+
+<!-- clickable area -->
+<script type="text/javascript">
+$(".myBox").click(function() {
+  window.location = $(this).find("a").attr("href"); 
+  return false;
+});
+</script>
+<!-- //clickable area -->
 
 <!-- for autoComplete working -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBYWCDw3df4KmbFKZ-9e51hPizIipPnlM&libraries=places&callback=initAutocomplete"

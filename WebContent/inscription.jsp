@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <title>Inscription</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="keywords" content="Yomate"/>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -184,7 +184,7 @@ function hideAllwarnings() {
 								</div>
 								<div style="float: left; margin-left: 10px">
 									<p class="list-group-item-text"
-										style="font-weight: bolder; font-size: 25px">VIsibilite</p>
+										style="font-weight: bolder; font-size: 25px">Visibilité</p>
 									<p class="list-group-item-text" style="font-size: 18px">dans
 										vos recherches</p>
 									<p class="list-group-item-text" style="font-size: 15px">effectuer
@@ -266,7 +266,7 @@ function hideAllwarnings() {
 				
 				<div class= "row top-margin-3"">
 					<div class="col-md-12 inscription-text-padding" style="padding-left:30px">
-						<p><input type="checkbox" id="accept_signup" name="accept" value="0"/> J'accept Les conditions generales </p>  
+						<p><input type="checkbox" id="accept_signup" name="accept" value="0"/> J'accept les conditions générales </p>  
 					</div>
 				</div> 
 				
@@ -279,7 +279,7 @@ function hideAllwarnings() {
 				<div class= "row top-margin-3" >
 					<div class="col-md-12 inscription-text-padding" style="text-align :center;">
 						<a class="btn btn-warning btn-search" onclick="signup()">
-						<i class="icon-edit icon-white"></i>Creer mon compte</a> 
+						<i class="icon-edit icon-white"></i>Créer mon compte</a> 
 					</div>
 				</div> 
 				<div class= "row top-margin-3 bottom-margin-20" >

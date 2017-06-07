@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 
 <html>
@@ -68,16 +68,24 @@ function GetRequestResult(id, remember) {
 
 <script type="text/javascript">
 function search() {
+	var city = document.getElementById("search-city").value;
+	if (city != "") {
+    	var res = city.split(",");
+    	searchcity(res[0].toLowerCase());
+    }
+}
+
+function searchcity(city) {
 	var user = getCookie("idUser");
     if (user == "") {
     	$('#header #login').modal('show');
     } else {
-    	var city = document.getElementById("search-city").value;
     	if (city != "") {
     		post('search/' + city);
         }
-   	}
+    }
 }
+
 </script>
 
 <body>
@@ -98,14 +106,14 @@ function search() {
 	     <div class="overlay-desc">
 	     	<div class ="container">
 		        <div class="row">
-		        	<div class="col-md-12 home-text">Trouvez votre colocataire ideal</div>
+		        	<div class="col-md-12 home-text">Trouvez votre colocataire idéal</div>
 		        </div>
 		        <div class="row top-margin-20">
 			        <div class="col-md-12 input-group"
 						style="margin-top: 0px; positon: relative; margin-bottom: 80px">
 						<input type="text" id="search-city" class="form-control"
-							placeholder="Nom de ville" autocomplete="on"> <span
-							class="input-group-btn">
+							placeholder="Nom de ville" autocomplete="on"> 
+						<span class="input-group-btn">
 							<button class="btn button-action btn-search" onclick="search()">Recherche</button>
 						</span>
 					</div>
@@ -127,13 +135,13 @@ function search() {
 			<div class="row bottom-margin-20" style="text-align: center;">
 				<span class=" index-span col-md-12 text-center"> <span
 					class=" index-span " style="padding-right: 20px"> <a
-						href="http://localhost:8080/Yomate/">Paris</a>
+						style="cursor: pointer;" onclick="searchcity('paris')">Paris</a>
 				</span> <span class="index-span" style="padding-right: 20px"> <a
-						href="http://localhost:8080/Yomate/">Lyon</a>
+						style="cursor: pointer;" onclick="searchcity('lyon')">Lyon</a>
 				</span> <span class="index-span " style="padding-right: 20px"> <a
-						href="http://localhost:8080/Yomate/">ile de France</a>
+						style="cursor: pointer;" onclick="searchcity('toulouse')">Toulouse</a>
 				</span> <span class="index-span " style="padding-right: 20px"> <a
-						href="http://localhost:8080/Yomate/">Compiegne</a>
+						style="cursor: pointer;" onclick="searchcity('compiegne')">Compiegne</a>
 				</span>
 				</span>
 			</div>
@@ -188,7 +196,7 @@ function search() {
 
 		<!-- about us  -->
 		<div class="row banner-info-left text-center bottom-margin-25">
-			<h3>YoMate! Trouvez votre colocataire ideal</h3>
+			<h3>YoMate! Trouvez votre colocataire idéal</h3>
 		</div>
 		<!-- //about us  -->
 	</div>

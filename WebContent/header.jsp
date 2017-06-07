@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 <html>
 <head/>
@@ -46,11 +46,11 @@ function checkCookie() {
 			// passes on every "a" tag
 			$(".navbar-default .navbar-nav a").each(function() {
 				// set espacePersonnel href
-				var a = document.getElementById('espacePersonnel-href'); //or grab it by tagname etc
-				a.href = "/Yomate/espacePersonnel/"+user;
+				var aEp = document.getElementById('espacePersonnel-href'); //or grab it by tagname etc
+				aEp.href = "/Yomate/espacePersonnel/"+user;
 				
 				// checks if its the same on the address bar
-				if (url == (this.href)) {
+				if (this.href !== "" && url.indexOf(this.href) !== -1) {
 				    $(this).closest("li").addClass("active");
 				}
 			});
@@ -107,9 +107,9 @@ function logout() {
 					<div class="collapse navbar-collapse nav-wil" id="myNavBar">
 						<ul class="nav navbar-nav navbar-right" id="navbar-loggedIn">
 							<li><a href="/Yomate/index.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
-							<li><a href="/Yomate/recherche.jsp"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
+							<li><a href="/Yomate/search/"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
 							<li><a id="espacePersonnel-href"><i class="glyphicon glyphicon-user"></i>  Espace personel</a></li>
-							<li><a onclick="logout()" style="font-size: 12px;">Déconnectez-vous</a></li>
+							<li><a style="cursor: pointer;" onclick="logout()" style="font-size: 12px;">Déconnectez-vous</a></li>
 						</ul>
 					  	
 					  	<ul class="nav navbar-nav navbar-right" id="navbar-NotLoggedIn">
@@ -142,7 +142,7 @@ function logout() {
 	    		<!-- //warning -->
 				<div class="row top-margin-0">
 					<div class="col-md-12" style="text-align:center;color:#ff0000;" id="warning-msg">
-						This is some text in a div element.
+						warning msg
 					</div>
 				</div>
 				<!-- //warning -->
@@ -194,7 +194,7 @@ function logout() {
 	    		<div class= "row top-margin-0" >
 					<div class="col-md-12 inscription-text-padding" style="text-align :center;">
 						<a class="btn btn-warning btn-search" href="inscription.jsp">
-						<i class="icon-edit icon-white" ></i>Creer mon compte</a> 
+						<i class="icon-edit icon-white" ></i>Créer mon compte</a> 
 					</div>
 				</div> 
 	    		<!-- //creer un compte -->

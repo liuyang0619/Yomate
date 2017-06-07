@@ -52,3 +52,7 @@ MTPs-Main-Container.txt
 /build/
 
 *.classpath
+.classpath
+APDescription.txt
+build/classes/sqlproperties
+src/sqlproperties

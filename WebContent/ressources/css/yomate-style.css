@@ -24,6 +24,7 @@ body a:hover{
 }
 hr { width:100%; height:1px; background: #fff }
 
+a { cursor: pointer; }
 
 /*-- margin & padding & sizes--*/
 .top-margin-0 {
@@ -503,7 +504,7 @@ to {background-position: -400px 0;}
   position: absolute;
   top: 60%; 
   right: 0; 
-  bottom: 0; 
+  bottom: 10%; 
   left: 0;
   align-items: center;
   justify-content: center;

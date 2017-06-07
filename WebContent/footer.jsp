@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
 					</span> <span class="index-span " style="padding-right: 30px">
 							<a href="#">Contact</a>
 					</span> <span class="index-span" style="padding-right: 30px">
-							<a href="#">Politique de confidentialite</a>
+							<a href="#">Politique de confidentialité</a>
 					</span>
 					</span>
 				</div>
