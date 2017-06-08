@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <title>Espace Personnel</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="keywords" content="Yomate"/>
 
 <!-- css -->
@@ -41,7 +41,7 @@
 <!-- birthday picker -->
 <script type="text/javascript">
 $(function () {
-    $('#birthdaypicker').datetimepicker({format: 'DD/MM/YYYY'});
+    $('#birthdaypicker').datetimepicker({format: 'YYYY/MM/DD'});
 });
 </script>
 <!-- //birthday picker -->
@@ -62,50 +62,71 @@ function checkSex(strSex) {
 }
 </script>
 <!-- //check sex -->
-
-<!-- calculate age -->
+<!-- check haspet -->
 <script type="text/javascript">
-/*根据出生日期算出年龄*/
-function jsGetAge(strBirthday) {var returnAge;
-			var strBirthdayArr = strBirthday.split("-");
-			var birthYear = strBirthdayArr[0];
-			var birthMonth = strBirthdayArr[1];
-			var birthDay = strBirthdayArr[2];
-
-			d = new Date();
-			var nowYear = d.getFullYear();
-			var nowMonth = d.getMonth() + 1;
-			var nowDay = d.getDate();
-
-			if (nowYear == birthYear) {
-				returnAge = 0;//同年 则为0岁  
-			} else {
-				var ageDiff = nowYear - birthYear; //年之差  
-				if (ageDiff > 0) {
-					if (nowMonth == birthMonth) {
-						var dayDiff = nowDay - birthDay;//日之差  
-						if (dayDiff < 0) {
-							returnAge = ageDiff - 1;
-						} else {
-							returnAge = ageDiff;
-						}
-					} else {
-						var monthDiff = nowMonth - birthMonth;//月之差  
-						if (monthDiff < 0) {
-							returnAge = ageDiff - 1;
-						} else {
-							returnAge = ageDiff;
-						}
-					}
-				} else {
-					returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天  
-				}
-			}
-			return returnAge;//返回周岁年龄  
-		}
+function checkHasPet(strPet) {
+	var haspet;
+	if (strPet === "0")
+	{
+		haspet = "non";
+	}
+	else if (strPet === "1")
+	{
+		haspet = "oui";
+	}
+	return haspet;
+}
 </script>
-<!-- //calculate age -->
+<!-- //check haspet -->
 
+<!-- radiobutton sex -->
+<script type="text/javascript">
+	function GetRadioValue(RadioName){
+    var obj;    
+    obj=document.getElementsByName(RadioName);
+    if(obj!=null){
+        var i;
+        for(i=0;i<obj.length;i++){
+            if(obj[i].checked){
+                return obj[i].value;            
+            }
+        }
+    }
+    return null;
+}
+</script>
+<!-- radiobutton sex -->
+
+<script type="text/javascript">
+function setResultList(jsonResults) {
+	if (jsonResults === "") {
+		$('#result-nb').hide();
+		$('#no-result').show();
+	} else {
+		$('#no-result').hide();
+		var results = JSON.parse(jsonResults);
+		for (var i = 0; i < results.length; i++) {
+			var listitem = 
+				"<a href=/Yomate/annonce/afficher/"+results[i]['idAnnonce']+" class='list-group-item'>" +
+					"<div>" +
+			    	"<h4 class='list-group-item-heading' style = 'font-size:18px'>Annonce 00" + results[i]['idAnnonce'] + "</h4>" +
+				    "<div style = 'height:100px'>" +
+				    	"<div style='float: left;'>" +
+				    		"<img src='/Yomate/ressources/" + results[i]['image'] + "' class='img-thumbnail' style = 'height:100px;height:100px;'>" +
+						"</div>" +
+						"<div style='float: left;margin-left:10px'>" +
+							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>" + setUCfirst(results[i]['proposer_prenom']) + " "+ results[i]['proposer_nom'].toUpperCase() + "</p>" +
+							"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ getSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ setUCfirst(results[i]['lieu']) + ", France</p>" +
+							"<p class='list-group-item-text'>"+ results[i]['description'] + "</p>" +
+						"</div>" +
+					"</div>" +
+			    "</div>" +
+				"</a>";
+			$('#favorite-list-group').append(listitem);
+		}
+	}
+}
+</script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
 	
@@ -140,38 +161,38 @@ function jsGetAge(strBirthday) {var returnAge;
 									<div class = "row">
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Situation:</span>
-											<span id = "situation">Etudiant</span>
+											<span id = "profession"></span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Animal de compagnie:</span>
-											<span id = "haspet">Non</span>
+											<span id = "haspet"></span>
 										</div>
 									</div>
 									<div class = "row">
 										<div class = "col-md-6">
-											<span style = "font-weight: bold">Nationnalité:</span>
-											<span id = "nationnalite">Française</span>
+											<span style = "font-weight: bold">Nationnalit�:</span>
+											<span id = "nationnalite"></span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Langue:</span>
-											<span id = "langue">Français, Chinois</span>
+											<span id = "langue"></span>
 										</div>
 									</div>
 									<div class = "row">
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Situation familiale:</span>
-											<span>Célibataire</span>
+											<span id ="situationFam"></span>
 										</div>
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Loisir:</span>
-											<span id = "loisir">Basketball</span>
+											<span id = "loisir"></span>
 										</div>
 									</div>
 									
 									<!-- Trigger the personal info modal with a button -->
 									<div class = "row">
 										<div class = "col-md-12">
-											<button class = "btn btn-success search-btn perso-edit-btn" data-toggle="modal" data-target="#editInfo">Editer  <span class="glyphicon glyphicon-edit"></span></button>
+											<button class = "btn btn-success search-btn perso-edit-btn" data-toggle="modal" data-target="#editInfo" onclick="editer()">Editer  <span class="glyphicon glyphicon-edit"></span></button>
 										</div>
 									</div>
 								</div>
@@ -185,7 +206,7 @@ function jsGetAge(strBirthday) {var returnAge;
 				</div>
 				<div class="col-md-4">
 					<div class="row" style = "text-align:center">
-		                <a class = "btn btn-warning search-btn href="/Yomate/PageAnnonce.jsp">Créer une annonce</a>					
+		                <a class = "btn btn-warning search-btn href="/Yomate/PageAnnonce.jsp">Cr�er une annonce</a>					
 		            </div>
 				</div>
 			</div>
@@ -196,76 +217,19 @@ function jsGetAge(strBirthday) {var returnAge;
 						<div id="horizontalTabAnnonce">
 							<ul class="resp-tabs-list">
 							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Annonces favoris</span></li>
-							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-1" role="tab"><span>Mes annonces</span></li>
+							 
 							</ul>				  	 
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-									<ul class="list-group">
-										<a class="list-group-item">
-									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1113</h4>
-										    <div style = "height:100px">
-										    	<div style="float: left;">
-										    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-												</div>
-												<div style="float: left;margin-left:10px">
-													<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-													<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-													<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
-												</div>
-												<button class = "button button-caution button-circle button-small perso-rm-btn"><i class="glyphicon glyphicon-trash"></i></button> 
-											</div>
-										</a>
-										<a class="list-group-item">
-									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
-										    <div style = "height:100px">
-										    	<div style="float: left;">
-										    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-												</div>
-												<div style="float: left;margin-left:10px">
-													<p class="list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-													<p class="list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-													<p class="list-group-item-text">Je cherche une colocataire...</p>  					  
-												</div>
-												<button class = "button button-caution button-circle button-small perso-rm-btn"><i class="glyphicon glyphicon-trash"></i></button> 
-											</div>
-										</a>
-										<a class="list-group-item">
-									    	<h4 class="list-group-item-heading" style = "font-size:18px">Annonce 1543</h4>
-										    <div style = "height:100px">
-										    	<div style="float: left;">
-										    		<img src="/Yomate/ressources/images/1.png" class="img-thumbnail" style = "height:100px;height:100px;">
-												</div>
-												<div style="float: left;margin-left:10px">
-													<p class = "list-group-item-text"  style = "font-weight: bolder; font-size:25px">Jean Gregory </p>
-													<p class = "list-group-item-text"  style = "font-weight: bolder">26 ans, Paris, france</p>
-													<p class = "list-group-item-text">Je cherche une colocataire...</p>					  
-												</div>
-												<button class = "button button-caution button-circle button-small perso-rm-btn"><i class="glyphicon glyphicon-trash"></i></button> 
-											</div>
-										</a>
+									<ul class="list-group top-margin-3" id="favorite-list-group">
 									</ul>
-								</div>
-								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<ul class="list-group">
-										<a class="list-group-item">Annonce1</a>
-										<a class="list-group-item">Annonce2</a>
-										<a class="list-group-item">Annonce3</a>
-										<a class="list-group-item">Annonce4</a>
-										<a class="list-group-item">Annonce5</a>
-									</ul>
+									<div class="col-md-12" style="text-align:center;color:#000000;" id="no-favorite">
+										Vous n'avais pas d'annonce favoris, veuillez trouver les annonces.
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<ul class="list-group" style = "border-radius:5px 5px 5px 5px; border:3px solid #FF66FF;">
-						<li class="list-group-item">Avis 1</li>
-						<li class="list-group-item">Avis 2</li>
-						<li class="list-group-item">Avis 3</li>
-						<li class="list-group-item">Avis 1</li>
-						<li class="list-group-item">Avis 1</li>
-					</ul>		
 				</div>
 			</div>
 			
@@ -285,25 +249,32 @@ function jsGetAge(strBirthday) {var returnAge;
 	    		<h4 class="modal-title">Editer votre profil</h4>
 	    	</div>
 	    	<div class="modal-body">
-	    		<!--  & prénom -->
+	    		<!-- Nom & pr�nom -->
 	    		<div class="row">
 	    			<div class="col-md-6">
-						<input type="text" class="form-control input-sm" placeholder="Nom" required></input>
+						<input id = "reNom" type="text" class="form-control input-sm" placeholder="Nom"  required></input>
 					</div>
 					<div class="col-md-6">
-						<input type="text" class="form-control input-sm" placeholder="Prénom" required></input>
+						<input id = "rePrenom" type="text" class="form-control input-sm" placeholder="Pr�nom" required></input>
 					</div>
 	    		</div>
 	    		<!-- //Nom & prénom -->
 	    		
 	    		<!-- Sexe -->
 	    		<div class="row perso-edit-sex top-margin-5">
-	    			<div class="col-md-6">
-		    			<label class="radio-inline"><input type="radio" name="optradio">Homme</label>
-		    		</div>
-		    		<div class="col-md-6">
-						<label class="radio-inline"><input type="radio" name="optradio">Femme</label>
-					</div>
+	    			<form id="sex" name="sex" method="post" action="">
+	    				<div class="col-md-6">
+		    				<label>
+		    					<input class="radio-inline" id = "sex-homme" type="radio" name="groupsex" value="homme">Homme
+		    				</label>
+		    			</div>
+		    			<div class="col-md-6">
+		    				<label>
+								<input id = "sex-femme" class="radio-inline" type="radio" name="groupsex" value="femme">Femme
+							</label>
+							
+						</div>
+					</form>
 	    		</div>
 	    		<!-- //Sexe -->
 	    		
@@ -311,7 +282,7 @@ function jsGetAge(strBirthday) {var returnAge;
 	    		<div class="row top-margin-5">
 	    			<div class="col-md-12">
 		    			<div class="input-group" id="birthdaypicker">
-		                    <input type="text" class="form-control input-sm" placeholder="Date de naissance"/>
+		                    <input type="text" class="form-control input-sm" id = "birthdaytext" placeholder="Date de naissance"/>
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
@@ -324,13 +295,12 @@ function jsGetAge(strBirthday) {var returnAge;
 	    		<div class="row top-margin-10">
 	    			<label class="col-md-4" for="situation">Situation/Profession</label>
 	    			<div class="form-group col-md-8">
-						<select id="selectSituation" name="selectSituation" class="form-control">
+						<select id="selectProfession" name="selectProfession" class="form-control">
 							<option value="0" selected disabled></option>
-							<option value="1">Etudiant</option>
-							<option value="2">Salarié</option>
-							<option value="3">Retraité(e)</option>
-							<option value="4">APL</option>
-							<option value="5">Autre</option>
+							<option value="1">�tudiant</option>
+							<option value="2">salari�</option>
+							<option value="3">retrait�</option>
+							<option value="4">autre cadres</option>
 					    </select>
 					</div>
 	    		</div>
@@ -342,9 +312,9 @@ function jsGetAge(strBirthday) {var returnAge;
 	    			<div class="form-group col-md-8">
 						<select id="selectSituation" name="selectSituationFamiliale" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="1">Célibataire</option>
-							<option value="2">En couple</option>
-							<option value="3">Marié(e)</option>
+							<option value="1">C�libataire</option>
+							<option value="2">Couple</option>
+							<option value="3">Mari�</option>
 					    </select>
 					</div>
 	    		</div>
@@ -352,41 +322,71 @@ function jsGetAge(strBirthday) {var returnAge;
 	    		
 	    		<!-- Nationalité-->
 	    		<div class="row">
-	    			<label class="col-md-4" for="nationalite">Nationalité</label>
-	    			<div class="col-md-8">
-	    				
+	    			<label class="col-md-4" for="selectnationalite">Nationalit�</label>
+	    			<div class="col-md-8 form-group">
+	    				<select id="selectNationnalite" name="selectNationnalite" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="1">Fran�aise</option>
+							<option value="2">Chinoise</option>
+							<option value="3">Italienne</option>
+							<option value="4">Russee</option>
+							<option value="5">Bahamienne</option>
+							<option value="6">Autre</option>
+					    </select>
 					</div>
 	    		</div>
-	    		<!-- //Nationalité-->
+	    		<!-- //Nationalit�-->
 	    		
-	    		<!-- Langue parlée & Loisirs-->
+	    		<!-- Langue parl� & Loisirs-->
 	    		<div class="row">
-	    			<!-- Langue parlée-->
-	    			<div class="col-md-6">
-	    			
-	    			</div>
-	    			<!-- Langue parlée-->
-	    			
+	    			<!-- Langue parl�-->
+	    			<label class="col-md-4" for="selectLangue">Language</label>
+	    			<div class="col-md-8 form-group">
+	    				<select id="selectLangue" name="selectLangue" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="1">Fran�aise</option>
+							<option value="2">Chinoise</option>
+							<option value="3">Italienne</option>
+							<option value="4">Russee</option>
+							<option value="5">Bahamienne</option>
+							<option value="6">Autre</option>
+					    </select>
+					</div>
+				</div>
+	    		<!-- Langue parl�-->
+	    		<div class="row">
 	    			<!-- Loisirs-->
-	    			<div class="col-md-6">
-	    			</div>
-	    			<!-- //Loisirs-->
+	    				<label class="col-md-4" for="selectLoisir">Loisir</label>
+	    				<div class="col-md-8 form-group">
+	    				<select id="selectLoisir" name="selectLoisir" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="1">voyage</option>
+							<option value="2">sport</option>
+							<option value="3">cuisine</option>
+							<option value="4">jeux vid�o</option>
+							<option value="5">lecture</option>
+							<option value="6">Autre</option>
+					    </select>
+					</div>
 	    		</div>
-	    		<!-- //Langue parlée & Loisirs-->
-
+	    			<!-- //Loisirs-->
+	    		
 	    	</div>
+	    		<!-- //Langue parl� & Loisirs-->
+
+	    	
 	    	<div class="modal-footer">
 	    		<div class = "row">
 	    			<div class="perso-edit-footer">
 	    				<button type="button" class="btn button-caution button-pill" data-dismiss="modal">Annuler</button>
-	    				<button type="button" class="btn button-action button-pill" data-dismiss="modal">Valider</button>
+	    				<button type="button" class="btn button-action button-pill" data-dismiss="modal" onclick="editer()">Valider</button>
 	    			</div>
 	    		</div>
 	    	</div>
 	    </div>
 	    <!-- //Modal content-->
-  	</div>
-</div>
+  </div>
+ </div>
 <!-- //Personal info Modal -->
 
 
@@ -412,26 +412,86 @@ function jsGetAge(strBirthday) {var returnAge;
 		});		
 	});		
 </script>
-<!-- variable -->
-	<script type="text/javascript"> 
-		//alert('${userProfile}');
-		//var str = '${userProfile}';
-		//var user = eval('(' + str + ')');
-		var json = '${userProfile}';
-		//alert(json);
-		var user = JSON.parse(json);
-		document.getElementById("nom").innerHTML = user[0]['nom'];
-		document.getElementById("prenom").innerHTML = user[0]['prenom'];
-		document.getElementById("age").innerHTML = jsGetAge(user[0]['birthday']);
-		document.getElementById("sexe").innerHTML = checkSex(user[0]['sex']);
-		
-		
-		
-		
-		
-	</script>
-<!-- //variable -->
+<!-- initialize variable -->
+<script type="text/javascript"> 
+	//alert('${userProfile}');
+	var json = '${userProfile}';
+	var user = JSON.parse(json);
+	document.getElementById("nom").innerHTML = user[0]['nom'];
+	document.getElementById("prenom").innerHTML = user[0]['prenom'];
+	document.getElementById("age").innerHTML = jsGetAge(user[0]['birthday']);
+	document.getElementById("sexe").innerHTML = checkSex(user[0]['sex']);
+	document.getElementById("profession").innerHTML = user[0]['profession'];
+	document.getElementById("haspet").innerHTML = checkHasPet(user[0]['haspet']);
+	document.getElementById("nationnalite").innerHTML = user[0]['nationnalite'];
+	document.getElementById("langue").innerHTML = user[0]['language'];
+	document.getElementById("situationFam").innerHTML = user[0]['situationFam'];
+	document.getElementById("loisir").innerHTML = user[0]['loisir'];
+</script>
+<!-- //initialize variable -->
+<!-- initialize annonce favorite -->
+<script type="text/javascript">
+setResultList('${AnnonceFavorite}');
+</script>
+<!-- //initialize annonce favorite -->
 <!-- //tab switching -->
+<script type="text/javascript"> 
+function editer() {
+	document.getElementById("reNom").value = document.getElementById("nom").innerHTML;
+	document.getElementById("rePrenom").value = document.getElementById("prenom").innerHTML;
+	//radiobutton for sex
+	if (document.getElementById("sexe").innerHTML === "homme"){
+		document.getElementById("sex-homme").checked = true;
+	}
+	else{
+		document.getElementById("sex-femme").checked = true;
+	}
+	document.getElementById("birthdaytext").value = user[0]['birthday'].split('-').join('/');
+	//choose for profession
+	if (document.getElementById("profession").innerHTML === "etudiant"){
+		document.getElementById("selectProfession").value = 1;
+	}
+	else if (document.getElementById("profession").innerHTML === "salarie"){
+		document.getElementById("selectProfession").value = 2;
+	}
+	else if (document.getElementById("profession").innerHTML === "retraite"){
+		document.getElementById("selectProfession").value = 3;
+	}
+	else{
+		document.getElementById("selectProfession").value = 4;
+	}
+	//choose for family situation 
+	if (document.getElementById("situationFam").innerHTML === "C�libataire"){
+		document.getElementById("selectSituation").value = 1;
+	}
+	else if (document.getElementById("situationFam").innerHTML === "Couple"){
+		document.getElementById("selectSituation").value = 2;
+	}
+	else if (document.getElementById("situationFam").innerHTML === "Mari�"){
+		document.getElementById("selectSituation").value = 3;
+	}
+	//choose for nationnalite
+	if (document.getElementById("nationnalite").innerHTML === "Fran�aise"){
+		document.getElementById("selectNationnalite").value = 1;
+	}
+	else if (document.getElementById("nationnalite").innerHTML === "Chinoise"){
+		document.getElementById("selectNationnalite").value = 2;
+	}
+	else if (document.getElementById("nationnalite").innerHTML === "Italienne"){
+		document.getElementById("selectNationnalite").value = 3;
+	}
+	else if (document.getElementById("nationnalite").innerHTML === "Russee"){
+		document.getElementById("selectNationnalite").value = 4;
+	}
+	else if (document.getElementById("nationnalite").innerHTML === "Bahamienne"){
+		document.getElementById("selectNationnalite").value = 4;
+	}
+	else{
+		document.getElementById("selectNationnalite").value = 5;
+	}
+}
+
+</script>
 
 </body>
 
