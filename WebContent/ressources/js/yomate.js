@@ -102,3 +102,22 @@ function setUCfirst(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+//initialize select's value
+//select-> id of select
+function setSelector(select,val) {
+	var tag = "0";
+	for(var i=0;i<document.getElementById(select).options.length;i++)
+    {
+        if(document.getElementById(select).options[i].value == val)
+        {
+            document.getElementById(select).options[i].selected = true;
+            tag = "1";
+            break;
+        }
+        if (tag === "0"){
+        	document.getElementById(select).options[i].selected = true;
+        }
+    }
+	
+}

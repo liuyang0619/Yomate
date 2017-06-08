@@ -52,11 +52,11 @@ function checkSex(strSex) {
 	var sexe;
 	if (strSex === "0")
 	{
-		sexe = "homme";
+		sexe = "Homme";
 	}
 	else if (strSex === "1")
 	{
-		sexe = "femme";
+		sexe = "Femme";
 	}
 	return sexe;
 }
@@ -96,14 +96,62 @@ function checkHasPet(strPet) {
 }
 </script>
 <!-- radiobutton sex -->
+<!-- calculate age -->
+<script type="text/javascript">
+function jsGetAge(strBirthday) {
+	var returnAge;
+	var strBirthdayArr = strBirthday.split("-");
+	var birthYear = strBirthdayArr[0];
+	var birthMonth = strBirthdayArr[1];
+	var birthDay = strBirthdayArr[2];
 
+	d = new Date();
+	var nowYear = d.getFullYear();
+	var nowMonth = d.getMonth() + 1;
+	var nowDay = d.getDate();
+
+	if (nowYear == birthYear) {
+		returnAge = 0;
+	} else {
+		var ageDiff = nowYear - birthYear;
+		if (ageDiff > 0) {
+			if (nowMonth == birthMonth) {
+				var dayDiff = nowDay - birthDay;
+				if (dayDiff < 0) {
+					returnAge = ageDiff - 1;
+				} else {
+					returnAge = ageDiff;
+				}
+			} else {
+				var monthDiff = nowMonth - birthMonth;
+				if (monthDiff < 0) {
+					returnAge = ageDiff - 1;
+				} else {
+					returnAge = ageDiff;
+				}
+			}
+		} else {
+			returnAge = -1;
+		}
+	}
+	return returnAge;
+}
+</script>
+<!-- //calculate age -->
+<!-- captical letter -->
+<script type="text/javascript">
+function setUCfirst(string) 
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+</script>
+<!-- //captical letter -->
 <script type="text/javascript">
 function setResultList(jsonResults) {
 	if (jsonResults === "") {
-		$('#result-nb').hide();
-		$('#no-result').show();
+		$('#no-favorite').show();
 	} else {
-		$('#no-result').hide();
+		$('#no-favorite').hide();
 		var results = JSON.parse(jsonResults);
 		for (var i = 0; i < results.length; i++) {
 			var listitem = 
@@ -116,7 +164,7 @@ function setResultList(jsonResults) {
 						"</div>" +
 						"<div style='float: left;margin-left:10px'>" +
 							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>" + setUCfirst(results[i]['proposer_prenom']) + " "+ results[i]['proposer_nom'].toUpperCase() + "</p>" +
-							"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ getSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ setUCfirst(results[i]['lieu']) + ", France</p>" +
+							"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ checkSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ setUCfirst(results[i]['lieu']) + ", France</p>" +
 							"<p class='list-group-item-text'>"+ results[i]['description'] + "</p>" +
 						"</div>" +
 					"</div>" +
@@ -127,6 +175,26 @@ function setResultList(jsonResults) {
 	}
 }
 </script>
+<!-- select -->
+<script type="text/javascript">
+function setSelector(select,val) {
+	var tag = "0";
+	for(var i=0;i<document.getElementById(select).options.length;i++)
+    {
+        if(document.getElementById(select).options[i].value == val)
+        {
+            document.getElementById(select).options[i].selected = true;
+            tag = "1";
+            break;
+        }
+        if (tag === "0"){
+        	document.getElementById(select).options[i].selected = true;
+        }
+    }
+	
+}
+</script>
+<!-- //selector -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
 	
@@ -265,7 +333,7 @@ function setResultList(jsonResults) {
 	    			<form id="sex" name="sex" method="post" action="">
 	    				<div class="col-md-6">
 		    				<label>
-		    					<input class="radio-inline" id = "sex-homme" type="radio" name="groupsex" value="homme">Homme
+		    					<input id = "sex-homme" class="radio-inline" type="radio" name="groupsex" value="homme">Homme
 		    				</label>
 		    			</div>
 		    			<div class="col-md-6">
@@ -297,10 +365,10 @@ function setResultList(jsonResults) {
 	    			<div class="form-group col-md-8">
 						<select id="selectProfession" name="selectProfession" class="form-control">
 							<option value="0" selected disabled></option>
-							<option value="1">étudiant</option>
-							<option value="2">salarié</option>
-							<option value="3">retraité</option>
-							<option value="4">autre cadres</option>
+							<option value="étudiant">étudiant</option>
+							<option value="salarié">salarié</option>
+							<option value="retraité">retraité</option>
+							<option value="autre cadres">autre cadres</option>
 					    </select>
 					</div>
 	    		</div>
@@ -312,9 +380,10 @@ function setResultList(jsonResults) {
 	    			<div class="form-group col-md-8">
 						<select id="selectSituation" name="selectSituationFamiliale" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="1">Célibataire</option>
-							<option value="2">Couple</option>
-							<option value="3">Marié</option>
+							<option value="Célibataire">Célibataire</option>
+							<option value="Couple">Couple</option>
+							<option value="Marié">Marié</option>
+							<option value="Autre">Autre</option>
 					    </select>
 					</div>
 	    		</div>
@@ -326,12 +395,12 @@ function setResultList(jsonResults) {
 	    			<div class="col-md-8 form-group">
 	    				<select id="selectNationnalite" name="selectNationnalite" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="1">Française</option>
-							<option value="2">Chinoise</option>
-							<option value="3">Italienne</option>
-							<option value="4">Russee</option>
-							<option value="5">Bahamienne</option>
-							<option value="6">Autre</option>
+							<option value="Française">Française</option>
+							<option value="Chinoise">Chinoise</option>
+							<option value="Italienne">Italienne</option>
+							<option value="Russee">Russee</option>
+							<option value="Bahamienne">Bahamienne</option>
+							<option value="Autre">Autre</option>
 					    </select>
 					</div>
 	    		</div>
@@ -344,12 +413,12 @@ function setResultList(jsonResults) {
 	    			<div class="col-md-8 form-group">
 	    				<select id="selectLangue" name="selectLangue" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="1">Française</option>
-							<option value="2">Chinoise</option>
-							<option value="3">Italienne</option>
-							<option value="4">Russee</option>
-							<option value="5">Bahamienne</option>
-							<option value="6">Autre</option>
+							<option value="Française">Française</option>
+							<option value="Chinoise">Chinoise</option>
+							<option value="Italienne">Italienne</option>
+							<option value="Russee">Russee</option>
+							<option value="Bahamienne">Bahamienne</option>
+							<option value="Autre">Autre</option>
 					    </select>
 					</div>
 				</div>
@@ -360,12 +429,12 @@ function setResultList(jsonResults) {
 	    				<div class="col-md-8 form-group">
 	    				<select id="selectLoisir" name="selectLoisir" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="1">voyage</option>
-							<option value="2">sport</option>
-							<option value="3">cuisine</option>
-							<option value="4">jeux vidéo</option>
-							<option value="5">lecture</option>
-							<option value="6">Autre</option>
+							<option value="voyage">voyage</option>
+							<option value="sport">sport</option>
+							<option value="cuisine">cuisine</option>
+							<option value="jeux vidéo">jeux vidéo</option>
+							<option value="lecture">lecture</option>
+							<option value="Autre">Autre</option>
 					    </select>
 					</div>
 	    		</div>
@@ -431,6 +500,7 @@ function setResultList(jsonResults) {
 <!-- //initialize variable -->
 <!-- initialize annonce favorite -->
 <script type="text/javascript">
+var jsonAnnonce = '${AnnonceFavorite}'
 setResultList('${AnnonceFavorite}');
 </script>
 <!-- //initialize annonce favorite -->
@@ -440,7 +510,7 @@ function editer() {
 	document.getElementById("reNom").value = document.getElementById("nom").innerHTML;
 	document.getElementById("rePrenom").value = document.getElementById("prenom").innerHTML;
 	//radiobutton for sex
-	if (document.getElementById("sexe").innerHTML === "homme"){
+	if (document.getElementById("sexe").innerHTML === "Homme"){
 		document.getElementById("sex-homme").checked = true;
 	}
 	else{
@@ -448,47 +518,12 @@ function editer() {
 	}
 	document.getElementById("birthdaytext").value = user[0]['birthday'].split('-').join('/');
 	//choose for profession
-	if (document.getElementById("profession").innerHTML === "etudiant"){
-		document.getElementById("selectProfession").value = 1;
-	}
-	else if (document.getElementById("profession").innerHTML === "salarie"){
-		document.getElementById("selectProfession").value = 2;
-	}
-	else if (document.getElementById("profession").innerHTML === "retraite"){
-		document.getElementById("selectProfession").value = 3;
-	}
-	else{
-		document.getElementById("selectProfession").value = 4;
-	}
-	//choose for family situation 
-	if (document.getElementById("situationFam").innerHTML === "Célibataire"){
-		document.getElementById("selectSituation").value = 1;
-	}
-	else if (document.getElementById("situationFam").innerHTML === "Couple"){
-		document.getElementById("selectSituation").value = 2;
-	}
-	else if (document.getElementById("situationFam").innerHTML === "Marié"){
-		document.getElementById("selectSituation").value = 3;
-	}
-	//choose for nationnalite
-	if (document.getElementById("nationnalite").innerHTML === "Française"){
-		document.getElementById("selectNationnalite").value = 1;
-	}
-	else if (document.getElementById("nationnalite").innerHTML === "Chinoise"){
-		document.getElementById("selectNationnalite").value = 2;
-	}
-	else if (document.getElementById("nationnalite").innerHTML === "Italienne"){
-		document.getElementById("selectNationnalite").value = 3;
-	}
-	else if (document.getElementById("nationnalite").innerHTML === "Russee"){
-		document.getElementById("selectNationnalite").value = 4;
-	}
-	else if (document.getElementById("nationnalite").innerHTML === "Bahamienne"){
-		document.getElementById("selectNationnalite").value = 4;
-	}
-	else{
-		document.getElementById("selectNationnalite").value = 5;
-	}
+	setSelector("selectProfession",document.getElementById("profession").innerHTML);
+	setSelector("selectSituation",document.getElementById("situationFam").innerHTML);
+	setSelector("selectNationnalite",document.getElementById("nationnalite").innerHTML);
+	setSelector("selectLoisir",document.getElementById("loisir").innerHTML);
+	setSelector("selectLangue",document.getElementById("langue").innerHTML);
+	
 }
 
 </script>
