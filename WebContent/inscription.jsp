@@ -195,11 +195,12 @@ function hideAllwarnings() {
 						</div>
 					</div>
 				</div>
-				<div class= "row top-margin-0" >
-					<div class="col-md-12" style="text-align:center;color:#ff0000;" id="warning-msg-nom">
-						Saisissez votre nom, svp.
-					</div>
-				</div> 
+				
+				<div class="alert alert-danger" role="alert" id="warning-msg-nom">
+				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				  <span class="sr-only">Error:</span>
+				  	Saisissez votre nom, svp.
+				</div>
 				
 				<div class="row top-margin-3">
 					<div class="col-md-12 inscription-text-padding">
@@ -208,12 +209,11 @@ function hideAllwarnings() {
 							placeholder="Votre email"></input>
 					</div>
 				</div>
-				<div class= "row top-margin-0" >
-					<div class="col-md-12" style="text-align:center;color:#ff0000;" id="warning-msg-email">
-						Saisissez une adresse email valide, svp.
-					</div>
-				</div> 
-				
+				<div class="alert alert-danger" role="alert" id="warning-msg-email">
+				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				  <span class="sr-only">Error:</span>
+				  	Saisissez une adresse email valide, svp.
+				</div>
 				<div class="row top-margin-3">
 					<div class="col-md-12 inline-block padding-0">
 						<div class="col-md-6 inscription-text-padding inline-block">
@@ -228,36 +228,32 @@ function hideAllwarnings() {
 						</div>
 					</div>
 				</div>
-				<div class= "row top-margin-0" >
-					<div class="col-md-12" style="text-align:center;color:#ff0000;" id="warning-msg-mdp">
-						Erreur de mot de passe.
-					</div>
-				</div> 
-				
+				<div class="alert alert-danger" role="alert" id="warning-msg-mdp">
+				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				  <span class="sr-only">Error:</span>
+				  	Erreur de mot de passe.
+				</div>
 				<div class= "row top-margin-3">
 					<div class="col-md-12 inline-block inscription-text-padding" style="padding-left:30px" id="sex_signup">
 						<input type="radio" name="sex" value="0" style="font-size: 20px;"> Homme
 						<input type="radio" name="sex" value="1" style="font-size: 20px;"> Femme
 					</div>
 				</div>
-				<div class= "row top-margin-0" >
-					<div class="col-md-12" style="text-align:center;color:#ff0000;" id="warning-msg-sex">
-						Choisissez votre sexe, svp.
-					</div>
-				</div> 
-				
+				<div class="alert alert-danger" role="alert" id="warning-msg-sex">
+				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				  <span class="sr-only">Error:</span>
+				  	Choisissez votre sexe, svp.
+				</div>				
 				<div class= "row top-margin-3"">
 					<div class="col-md-12 inscription-text-padding" style="padding-left:30px">
 						<p><input type="checkbox" id="accept_signup" name="accept" value="0"/> J'accept les conditions générales </p>  
 					</div>
 				</div> 
-				
-				<div class= "row top-margin-0" >
-					<div class="col-md-12" style="text-align:center;color:#ff0000;" id="warning-msg-accept">
-						Acceptez la Condition générale, svp.
-					</div>
-				</div> 
-				
+				<div class="alert alert-danger" role="alert" id="warning-msg-accept">
+				  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				  <span class="sr-only">Error:</span>
+				  	Acceptez la Condition générale, svp.
+				</div>			
 				<div class= "row top-margin-3" >
 					<div class="col-md-12 inscription-text-padding" style="text-align :center;">
 						<a class="btn btn-warning btn-search" onclick="signup()">

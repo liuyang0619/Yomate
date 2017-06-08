@@ -108,7 +108,8 @@ function logout() {
 						<ul class="nav navbar-nav navbar-right" id="navbar-loggedIn">
 							<li><a href="/Yomate/index.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
 							<li><a href="/Yomate/search/"><i class="glyphicon glyphicon-search"></i>  Recherche</a></li>
-							<li><a id="espacePersonnel-href"><i class="glyphicon glyphicon-user"></i>  Espace perso</a></li>
+							<li><a id="espacePersonnel-href"><i class="glyphicon glyphicon-user"></i>  Mon Espace</a></li>
+							<li><a href="/Yomate/messagerie.jsp"><i class="glyphicon glyphicon-envelope"></i>  Message</a></li>
 							<li><a style="cursor: pointer; font-size: 12px;" onclick="logout()">Déconnectez-vous</a></li>
 						</ul>
 					  	
