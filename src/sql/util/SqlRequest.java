@@ -22,11 +22,11 @@ public class SqlRequest {
 			+ "LEFT JOIN  YOMATE.profession as p ON u.profession = p.id "
 			+ "LEFT JOIN  YOMATE.user_photo as up ON u.idUser = up.user "
 			+ "where u.idUser = ### "
-			+ "GROUP BY u.idUser "
+			+ "GROUP BY u.idUser,u.nom,u.prenom,u.birthday,u.sex,u.email,u.haspet,u.situationFam,u.ecole,u.profession,n.nationnalite,up.image "
 			+ ") as temp "
 			+ "LEFT JOIN  YOMATE.user_language as ula on temp.idUser = ula.user "
 			+ "LEFT JOIN  YOMATE.language as la on ula.language = la.id "
-			+ "GROUP BY temp.idUser;";
+			+ "GROUP BY temp.idUser,temp.nom,temp.prenom,temp.birthday,temp.sex,temp.email,temp.haspet,temp.situationFam,temp.ecole,temp.profession,temp.nationnalite,temp.image;";
 	public final static String CHECK_IF_USER_EXIST_BY_EMAIL_PW = "SELECT idUser FROM yomate.user "
 			+ "WHERE email= ### AND password= ###;";
 	public final static String CREATE_USER_COMPTE = "INSERT INTO yomate.user (nom, prenom, email, password, sex) VALUES "
