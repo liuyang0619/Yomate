@@ -46,6 +46,19 @@ $(function () {
 </script>
 <!-- //birthday picker -->
 
+<!-- check value vide -->
+<script type="text/javascript">
+function checkVide(input,value) {
+	if (value === "null"){
+		
+	}
+	else{
+		document.getElementById(input).innerHTML = value;
+	}
+}
+</script>
+<!-- //check value vide -->
+
 <!-- check sex -->
 <script type="text/javascript">
 function checkSex(strSex) {
@@ -65,7 +78,7 @@ function checkSex(strSex) {
 <!-- check haspet -->
 <script type="text/javascript">
 function checkHasPet(strPet) {
-	var haspet;
+	var haspet = "non";
 	if (strPet === "0")
 	{
 		haspet = "non";
@@ -99,6 +112,9 @@ function checkHasPet(strPet) {
 <!-- calculate age -->
 <script type="text/javascript">
 function jsGetAge(strBirthday) {
+	if (strBirthday === null){
+		return -1;
+	}
 	var returnAge;
 	var strBirthdayArr = strBirthday.split("-");
 	var birthYear = strBirthdayArr[0];
@@ -195,6 +211,7 @@ function setSelector(select,val) {
 }
 </script>
 <!-- //selector -->
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
 	
@@ -213,7 +230,7 @@ function setSelector(select,val) {
 				</div>
 				<div class="col-md-10">
 					<p style = "font-weight:bolder;font-size:25px"><span id="nom"></span> <span id="prenom"></span></p>
-					<p><span id="sexe"></span>, <span id="age"></span> ans</p>
+					<p><span id="sexe"></span><span id="age"></span></p>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -226,6 +243,16 @@ function setSelector(select,val) {
 							</ul>				  	 
 							<div class="resp-tabs-container perso-profile-info">
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Lieu:</span>
+											<span id = "lieu"></span>
+										</div>
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Ecole: </span>
+											<span id = "ecole"></span>
+										</div>
+									</div>
 									<div class = "row">
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Situation:</span>
@@ -359,6 +386,37 @@ function setSelector(select,val) {
 	    		</div>
 	    		<!-- //Date de naissance -->
 	    		
+	    		<!-- pet -->
+	    		<div class="row perso-edit-sex top-margin-5">
+	    			<form id="sex" name="hasPet" method="post" action="">
+	    				<div class="col-md-6">
+		    				<label>
+		    					<input id = "haspet-yes" class="radio-inline" type="radio" name="grouphaspet" value="yes">Have pet
+		    				</label>
+		    			</div>
+		    			<div class="col-md-6">
+		    				<label>
+								<input id = "haspet-no" class="radio-inline" type="radio" name="grouphaspet" value="no">Haven't pet
+							</label>
+							
+						</div>
+					</form>
+	    		</div>
+	    		<!-- //pet -->
+	    		
+	    		<!-- lieu & ecole -->
+	    		<div class="row">
+	    			<div class="col-md-6">
+	    				<label class="col-md-4" for="reLieu">Lieu</label>
+						<input id = "reLieu" type="text" class="form-control input-sm" placeholder="Lieu"  required></input>
+					</div>
+					<div class="col-md-6">
+					<label class="col-md-4" for="reEcole">Ecole</label>
+						<input id = "reEcole" type="text" class="form-control input-sm" placeholder="Ecole" required></input>
+					</div>
+	    		</div>
+	    		<!-- //lieu & ecole -->
+	    		
 	    		<!-- Situation -->
 	    		<div class="row top-margin-10">
 	    			<label class="col-md-4" for="situation">Situation/Profession</label>
@@ -448,7 +506,7 @@ function setSelector(select,val) {
 	    		<div class = "row">
 	    			<div class="perso-edit-footer">
 	    				<button type="button" class="btn button-caution button-pill" data-dismiss="modal">Annuler</button>
-	    				<button type="button" class="btn button-action button-pill" data-dismiss="modal" onclick="editer()">Valider</button>
+	    				<button type="button" class="btn button-action button-pill" data-dismiss="modal" onclick="SendModifyRequest()">Valider</button>
 	    			</div>
 	    		</div>
 	    	</div>
@@ -486,16 +544,20 @@ function setSelector(select,val) {
 	//alert('${userProfile}');
 	var json = '${userProfile}';
 	var user = JSON.parse(json);
-	document.getElementById("nom").innerHTML = user[0]['nom'];
-	document.getElementById("prenom").innerHTML = user[0]['prenom'];
-	document.getElementById("age").innerHTML = jsGetAge(user[0]['birthday']);
-	document.getElementById("sexe").innerHTML = checkSex(user[0]['sex']);
-	document.getElementById("profession").innerHTML = user[0]['profession'];
-	document.getElementById("haspet").innerHTML = checkHasPet(user[0]['haspet']);
-	document.getElementById("nationnalite").innerHTML = user[0]['nationnalite'];
-	document.getElementById("langue").innerHTML = user[0]['language'];
-	document.getElementById("situationFam").innerHTML = user[0]['situationFam'];
-	document.getElementById("loisir").innerHTML = user[0]['loisir'];
+	checkVide("nom", user[0]['nom']);
+	checkVide("prenom", user[0]['prenom']);
+	document.getElementById("sexe").innerHTML = checkSex(user[0]["sex"]);
+	document.getElementById("haspet").innerHTML=checkHasPet(user[0]["haspet"]);
+	if (jsGetAge(user[0]['birthday']) != -1){
+		document.getElementById("age").innerHTML = ", " +jsGetAge(user[0]['birthday'])+" ans";
+	}
+	checkVide("lieu", user[0]['lieu']);
+	checkVide("ecole", user[0]['ecole']);
+	checkVide("profession", user[0]['profession']);
+	checkVide("nationnalite", user[0]['nationnalite']);
+	checkVide("langue", user[0]['language']);
+	checkVide("situationFam", user[0]['situationFam']);
+	checkVide("loisir", user[0]['loisir']);
 </script>
 <!-- //initialize variable -->
 <!-- initialize annonce favorite -->
@@ -509,6 +571,8 @@ setResultList('${AnnonceFavorite}');
 function editer() {
 	document.getElementById("reNom").value = document.getElementById("nom").innerHTML;
 	document.getElementById("rePrenom").value = document.getElementById("prenom").innerHTML;
+	document.getElementById("reLieu").value = document.getElementById("lieu").innerHTML;
+	document.getElementById("reEcole").value = document.getElementById("ecole").innerHTML;
 	//radiobutton for sex
 	if (document.getElementById("sexe").innerHTML === "Homme"){
 		document.getElementById("sex-homme").checked = true;
@@ -516,7 +580,15 @@ function editer() {
 	else{
 		document.getElementById("sex-femme").checked = true;
 	}
-	document.getElementById("birthdaytext").value = user[0]['birthday'].split('-').join('/');
+	if (document.getElementById("haspet").innerHTML === "oui"){
+		document.getElementById("haspet-yes").checked = true;
+	}
+	else{
+		document.getElementById("haspet-no").checked = true;
+	}
+	if (user[0]['birthday'] != null){
+		document.getElementById("birthdaytext").value = user[0]['birthday'].split('-').join('/');
+	}
 	//choose for profession
 	setSelector("selectProfession",document.getElementById("profession").innerHTML);
 	setSelector("selectSituation",document.getElementById("situationFam").innerHTML);
@@ -525,7 +597,59 @@ function editer() {
 	setSelector("selectLangue",document.getElementById("langue").innerHTML);
 	
 }
-
+</script>
+<!-- sent modify request -->
+<script type="text/javascript">
+function SendModifyRequest(id) {
+	// Get input value
+	var nom = document.getElementById("reNom").value;
+	var prenom = document.getElementById("rePrenom").value;
+	var sex;
+	var haspet;
+	if (document.getElementById("sex-homme").checked == true){
+		sex = "0";
+	}
+	else{
+		sex = "1";
+	}
+	if (document.getElementById("haspet-yes").checked == true){
+		haspet = "1";
+	}
+	else{
+		haspet = "0";
+	}
+	var lieu = document.getElementById("reLieu").value;
+	var ecole = document.getElementById("reEcole").value;
+	var birthday = document.getElementById("birthdaytext").value;
+	
+	var profession = document.getElementById("selectProfession").value;
+	var situationFam = document.getElementById("selectSituation").value;
+	var nationnalite = document.getElementById("selectNationnalite").value;
+	var loisir = document.getElementById("selectLoisir").value;
+	var langue = document.getElementById("selectLangue").value;
+	// Verify 
+	if (nom == "" || prenom == "" || lieu == "" || ecole == "" || birthday == "" ||
+			profession == "" || situationFam == "" || nationnalite == "" || loisir == "" ||
+			langue == "") {
+		alert("Saisissez tous les informations de votre profile, svp");
+	} else {
+		var ProfileInfo = new Object();
+		ProfileInfo.nom = nom;
+		ProfileInfo.prenom = prenom;
+		ProfileInfo.haspet = haspet;
+		ProfileInfo.sex = sex;
+		ProfileInfo.lieu = lieu;
+		ProfileInfo.ecole = ecole;
+		ProfileInfo.birthday = birthday;
+		ProfileInfo.profession = profession;
+		ProfileInfo.situationFam = situationFam;
+		ProfileInfo.nationnalite = nationnalite;
+		ProfileInfo.loisir = loisir;
+		ProfileInfo.langue =  langue;
+		ProfileInfo.annonce = '${AnnonceFavorite}';
+		post('modify/'+user[0]['idUser'], ProfileInfo);
+	}
+}
 </script>
 
 </body>
