@@ -36,21 +36,21 @@ public class SimulationJadegateWay {
 //    	map.put("idUser", "2");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map);
 //Test the "update the profil" method
-//    	map.put("idUser", "3");
-//    	map.put("nom", "LOU");
-//    	map.put("prenom", "Hhhhh");
-//    	map.put("password", "12345678");
-//    	map.put("sex", "0");
-//    	map.put("haspet", "1");
-//    	map.put("situationFam", "couple");
-//    	map.put("ecole", "xiaoxue");
-//    	map.put("profession", "13");
-//    	map.put("nationnalite", "14");
-//    	map.put("birthday", "1940-11-11");
-//    	map.put("lieu", "compiègne");
-//    	map.put("loisir", "1, 3, 5");
-//    	map.put("language", "4, 7");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
+    	map.put("idUser", "3");
+    	map.put("nom", "LOU");
+    	map.put("prenom", "Hhhhh");
+    	map.put("password", "12345678");
+    	map.put("sex", "0");
+    	map.put("haspet", "1");
+    	map.put("situationFam", "couple");
+    	map.put("ecole", "xiaoxue");
+    	map.put("profession", "13");
+    	map.put("nationnalite", "14");
+    	map.put("birthday", "1940-11-11");
+    	map.put("lieu", "compiègne");
+    	map.put("loisir", "1, 3, 5");
+    	map.put("language", "4, 7");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
 //Test the "add photo" method 
 //    	map.put("idUser", "1");
 //    	map.put("urlPhoto", "photo/1231JHKJH123.jpg");
@@ -113,8 +113,8 @@ public class SimulationJadegateWay {
 //    	map.put("dateFin", "2017-02-01");
 //
 //    	map.put("sex", "1");
-    	map.put("ageMin", "18");
-    	map.put("ageMax", "30");
+//    	map.put("ageMin", "18");
+//    	map.put("ageMax", "30");
 //    	map.put("keyWordLoge", "good,quite");
 //    	map.put("haspet", "0");
 //		map.put("situationFam", "couple");
@@ -123,7 +123,7 @@ public class SimulationJadegateWay {
 //		map.put("nationnalite", "1");
 //    	map.put("loisir", "2");
 //    	map.put("language", "3");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
 //Test the "close annonce" method 
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CLOSE_ANNONCE, map);

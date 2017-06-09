@@ -102,7 +102,6 @@ public class ManageProfilAgent extends Agent{
 			sql = SqlRequest.UPDATE_USER_PROFILE_MAIN_BY_ID;
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("nom") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("prenom") + "\"");
-			sql = sql.replaceFirst("###", "\""+ (String) params.get("password") + "\"");
 			sql = sql.replaceFirst("###", "\""+ Integer.parseInt((String) params.get("sex")) + "\"");
 			sql = sql.replaceFirst("###", "\""+ Integer.parseInt((String) params.get("haspet")) + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("situationFam") + "\"");
