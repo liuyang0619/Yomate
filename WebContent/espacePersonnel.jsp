@@ -46,6 +46,21 @@ $(function () {
 </script>
 <!-- //birthday picker -->
 
+<!-- check user id  -->
+<script type="text/javascript">
+function checkUserId(info){
+	var user = getCookie("idUser");
+	if (user == info){
+		$('#buttonEditer').show();
+	}
+	else{
+		$('#buttonEditer').hide();
+	}
+	
+}
+</script>
+<!-- //check user id  -->
+
 <!-- check value vide -->
 <script type="text/javascript">
 function checkVide(input,value) {
@@ -287,7 +302,7 @@ function setSelector(select,val) {
 									<!-- Trigger the personal info modal with a button -->
 									<div class = "row">
 										<div class = "col-md-12">
-											<button class = "btn btn-success search-btn perso-edit-btn" data-toggle="modal" data-target="#editInfo" onclick="editer()">Editer  <span class="glyphicon glyphicon-edit"></span></button>
+											<button id = "buttonEditer" class = "btn btn-success search-btn perso-edit-btn" data-toggle="modal" data-target="#editInfo" onclick="editer()">Editer  <span class="glyphicon glyphicon-edit"></span></button>
 										</div>
 									</div>
 								</div>
@@ -544,6 +559,7 @@ function setSelector(select,val) {
 	//alert('${userProfile}');
 	var json = '${userProfile}';
 	var user = JSON.parse(json);
+	checkUserId(user[0]['idUser']);
 	checkVide("nom", user[0]['nom']);
 	checkVide("prenom", user[0]['prenom']);
 	document.getElementById("sexe").innerHTML = checkSex(user[0]["sex"]);
