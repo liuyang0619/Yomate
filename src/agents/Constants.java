@@ -1,4 +1,4 @@
-package agents;
+﻿package agents;
 
 public class Constants {
 	public class Action{
@@ -44,7 +44,7 @@ public class Constants {
 	public class Message{
 		//list of string contents
 		public final static String ERROR_WITH_DATABASE = "Error: something wrong with the database";
-		public final static String SUCCESS_MODIFY_DATABASE = "Votre modification est stock�e";
+		public final static String SUCCESS_MODIFY_DATABASE = "Votre modification est stockée";
 	}
 	
 }
