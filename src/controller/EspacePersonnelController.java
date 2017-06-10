@@ -53,8 +53,13 @@ public class EspacePersonnelController {
     	String content2 = JsonHelper.serilisation(amc2);
     	ProcessBehaviour behaviourAnnonceFavorite = new ProcessBehaviour(content2);
     	
+    	ActionMessageContent amc3 = new ActionMessageContent(Constants.Action.SELECT_HISTORYS_COLO, map);
+    	String content3 = JsonHelper.serilisation(amc3);
+    	ProcessBehaviour behaviourAnnonceHistorique = new ProcessBehaviour(content3);
+    	
     	seqBehaviour.addSubBehaviour(behaviourProfile);
     	seqBehaviour.addSubBehaviour(behaviourAnnonceFavorite);
+    	seqBehaviour.addSubBehaviour(behaviourAnnonceHistorique);
     	
 		try {
 			JadeGateway.execute(seqBehaviour);
@@ -68,8 +73,12 @@ public class EspacePersonnelController {
 		
 		String result = behaviourProfile.getAnswer();
 		String resultAnnonceFavorite = behaviourAnnonceFavorite.getAnswer();
+		String resultAnnonceHistorique = behaviourAnnonceHistorique.getAnswer();
+		System.out.println("history++++"+resultAnnonceHistorique);
+		
 		model.addAttribute("userProfile", result);
 		model.addAttribute("AnnonceFavorite", resultAnnonceFavorite);
+		model.addAttribute("AnnonceHistorique", resultAnnonceHistorique);
 		return "espacePersonnel";
 	}
 	
@@ -89,6 +98,7 @@ public class EspacePersonnelController {
 			@RequestParam(value="lieu", required=false) String lieu, 
 			@RequestParam(value="ecole", required=false) String ecole, 
 			@RequestParam(value="annonce", required=false) String annonce, 
+			@RequestParam(value="history", required=false) String history,
 			Model model ){ 
 		Properties pp = new Properties();
     	pp.setProperty(Profile.MAIN_HOST, "localhost");
@@ -108,7 +118,7 @@ public class EspacePersonnelController {
     	map.put("language", language+"");
     	map.put("lieu", lieu);
     	map.put("ecole", ecole);
-    	System.out.println("map======"+map);
+    	
     	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
     	String content = JsonHelper.serilisation(amc);
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);
@@ -122,11 +132,10 @@ public class EspacePersonnelController {
 			e.printStackTrace();
 		}
 		String result = behaviour.getAnswer();
+		System.out.println("success-------"+result);
 	
 		
 		if (result.equals(Constants.Message.SUCCESS_MODIFY_DATABASE)){
-			
-			
 	    	Map<String, String> map1 = new HashMap<String, String>();
 	    	map1.put("idUser", userId);
 	    	ActionMessageContent amc1 = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map1);
@@ -145,6 +154,7 @@ public class EspacePersonnelController {
 			String resultProfile = behaviourProfile.getAnswer();
 			model.addAttribute("userProfile", resultProfile);    	
 			model.addAttribute("AnnonceFavorite", annonce);
+			model.addAttribute("AnnonceHistorique", history);
 			
 		}
 		else{

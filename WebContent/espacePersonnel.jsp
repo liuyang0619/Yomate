@@ -42,6 +42,8 @@
 <script type="text/javascript">
 $(function () {
     $('#birthdaypicker').datetimepicker({format: 'YYYY/MM/DD'});
+    $('#dateDebutPicker').datetimepicker({format: 'YYYY/MM/DD'});
+    $('#dateFinPicker').datetimepicker({format: 'YYYY/MM/DD'});
 });
 </script>
 <!-- //birthday picker -->
@@ -52,9 +54,12 @@ function checkUserId(info){
 	var userLog = getCookie("idUser");
 	if (userLog == info){
 		$('#buttonEditer').show();
+		$('#buttonEditerAnnonce').show();
+		
 	}
 	else{
 		$('#buttonEditer').hide();
+		$('#buttonEditerAnnonce').hide();
 	}
 	
 }
@@ -65,7 +70,6 @@ function checkUserId(info){
 <script type="text/javascript">
 function checkVide(input,value) {
 	if (value === "null"){
-		
 	}
 	else{
 		document.getElementById(input).innerHTML = value;
@@ -176,17 +180,23 @@ function setUCfirst(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 </script>
+<script type="text/javascript">
+function checkAnnonceStatus(status){
+	if (status === "0"){
+		return "fermé";
+	}
+	else{
+		return "ouvert";
+	}
+}
+</script>
 <!-- //captical letter -->
 <script type="text/javascript">
 function setResultList(jsonResults) {
-	if (jsonResults === "") {
-		$('#no-favorite').show();
-	} else {
-		$('#no-favorite').hide();
 		var results = JSON.parse(jsonResults);
 		for (var i = 0; i < results.length; i++) {
 			var listitem = 
-				"<a href=/Yomate/annonce/afficher/"+results[i]['idAnnonce']+" class='list-group-item'>" +
+				"<a href=/Yomate/annonce/"+results[i]['idAnnonce']+" class='list-group-item'>" +
 					"<div>" +
 			    	"<h4 class='list-group-item-heading' style = 'font-size:18px'>Annonce 00" + results[i]['idAnnonce'] + "</h4>" +
 				    "<div style = 'height:100px'>" +
@@ -196,14 +206,38 @@ function setResultList(jsonResults) {
 						"<div style='float: left;margin-left:10px'>" +
 							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>" + setUCfirst(results[i]['proposer_prenom']) + " "+ results[i]['proposer_nom'].toUpperCase() + "</p>" +
 							"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ checkSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ setUCfirst(results[i]['lieu']) + ", France</p>" +
-							"<p class='list-group-item-text'>"+ results[i]['description'] + "</p>" +
+							"<p class='list-group-item-text'>" +results[i]['description'] + "</p>" +
 						"</div>" +
 					"</div>" +
 			    "</div>" +
 				"</a>";
 			$('#favorite-list-group').append(listitem);
 		}
-	}
+	
+}
+</script>
+<script type="text/javascript">
+function setResultHistoryList(jsonResults) {
+		var results = JSON.parse(jsonResults);
+		for (var i = 0; i < results.length; i++) {
+			var listitem = 
+				"<a href=/Yomate/annonce/"+results[i]['idAnnonce']+" class='list-group-item'>" +
+					"<div>" +
+			    	"<h4 class='list-group-item-heading' style = 'font-size:18px'>Annonce 00" + results[i]['idAnnonce'] + "</h4>" +
+				    "<div style = 'height:100px'>" +
+			
+						"<div style='float: left;margin-left:10px'>" +
+							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:18px'>" + "Lieu : " + results[i]['lieu']  + "</p>" +
+							"<p class='list-group-item-text'>" + "Durée : " + results[i]['date_debut'].split('-').join('/') + " - " + results[i]['date_fin'].split('-').join('/') + "</p>" +
+							"<p class='list-group-item-text'>"+ "Status : "+ checkAnnonceStatus(results[i]['status']) + "</p>" +
+							"<p class='list-group-item-text'>"+ "Description :" + results[i]['description'] + "</p>" +
+						"</div>" +
+					"</div>" +
+			    "</div>" +
+				"</a>";
+			$('#history-list-group').append(listitem);
+		}
+	
 }
 </script>
 <!-- select -->
@@ -316,7 +350,7 @@ function setSelector(select,val) {
 				</div>
 				<div class="col-md-4">
 					<div class="row" style = "text-align:center">
-		                <a class = "btn btn-warning search-btn href="/Yomate/PageAnnonce.jsp">Créer une annonce</a>					
+		                <button id = "buttonEditerAnnonce" class = "btn btn-warning search-btn href="/Yomate/PageAnnonce.jsp" data-toggle="modal" data-target="#annonce">Créer une annonce></button>					
 		            </div>
 				</div>
 			</div>
@@ -327,17 +361,28 @@ function setSelector(select,val) {
 						<div id="horizontalTabAnnonce">
 							<ul class="resp-tabs-list">
 							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Annonces favoris</span></li>
-							 
-							</ul>				  	 
-							<div class="resp-tabs-container">
-								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-									<ul class="list-group top-margin-3" id="favorite-list-group">
+							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Mes Annonces</span></li>
+								 <div class="resp-tabs-container">
+									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+										<ul class="list-group top-margin-3" id="favorite-list-group">
+										</ul>
+										<div class="col-md-12" style="text-align:center;color:#000000;" id="no-favorite">
+											Vous n'avais pas d'annonce favoris, veuillez trouver les annonces.
+										</div>
+									</div>
+								
+								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+									<ul class="list-group top-margin-3" id="history-list-group">
 									</ul>
-									<div class="col-md-12" style="text-align:center;color:#000000;" id="no-favorite">
-										Vous n'avais pas d'annonce favoris, veuillez trouver les annonces.
+									<div class="col-md-12" style="text-align: center; color: #000000;" id="no-history">
+									Vous n'avais pas d'annonce historique, veuillez créer les annonces.</div>
 									</div>
 								</div>
-							</div>
+							</ul>
+						
+							 
+											  	 
+							
 						</div>
 					</div>
 				</div>
@@ -403,15 +448,16 @@ function setSelector(select,val) {
 	    		
 	    		<!-- pet -->
 	    		<div class="row perso-edit-sex top-margin-5">
+	    			<div class = "col-md-6"> Animal de compagnie:</div>
 	    			<form id="sex" name="hasPet" method="post" action="">
-	    				<div class="col-md-6">
+	    				<div class="col-md-3">
 		    				<label>
-		    					<input id = "haspet-yes" class="radio-inline" type="radio" name="grouphaspet" value="yes">Have pet
+		    					<input id = "haspet-yes" class="radio-inline" type="radio" name="grouphaspet" value="yes">oui
 		    				</label>
 		    			</div>
-		    			<div class="col-md-6">
+		    			<div class="col-md-3">
 		    				<label>
-								<input id = "haspet-no" class="radio-inline" type="radio" name="grouphaspet" value="no">Haven't pet
+								<input id = "haspet-no" class="radio-inline" type="radio" name="grouphaspet" value="no">non
 							</label>
 							
 						</div>
@@ -422,10 +468,10 @@ function setSelector(select,val) {
 	    		<!-- lieu & ecole -->
 	    		<div class="row">
 	    			<div class="col-md-6">
-	    				<label class="col-md-4" for="reLieu">Lieu</label>
+	    				<label class="col-md-4 top-margin-3" for="reLieu">Lieu</label>
 						<input id = "reLieu" type="text" class="form-control input-sm" placeholder="Lieu"  required></input>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 top-margin-3">
 					<label class="col-md-4" for="reEcole">Ecole</label>
 						<input id = "reEcole" type="text" class="form-control input-sm" placeholder="Ecole" required></input>
 					</div>
@@ -511,7 +557,7 @@ function setSelector(select,val) {
 					    </select>
 					</div>
 	    		</div>
-	    			<!-- //Loisirs-->
+	    		<!-- //Loisirs-->
 	    		
 	    	</div>
 	    		<!-- //Langue parlé & Loisirs-->
@@ -520,8 +566,8 @@ function setSelector(select,val) {
 	    	<div class="modal-footer">
 	    		<div class = "row">
 	    			<div class="perso-edit-footer">
-	    				<button type="button" class="btn button-caution button-pill" data-dismiss="modal">Annuler</button>
-	    				<button type="button" class="btn button-action button-pill" data-dismiss="modal" onclick="SendModifyRequest()">Valider</button>
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+	    				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="SendModifyRequest()" data-dismiss="modal">Valider</button>
 	    			</div>
 	    		</div>
 	    	</div>
@@ -530,6 +576,186 @@ function setSelector(select,val) {
   </div>
  </div>
 <!-- //Personal info Modal -->
+<!-- Editer l'annonce	 --> 
+	<div class="modal fade" id="annonce">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="purchaseLabel">Editez votre annonce</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="container-fluid">
+                		
+                		<!-- Lieu & budget -->
+	                	<div class="row">
+		                	<label class="col-md-2">Lieu</label>
+		                	<div class="col-md-4">
+								<input type="text" class="form-control input-sm" placeholder="annonceLieu" id="annonceLieu"></input>
+			    			</div>
+			    			<label class="col-md-2">Budget</label>
+			    			<div class="col-md-2">
+								<input type="text" class="col-md-3 form-control input-sm" placeholder="Budget" id="annonceBudget"></input>
+				    		</div>
+				    		<div class="col-md-2">
+				    			<p>euros</p>
+				    		</div>
+			    		</div>
+							
+						<div class="row top-margin-10">	
+							<label class="col-md-2">Sexe</label>
+							<div class="col-md-6">
+								<div class="row perso-edit-sex top-margin-5">
+					    			<div class="col-md-6">
+						    			<label class="radio-inline"><input id = "annonceSex-homme" type="radio" value="0" name="sexeNew">Homme</label>
+						    		</div>
+						    		<div class="col-md-6">
+										<label class="radio-inline"><input id = "annonceSex-femme" type="radio" value="1" name="sexeNew">Femme</label>
+									</div>
+		    					</div>
+							</div>
+			    		</div>
+                	
+	                	
+			    		
+			    		<!-- Durée -->
+			    		<div class="row top-margin-10">
+			    			<label class="col-md-2">Durée</label>
+				    			<div class="col-md-4">
+					    			<div class="input-group" id="dateDebutPicker">
+					                    <input type="text" class="form-control input-sm" id="dateStart" placeholder="Date de debut"/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+								</div>
+								<div class="col-md-4">
+					    			<div class="input-group" id="dateFinPicker">
+					                    <input type="text" class="form-control input-sm" id="dateEnd" placeholder="Date de fin"/>
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+					             </div>
+			    		</div>
+			   			<!-- //Durée -->
+			    		
+			    		<div class="row top-margin-10">
+			    			<label class="col-md-2">Age</label>
+			    			
+				    		<div class="col-md-3">
+			    				<input type="text" class="form-control input-sm" placeholder="Min" id="ageMin"></input>
+			    			</div>
+			    			<div class="col-md-1">
+			    				<p>-</p>
+			    			</div>
+			    			<div class="col-md-3">
+			    				<input type="text" class="form-control input-sm" placeholder="Max" id="ageMax"></input>
+			    			</div>
+			    			<div class="col-md-1">
+			    				<p>ans</p>
+			    			</div>
+		    		
+			    		</div>
+			    		
+			    		<div class="row top-margin-10 bottom-margin-10">
+			    			<label class="col-md-6">Animaux d'accompagnie</label>
+					    	<div class="col-md-2">
+						    	<label class="radio-inline"><input id = "annoncePet-yes" type="radio" value="1" name="animalNew">oui</label>
+						    </div>
+						    <div class="col-md-2">
+								<label class="radio-inline"><input id = "annoncePet-non" type="radio" value="0" name="animalNew">non</label>
+							</div>
+		    			</div>
+		    			
+		    	<!-- Situation -->
+	    		<div class="row top-margin-10">
+	    			<label class="col-md-4" for="situation">Situation/Profession</label>
+	    			<div class="form-group col-md-8">
+						<select id="annonceProfession" name="annonceProfession" class="form-control">
+							<option value="0" selected disabled></option>
+							<option value="39">étudiant</option>
+							<option value="69">salarié</option>
+							<option value="68">retraité</option>
+							<option value="13">autre cadres</option>
+					    </select>
+					</div>
+	    		</div>
+	    		<!-- //Situation -->
+	    		
+		    	<!-- Situation Familiale-->
+	    		<div class="row">
+	    			<label class="col-md-4" for="situ-fam">Situation Familiale</label>
+	    			<div class="form-group col-md-8">
+						<select id="annonceSituation" name="annonceSituationFamiliale" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="Célibataire">Célibataire</option>
+							<option value="Couple">Couple</option>
+							<option value="Marié">Marié</option>
+							<option value="Autre">Autre</option>
+					    </select>
+					</div>
+	    		</div>
+	    		<!-- //Situation Familiale-->
+			    		
+			    <!-- NationalitÃ©-->
+	    		<div class="row">
+	    			<label class="col-md-4" for="selectnationalite">Nationalité</label>
+	    			<div class="col-md-8 form-group">
+	    				<select id="annonceNationnalite" name="annonceNationnalite" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="64">Française</option>
+							<option value="41">Chinoise</option>
+							<option value="83">Italienne</option>
+							<option value="148">Russee</option>
+							<option value="14">Bahamienne</option>
+							<option value="196">autre</option>
+					    </select>
+					</div>
+	    		</div>
+	    		<!-- //Nationalité-->
+	    		
+	    		<!-- Langue parlé -->
+	    		<div class="row">
+	    			<!-- Langue parlé-->
+	    			<label class="col-md-4" for="annonceLangue">Language</label>
+	    			<div class="col-md-8 form-group">
+	    				<select id="annonceLangue" name="annonceLangue" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="27">français</option>
+							<option value="20">chinois mandarin</option>
+							<option value="3">anglais</option>
+							<option value="1">allemand</option>
+							<option value="36">italien</option>
+							<option value="73">autre</option>
+					    </select>
+					</div>
+				</div>
+	    		<!-- Langue parlé-->
+	    		<!-- Loisirs-->
+	    				<label class="col-md-4" for="annonceLoisir">Loisir</label>
+	    				<div class="col-md-8 form-group">
+	    				<select id="annonceLoisir" name="annonceLoisir" class="form-control" required>
+							<option value="0" selected disabled></option>
+							<option value="2">voyage</option>
+							<option value="3">sport</option>
+							<option value="5">cuisine</option>
+							<option value="19">jeux vidéo</option>
+							<option value="9">lecture</option>
+							<option value="35">autre</option>
+					    </select>
+					</div>
+	    		</div>
+	    		<!-- //Loisirs-->
+               </div>
+               
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" onClick="newAnnonce()" data-dismiss="modal">Valider</button>
+                </div>
+            </div>
+          </div>
+           
 
 
 <!-- footer -->
@@ -584,8 +810,20 @@ function setSelector(select,val) {
 <!-- //initialize variable -->
 <!-- initialize annonce favorite -->
 <script type="text/javascript">
-var jsonAnnonce = '${AnnonceFavorite}'
-setResultList('${AnnonceFavorite}');
+var jsonAnnonce = '${AnnonceFavorite}';
+var jsonHistory = '${AnnonceHistorique}';
+if (jsonAnnonce === "") {
+	$('#no-favorite').show();
+} else {
+	$('#no-favorite').hide();
+	setResultList(jsonAnnonce);
+}
+if (jsonHistory === "") {
+	$('#no-history').show();
+} else {
+	$('#no-history').hide();
+	setResultHistoryList(jsonHistory);
+}
 </script>
 <!-- //initialize annonce favorite -->
 <!-- //tab switching -->
@@ -620,9 +858,9 @@ function editer() {
 	
 }
 </script>
-<!-- sent modify request -->
+<!-- sent modify profile request -->
 <script type="text/javascript">
-function SendModifyRequest(id) {
+function SendModifyRequest() {
 	// Get input value
 	var nom = document.getElementById("reNom").value;
 	var prenom = document.getElementById("rePrenom").value;
@@ -642,8 +880,7 @@ function SendModifyRequest(id) {
 	}
 	var lieu = document.getElementById("reLieu").value;
 	var ecole = document.getElementById("reEcole").value;
-	var birthday = document.getElementById("birthdaytext").value;
-	
+	var birthday = document.getElementById("birthdaytext").value.split('/').join('-');
 	var profession = document.getElementById("selectProfession").value;
 	var situationFam = document.getElementById("selectSituation").value;
 	var nationnalite = document.getElementById("selectNationnalite").value;
@@ -669,12 +906,67 @@ function SendModifyRequest(id) {
 		ProfileInfo.loisir = loisir;
 		ProfileInfo.langue =  langue;
 		ProfileInfo.annonce = '${AnnonceFavorite}';
-		post('modify/'+user['idUser'], ProfileInfo);
+		ProfileInfo.history = '${AnnonceHistorique}';
+		post('/Yomate/espacePersonnel/modify/'+user['idUser'], ProfileInfo);
 	}
 }
 </script>
-
+<!-- send new annonce request -->
+<script type="text/javascript">
+function newAnnonce() {
+	// Get input value
+	var sex;
+	var haspet;
+	if (document.getElementById("annonceSex-homme").checked == true){
+		sex = "0";
+	}
+	else{
+		sex = "1";
+	}
+	if (document.getElementById("annoncePet-yes").checked == true){
+		haspet = "1";
+	}
+	else{
+		haspet = "0";
+	}
+	var lieu = document.getElementById("annonceLieu").value;
+	var budget = document.getElementById("annonceBudget").value;
+	var date_debut = document.getElementById("dateStart").value.split('/').join('-');
+	var date_fin = document.getElementById("dateEnd").value.split('/').join('-');
+	var dateProposer = "2017-06-12";
+	var ageMin = document.getElementById("ageMin").value;
+	var ageMax = document.getElementById("ageMax").value;
+	var profession = document.getElementById("annonceProfession").value;
+	var situationFam = document.getElementById("annonceSituation").value;
+	var nationnalite = document.getElementById("annonceNationnalite").value;
+	var loisir = document.getElementById("annonceLoisir").value;
+	var langue = document.getElementById("annonceLangue").value;
+	// Verify 
+	if (date_debut == "" || date_fin == "" || lieu == "" || budget == "" || ageMin == "" || ageMax == "" ||
+			profession == "" || situationFam == "" || nationnalite == "" || loisir == "" ||
+			langue == "") {
+		alert("Saisissez tous les informations de votre profile, svp");
+	} else {
+		var annonceInfo = new Object();
+		annonceInfo.ageMin = ageMin;
+		annonceInfo.ageMax = ageMax;
+		annonceInfo.haspet = haspet;
+		annonceInfo.sex = sex;
+		annonceInfo.dateProposer = dateProposer;
+		annonceInfo.budget = budget;
+		annonceInfo.lieu = lieu;
+		annonceInfo.date_debut = date_debut;
+		annonceInfo.date_fin = date_fin;
+		annonceInfo.profession = profession;
+		annonceInfo.situationFam = situationFam;
+		annonceInfo.nationnalite = nationnalite;
+		annonceInfo.loisir = loisir;
+		annonceInfo.langue =  langue;
+		post('/Yomate/annonce/new/'+user['idUser'], annonceInfo);
+	}
+}
+</script>
+<!-- //send new annonce request -->
 </body>
-
 
 </html>
