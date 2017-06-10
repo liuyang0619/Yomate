@@ -120,6 +120,8 @@ public class SqlRequestAgent  extends Agent{
 				sql.util.ConnexionBDD.getInstance().closeCnx();			
 			} catch (SQLException e) {
 				e.printStackTrace();
+				reply.setContent(Constants.Message.ERROR_WITH_DATABASE);
+				reply.setPerformative(ACLMessage.FAILURE);
 			}
 			reply.setContent(jsonResult);
 			send(reply);

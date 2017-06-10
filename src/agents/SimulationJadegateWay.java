@@ -39,7 +39,6 @@ public class SimulationJadegateWay {
     	map.put("idUser", "3");
     	map.put("nom", "LOU");
     	map.put("prenom", "Hhhhh");
-    	map.put("password", "12345678");
     	map.put("sex", "0");
     	map.put("haspet", "1");
     	map.put("situationFam", "couple");
@@ -164,7 +163,6 @@ public class SimulationJadegateWay {
 //Test the "get the users recommended by idAnnonce" method 
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.GET_USER_MATCHED, map);
-      	
     	String content = JsonHelper.serilisation(amc);
     	
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);
