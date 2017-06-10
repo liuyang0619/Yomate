@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<title>Yomate!</title>
+<title>Yomate - Messagerie</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8" />
@@ -37,10 +37,11 @@
 	<!-- video background -->
 	<div class="video-container top-margin-0">
 	   <div align="center" class="embed-responsive embed-responsive-16by9">
-		    <video autoplay loop class="embed-responsive-item" poster="/Yomate/ressources/videos/chat-image.png">
+		    <video autoplay class="embed-responsive-item" poster="/Yomate/ressources/videos/chat-image.png">
 		        <source src="/Yomate/ressources/videos/chat-demo.mp4" type=video/mp4>
 		    </video>
 		</div>
+	</div>
 	<!-- //video background -->
 	
 	<!-- footer -->
