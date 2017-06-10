@@ -31,4 +31,15 @@ update yomate.profession set profession = REPLACE (profession,"\r","");
 update yomate.loisir set loisir = substring(loisir, 2); 
 update yomate.language set language = substring(language, 2); 
 update yomate.profession set profession = substring(profession, 2);
+update yomate.nationnalite set nationnalite = substring(nationnalite, 2);
 commit;
+
+select * from jeux;
+select * from loisir;
+
+select * from user;
+
+
+show variables like '%character%';
+
+show variables like '%collation%';

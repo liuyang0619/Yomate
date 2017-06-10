@@ -85,7 +85,7 @@ public class EspacePersonnelController {
 			@RequestParam(value="nationnalite", required=false) String nationnalite, 
 			@RequestParam(value="birthday", required=false) String birthday, 
 			@RequestParam(value="loisir", required=false) String loisir, 
-			@RequestParam(value="language", required=false) String language, 
+			@RequestParam(value="langue", required=false) String language, 
 			@RequestParam(value="lieu", required=false) String lieu, 
 			@RequestParam(value="ecole", required=false) String ecole, 
 			@RequestParam(value="annonce", required=false) String annonce, 
@@ -101,13 +101,14 @@ public class EspacePersonnelController {
     	map.put("sex", sex);
     	map.put("haspet", haspet);
     	map.put("situationFam", situationFam);
-    	map.put("profession", "5");
-    	map.put("nationnalite", "6");
+    	map.put("profession", profession+"");
+    	map.put("nationnalite", nationnalite+"");
     	map.put("birthday", birthday);
-    	map.put("loisir", "8");
-    	map.put("language", "10");
+    	map.put("loisir", loisir+"");
+    	map.put("language", language+"");
     	map.put("lieu", lieu);
     	map.put("ecole", ecole);
+    	System.out.println("map======"+map);
     	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
     	String content = JsonHelper.serilisation(amc);
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);
@@ -124,16 +125,31 @@ public class EspacePersonnelController {
 	
 		
 		if (result.equals(Constants.Message.SUCCESS_MODIFY_DATABASE)){
-			//map to json
-			String user = (JsonHelper.serilisation(map));
-			model.addAttribute("userProfile", user);
-			//System.out.println("json--------"+jsonObject);
+			
+			
+	    	Map<String, String> map1 = new HashMap<String, String>();
+	    	map1.put("idUser", userId);
+	    	ActionMessageContent amc1 = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map1);
+	    	String content1 = JsonHelper.serilisation(amc1);
+	    	ProcessBehaviour behaviourProfile = new ProcessBehaviour(content1);
+	    	try {
+				JadeGateway.execute(behaviourProfile);
+			} catch (StaleProxyException e) {
+				e.printStackTrace();
+			} catch (ControllerException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			String resultProfile = behaviourProfile.getAnswer();
+			model.addAttribute("userProfile", resultProfile);    	
 			model.addAttribute("AnnonceFavorite", annonce);
 			
 		}
 		else{
 			
-			return null;
+			return "espacePersonnel";
 		}
 		return "espacePersonnel";
 		
