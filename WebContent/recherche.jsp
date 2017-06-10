@@ -192,10 +192,13 @@ function setResultList(jsonResults) {
 			  		
 					<div class = "row">
 						<div class = "col-md-3 search-filter-item-name">Logement</div>
-						<div class = "col-md-9">Besoin de logement
-							<button type="submit" class="icon-button">
-			  					<span class="glyphicon glyphicon-edit"></span>
-			  				</button>
+						<div class = "col-md-9">
+							<select id="selectLogement" class="form-control">
+								<option value="0" selected disabled></option>
+								<option value="1">J'ai besoin de logement</option>
+								<option value="2">J'ai un logement</option>
+								<option value="3">Pas de logement, mais peu n'importe</option>
+					    	</select>
 			  			</div>
 					</div>
 				</div>
@@ -217,7 +220,6 @@ function setResultList(jsonResults) {
 					<div class="search-profile-priority">Vaut mieux être : </div>
 				</div>
 				<!-- //filtre de profil -->
-				
 				
 				<!-- buttons -->
 				<div class="search-buttons">
@@ -273,7 +275,7 @@ function setResultList(jsonResults) {
 					<ul class="list-group top-margin-3" id="result-list-group">
 					</ul>
 					<div class="col-md-12" style="text-align:center;color:#000000;" id="no-result">
-						Désolé, aucun résultat ne correspond a vos critères de sélection.
+						Désolé, aucun résultat ne correspond à vos critères de sélection.
 					</div>
 				</div>
 				<!-- //resultats de recherche -->

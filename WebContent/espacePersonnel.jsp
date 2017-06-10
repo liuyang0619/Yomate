@@ -212,7 +212,7 @@ function setSelector(select,val) {
 	var tag = "0";
 	for(var i=0;i<document.getElementById(select).options.length;i++)
     {
-        if(document.getElementById(select).options[i].value == val)
+        if(document.getElementById(select).options[i].text == val)
         {
             document.getElementById(select).options[i].selected = true;
             tag = "1";
@@ -473,7 +473,7 @@ function setSelector(select,val) {
 							<option value="83">Italienne</option>
 							<option value="148">Russee</option>
 							<option value="14">Bahamienne</option>
-							<option value="196">Autre</option>
+							<option value="196">autre</option>
 					    </select>
 					</div>
 	    		</div>
@@ -486,12 +486,12 @@ function setSelector(select,val) {
 	    			<div class="col-md-8 form-group">
 	    				<select id="selectLangue" name="selectLangue" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="Française">Française</option>
-							<option value="Chinoise">Chinoise</option>
-							<option value="Italienne">Italienne</option>
-							<option value="Russee">Russee</option>
-							<option value="Bahamienne">Bahamienne</option>
-							<option value="Autre">Autre</option>
+							<option value="27">français</option>
+							<option value="20">chinois mandarin</option>
+							<option value="3">anglais</option>
+							<option value="1">allemand</option>
+							<option value="36">italien</option>
+							<option value="73">autre</option>
 					    </select>
 					</div>
 				</div>
@@ -502,12 +502,12 @@ function setSelector(select,val) {
 	    				<div class="col-md-8 form-group">
 	    				<select id="selectLoisir" name="selectLoisir" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="voyage">voyage</option>
-							<option value="sport">sport</option>
-							<option value="cuisine">cuisine</option>
-							<option value="jeux vidéo">jeux vidéo</option>
-							<option value="lecture">lecture</option>
-							<option value="Autre">Autre</option>
+							<option value="2">voyage</option>
+							<option value="3">sport</option>
+							<option value="5">cuisine</option>
+							<option value="19">jeux vidéo</option>
+							<option value="9">lecture</option>
+							<option value="35">autre</option>
 					    </select>
 					</div>
 	    		</div>
