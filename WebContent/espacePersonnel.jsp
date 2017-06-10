@@ -49,8 +49,8 @@ $(function () {
 <!-- check user id  -->
 <script type="text/javascript">
 function checkUserId(info){
-	var user = getCookie("idUser");
-	if (user == info){
+	var userLog = getCookie("idUser");
+	if (userLog == info){
 		$('#buttonEditer').show();
 	}
 	else{
@@ -438,10 +438,10 @@ function setSelector(select,val) {
 	    			<div class="form-group col-md-8">
 						<select id="selectProfession" name="selectProfession" class="form-control">
 							<option value="0" selected disabled></option>
-							<option value="étudiant">étudiant</option>
-							<option value="salarié">salarié</option>
-							<option value="retraité">retraité</option>
-							<option value="autre cadres">autre cadres</option>
+							<option value="39">étudiant</option>
+							<option value="69">salarié</option>
+							<option value="68">retraité</option>
+							<option value="13">autre cadres</option>
 					    </select>
 					</div>
 	    		</div>
@@ -468,12 +468,12 @@ function setSelector(select,val) {
 	    			<div class="col-md-8 form-group">
 	    				<select id="selectNationnalite" name="selectNationnalite" class="form-control" required>
 							<option value="0" selected disabled></option>
-							<option value="Française">Française</option>
-							<option value="Chinoise">Chinoise</option>
-							<option value="Italienne">Italienne</option>
-							<option value="Russee">Russee</option>
-							<option value="Bahamienne">Bahamienne</option>
-							<option value="Autre">Autre</option>
+							<option value="64">Française</option>
+							<option value="41">Chinoise</option>
+							<option value="83">Italienne</option>
+							<option value="148">Russee</option>
+							<option value="14">Bahamienne</option>
+							<option value="196">Autre</option>
 					    </select>
 					</div>
 	    		</div>
@@ -559,21 +559,27 @@ function setSelector(select,val) {
 	//alert('${userProfile}');
 	var json = '${userProfile}';
 	var user = JSON.parse(json);
-	checkUserId(user[0]['idUser']);
-	checkVide("nom", user[0]['nom']);
-	checkVide("prenom", user[0]['prenom']);
-	document.getElementById("sexe").innerHTML = checkSex(user[0]["sex"]);
-	document.getElementById("haspet").innerHTML=checkHasPet(user[0]["haspet"]);
-	if (jsGetAge(user[0]['birthday']) != -1){
-		document.getElementById("age").innerHTML = ", " +jsGetAge(user[0]['birthday'])+" ans";
+	if (user[0] == undefined){
+		
 	}
-	checkVide("lieu", user[0]['lieu']);
-	checkVide("ecole", user[0]['ecole']);
-	checkVide("profession", user[0]['profession']);
-	checkVide("nationnalite", user[0]['nationnalite']);
-	checkVide("langue", user[0]['language']);
-	checkVide("situationFam", user[0]['situationFam']);
-	checkVide("loisir", user[0]['loisir']);
+	else{
+		user = user[0];
+	}
+	checkUserId(user['idUser']);
+	checkVide("nom", user['nom']);
+	checkVide("prenom", user['prenom']);
+	document.getElementById("sexe").innerHTML = checkSex(user["sex"]);
+	document.getElementById("haspet").innerHTML=checkHasPet(user["haspet"]);
+	if (jsGetAge(user['birthday']) != -1){
+		document.getElementById("age").innerHTML = ", " +jsGetAge(user['birthday'])+" ans";
+	}
+	checkVide("lieu", user['lieu']);
+	checkVide("ecole", user['ecole']);
+	checkVide("profession", user['profession']);
+	checkVide("nationnalite", user['nationnalite']);
+	checkVide("langue", user['language']);
+	checkVide("situationFam", user['situationFam']);
+	checkVide("loisir", user['loisir']);
 </script>
 <!-- //initialize variable -->
 <!-- initialize annonce favorite -->
@@ -602,8 +608,8 @@ function editer() {
 	else{
 		document.getElementById("haspet-no").checked = true;
 	}
-	if (user[0]['birthday'] != null){
-		document.getElementById("birthdaytext").value = user[0]['birthday'].split('-').join('/');
+	if (user['birthday'] != null){
+		document.getElementById("birthdaytext").value = user['birthday'].split('-').join('/');
 	}
 	//choose for profession
 	setSelector("selectProfession",document.getElementById("profession").innerHTML);
@@ -663,7 +669,7 @@ function SendModifyRequest(id) {
 		ProfileInfo.loisir = loisir;
 		ProfileInfo.langue =  langue;
 		ProfileInfo.annonce = '${AnnonceFavorite}';
-		post('modify/'+user[0]['idUser'], ProfileInfo);
+		post('modify/'+user['idUser'], ProfileInfo);
 	}
 }
 </script>
