@@ -66,10 +66,9 @@ public class EspacePersonnelController {
 			e.printStackTrace();
 		}
 		
-		String resultProfile = behaviourProfile.getAnswer();
+		String result = behaviourProfile.getAnswer();
 		String resultAnnonceFavorite = behaviourAnnonceFavorite.getAnswer();
-		
-		model.addAttribute("userProfile", resultProfile);
+		model.addAttribute("userProfile", result);
 		model.addAttribute("AnnonceFavorite", resultAnnonceFavorite);
 		return "espacePersonnel";
 	}
@@ -124,17 +123,15 @@ public class EspacePersonnelController {
 		String result = behaviour.getAnswer();
 	
 		
-		if (result != null){
+		if (result.equals(Constants.Message.SUCCESS_MODIFY_DATABASE)){
 			//map to json
-			//JSON jsonObject = JSONSerializer.toJSON(map);
-			//JSONObject jsonObject = JSONObject.fromObject(map);
-			//model.addAttribute("userProfile", jsonObject);
+			String user = (JsonHelper.serilisation(map));
+			model.addAttribute("userProfile", user);
 			//System.out.println("json--------"+jsonObject);
 			model.addAttribute("AnnonceFavorite", annonce);
 			
 		}
 		else{
-			model.addAttribute("status","failure" );
 			
 			return null;
 		}
