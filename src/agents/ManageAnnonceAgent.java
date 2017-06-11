@@ -1,11 +1,13 @@
 package agents;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import json.util.JsonHelper;
@@ -17,6 +19,7 @@ public class ManageAnnonceAgent extends Agent{
 	}
 	protected class ReceiveActionFromAdminBehaviour extends Behaviour{
 		String sql;
+		String idAnnonce;
 		@Override
 		public void action() {
 			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST); 
@@ -35,21 +38,23 @@ public class ManageAnnonceAgent extends Agent{
 					break;	
 				case Constants.Action.MODIFY_ANNONCE:
 					sql = sqlModifyAnnonce(params);
+					idAnnonce = (String) params.get("idAnnonce");
 					performative = ACLMessage.REQUEST;
-					System.out.println(sql);
-					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
+					addBehaviour(new SendToSqlBehaviour(msg, sql, performative, idAnnonce));
 					break;
 				case Constants.Action.CLOSE_ANNONCE:
 					sql = SqlRequest.CLOSE_ANNONCE;
-					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
+					idAnnonce = (String) params.get("idAnnonce");
+					sql = sql.replaceFirst("###", "\""+ idAnnonce + "\"");
 					performative = ACLMessage.REQUEST;
-					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
+					addBehaviour(new SendToSqlBehaviour(msg, sql, performative, idAnnonce));
 					break;
 				case Constants.Action.REOPEN_ANNONCE:
 					sql = SqlRequest.REOPEN_ANNONCE;
-					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
+					idAnnonce = (String) params.get("idAnnonce");
+					sql = sql.replaceFirst("###", "\""+ idAnnonce + "\"");
 					performative = ACLMessage.REQUEST;
-					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
+					addBehaviour(new SendToSqlBehaviour(msg, sql, performative, idAnnonce));
 					break;
 				}
 			}
@@ -68,16 +73,16 @@ public class ManageAnnonceAgent extends Agent{
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("proposer") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("description") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("budget") + "\"");
-			sql = sql.replaceFirst("###", "\""+ (String) params.get("nbPersonneBesoin") + "\"");
+//			sql = sql.replaceFirst("###", "\""+ (String) params.get("nbPersonneBesoin") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("lieu") + "\"");
-			sql = sql.replaceFirst("###", "\""+ (String) params.get("descriptionLogement") + "\"");
+//			sql = sql.replaceFirst("###", "\""+ (String) params.get("descriptionLogement") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("sex") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMin") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMax") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("status") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("haspet") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("situationFam") + "\"");
-			sql = sql.replaceFirst("###", "\""+ (String) params.get("ecole") + "\"");
+//			sql = sql.replaceFirst("###", "\""+ (String) params.get("ecole") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("profession") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("nationnalite") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("status") + "\"");
@@ -197,7 +202,6 @@ public class ManageAnnonceAgent extends Agent{
 			String [] listLoisir = ((String) params.get("loisir")).split(",");
 			for(int i = 0; i < listLoisir.length; i++){
 				listLoisir[i] = listLoisir[i].replaceAll(" ", "");
-				System.out.println("Loisir: "+listLoisir[i] + ", "+(String) params.get("idAnnonce"));
 				if(i == 0){
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					sql = sql.replaceFirst("###", "\""+ listLoisir[i] + "\"");
@@ -218,7 +222,6 @@ public class ManageAnnonceAgent extends Agent{
 			String [] listLanguage = ((String) params.get("language")).split(",");
 			for(int i = 0; i < listLanguage.length; i++){
 				listLanguage[i] = listLanguage[i].replaceAll(" ", "");
-				System.out.println("Language: "+listLanguage[i] + ", "+(String) params.get("idAnnonce"));
 				if(i == 0){
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					sql = sql.replaceFirst("###", "\""+ listLanguage[i] + "\"");
@@ -239,7 +242,6 @@ public class ManageAnnonceAgent extends Agent{
 			String [] listImportant = ((String) params.get("important")).split(",");
 			for(int i = 0; i < listImportant.length; i++){
 				listImportant[i] = listImportant[i].replaceAll(" ", "");
-				System.out.println("Language: "+listImportant[i] + ", "+(String) params.get("idAnnonce"));
 				if(i == 0){
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					sql = sql.replaceFirst("###", "\""+ listImportant[i] + "\"");
@@ -261,7 +263,6 @@ public class ManageAnnonceAgent extends Agent{
 			String [] listObligatoire = ((String) params.get("obligatoire")).split(",");
 			for(int i = 0; i < listObligatoire.length; i++){
 				listObligatoire[i] = listObligatoire[i].replaceAll(" ", "");
-				System.out.println("Language: "+listObligatoire[i] + ", "+(String) params.get("idAnnonce"));
 				if(i == 0){
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					sql = sql.replaceFirst("###", "\""+ listObligatoire[i] + "\"");
@@ -283,7 +284,6 @@ public class ManageAnnonceAgent extends Agent{
 			String [] listPeutetre = ((String) params.get("peutetre")).split(",");
 			for(int i = 0; i < listPeutetre.length; i++){
 				listPeutetre[i] = listPeutetre[i].replaceAll(" ", "");
-				System.out.println("Language: "+listPeutetre[i] + ", "+(String) params.get("idAnnonce"));
 				if(i == 0){
 					sql = sql.replaceFirst("###", "\""+ (String) params.get("idAnnonce") + "\"");
 					sql = sql.replaceFirst("###", "\""+ listPeutetre[i] + "\"");
@@ -302,12 +302,20 @@ public class ManageAnnonceAgent extends Agent{
 	}
 	protected class SendToSqlBehaviour extends Behaviour{
 		String sql;
+		String idAnnonce;
 		boolean flag = false;
 		String conversationId;
 		ACLMessage msgReceived = null;
 		int performative;
 		int step = 1;
 		
+		public SendToSqlBehaviour(ACLMessage msgReceived, String sql, int performative, String idAnnonce) {
+			this.idAnnonce = idAnnonce;
+			this.sql = sql;
+			this.msgReceived = msgReceived;
+			this.performative = performative;
+			conversationId = msgReceived.getConversationId();
+		}
 		public SendToSqlBehaviour(ACLMessage msgReceived, String sql, int performative) {
 			this.sql = sql;
 			this.msgReceived = msgReceived;
@@ -335,6 +343,8 @@ public class ManageAnnonceAgent extends Agent{
 					reply.setContent(response.getContent());
 					reply.setPerformative(response.getPerformative());
 					send(reply);
+					if(response.getPerformative() != ACLMessage.FAILURE && idAnnonce != null){
+					}
 					flag = true;
 				}
 				break;
@@ -347,5 +357,24 @@ public class ManageAnnonceAgent extends Agent{
 			return flag;
 		}
 		
+	}
+		String idAnnonce;
+		
+		public SendToMatchingBehaviour(String idAnnonce) {
+			this.idAnnonce = idAnnonce;
+		}
+		
+		@Override
+		public void action() {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("idAnnonce", idAnnonce);
+	    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MATCH_ANNONCE, map);
+	    	String content = JsonHelper.serilisation(amc);
+			ACLMessage msg = new ACLMessage();
+			msg.setPerformative(ACLMessage.REQUEST);
+			msg.addReceiver(new AID(Constants.Agent.CALCULATE_MATCH_AGENT, AID.ISLOCALNAME));
+			msg.setContent(content);
+			send(msg);
+		}	
 	}
 }

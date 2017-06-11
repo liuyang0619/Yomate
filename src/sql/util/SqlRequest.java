@@ -50,9 +50,9 @@ public class SqlRequest {
 			+ "FROM yomate.annonce "
 			+ "WHERE proposer = ###;";
 	public final static String CREATE_ANNONCE = "INSERT INTO yomate.annonce "
-			+ "(date_proposer, date_debut, date_fin, proposer, description, budget, nbPersonneBesoin, lieu, description_logement, sex, age_min, age_max, status, haspet, situationFam, ecole, profession, nationnalite)  "
+			+ "(date_proposer, date_debut, date_fin, proposer, description, budget, lieu, sex, age_min, age_max, status, haspet, situationFam, profession, nationnalite)  "
 			+ "VALUES "
-			+ "(###, ###,###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###);";
+			+ "(###, ###,###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###, ###);";
 	public final static String DELETE_ANNONCE_IMPORTANT_BY_ID = "DELETE FROM yomate.annonce_important WHERE annonce = ###;";
 	public final static String DELETE_ANNONCE_OBLIGATOIRE_BY_ID = "DELETE FROM yomate.annonce_obligatoire WHERE annonce = ###;";
 	public final static String DELETE_ANNONCE_PEUTETRE_BY_ID = "DELETE FROM yomate.annonce_peutetre WHERE annonce = ###;";
