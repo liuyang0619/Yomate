@@ -272,6 +272,15 @@ h2.resp-accordion:hover{
 .icon-button:hover .glyphicon {
 	color: #ff8000;
 }
+.contact-button{
+	color: #1c94db;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+}
 /*-- //buttons --*/
 
 

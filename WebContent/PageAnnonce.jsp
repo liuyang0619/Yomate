@@ -236,19 +236,19 @@ function jsGetAge(strBirthday) {var returnAge;
 <script type="text/javascript">
 function allowDrop(ev)
 {
-ev.preventDefault();
+	ev.preventDefault();
 }
 
 function drag(ev)
 {
-ev.dataTransfer.setData("Text",ev.target.id);
+	ev.dataTransfer.setData("Text",ev.target.id);
 }
 
 function drop(ev)
 {
-ev.preventDefault();
-var data=ev.dataTransfer.getData("Text");
-ev.target.appendChild(document.getElementById(data));
+	ev.preventDefault();
+	var data=ev.dataTransfer.getData("Text");
+	ev.target.appendChild(document.getElementById(data));
 }
 </script>
 </head>
@@ -276,7 +276,7 @@ ev.target.appendChild(document.getElementById(data));
 					</div>
 				</div>		
 				<div class="col-md-6">
-					<label style="font-size:30px"><strong><span id="nom"></span><span id="prenom"></span></strong></label>
+					<label style="font-size:30px"><strong><span id="nom"></span><span id="prenom" style="margin:10px"></span></strong></label>
 					<div><span id="sexe"></span></div>
 					<div><span id="age"></span></div>
 					<div><span id="description"></span></div>
@@ -285,109 +285,207 @@ ev.target.appendChild(document.getElementById(data));
 			<div class="row">
 				<br />
 			</div>
-			<div class="row"  style ="border-radius:5px 5px 5px 5px; border:3px solid #408080;" >
-				<div style="font-size:30px">Profil personnel</div>
-				<div class="row">
-					<div class="col-md-6">
-						<!-- <div class="top-margin-5">Lieu:<span id="lieu"></span></div> -->
-						<div class="top-margin-5">Profession:<span id="profession"></span></div>
-						<div class="top-margin-5">Nationnalité:<span id="nationnalite"></span></div>
-						<div class="top-margin-5">Situation familiale:<span id="situationF"></span></div>
+			<div class="sap_tabs perso-profile">	
+						<div id="horizontalTabProfilPhoto">
+							<ul class="resp-tabs-list">
+								<li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Profil personnel</span></li>
+							</ul>	
+							<div class="resp-tabs-container perso-profile-info">
+								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Nationnalité:</span>
+											<span id = "nationnalite"></span>
+										</div>
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Langue(s): </span>
+											<span id = "langue"></span>
+										</div>
+									</div>
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Profession:</span>
+											<span id = "profession"></span>
+										</div>
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Loisir(s): </span>
+											<span id = "loisir"></span>
+										</div>
+									</div>
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Situation Familiale:</span>
+											<span id = "situationF"></span>
+										</div>
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Animaux d'accompagnie: </span>
+											<span id = "animal"></span>
+										</div>
+									</div>
+									<div class = "row">
+										<div class = "col-md-6">
+											<span style = "font-weight: bold">Logement:</span>
+											<span id = "logement"></span>
+										</div>
+									</div>
+									<div class = "row">
+										<div class = "col-md-12">
+											<a href="/Yomate/espacePersonnel/2" id="editerProfil" class = "btn btn-success search-btn perso-edit-btn">Editer<span class="glyphicon glyphicon-edit"></span></a>
+										</div>
+									</div> 
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-6"  >
-						<div class="top-margin-5">Langue(s):<span id="langue"></span></div>
-						<div class="top-margin-5">Loisirs:<span id="loisir"></span></div>
-						<!-- <div class="top-margin-5">Habitude horaire:<span id="habitude"></span></div> -->
-						<div class="top-margin-5">Animaux d'accompagnie:<span id="animal"></span></div>
-					</div>
-				</div>
-				<div class="row">
-					<br />
-				</div>
-				<!-- <div class="col-md-12">
-				 	<button class = "button button-action button-rounded button-small" style="align:right; float:right">Editer</button>
-				 	<a data-toggle="modal" data-target="#annonce">Editer</a>
-				 </div> -->
-			</div>
 			<div class="row">
 				<br />
-				<br />
 			</div>
-			<div class="row" style="border-radius:5px 5px 5px 5px; border:3px solid #408080">
-				<div style="font-size:30px">Informations d'annonce</div>
-				<div class="row top-margin-5">
-					<div class="col-md-6">
-						<div>Lieu:<span id="lieuA"></span></div>
-					</div>
-					<div class="col-md-6">
-						<div>Sexe:<span id="sexeA"></span></div>
+			<div class="sap_tabs perso-profile">	
+				<div id="horizontalTabAnnonce">
+					<ul class="resp-tabs-list">
+						<li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Informations d'annonce</span></li>
+					</ul>
+					<div class="resp-tabs-container perso-profile-info">
+						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Lieu:</span>
+									<span id = "lieuA"></span>
+								</div>
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Sexe:</span>
+									<span id = "sexeA"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Budget:</span>
+									<span id = "budget"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Durée:</span>
+									<span id="dateD"></span><span> - </span><span id="dateF"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Age:</span>
+									<span id="ageMin"></span><span> - </span><span id="ageMax"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Loisir:</span>
+									<span id="loisirA"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Animal d'accompagnie:</span>
+									<span id="animalA"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Nationnalité:</span>
+									<span id="nationnaliteA"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Langues parlées:</span>
+									<span id="langueA"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Ecole:</span>
+									<span id="ecole"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-12">
+									<button type="button" id="editerAnnonce" id="editerAnnonce" class="btn btn-success search-btn perso-edit-btn" data-toggle="modal" data-target="#annonce">Editer<span class="glyphicon glyphicon-edit"></span></button>
+								</div>
+							</div> 
+						</div>
 					</div>
 				</div>
-				
-				<div class="top-margin-5">Budget:<span id="budget"></span></div>
-				<div class="top-margin-5">Durée:<span id="dateD"></span><span> - </span><span id="dateF"></span></div>
-				<div class="top-margin-5">Age:<span id="ageMin"></span><span> - </span><span id="ageMax"></span></div>
-				<div class="top-margin-5">Loisir:<span id="loisirA"></span></div>
-				<div class="top-margin-5">Animal d'accompagnie:<span id="animalA"></span></div>
-				<div class="top-margin-5">Nationnalité:<span id="nationnaliteA"></span></div>
-				<div class="top-margin-5">Langues parlées:<span id="langueA"></span></div>
-				<div class="top-margin-5">Ecole:<span id="ecole"></span></div>
-				
-				<div class="col-md-12 top-margin-5">
-					<br />
-				</div>
-				<div class="col-md-12 top-margin-5">
-				 	<!-- <button class = "button button-action button-rounded button-small" style="align:right; float:right">Editer</button> -->
-				 	<button type="button" id="editerAnnonce" class="btn btn-primary btn-large" data-toggle="modal" data-target="#annonce">Editer</button>
-				 </div>
-			</div>
+			</div> 
 			<div class="row">
 				<br />
-				<br />
 			</div>
-			<div class="row" style="border-radius:5px 5px 5px 5px; border:3px solid #4176c5;">
-			<div style="font-size:30px">Filtre de profil</div>
-				<div class="col-md-8" style="">
-					
-					<div class="row top-margin-5">
-						<div style="font-size:20px" id="obligatoire" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</div>
-					</div>
-					<div class="row top-margin-5">
-						<div style="font-size:20px" id="important" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</div>
-					</div>
-					<div class="row top-margin-5">
-						<div style="font-size:20px" id="vautMieux" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</div>
+			
+			<div class="row">
+			<div class="col-md-9">
+			<div class="sap_tabs perso-profile">	
+				<div id="horizontalTabFiltre">
+					<ul class="resp-tabs-list">
+						<li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Filtre de profil</span></li>
+					</ul>
+					<div class="resp-tabs-container perso-profile-info">
+						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+							<div class="row top-margin-5">
+								<div class="col-md-12">
+									<strong><span style="font-size:20px" id="obligatoire" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</span></strong>
+								</div>
+							</div>
+							<div class="row top-margin-5">
+								<div class="col-md-12">
+									<strong><span style="font-size:20px" id="important" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</span></strong>
+								</div>
+							</div>
+							<div class="row top-margin-5">
+								<div class="col-md-12">
+									<strong><span style="font-size:20px" id="vautMieux" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</span></strong>
+								</div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
-				<div class="col-md-4" style="border-radius:5px 5px 5px 5px; border:3px solid #408080">
-					<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" >
-						<p draggable="true" ondragstart="drag(event)" id="tag1" style="color: #8a6d3b; background-color: #fcf8e3; display: inline-block" >sexe</p>
-						<!-- <p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p> -->
-					</div>
-					<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px dashed red">
-						<p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p>
-					</div>
-				</div>
+			</div>
+			</div>
+			<div class="col-md-3" style="border-radius:5px 5px 5px 5px; border:3px solid #408080">
+							<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px" >
+								<p draggable="true" ondragstart="drag(event)" id="tag1" style="color: #8a6d3b; background-color: #fcf8e3; display: inline-block" >sexe</p>
+								<!-- <p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p> -->
+							</div>
+							<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
+								<p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p>
+							</div>
+							<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
+								<p draggable="true" ondragstart="drag(event)" id="tag3" style="color: #3c763d; background-color: #fcf8e3; display: inline-block" >budget</p>
+							</div>
+							<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
+								<p draggable="true" ondragstart="drag(event)" id="tag4" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >loisir</p>
+							</div>
+							<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
+								<p draggable="true" ondragstart="drag(event)" id="tag5" style="color: #3c763d; background-color: #fcf8e3; display: inline-block" >nationnalité</p>
+							</div>
+							<div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
+								<p draggable="true" ondragstart="drag(event)" id="tag6" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >langue</p>
+							</div>
+							<div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
+								<p draggable="true" ondragstart="drag(event)" id="tag7" style="color: #3c763d; background-color: #fcf8e3; display: inline-block" >animal</p>
+							</div>
+							<div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
+								<p draggable="true" ondragstart="drag(event)" id="tag8" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >logement</p>
+							</div>
+						</div> 
 			</div>
 		</div>
 		<!-- <hr style="width:2px;height:100px; "></hr> -->
 		<div class="col-md-4">
-			<!-- <div class="col-md-12"> 
-					<br />
-					<div style="font-size:20px">Status d'annonce</div> 
-					<br />
-					<div style="background-color: lightblue; text-align:center;  color: #FFFFFF">Ouverte</div>
-					<br />
-			</div> -->
-			<!-- <div class="row">
-				<p style="text-align:center;  color:#408080">---------------------------------------------</p>
-			</div> -->
 			<div class="row">
 				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
-			<div class="row"> 
+			<div id="status" class="row"> 
 				
-				<div style="font-size:20px; margin-left:40px">Status d'annonce</div> 
+				<span style="font-size:20px; margin-left:40px"><strong>Status d'annonce</strong></span> 
+				<br />
 				<br />
 				<div class="row">
 					<center>
@@ -401,12 +499,17 @@ ev.target.appendChild(document.getElementById(data));
 				</div>
 				<br />
 			</div>
+			<div id="contactButton" class="row" style="margin: 0 auto;text-align:center;"> 
+				<br />
+				<a class="interestButton btn btn-primary" style="height:40px;width:200px" href="/Yomate/messagerie.jsp"><strong>Contactez-lui</strong></a>
+				<br />
+			</div>
 			<div class="row">
 				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
 			<div class="row">
-				<div style="font-size:20px; margin-left:40px">Vue par</div>
-				<div class="row" style="margin: 30px">
+				<span style="font-size:20px; margin-left:40px"><strong>Vue par</strong></span>
+				<div class="row" style="margin: 30px; text-align:center;">
 					<div id="id_avatar1" style="display: inline">
 				   		<img style="height: 50px; width: 50px" src="/Yomate/ressources/images/1.png">
 					</div>
@@ -422,7 +525,7 @@ ev.target.appendChild(document.getElementById(data));
 				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
 			<div class="row">
-				<div style="font-size:20px; margin-left:40px">Colocataires concernés</div>
+				<span style="font-size:20px; margin-left:40px"><strong>Colocataires concernés</strong></span>
 				<div class="row" style="margin: 30px">
 					<div id="id_avatar4" style="display: inline">
 				   		<img style="height: 50px; width: 50px" src="/Yomate/ressources/images/1.png">
@@ -436,7 +539,7 @@ ev.target.appendChild(document.getElementById(data));
 				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
 			<div class="row" >
-				<div style="font-size:20px; margin-left:40px">Correspondance à votre profil:</div>
+				<span style="font-size:20px; margin-left:40px"><strong>Correspondance à votre profil:</strong></span>
 				<div id="correspondance" style="font-size:30px; background-color: lightblue; text-align:center; margin:30px">78%</div>
 			</div>
 			<div class="row">
@@ -454,8 +557,8 @@ ev.target.appendChild(document.getElementById(data));
 						}   
 					}
 				</script>
-				<div class="wrapper">
-					<button class="interestButton btn btn-primary" id="interet" style="text-align:center; color:rgb(255, 255, 255); margin: 30px" onclick="changeColor(this)">Je suis interesse(e)</button>
+				<div class="wrapper"  style="margin: 0 auto;text-align:center;">
+					<button class="interestButton btn btn-primary" id="interest" style="height:40px;width:200px; text-align:center; color:rgb(255, 255, 255)" onclick="changeColor(this)"><strong>Je suis interesse(e)</strong></button>
 				</div>		
 				<!-- <button id="interet" type="button" class="btn btn-primary" style="text-align:center; float:center; color:rgb(255, 255, 255); margin: 30px" onclick="changeColor(this)">Je suis interesse(e)</button> -->
 			</div>
@@ -627,10 +730,37 @@ ev.target.appendChild(document.getElementById(data));
 		document.location.href="http://localhost:8080/Yomate/annonce/2";
 	}
 	</script>
-	
+	<script src=<c:url value="${path}/ressources/js/easyResponsiveTabs.js" /> ></script>	
+	<script type="text/javascript">		
+		$(document).ready(function () {		
+			$('#horizontalTabProfilPhoto').easyResponsiveTabs({		
+				type: 'default', //Types: default, vertical, accordion           		
+				width: 'auto', //auto or any width like 600px		
+				fit: true   // 100% fit in a container		
+			});		
+		});		
+		$(document).ready(function () {		
+			$('#horizontalTabAnnonce').easyResponsiveTabs({		
+				type: 'default', //Types: default, vertical, accordion           		
+				width: 'auto', //auto or any width like 600px		
+				fit: true   // 100% fit in a container		
+			});		
+		});		
+		$(document).ready(function () {		
+			$('#horizontalTabFiltre').easyResponsiveTabs({		
+				type: 'default', //Types: default, vertical, accordion           		
+				width: 'auto', //auto or any width like 600px		
+				fit: true   // 100% fit in a container		
+			});		
+		});		
+	</script>
 	<script type="text/javascript"> 
+		var user = getCookie("idUser");
+		alert(user); 
+		
 		var json0 = '${userProfile}';
 		var profil = JSON.parse(json0);
+		var idUser = profil[0]['idUser'];
 		document.getElementById("nom").innerHTML = profil[0]['nom'];
 		document.getElementById("prenom").innerHTML = profil[0]['prenom'];
 		document.getElementById("sexe").innerHTML = checkSex(profil[0]['sex']);
@@ -643,6 +773,7 @@ ev.target.appendChild(document.getElementById(data));
 		document.getElementById("langue").innerHTML = profil[0]['language'];
 		document.getElementById("loisir").innerHTML = profil[0]['loisir'];
 		document.getElementById("animal").innerHTML = checkPet(profil[0]['haspet']);
+
 		
 		var json = '${annonceInfo}';
 		//alert(json);
@@ -672,49 +803,25 @@ ev.target.appendChild(document.getElementById(data));
 		
 		/* document.getElementById("age").innerHTML = jsGetAge(user[0]['birthday']);
 		document.getElementById("sexe").innerHTML = checkSex(user[0]['sex']);  */
+		if(user === idUser){
+			alert("You are watching your annonce!");
+			var contact = document.getElementById("contactButton");
+			contact.style.display="none";
+			alert("hide contact!");
+			var interest = document.getElementById("interest");
+			interest.style.display="none";
+		}
+		else{
+			alert("You are watching others' annonce!");
+			/* var status = document.getElementById("status");
+			status.style.display="none"; */
+			document.getElementById("status").style.display="none";
+			alert("status hidden!");
+			document.getElementById("editerProfil").style.display="none";
+			document.getElementById("editerAnnonce").style.display="none";
+		}
+			
 		
-	</script>
-	
-	<script>
-	/* function ModifierAnnonce(){
-		var json = '${annonceInfo}';
-		var annonce = JSON.parse(json);
-		var id = annonce[0]['idAnnonce'];
-		var dateD = document.getElementById("dateD").value;
-		var dateF = document.getElementById("dateF").value;
-		var description = annonce[0]['description'];
-		var budget = document.getElementById("budget").value;
-		var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
-		var lieu = document.getElementById("lieuA").value;
-		var descriptionLogement = annonce[0]['descriptionLogement'];
-		var sex;
-		var sexe = document.getElementById("sexeA").value;
-		if(sexe === "homme")
-			sex = "0";
-		else
-			sex = "1";
-		var ageMin = document.getElementById("ageMin").value;
-		var ageMax = document.getElementById("ageMax").value;
-		var pet;
-		var haspet = document.getElementById("animalA").value;
-		if(haspet === "non")
-			pet = "0";
-		else
-			pet = "1";
-		var situationF = annonce[0]['situationFam'];
-		var ecole = annonce[0]['ecole'];
-		var profession = annonce[0]['profession'];
-		var nationnalite = annonce[0]['nationnalite'];
-		var loisir = annonce[0]['loisir'];
-		var language = annonce[0]['language'];
-		var peutetre = annonce[0]['peutetre'];
-		var obligatoire = annonce[0]['obligatoire'];
-		var important = annonce[0]['important'];
-
-		document.location.href="http://localhost:8080/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
-		+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisir+"/"+language+"/"+peutetre
-		+"/"+obligatoire+"/"+important;  
-	}*/
 	</script>
 	
 	
@@ -773,6 +880,7 @@ function updateAnnonce(){
 	var situationF = annonce[0]['situationFam'];
 	var ecole = annonce[0]['ecole'];
 	var profession = annonce[0]['profession'];
+	alert
 	var nationnalite = annonce[0]['nationnalite'];
 	//var loisir = annonce[0]['loisir'];
 	var language = annonce[0]['language'];
@@ -806,13 +914,14 @@ function updateAnnonce(){
 	var obligatoire = "age, language";
 	var descriptionLogement = "grand";
 	
-	/* var url = "http://localhost:8080/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
+	var url = "http://localhost:8080/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 	+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
-	+"/"+obligatoire+"/"+important; */
-	var url = "http://localhost:8080/Yomate/annonce/modifierTest/"+idAnnonce+"/"+dateD;
+	+"/"+obligatoire+"/"+important; 
+	//var url = "http://localhost:8080/Yomate/annonce/modifierTest/"+idAnnonce+"/"+dateD;
 	document.location.href = url; 
 
 	}
 	
 	</script>
+	
 </html>
