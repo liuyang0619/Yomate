@@ -74,7 +74,7 @@ public class EspacePersonnelController {
 		String result = behaviourProfile.getAnswer();
 		String resultAnnonceFavorite = behaviourAnnonceFavorite.getAnswer();
 		String resultAnnonceHistorique = behaviourAnnonceHistorique.getAnswer();
-		System.out.println("history++++"+resultAnnonceHistorique);
+
 		
 		model.addAttribute("userProfile", result);
 		model.addAttribute("AnnonceFavorite", resultAnnonceFavorite);
@@ -164,7 +164,7 @@ public class EspacePersonnelController {
 		return "espacePersonnel.jsp";
 	}
 	
-	@RequestMapping(value = "/new/{userId}", method = {RequestMethod.POST}) 
+	@RequestMapping(value = "/newAnnonce/{userId}", method = {RequestMethod.POST}) 
 	public String creatAnnonce(
 			@PathVariable(value="userId", required=false) String userId,
 			@RequestParam(value="date_debut", required=false) String dateDebut,
@@ -177,11 +177,14 @@ public class EspacePersonnelController {
 			@RequestParam(value="nationnalite", required=false) String nationnalite, 
 			@RequestParam(value="ageMin", required=false) String ageMin, 
 			@RequestParam(value="ageMax", required=false) String ageMax, 
+			@RequestParam(value="logement", required=false) String logement,
+			@RequestParam(value="description", required=false) String description,
 			@RequestParam(value="loisir", required=false) String loisir, 
 			@RequestParam(value="langue", required=false) String language, 
 			@RequestParam(value="lieu", required=false) String lieu, 
 			@RequestParam(value="dateProposer", required=false) String dateProposer,
 			@RequestParam(value="annonce", required=false) String annonce, 
+			@RequestParam(value="profile", required=false) String profile, 
 			Model model ){ 
 		Properties pp = new Properties();
     	pp.setProperty(Profile.MAIN_HOST, "localhost");
@@ -204,13 +207,18 @@ public class EspacePersonnelController {
     	map.put("nationnalite", nationnalite);
     	map.put("loisir", loisir);
     	map.put("language", language);
+    	map.put("logement", logement);
 		map.put("descriptionLogement", "");
-		map.put("description", "");
+		map.put("description", description);
 		map.put("nbPersonneBesoin", "");
 		map.put("ecole", "");
-    	System.out.println("modify annonce _____"+ map);
+		map.put("peutetre", "");
+    	map.put("obligatoire", "");
+    	map.put("important", "");
+    	System.out.println("creat annonce _____"+ map);
+
     	
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ANNONCE, map);
     	String content = JsonHelper.serilisation(amc);
     	ProcessBehaviour behaviour = new ProcessBehaviour(content);
 		try {
@@ -229,7 +237,7 @@ public class EspacePersonnelController {
 		if (result.equals(Constants.Message.SUCCESS_MODIFY_DATABASE)){
 	    	Map<String, String> map1 = new HashMap<String, String>();
 	    	map1.put("idUser", userId);
-	    	ActionMessageContent amc1 = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map1);
+	    	ActionMessageContent amc1 = new ActionMessageContent(Constants.Action.SELECT_HISTORYS_COLO, map1);
 	    	String content1 = JsonHelper.serilisation(amc1);
 	    	ProcessBehaviour behaviourProfile = new ProcessBehaviour(content1);
 	    	try {
@@ -241,8 +249,10 @@ public class EspacePersonnelController {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}		
-			String resultProfile = behaviourProfile.getAnswer();
-			model.addAttribute("userProfile", resultProfile);    	
+			String resultHistory = behaviourProfile.getAnswer();
+			model.addAttribute("userProfile", profile);    
+			model.addAttribute("AnnonceFavorite", annonce);
+			model.addAttribute("AnnonceHistorique", resultHistory);
 		}
 		else{
 			return "espacePersonnel.jsp";
