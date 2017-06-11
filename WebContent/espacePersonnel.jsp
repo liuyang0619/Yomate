@@ -947,7 +947,12 @@ function setSelector(select,val) {
 	checkUserId(user['idUser']);
 	checkVide("nom", user['nom']);
 	checkVide("prenom", user['prenom']);
-	$("#userImage").attr("src", "/Yomate/ressources/"+user['image']);
+	if (user['image'] === null){
+		$("#userImage").attr("src", "/Yomate/ressources/photo/photo.png");
+	}
+	else{
+		$("#userImage").attr("src", "/Yomate/ressources/"+user['image']);
+	}
 	document.getElementById("sexe").innerHTML = checkSex(user["sex"]);
 	document.getElementById("haspet").innerHTML=checkHasPet(user["haspet"]);
 	if (jsGetAge(user['birthday']) != -1){
