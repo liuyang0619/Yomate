@@ -52,13 +52,6 @@ public class AnnonceController {
 		}
 		String result = behaviour.getAnswer();
 		System.out.println("res----------------------"+result);
-		/*if(result == null){
-			System.out.println("result null");
-		}
-		else{
-			System.out.println("result not null");
-		}*/
-		
 		model.addAttribute("annonceInfo", result);
 		
 		
@@ -100,7 +93,7 @@ public class AnnonceController {
 		System.out.println("resUUUU----------------------"+resultU);
 		
 		model.addAttribute("userProfile", resultU);
-		return "PageAnnonce";
+		return "PageAnnonce.jsp";
 	}
 	
 	//supprimer une annonce depuis l'espace personnel
@@ -134,7 +127,7 @@ public class AnnonceController {
 		return "PageAnnonce";
 	}
 	
-	@RequestMapping(value = "/modifierTest/{idAnnonce}/{dateD}", method = {RequestMethod.GET, RequestMethod.POST}) 
+	/*@RequestMapping(value = "/modifierTest/{idAnnonce}/{dateD}", method = {RequestMethod.GET, RequestMethod.POST}) 
 	public String modifierTest(@PathVariable(value="idAnnonce") String idAnnonce, @PathVariable(value="dateD") String dateD){
 		
 		System.out.println("testing modifier");
@@ -183,7 +176,7 @@ public class AnnonceController {
 		System.out.println("res----------------------"+result);
 		//return "annonce/"+idAnnonce;
 		return "PageAnnonce";
-	}
+	}*/
 	
 	//modifier une annonce
 	@RequestMapping(value = "/modifier/{idAnnonce}/{dateD}/{dateF}/{description}/{budget}/{nbPersonneBesoin}/{lieu}/{descriptionLogement}/{sex}/"
