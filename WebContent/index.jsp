@@ -153,9 +153,9 @@ function searchcity(city) {
 				<span class="red ">5729</span> <span> colocataires recherchant une colocation - France</span>
 			</div>
 			<div class="col-md-12 clearfix" style="text-align: center;">
-				<div class="col-md-3 inline-block">
+				<div class="col-md-4 inline-block leftright-margin-5">
 					<img src="/Yomate/ressources/images/Oksana.jpg" class="img"
-						style="width: 70px; height: 70px">
+						style="width: 140px; height: 120px">
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Oksanae</p>
 						<p style="font-size: 12px">Femme, 19 ans</p>
@@ -163,9 +163,9 @@ function searchcity(city) {
 							chambre id�alement dans un 1er �tage/RDC</div>
 				</div>
 
-				<div class="col-md-3 inline-block">
+				<div class="col-md-4 inline-block leftright-margin-5">
 					<img src="/Yomate/ressources/images/Morgane.jpg" class="img"
-						style="width: 70px; height: 70px">
+						style="width: 120px; height: 120px">
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Morgane</p>
 						<p style="font-size: 12px">Femme, 20 ans</p>
@@ -174,24 +174,14 @@ function searchcity(city) {
 							Je souhaiterais emm�nager en ao�t et rester pour un peu plus de 6 mois.</p>
 					</div>
 				</div>
-				<div class="col-md-3 inline-block">
+				<div class="col-md-4 inline-block leftright-margin-5">
 					<img src="/Yomate/ressources/images/Sara.jpg" class="img"
-						style="width: 70px; height: 70px">
+						style="width: 120px; height: 120px">
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Sara</p>
 						<p style="font-size: 12px">Femme, 28 ans</p>
 						<p style="font-size: 12px">Bonjour, Je m'appelle Sara, je cherche une chambre dans une colocation avec un loyer de 600 euro. 
 							Si mon profil vous int�resse, envoyez moi un Message Flash ou un email. Merci, Sara</p>
-					</div>
-				</div>
-				<div class="col-md-3 inline-block">
-					<img src="/Yomate/ressources/images/Benjy.jpg" class="img"
-						style="width: 70px; height: 70px">
-					<div class="row">
-						<p style="font-weight: bolder; font-size: 12px">Benjy</p>
-						<p style="font-size: 12px">Homme, 19 ans</p>
-						<p style="font-size: 12px">Bonjour, Je m'appelle Benjy, je cherche une chambre dans une colocation avec un loyer de 600 euro. 
-						Si mon profil vous int�resse, envoyez moi un Message Flash ou un email. Merci, Benjy</p>
 					</div>
 				</div>
 			</div>

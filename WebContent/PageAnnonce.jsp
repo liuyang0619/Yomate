@@ -172,6 +172,124 @@ function checkPet(pet){
 </script>
 <!-- check pet -->
 
+<!-- check langue -->
+<script type="text/javascript">
+function checkLangue(langueValue){
+	var langue;
+	switch(langueValue) {
+    case "27":
+    	langue = "français";
+        break;
+    case "20":
+    	langue = "chinois";
+        break;
+    case "3":
+    	langue = "anglais";
+        break;
+    case "1":
+    	langue = "allemand";
+        break;
+    case "36":
+    	langue = "italien";
+        break;
+    case "73":
+    	langue = "autres";
+        break;
+    default:
+    	langue = "autres";
+	} 
+	return langue;
+}
+</script>
+<!-- check langue -->
+
+<!-- check profession -->
+<script type="text/javascript">
+function checkProfession(professionValue){
+	var profession;
+	switch(professionValue) {
+    case "39":
+    	profession = "étudiant";
+    	//alert("profession étudiant");
+        break;
+    case "69":
+    	profession = "salarié";
+        break;
+    case "68":
+    	profession = "retraité";
+        break;
+    case "13":
+    	profession = "autres";
+        break;
+    default:
+    	profession = "autres";
+	} 
+	return profession;
+}
+</script>
+<!-- check profession -->
+
+<!-- check nationnalite -->
+<script type="text/javascript">
+function checkNationnalite(nationnaliteValue){
+	var nationnalite;
+	switch(nationnaliteValue) {
+    case "64":
+    	nationnalite = "Français";
+        break;
+    case "41":
+    	nationnalite = "Chinois";
+        break;
+    case "83":
+    	nationnalite = "Italien";
+        break;
+    case "148":
+    	nationnalite = "Russe";
+        break;
+    case "14":
+    	nationnalite = "Bahamien";
+        break;
+    case "196":
+    	nationnalite = "autres";
+        break;
+    default:
+    	nationnalite = "autres";
+	} 
+	return nationnalite;
+}
+</script>
+<!-- check nationnalite -->
+
+<!-- check loisir -->
+<script type="text/javascript">
+function checkLoisir(loisirValue) {
+	var loisir;
+	switch(loisirValue) {
+    case "2":
+    	loisir = "voyage";
+        break;
+    case "3":
+    	loisir = "sport";
+        break;
+    case "5":
+    	loisir = "cuisine";
+        break;
+    case "19":
+    	loisir = "jeux vidéo";
+        break;
+    case "9":
+    	loisir = "lecture";
+        break;
+    case "35":
+    	loisir = "autres";
+        break;
+    default:
+    	loisir = "autres";
+	} 
+	return loisir;
+}
+</script>
+<!-- //check loisir -->
 <!-- check sex -->
 <script type="text/javascript">
 function checkSex(strSex) {
@@ -268,8 +386,23 @@ function drop(ev)
 			</div>
 	<div class="container">
 	<div class="row top-margin-20 bottom-margin-20"> 
-		<div class="col-md-8" >
+		<div class="col-md-12" >
 			<div class="row" style="vertical-align:middle">
+				<div class="col-md-2">
+					<div id="id_avatar">
+						<img src="/Yomate/ressources/images/1.png">
+					</div>
+				</div>		
+				<div class="col-md-4">
+					<label style="font-size:30px"><strong><span id="nom"></span><span id="prenom" style="margin:10px"></span></strong></label>
+					<div><span id="sexe"></span></div>
+					<div><span id="age"></span></div>
+					<div><span id="description"></span></div>
+				</div>
+			</div> 
+		</div>
+		<div class="col-md-8" >
+			<!-- <div class="row" style="vertical-align:middle">
 				<div class="col-md-4">
 					<div id="id_avatar">
 				   		<img src="/Yomate/ressources/images/1.png">
@@ -281,7 +414,7 @@ function drop(ev)
 					<div><span id="age"></span></div>
 					<div><span id="description"></span></div>
 				</div>
-			</div>
+			</div> -->
 			<div class="row">
 				<br />
 			</div>
@@ -320,12 +453,6 @@ function drop(ev)
 										<div class = "col-md-6">
 											<span style = "font-weight: bold">Animaux d'accompagnie: </span>
 											<span id = "animal"></span>
-										</div>
-									</div>
-									<div class = "row">
-										<div class = "col-md-6">
-											<span style = "font-weight: bold">Logement:</span>
-											<span id = "logement"></span>
 										</div>
 									</div>
 									<div class = "row">
@@ -375,16 +502,30 @@ function drop(ev)
 									<span id="ageMin"></span><span> - </span><span id="ageMax"></span>
 								</div>
 							</div>
-							<div class = "row">
-								<div class = "col-md-6">
-									<span style = "font-weight: bold">Loisir:</span>
-									<span id="loisirA"></span>
-								</div>
-							</div>
+							
 							<div class = "row">
 								<div class = "col-md-6">
 									<span style = "font-weight: bold">Animal d'accompagnie:</span>
 									<span id="animalA"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Logement:</span>
+									<span id="logementA"></span>
+								</div>
+							</div>
+							
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Situation/Profession:</span>
+									<span id = "situationP"></span>
+								</div>
+							</div>
+							<div class = "row">
+								<div class = "col-md-6">
+									<span style = "font-weight: bold">Situation familiale:</span>
+									<span id = "situationFA"></span>
 								</div>
 							</div>
 							<div class = "row">
@@ -401,10 +542,16 @@ function drop(ev)
 							</div>
 							<div class = "row">
 								<div class = "col-md-6">
-									<span style = "font-weight: bold">Ecole:</span>
-									<span id="ecole"></span>
+									<span style = "font-weight: bold">Loisir:</span>
+									<span id="loisirA"></span>
 								</div>
-							</div>
+							</div> 
+							<!-- <div class="row">
+				    			<div class="col-md-6">
+				    				<span style = "font-weight: bold">Description</span>
+				    				<span id="descriptionA"></span>
+				    			</div>
+				    		</div> -->
 							<div class = "row">
 								<div class = "col-md-12">
 									<button type="button" id="editerAnnonce" id="editerAnnonce" class="btn btn-success search-btn perso-edit-btn" data-toggle="modal" data-target="#annonce">Editer<span class="glyphicon glyphicon-edit"></span></button>
@@ -691,7 +838,7 @@ function drop(ev)
 		    			<div class="row top-margin-10">
 							<label class="col-md-4 search-filter-item-name">Logement</label>
 							<div class="col-md-8">
-								<select class="form-control input-sm" id="logement">
+								<select class="form-control input-sm" id="logementNew">
 									<option value="" selected disabled></option>
 									<option value="0">Je n'ai pas de logement</option>
 									<option value="1">J'ai un logement</option>
@@ -703,12 +850,12 @@ function drop(ev)
 			    		<div class="row top-margin-10">
 			    			<label class="col-md-4" for="situation">Situation/Profession</label>
 			    			<div class="form-group col-md-8">
-								<select id="annonceProfession" name="annonceProfession" class="form-control">
+								<select id="professionNew" class="form-control">
 									<option value="0" selected disabled></option>
 									<option value="39">étudiant</option>
 									<option value="69">salarié</option>
 									<option value="68">retraité</option>
-									<option value="13">autre cadres</option>
+									<option value="13">autres</option>
 							    </select>
 							</div>
 			    		</div>
@@ -718,7 +865,7 @@ function drop(ev)
 			    		<div class="row">
 			    			<label class="col-md-4" for="situ-fam">Situation Familiale</label>
 			    			<div class="form-group col-md-8">
-								<select id="annonceSituation" name="annonceSituationFamiliale" class="form-control" required>
+								<select id="situationFNew" class="form-control" required>
 									<option value="0" selected disabled></option>
 									<option value="Célibataire">Célibataire</option>
 									<option value="Couple">Couple</option>
@@ -733,7 +880,7 @@ function drop(ev)
 			    		<div class="row">
 			    			<label class="col-md-4" for="selectnationalite">Nationalité</label>
 			    			<div class="col-md-8 form-group">
-			    				<select id="annonceNationnalite" name="annonceNationnalite" class="form-control" required>
+			    				<select id="nationnaliteNew" class="form-control" required>
 									<option value="0" selected disabled></option>
 									<option value="64">Française</option>
 									<option value="41">Chinoise</option>
@@ -751,7 +898,7 @@ function drop(ev)
 			    			<!-- Langue parlé-->
 			    			<label class="col-md-4" for="annonceLangue">Langue</label>
 			    			<div class="col-md-8 form-group">
-			    				<select id="annonceLangue" name="annonceLangue" class="form-control" required>
+			    				<select id="langueNew" class="form-control" required>
 									<option value="0" selected disabled></option>
 									<option value="27">français</option>
 									<option value="20">chinois mandarin</option>
@@ -768,7 +915,7 @@ function drop(ev)
 			    		<div class="row">
 			    			<label class="col-md-4" for="annonceLoisir">Loisir</label>
 			    			<div class="col-md-8 form-group">
-			    				<select id="annonceLoisir" name="annonceLoisir" class="form-control" required>
+			    				<select id="loisirNew" class="form-control" required>
 									<option value="0" selected disabled></option>
 									<option value="2">voyage</option>
 									<option value="3">sport</option>
@@ -787,7 +934,7 @@ function drop(ev)
 			    				<label>Description</label>
 			    			</div>
 			    			<div class="col-md-12 top-margin-5">
-			    				<input id = "description" type="text" class="form-control input-sm " placeholder="Bonjour, je suis..."  required></input>
+			    				<input id = "descriptionNew" type="text" class="form-control input-sm " placeholder="Bonjour, je suis..."  required></input>
 			    			</div>
 			    		</div>
 			    		<!-- //Description -->
@@ -868,7 +1015,7 @@ function drop(ev)
 		document.location.href="http://localhost:8080/Yomate/annonce/2";
 	}
 	</script>
-	<script src=<c:url value="${path}/ressources/js/easyResponsiveTabs.js" /> ></script>	
+	<script src=<c:url value="${path}/ressources/js/easyResponsiveTabs.js" />> </script>	
 	<script type="text/javascript">		
 		$(document).ready(function () {		
 			$('#horizontalTabProfilPhoto').easyResponsiveTabs({		
@@ -899,55 +1046,76 @@ function drop(ev)
 			});		
 		});		
 	</script>
+	
 	<script type="text/javascript"> 
+		alert("hello"); 
 		var user = getCookie("idUser");
-		alert(user); 
 		
+		//get user profil info
 		var json0 = '${userProfile}';
 		var profil = JSON.parse(json0);
 		var idUser = profil[0]['idUser'];
+		//header
 		document.getElementById("nom").innerHTML = profil[0]['nom'];
 		document.getElementById("prenom").innerHTML = profil[0]['prenom'];
 		document.getElementById("sexe").innerHTML = checkSex(profil[0]['sex']);
 		document.getElementById("age").innerHTML = jsGetAge(profil[0]['birthday']);
-		document.getElementById("description").innerHTML = profil[0]['description'];
-
-		document.getElementById("profession").innerHTML = profil[0]['profession'];
-		document.getElementById("nationnalite").innerHTML = profil[0]['nationnalite'];
-		document.getElementById("situationF").innerHTML = profil[0]['situationFam'];
-		document.getElementById("langue").innerHTML = profil[0]['language'];
-		document.getElementById("loisir").innerHTML = profil[0]['loisir'];
-		document.getElementById("animal").innerHTML = checkPet(profil[0]['haspet']);
-
+		//document.getElementById("description").innerHTML = profil[0]['description'];
+		//profil info
+		var nationnaliteValue = profil[0]['nationnalite'];
+		document.getElementById("nationnalite").innerHTML = checkNationnalite(nationnaliteValue);
+		//alert("nationnalite user");
 		
+		var langueValue = profil[0]['language'];
+		document.getElementById("langue").innerHTML = checkLangue(langueValue);
+		//alert("langue user");
+		
+		var professionValue = profil[0]['profession'];
+		document.getElementById("profession").innerHTML = checkProfession(professionValue);
+		//alert("profession user");
+		
+		var loisirValue =  profil[0]['loisir'];
+		document.getElementById("loisir").innerHTML = checkLoisir(loisirValue);
+		//alert("loisir user");
+		
+		document.getElementById("situationF").innerHTML = profil[0]['situationFam'];
+		//alert("situation fam user");
+		
+		document.getElementById("animal").innerHTML = checkPet(profil[0]['haspet']);
+		//alert("animal user");
+		
+		//get annonce info
 		var json = '${annonceInfo}';
 		//alert(json);
 		var annonce = JSON.parse(json);
+
+		document.getElementById("description").innerHTML = annonce[0]['description'];
+		
+		document.getElementById("lieuA").innerHTML = annonce[0]['lieu'];
+		document.getElementById("sexeA").innerHTML = checkSex(annonce[0]['sex']);
 		document.getElementById("budget").innerHTML = annonce[0]['budget'];
 		document.getElementById("dateD").innerHTML = annonce[0]['date_debut'];
 		document.getElementById("dateF").innerHTML = annonce[0]['date_fin'];
-		document.getElementById("description").innerHTML = annonce[0]['description'];
-		document.getElementById("lieuA").innerHTML = annonce[0]['lieu'];
 		document.getElementById("ageMin").innerHTML = annonce[0]['age_min'];
 		document.getElementById("ageMax").innerHTML = annonce[0]['age_max'];
-		//document.getElementById("situationF").innerHTML = annonce[0]['situationFam'];
-		document.getElementById("langueA").innerHTML = annonce[0]['language'];
-		document.getElementById("ecole").innerHTML = annonce[0]['ecole'];
-		document.getElementById("nationnaliteA").innerHTML = annonce[0]['nationnaliteName'];
 		document.getElementById("animalA").innerHTML = checkPet(annonce[0]['haspet']);
-		document.getElementById("sexeA").innerHTML = checkSex(annonce[0]['sex']);
-		document.getElementById("loisirA").innerHTML = annonce[0]['loisir'];
-		/* if(annonce[0]['haspet']==="0")
-			document.getElementById("animalA").innerHTML = "non";
-		else
-			document.getElementById("animalA").innerHTML = "oui"; */
-		/* if(annonce[0]['sex']==="1")
-			document.getElementById("sexeA").innerHTML = "Homme";
-		else if(annonce[0]['sex']==="0")
-			document.getElementById("animal").innerHTML = "Femme";  */
+		document.getElementById("logementA").innerHTML = annonce[0]['description_logement'];
+		var professionValue = annonce[0]['professionName'];
+		var profession = checkProfession(professionValue);
+		//alert(profession);
+		document.getElementById("situationP").innerHTML = profession;
+		document.getElementById("situationFA").innerHTML = annonce[0]['situationFam'];
+		var nationnaliteValue = annonce[0]['nationnaliteName'];
+		var nationnalite = checkNationnalite(nationnaliteValue);
+		document.getElementById("nationnaliteA").innerHTML = nationnalite;
+
+		var langueValue = annonce[0]['languages'];
+		var langue = checkLangue(langueValue);
+		document.getElementById("langueA").innerHTML = langue;
+	
+		document.getElementById("loisirA").innerHTML = annonce[0]['loisirs'];
 		
-		/* document.getElementById("age").innerHTML = jsGetAge(user[0]['birthday']);
-		document.getElementById("sexe").innerHTML = checkSex(user[0]['sex']);  */
+		//check le droit 
 		if(user === idUser){
 			alert("You are watching your annonce!");
 			var contact = document.getElementById("contactButton");
@@ -970,7 +1138,6 @@ function drop(ev)
 			document.getElementById("filtreModifiable").style.display="none";
 		}
 			
-		
 	</script>
 	
 	
@@ -1026,19 +1193,19 @@ function updateAnnonce(){
 	alert(idAnnonce);
 	var description = annonce[0]['description'];
 	var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
-	var situationF = annonce[0]['situationFam'];
+	//var situationF = annonce[0]['situationFam'];
 	var ecole = annonce[0]['ecole'];
-	var profession = annonce[0]['professionName'];
-	var nationnalite = annonce[0]['nationnaliteName'];
+	//var profession = annonce[0]['professionName'];
+	//var nationnalite = annonce[0]['nationnaliteName'];
 	//var loisir = annonce[0]['loisir'];
-	var language = annonce[0]['languages'];
-	alert(language);
+	//var language = annonce[0]['languages'];
+	//alert(language);
 	//var peutetre = annonce[0]['peutetre'];
 	//var obligatoire = annonce[0]['obligatoire'];
 	//var important = annonce[0]['important'];
 	//alert(important);
 
-	var listLoisir = document.getElementById("loisirNew");
+	/* var listLoisir = document.getElementById("loisirNew");
 	var loisirValue = listLoisir.options[listLoisir.selectedIndex].value;
 	alert(loisirValue);
 	var dateD = document.getElementById("dateDNew").value;
@@ -1056,11 +1223,52 @@ function updateAnnonce(){
 	var ageMax = document.getElementById("ageMaxNew").value;
 	alert(ageMax); 
 	var pet = document.querySelector('input[name="animalNew"]:checked').value;
-	alert(pet); 
+	alert(pet);  */
 	var peutetre = "sex, haspet";
 	var important = "nationnalite";
 	var obligatoire = "age, language";
-	var descriptionLogement = "grand";
+	//var descriptionLogement = "grand";
+
+
+
+	
+	var lieu = document.getElementById("lieuNew").value;
+	alert(lieu); 
+	var budget = document.getElementById("budgetNew").value; 
+	alert(budget);
+	var sex = document.querySelector('input[name="sexeNew"]:checked').value;
+	alert(sex);
+	var dateD = document.getElementById("dateDNew").value;
+	alert(dateD);  
+	var dateF = document.getElementById("dateFNew").value;
+	alert(dateF);
+	var ageMin = document.getElementById("ageMinNew").value;
+	alert(ageMin); 
+	var ageMax = document.getElementById("ageMaxNew").value;
+	alert(ageMax);
+	var pet = document.querySelector('input[name="animalNew"]:checked').value;
+	alert(pet); 
+	var listLogement = document.getElementById("logementNew");
+	var logement = listLogement.options[listLogement.selectedIndex].value;
+	alert(logement);
+	alert("what profession?");
+	var listProfession = document.getElementById("professionNew");
+	var profession = listProfession.options[listProfession.selectedIndex].value;
+	alert(profession);
+	var listSituationF = document.getElementById("situationFNew");
+	var situationF = listSituationF.options[listSituationF.selectedIndex].value;
+	alert(situationF);
+	var listNationnalite = document.getElementById("nationnaliteNew");
+	var nationnalite = listNationnalite.options[listNationnalite.selectedIndex].value;
+	alert(nationnalite);
+	var listLangue = document.getElementById("langueNew");
+	var language = listLangue.options[listLangue.selectedIndex].value;
+	alert(language);
+	var listLoisir = document.getElementById("loisirNew");
+	var loisirValue = listLoisir.options[listLoisir.selectedIndex].value;
+	alert(loisirValue);
+	var descriptionLogement = document.getElementById("descriptionNew").value;
+	alert(descriptionLogement);
 	
 	var url = "http://localhost:8080/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 	+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre

@@ -14,7 +14,7 @@ public class SqlRequest {
 			+ "GROUP BY temp.idUser;";
 	public final static String SELECT_PROFIL_BY_ID = "SELECT temp.*, GROUP_CONCAT(la.id SEPARATOR ',') as language  FROM "
 			+ "("
-			+ "SELECT u.idUser, u.nom, u.prenom, u.birthday, u.sex, u.email, u.haspet, u.situationFam, u.ecole, p.id as profession, n.id as nationnalite, up.image, GROUP_CONCAT(l.id SEPARATOR ',') as loisir "
+			+ "SELECT u.idUser, u.lieu, u.nom, u.prenom, u.birthday, u.sex, u.email, u.haspet, u.situationFam, u.ecole, p.id as profession, n.id as nationnalite, up.image, GROUP_CONCAT(l.id SEPARATOR ',') as loisir "
 			+ "FROM YOMATE.USER as u "
 			+ "LEFT JOIN YOMATE.user_loisir as ul on u.idUser = ul.user "
 			+ "LEFT JOIN YOMATE.loisir as l on ul.loisir = l.id "
@@ -131,4 +131,7 @@ public class SqlRequest {
 	public final static String ADD_USER_TO_ANNONCE = "INSERT INTO annonc_user (annonce, user) VALUES (###, ###);";
 	public final static String GET_USER_RECOMMENDED_BY_ID_ANNONCE = "select u.*, m.rate from yomate.matching as m, yomate.user as u "
 			+ "where m.user = u.idUser AND m.annonce = ###;";
+	public final static String DELETE_MATCHING_BY_ID = "DELETE FROM yomate.matching WHERE annonce = ### AND user = ###;";
+	public final static String UPDATE_MATCHING = "INSERT INTO yomate.matching (annonce, user, rate) values (###, ###, ###);";
+	
 }
