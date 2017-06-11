@@ -158,6 +158,15 @@ input:checked + .slider .off
 }
 </style>
 
+<!-- editer filtre -->
+<script type="text/javascript">
+function editerFiltre(){
+	var filtre = document.getElementById("filtre");
+	filtre.style.display="none";
+	document.getElementById("filtreModifiable").style.display="block";
+}
+</script>
+<!-- //editer filtre-->
 
 <!-- check pet -->
 <script type="text/javascript">
@@ -171,6 +180,7 @@ function checkPet(pet){
 }
 </script>
 <!-- check pet -->
+
 
 <!-- check langue -->
 <script type="text/javascript">
@@ -492,7 +502,7 @@ function drop(ev)
 							</div>
 							<div class = "row">
 								<div class = "col-md-6">
-									<span style = "font-weight: bold">Durée:</span>
+									<span style = "font-weight: bold">Période:</span>
 									<span id="dateD"></span><span> - </span><span id="dateF"></span>
 								</div>
 							</div>
@@ -575,20 +585,25 @@ function drop(ev)
 						<div class="resp-tabs-container perso-profile-info">
 							<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 								<div class="row top-margin-5">
-									<div class="col-md-12">
-										<strong><span style="font-size:20px" id="obligatoire" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</span></strong>
+									<div class="col-md-12" id="o1" >
+										<strong><span style="font-size:20px" id="obligatoire1" ondrop="drop(event)" ondragover="allowDrop(event)" >Obligatoires:</span></strong>
 									</div>
 								</div>
 								<div class="row top-margin-5">
-									<div class="col-md-12">
-										<strong><span style="font-size:20px" id="important" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</span></strong>
+									<div class="col-md-12" id="i1">
+										<strong><span style="font-size:20px" id="important1" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</span></strong>
 									</div>
 								</div>
 								<div class="row top-margin-5">
-									<div class="col-md-12">
-										<strong><span style="font-size:20px" id="vautMieux" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</span></strong>
+									<div class="col-md-12" id="p1">
+										<strong><span style="font-size:20px" id="vautMieux1" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</span></strong>
 									</div>
 								</div>
+								<div class = "row top-margin-5">
+									<div class = "col-md-12">
+										<a id="editerFiltre" class = "btn btn-success search-btn perso-edit-btn" onClick="editerFiltre()">Editer<span class="glyphicon glyphicon-edit"></span></a>
+									</div>
+								</div> 
 							</div>
 							
 						</div>
@@ -606,20 +621,25 @@ function drop(ev)
 					<div class="resp-tabs-container perso-profile-info">
 						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 							<div class="row top-margin-5">
-								<div class="col-md-12">
-									<strong><span style="font-size:20px" id="obligatoire" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</span></strong>
+								<div class="col-md-12" id="o2" >
+									<strong><span style="font-size:20px" id="obligatoire2" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</span></strong>
 								</div>
 							</div>
 							<div class="row top-margin-5">
-								<div class="col-md-12">
-									<strong><span style="font-size:20px" id="important" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</span></strong>
+								<div class="col-md-12" id="i2">
+									<strong><span style="font-size:20px" id="important2" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</span></strong>
 								</div>
 							</div>
 							<div class="row top-margin-5">
-								<div class="col-md-12">
-									<strong><span style="font-size:20px" id="vautMieux" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</span></strong>
+								<div class="col-md-12" id="p2">
+									<strong><span style="font-size:20px" id="peutetre2" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</span></strong>
 								</div>
 							</div>
+							<div class = "row top-margin-5">
+									<div class = "col-md-12">
+										<a id="envoyerFiltre" class = "btn btn-success search-btn perso-edit-btn" onClick="envoyerFiltre()">Envoyer<span class="glyphicon glyphicon-edit"></span></a>
+									</div>
+								</div> 
 						</div>
 						
 					</div>
@@ -635,22 +655,22 @@ function drop(ev)
 								<p draggable="true" ondragstart="drag(event)" id="tag2" style="margin:2px; color: #3c763d; background-color: #dff0d8; border-style:dotted; border-color: white; display: inline-block" >age</p>
 							</div>
 							<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag3" style="color: #3c763d; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >budget</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag3" style="margin:2px; color: #3c763d; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >budget</p>
 							</div>
 							<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag4" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >loisir</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag4" style="margin:2px; color: #3c763d; background-color: #dff0d8; border-style:dotted; border-color: white; display: inline-block" >loisir</p>
 							</div>
 							<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag5" style="color: #3c763d; background-color: #fcf8e3; display: inline-block" >nationnalité</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag5" style="margin:2px; color: #3c763d; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >nationnalité</p>
 							</div>
 							<div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag6" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >langue</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag6" style="margin:2px; color: #3c763d; background-color: #dff0d8; border-style:dotted; border-color: white; display: inline-block" >langue</p>
 							</div>
 							<div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag7" style="color: #3c763d; background-color: #fcf8e3; display: inline-block" >animal</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag7" style="margin:2px; color: #3c763d; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >animal</p>
 							</div>
 							<div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag8" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >logement</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag8" style="margin:2px; color: #3c763d; background-color: #dff0d8; border-style:dotted; border-color: white; display: inline-block" >logement</p>
 							</div>
 						</div> 
 			</div>
@@ -788,7 +808,7 @@ function drop(ev)
                 	
 			    		<!-- Date de naissance -->
 			    		<div class="row top-margin-10">
-			    			<label class="col-md-2">Durée</label>
+			    			<label class="col-md-2">Période</label>
 				    			<div class="col-md-4">
 					    			<div class="input-group" id="dateDebutPicker">
 					                    <input type="text" class="form-control input-sm" id="dateDNew" placeholder="Date de debut"/>
@@ -900,12 +920,12 @@ function drop(ev)
 			    			<div class="col-md-8 form-group">
 			    				<select id="langueNew" class="form-control" required>
 									<option value="0" selected disabled></option>
-									<option value="27">français</option>
-									<option value="20">chinois mandarin</option>
-									<option value="3">anglais</option>
-									<option value="1">allemand</option>
-									<option value="36">italien</option>
-									<option value="73">autre</option>
+									<option value="27">française</option>
+									<option value="20">chinoise mandarin</option>
+									<option value="3">anglaise</option>
+									<option value="1">allemande</option>
+									<option value="36">italienne</option>
+									<option value="73">autres</option>
 							    </select>
 							</div>
 						</div>
@@ -996,7 +1016,14 @@ function drop(ev)
                 </div>
             </div>
         </div>
+        <br />
+        <br />
+        <br />
     </div>
+    
+    <br />
+    <br />
+    <br />
 	
 	
 	<div id="footer"></div>
@@ -1114,6 +1141,35 @@ function drop(ev)
 		document.getElementById("langueA").innerHTML = langue;
 	
 		document.getElementById("loisirA").innerHTML = annonce[0]['loisirs'];
+
+
+		//priorite de matching
+		var obligatoirecritere = annonce[0]['obligatoirecritere'];
+		var obligatoire = obligatoirecritere.split(",");
+		for(var i=0; i<obligatoire.length; i++){
+			//alert(obligatoire[i]);
+			var o1 = document.getElementById('o1');
+			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+obligatoire[i]+'</p>';
+			o1.insertAdjacentHTML('beforeend', tag);
+		}
+
+		var importantcritere = annonce[0]['importantcritere'];
+		var important = importantcritere.split(",");
+		for(var i=0; i<important.length; i++){
+			//alert(important[i]);
+			var i1 = document.getElementById('i1');
+			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+important[i]+'</p>';
+			i1.insertAdjacentHTML('beforeend', tag);
+		}
+
+		var peutetrecritere = annonce[0]['peutetrecritere'];
+		var peutetre = peutetrecritere.split(",");
+		for(var i=0; i<peutetre.length; i++){
+			//alert(peutetre[i]);
+			var p1 = document.getElementById('p1');
+			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+peutetre[i]+'</p>';
+			p1.insertAdjacentHTML('beforeend', tag);
+		}
 		
 		//check le droit 
 		if(user === idUser){
@@ -1125,7 +1181,36 @@ function drop(ev)
 			interest.style.display="none";
 			document.getElementById("correspondance").style.display="none";
 			document.getElementById("line").style.display="none";
-			document.getElementById("filtre").style.display="none";
+			//document.getElementById("filtre").style.display="none";
+			document.getElementById("filtreModifiable").style.display="none";
+
+			//priorite de matching
+			/* var obligatoirecritere = annonce[0]['obligatoirecritere'];
+			var obligatoire = obligatoirecritere.split(",");
+			for(var i=0; i<obligatoire.length; i++){
+				//alert(obligatoire[i]);
+				var o2 = document.getElementById('o2');
+				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+obligatoire[i]+'</p>';
+				o2.insertAdjacentHTML('beforeend', tag);
+			}
+
+			var importantcritere = annonce[0]['importantcritere'];
+			var important = importantcritere.split(",");
+			for(var i=0; i<important.length; i++){
+				//alert(important[i]);
+				var i2 = document.getElementById('i2');
+				var tag = '<p draggable="true" ondragstart="drag(event)" style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+important[i]+'</p>';
+				i2.insertAdjacentHTML('beforeend', tag);
+			}
+
+			var peutetrecritere = annonce[0]['peutetrecritere'];
+			var peutetre = peutetrecritere.split(",");
+			for(var i=0; i<peutetre.length; i++){
+				//alert(peutetre[i]);
+				var p2 = document.getElementById('p2');
+				var tag = '<p draggable="true" ondragstart="drag(event)" style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+peutetre[i]+'</p>';
+				p2.insertAdjacentHTML('beforeend', tag);
+			} */
 		}
 		else{
 			alert("You are watching others' annonce!");
@@ -1135,53 +1220,42 @@ function drop(ev)
 			alert("status hidden!");
 			document.getElementById("editerProfil").style.display="none";
 			document.getElementById("editerAnnonce").style.display="none";
+			document.getElementById("editerFiltre").style.display="none";
 			document.getElementById("filtreModifiable").style.display="none";
+
+			/* //priorite de matching
+			var obligatoirecritere = annonce[0]['obligatoirecritere'];
+			var obligatoire = obligatoirecritere.split(",");
+			for(var i=0; i<obligatoire.length; i++){
+				//alert(obligatoire[i]);
+				var o1 = document.getElementById('o1');
+				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+obligatoire[i]+'</p>';
+				o1.insertAdjacentHTML('beforeend', tag);
+			}
+
+			var importantcritere = annonce[0]['importantcritere'];
+			var important = importantcritere.split(",");
+			for(var i=0; i<important.length; i++){
+				//alert(important[i]);
+				var i1 = document.getElementById('i1');
+				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+important[i]+'</p>';
+				i1.insertAdjacentHTML('beforeend', tag);
+			}
+
+			var peutetrecritere = annonce[0]['peutetrecritere'];
+			var peutetre = peutetrecritere.split(",");
+			for(var i=0; i<peutetre.length; i++){
+				//alert(peutetre[i]);
+				var p1 = document.getElementById('p1');
+				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+peutetre[i]+'</p>';
+				p1.insertAdjacentHTML('beforeend', tag);
+			} */
+			
 		}
 			
 	</script>
 	
 	
-	<script>
-	function ModifierAnnonce(){
-		var json = '${annonceInfo}';
-		var annonce = JSON.parse(json);
-		var id = annonce[0]['idAnnonce'];
-		var dateD = document.getElementById("dateD").value;
-		var dateF = document.getElementById("dateF").value;
-		var description = annonce[0]['description'];
-		var budget = document.getElementById("budget").value;
-		var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
-		var lieu = document.getElementById("lieuA").value;
-		var descriptionLogement = annonce[0]['descriptionLogement'];
-		var sex;
-		var sexe = document.getElementById("sexeA").value;
-		if(sexe === "homme")
-			sex = "0";
-		else
-			sex = "1";
-		var ageMin = document.getElementById("ageMin").value;
-		var ageMax = document.getElementById("ageMax").value;
-		var pet;
-		var haspet = document.getElementById("animalA").value;
-		if(haspet === "non")
-			pet = "0";
-		else
-			pet = "1";
-		var situationF = annonce[0]['situationFam'];
-		var ecole = annonce[0]['ecole'];
-		var profession = annonce[0]['profession'];
-		var nationnalite = annonce[0]['nationnalite'];
-		var loisir = annonce[0]['loisir'];
-		var language = annonce[0]['language'];
-		var peutetre = annonce[0]['peutetrecritere'];
-		var obligatoire = annonce[0]['obligatoirecritere'];
-		var important = annonce[0]['importantcritere'];
-
-		document.location.href="http://localhost:8080/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
-		+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisir+"/"+language+"/"+peutetre
-		+"/"+obligatoire+"/"+important; 
-	}
-	</script>
 	
 </body>
 <script>
@@ -1195,42 +1269,10 @@ function updateAnnonce(){
 	var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
 	//var situationF = annonce[0]['situationFam'];
 	var ecole = annonce[0]['ecole'];
-	//var profession = annonce[0]['professionName'];
-	//var nationnalite = annonce[0]['nationnaliteName'];
-	//var loisir = annonce[0]['loisir'];
-	//var language = annonce[0]['languages'];
-	//alert(language);
-	//var peutetre = annonce[0]['peutetre'];
-	//var obligatoire = annonce[0]['obligatoire'];
-	//var important = annonce[0]['important'];
-	//alert(important);
-
-	/* var listLoisir = document.getElementById("loisirNew");
-	var loisirValue = listLoisir.options[listLoisir.selectedIndex].value;
-	alert(loisirValue);
-	var dateD = document.getElementById("dateDNew").value;
-	alert(dateD);  
-	var dateF = document.getElementById("dateFNew").value;
-	alert(dateF);
-	var budget = document.getElementById("budgetNew").value; 
-	alert(budget);
-	var lieu = document.getElementById("lieuNew").value;
-	alert(lieu);  
-	var sex = document.querySelector('input[name="sexeNew"]:checked').value;
-	alert(sex);
-	var ageMin = document.getElementById("ageMinNew").value;
-	alert(ageMin); 
-	var ageMax = document.getElementById("ageMaxNew").value;
-	alert(ageMax); 
-	var pet = document.querySelector('input[name="animalNew"]:checked').value;
-	alert(pet);  */
 	var peutetre = "sex, haspet";
 	var important = "nationnalite";
 	var obligatoire = "age, language";
 	//var descriptionLogement = "grand";
-
-
-
 	
 	var lieu = document.getElementById("lieuNew").value;
 	alert(lieu); 
@@ -1270,7 +1312,7 @@ function updateAnnonce(){
 	var descriptionLogement = document.getElementById("descriptionNew").value;
 	alert(descriptionLogement);
 	
-	var url = "http://localhost:8080/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
+	var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 	+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
 	+"/"+obligatoire+"/"+important; 
 	//var url = "http://localhost:8080/Yomate/annonce/modifierTest/"+idAnnonce+"/"+dateD;
@@ -1279,5 +1321,144 @@ function updateAnnonce(){
 	}
 	
 	</script>
+	
+	<!-- envoyer filtre -->
+	<script type="text/javascript">
+	function envoyerFiltre(){
+		var json = '${annonceInfo}';
+		
+		var obligatoire = document.getElementById("obligatoire2").childNodes;
+		//alert(obligatoire.length);
+		var obl="";
+		for(var i=1; i<obligatoire.length; i++){
+			//alert(obligatoire[i]);
+			//alert(obligatoire[i].innerText);
+			obl = obl+","+obligatoire[i].innerText;
+			//alert("after: "+obl);
+			//alert(obligatoire[i].textContent);//
+			//alert(obligatoire[i].innerHTML);
+			////alert(obligatoire[i].text);
+			//alert(obligatoire[i].value);
+		}
+		obl = obl.substring(1, obl.length);
+		//alert("obligatoire: "+obl);
+
+		//important
+		var important = document.getElementById("important2").childNodes;
+		//alert(obligatoire.length);
+		var imp="";
+		for(var i=1; i<important.length; i++){
+			//alert(obligatoire[i]);
+			//alert(obligatoire[i].innerText);
+			imp = imp+","+important[i].innerText;
+			//alert("after: "+obl);
+			//alert(obligatoire[i].textContent);//
+			//alert(obligatoire[i].innerHTML);
+			////alert(obligatoire[i].text);
+			//alert(obligatoire[i].value);
+		}
+		imp = imp.substring(1, imp.length);
+		//alert("important: "+ imp);
+
+		//peutetre
+		var peutetre = document.getElementById("peutetre2").childNodes;
+		//alert(obligatoire.length);
+		var ptt="";
+		for(var i=1; i<peutetre.length; i++){
+			//alert(obligatoire[i]);
+			//alert(obligatoire[i].innerText);
+			ptt = ptt+","+peutetre[i].innerText;
+			//alert("after: "+obl);
+			//alert(obligatoire[i].textContent);//
+			//alert(obligatoire[i].innerHTML);
+			////alert(obligatoire[i].text);
+			//alert(obligatoire[i].value);
+		}
+		ptt = ptt.substring(1, ptt.length);
+		//alert("peutetre: "+ ptt);
+
+		var annonce = JSON.parse(json);
+		var idAnnonce = annonce[0]['idAnnonce'];
+		alert(idAnnonce);
+		var description = annonce[0]['description'];
+		var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
+		var ecole = annonce[0]['ecole'];
+		//var peutetre = "sex, haspet";
+		//var important = "nationnalite";
+		//var obligatoire = "age, language";
+
+		var lieu = annonce[0]['lieu'];
+		alert(lieu); 
+		var budget = annonce[0]['budget']; 
+		alert(budget);
+		var sex = annonce[0]['sex'];
+		alert(sex);
+		var dateD = annonce[0]['date_debut'];
+		alert(dateD);  
+		var dateF = annonce[0]['date_fin'];
+		alert(dateF);
+		var ageMin = annonce[0]['age_min'];
+		alert(ageMin); 
+		var ageMax = annonce[0]['age_max'];
+		alert(ageMax);
+		var pet = annonce[0]['haspet'];
+		alert(pet); 
+		/* var logement = annonce[0]['sex']; 
+		alert(logement); */
+		var profession = annonce[0]['professionName'];
+		alert(profession);
+		
+		var situationF = annonce[0]['situationFam'];
+		alert(situationF);
+		
+		var nationnalite = annonce[0]['nationnaliteName'];
+		alert(nationnalite);
+		
+		var language = annonce[0]['languages'];
+		alert(language);
+
+		var loisirValue;
+		var loisir = annonce[0]['loisirs'];
+		switch(loisir){
+		case "lecture":
+			loisirValue = "9";
+			break;
+		case "voyage":
+			loisirValue = "2";
+			break;
+		case "sport":
+			loisirValue = "3";
+			break;
+		case "cuisine":
+			loisirValue = "5";
+			break;
+		case "jeux vidéos":
+			loisirValue = "19";
+			break;
+		case "autres":
+			loisirValue = "35";
+			break;
+		default:
+			loisirValue = "35";
+		}
+		alert("loisir: "+loisirValue);
+		var descriptionLogement = annonce[0]['description_logement'];
+		alert(descriptionLogement); 
+
+		peutetre = ptt;
+		alert(peutetre);
+		obligatoire = obl;
+		alert(obligatoire);
+		important = imp;
+		alert(important);
+		var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
+		+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
+		+"/"+obligatoire+"/"+important; 
+		//var url = "http://localhost:8080/Yomate/annonce/modifierTest/"+idAnnonce+"/"+dateD;
+		document.location.href = url; 
+		
+	}
+	</script>
+<!-- //envoyer filtre-->
 	
 </html>

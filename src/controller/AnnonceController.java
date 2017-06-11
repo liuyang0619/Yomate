@@ -186,8 +186,7 @@ public class AnnonceController {
 			@PathVariable String lieu, @PathVariable String descriptionLogement, @PathVariable String sex, @PathVariable String ageMin, @PathVariable String ageMax,
 			@PathVariable String pet, @PathVariable String situationF, @PathVariable String ecole, @PathVariable String profession,
 			@PathVariable String nationnalite, @PathVariable String loisirValue, @PathVariable String language,
-			@PathVariable String peutetre, @PathVariable String obligatoire, @PathVariable String important,
-			Model model){ 
+			@PathVariable String peutetre, @PathVariable String obligatoire, @PathVariable String important){ 
 		
 		System.out.println("Modifying annonce!");
 		
