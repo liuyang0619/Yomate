@@ -99,7 +99,7 @@ function logout() {
 						<span class="icon-bar"></span>
 					  </button>
 						<div class="logo">
-							<a class="navbar-brand" href="index.jsp">YoMate! <span>Trouvez vos colocataires parfaits</span></a>
+							<a class="navbar-brand" href="/Yomate/index.jsp">YoMate! <span>Trouvez vos colocataires parfaits</span></a>
 						</div>
 					</div>
 
