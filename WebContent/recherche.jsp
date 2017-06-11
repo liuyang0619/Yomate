@@ -291,7 +291,7 @@
 
 					<!-- begin datepicker -->
 					<div class="row top-margin-3">
-						<div class="col-md-3 search-filter-item-name">Durée</div>
+						<div class="col-md-3 search-filter-item-name">Période</div>
 						<div class="col-md-9">
 							<div class="col-md-2 padding-0"
 								style="font-weight: bold; vertical-align: middle;">Du</div>
