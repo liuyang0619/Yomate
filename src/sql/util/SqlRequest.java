@@ -22,7 +22,7 @@ public class SqlRequest {
 			+ "LEFT JOIN  YOMATE.profession as p ON u.profession = p.id "
 			+ "LEFT JOIN  YOMATE.user_photo as up ON u.idUser = up.user "
 			+ "where u.idUser = ### "
-			+ "GROUP BY u.idUser,u.nom,u.prenom,u.birthday,u.sex,u.email,u.haspet,u.situationFam,u.ecole,u.profession,n.nationnalite,up.image "
+			+ "GROUP BY u.idUser,u.nom,u.prenom,u.birthday,u.sex,u.email,u.lieu,u.haspet,u.situationFam,u.ecole,u.profession,u.lieu,n.nationnalite,up.image "
 			+ ") as temp "
 			+ "LEFT JOIN  YOMATE.user_language as ula on temp.idUser = ula.user "
 			+ "LEFT JOIN  YOMATE.language as la on ula.language = la.id "
@@ -41,9 +41,10 @@ public class SqlRequest {
 	public final static String DELETE_USER_PROFILE_LANGUAGE_BY_ID = "DELETE FROM yomate.user_language WHERE user = ###;";
 	public final static String UPDATE_USER_PROFILE_LANGUAGE = "INSERT INTO yomate.user_language (user, language) values (###, ###)";
 	public final static String ADD_FAVORITE_ANNONCE = "INSERT INTO yomate.favoriser (user, annonce) values (###, ###)";
-	public final static String SELECT_FAVORITE_ANNONCE = "SELECT a.idAnnonce, a.proposer, u.nom, u.prenom, a.budget, a.lieu, a.description "
-			+ "FROM yomate.favoriser as f, yomate.annonce as a, yomate.user as u "
-			+ "WHERE f.user = ### AND a.idAnnonce = f.annonce AND a.proposer = u.idUser";
+	public final static String SELECT_FAVORITE_ANNONCE = "SELECT a.idAnnonce, a.proposer, a.budget, a.lieu, u.prenom as proposer_prenom, " 
+			+"u.birthday as proposer_birthday, u.sex as proposer_sex, a.description, u.nom as proposer_nom, uphoto.image "
+			+"from yomate.annonce as a, yomate.user as u, yomate.favoriser as f, yomate.user_photo as uphoto "
+			+"WHERE f.user = ### and a.idAnnonce = f.annonce and a.proposer = u.idUser ";
 	public final static String DELETE_FAVORITE_ANNONCE = "DELETE FROM yomate.favoriser WHERE user = ### AND annonce = ###;";
 	public final static String ADD_EVALUATION = "INSERT INTO yomate.evaluation (user_commenter, user_commented, note, desription, date_evaluation) values (###, ###, ###, ###, ###)";
 	public final static String SELECT_HISTORY_ANNONCES  = "SELECT idAnnonce, budget, lieu, description "

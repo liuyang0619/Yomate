@@ -69,7 +69,7 @@ function checkUserId(info){
 <!-- check value vide -->
 <script type="text/javascript">
 function checkVide(input,value) {
-	if (value === "null" || value === "undefined"){
+	if (value === "null" || value == undefined){
 	}
 	else{
 		document.getElementById(input).innerHTML = value;
@@ -97,16 +97,21 @@ function checkSex(strSex) {
 <!-- check haspet -->
 <script type="text/javascript">
 function checkHasPet(strPet) {
-	var haspet = "non";
-	if (strPet === "0")
-	{
-		haspet = "non";
+	if (strPet === "null" || strPet == undefined ){
+		return "";
 	}
-	else if (strPet === "1")
-	{
-		haspet = "oui";
+	else{
+		var haspet = "non";
+		if (strPet === "0")
+		{
+			haspet = "non";
+		}
+		else if (strPet === "1")
+		{
+			haspet = "oui";
+		}
+		return haspet;
 	}
-	return haspet;
 }
 </script>
 <!-- //check haspet -->
@@ -173,6 +178,124 @@ function jsGetAge(strBirthday) {
 }
 </script>
 <!-- //calculate age -->
+<!-- check langue -->
+<script type="text/javascript">
+function checkLangue(langueValue){
+	var langue;
+	switch(langueValue) {
+    case "27":
+    	langue = "français";
+        break;
+    case "20":
+    	langue = "chinois";
+        break;
+    case "3":
+    	langue = "anglais";
+        break;
+    case "1":
+    	langue = "allemand";
+        break;
+    case "36":
+    	langue = "italien";
+        break;
+    case "73":
+    	langue = "autres";
+        break;
+    default:
+    	langue = "autres";
+	} 
+	return langue;
+}
+</script>
+<!-- check langue -->
+
+<!-- check profession -->
+<script type="text/javascript">
+function checkProfession(professionValue){
+	var profession;
+	switch(professionValue) {
+    case "39":
+    	profession = "étudiant";
+    	//alert("profession Ã©tudiant");
+        break;
+    case "69":
+    	profession = "salarié";
+        break;
+    case "68":
+    	profession = "retraité";
+        break;
+    case "13":
+    	profession = "autres";
+        break;
+    default:
+    	profession = "autres";
+	} 
+	return profession;
+}
+</script>
+<!-- check profession -->
+
+<!-- check nationnalite -->
+<script type="text/javascript">
+function checkNationnalite(nationnaliteValue){
+	var nationnalite;
+	switch(nationnaliteValue) {
+    case "64":
+    	nationnalite = "Française";
+        break;
+    case "41":
+    	nationnalite = "Chinoise";
+        break;
+    case "83":
+    	nationnalite = "Italienne";
+        break;
+    case "148":
+    	nationnalite = "Russee";
+        break;
+    case "14":
+    	nationnalite = "Bahamienne";
+        break;
+    case "196":
+    	nationnalite = "autres";
+        break;
+    default:
+    	nationnalite = "autres";
+	} 
+	return nationnalite;
+}
+</script>
+<!-- check nationnalite -->
+
+<!-- check loisir -->
+<script type="text/javascript">
+function checkLoisir(loisirValue) {
+	var loisir;
+	switch(loisirValue) {
+    case "2":
+    	loisir = "voyage";
+        break;
+    case "3":
+    	loisir = "sport";
+        break;
+    case "5":
+    	loisir = "cuisine";
+        break;
+    case "19":
+    	loisir = "jeux vidéo";
+        break;
+    case "9":
+    	loisir = "lecture";
+        break;
+    case "35":
+    	loisir = "autres";
+        break;
+    default:
+    	loisir = "autres";
+	} 
+	return loisir;
+}
+</script>
+<!-- //check loisir -->
 <!-- captical letter -->
 <script type="text/javascript">
 function setUCfirst(string) 
@@ -237,7 +360,6 @@ function setResultHistoryList(jsonResults) {
 				"</a>";
 			$('#history-list-group').append(listitem);
 		}
-	
 }
 </script>
 <!-- select -->
@@ -531,7 +653,7 @@ function setSelector(select,val) {
 	    		<!-- Langue parlé & Loisirs-->
 	    		<div class="row">
 	    			<!-- Langue parlé-->
-	    			<label class="col-md-4" for="selectLangue">Language</label>
+	    			<label class="col-md-4" for="selectLangue">Langue</label>
 	    			<div class="col-md-8 form-group">
 	    				<select id="selectLangue" name="selectLangue" class="form-control" required>
 							<option value="0" selected disabled></option>
@@ -832,11 +954,11 @@ function setSelector(select,val) {
 	}
 	checkVide("lieu", user['lieu']);
 	checkVide("ecole", user['ecole']);
-	checkVide("profession", user['profession']);
-	checkVide("nationnalite", user['nationnalite']);
-	checkVide("langue", user['language']);
+	checkVide("profession", checkProfession(user['profession']));
+	checkVide("nationnalite", checkNationnalite(user['nationnalite']));
+	checkVide("langue", checkLangue(user['language']));
 	checkVide("situationFam", user['situationFam']);
-	checkVide("loisir", user['loisir']);
+	checkVide("loisir", checkLoisir(user['loisir']));
 </script>
 <!-- //initialize variable -->
 <!-- initialize annonce favorite -->
