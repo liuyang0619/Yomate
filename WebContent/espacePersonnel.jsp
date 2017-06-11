@@ -397,7 +397,7 @@ function setSelector(select,val) {
 		<div class="container">
 			<div class = "row top-margin-20 bottom-margin-20">
 				<div class="col-md-2" style = "text-align:center">
-					<img src="/Yomate/ressources/images/4.png" class="img-thumbnail" style = "width:100px;height:100px">
+					<img src="/Yomate/ressources/${'user["image"]'}" class="img-thumbnail" style = "width:100px;height:100px">
 				</div>
 				<div class="col-md-10">
 					<p style = "font-weight:bolder;font-size:25px"><span id="nom"></span> <span id="prenom"></span></p>
