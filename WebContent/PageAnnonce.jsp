@@ -688,8 +688,112 @@ function drop(ev)
 								<label class="radio-inline"><input type="radio" value="0" name="animalNew">non</label>
 							</div>
 		    			</div>
+		    			<div class="row top-margin-10">
+							<label class="col-md-4 search-filter-item-name">Logement</label>
+							<div class="col-md-8">
+								<select class="form-control input-sm" id="logement">
+									<option value="" selected disabled></option>
+									<option value="0">Je n'ai pas de logement</option>
+									<option value="1">J'ai un logement</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Situation -->
 			    		<div class="row top-margin-10">
-			    				<!-- nationnalite -->
+			    			<label class="col-md-4" for="situation">Situation/Profession</label>
+			    			<div class="form-group col-md-8">
+								<select id="annonceProfession" name="annonceProfession" class="form-control">
+									<option value="0" selected disabled></option>
+									<option value="39">étudiant</option>
+									<option value="69">salarié</option>
+									<option value="68">retraité</option>
+									<option value="13">autre cadres</option>
+							    </select>
+							</div>
+			    		</div>
+			    		<!-- //Situation -->
+			    		
+				    	<!-- Situation Familiale-->
+			    		<div class="row">
+			    			<label class="col-md-4" for="situ-fam">Situation Familiale</label>
+			    			<div class="form-group col-md-8">
+								<select id="annonceSituation" name="annonceSituationFamiliale" class="form-control" required>
+									<option value="0" selected disabled></option>
+									<option value="Célibataire">Célibataire</option>
+									<option value="Couple">Couple</option>
+									<option value="Marié">Marié</option>
+									<option value="Autre">Autre</option>
+							    </select>
+							</div>
+			    		</div>
+			    		<!-- //Situation Familiale-->
+					    		
+					    <!-- NationalitÃ©-->
+			    		<div class="row">
+			    			<label class="col-md-4" for="selectnationalite">Nationalité</label>
+			    			<div class="col-md-8 form-group">
+			    				<select id="annonceNationnalite" name="annonceNationnalite" class="form-control" required>
+									<option value="0" selected disabled></option>
+									<option value="64">Française</option>
+									<option value="41">Chinoise</option>
+									<option value="83">Italienne</option>
+									<option value="148">Russee</option>
+									<option value="14">Bahamienne</option>
+									<option value="196">autre</option>
+							    </select>
+							</div>
+			    		</div>
+			    		<!-- //Nationalité-->
+			    		
+			    		<!-- Langue parlé -->
+			    		<div class="row">
+			    			<!-- Langue parlé-->
+			    			<label class="col-md-4" for="annonceLangue">Langue</label>
+			    			<div class="col-md-8 form-group">
+			    				<select id="annonceLangue" name="annonceLangue" class="form-control" required>
+									<option value="0" selected disabled></option>
+									<option value="27">français</option>
+									<option value="20">chinois mandarin</option>
+									<option value="3">anglais</option>
+									<option value="1">allemand</option>
+									<option value="36">italien</option>
+									<option value="73">autre</option>
+							    </select>
+							</div>
+						</div>
+			    		<!-- Langue parlé-->
+			    		
+			    		<!-- Loisirs-->
+			    		<div class="row">
+			    			<label class="col-md-4" for="annonceLoisir">Loisir</label>
+			    			<div class="col-md-8 form-group">
+			    				<select id="annonceLoisir" name="annonceLoisir" class="form-control" required>
+									<option value="0" selected disabled></option>
+									<option value="2">voyage</option>
+									<option value="3">sport</option>
+									<option value="5">cuisine</option>
+									<option value="19">jeux vidéos</option>
+									<option value="9">lecture</option>
+									<option value="35">autres</option>
+							    </select>
+							</div>
+			    		</div>
+			    		<!-- //Loisirs-->
+			    		
+			    		<!-- Description -->
+			    		<div class="row">
+			    			<div class="col-md-12">
+			    				<label>Description</label>
+			    			</div>
+			    			<div class="col-md-12 top-margin-5">
+			    				<input id = "description" type="text" class="form-control input-sm " placeholder="Bonjour, je suis..."  required></input>
+			    			</div>
+			    		</div>
+			    		<!-- //Description -->
+			    		
+			    		<!-- <div class="row top-margin-10">
+			    				nationnalite
 			    				<label class="col-md-2">Loisir</label>
 			    				<div class="col-md-6">
 				    				<select  class="form-control input-sm" id="loisirNew">
@@ -729,14 +833,14 @@ function drop(ev)
 										<option value="34">loisirs créatifs</option>
 									</select>
 								</div>
-			    		</div>
-			    		<div class="row top-margin-10">
-			    				<!-- nationnalite -->
+			    		</div> -->
+			    		<!-- <div class="row top-margin-10">
+			    				nationnalite
 			    				<label class="col-md-2">Nationnalite</label>
 			    		</div>
 			    		<div class="row top-margin-10">
 			    			<label class="col-md-4">Langues parlees</label>
-			    		</div>
+			    		</div> -->
                 	</div>
                 </div>
                 <div class="modal-footer">
