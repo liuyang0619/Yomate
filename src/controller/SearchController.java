@@ -77,7 +77,7 @@ public class SearchController {
 			@RequestParam(value="nationnalite", required=false) String nationnalite,
 			@RequestParam(value="loisir", required=false) String loisir,
 			@RequestParam(value="language", required=false) String language,
-			@RequestParam(value="keyWordLoge", required=false) String keyWordLoge,
+			@RequestParam(value="logement", required=false) String logement,
 			Model model) {
 				
 		Properties pp = new Properties();
@@ -87,34 +87,34 @@ public class SearchController {
     	Map<String, String> map = new HashMap<String, String>();
 		
     	map.put("lieu", lieu);
-    	if (budgetMax != "")
+    	if (!budgetMax.isEmpty())
     		map.put("budgetMax", budgetMax);
-    	if (budgetMin != "")
+    	if (!budgetMin.isEmpty())
     		map.put("budgetMin", budgetMin);
-    	if (dateDebut != "")
+    	if (!dateDebut.isEmpty())
     		map.put("dateDebut", dateDebut);
-    	if (dateFin != "")
+    	if (!dateFin.isEmpty())
     		map.put("dateFin", dateFin);
-    	if (sex != "")
+    	if (!sex.isEmpty())
     		map.put("sex", sex);
-    	if (ageMin != "")
+    	if (!ageMin.isEmpty())
     		map.put("ageMin", ageMin);
-    	if (ageMax != "")
+    	if (!ageMax.isEmpty())
     		map.put("ageMax", ageMax);
-    	if (haspet != "")
+    	if (!haspet.isEmpty())
     		map.put("haspet", haspet);
-    	if (situationFam != "")
+    	if (!situationFam.isEmpty())
     		map.put("situationFam", situationFam);
-    	if (profession != "")
+    	if (!profession.isEmpty())
     		map.put("profession", profession);
-    	if (nationnalite != "")
+    	if (!nationnalite.isEmpty())
     		map.put("nationnalite", nationnalite);
-    	if (loisir != "")
+    	if (!loisir.isEmpty())
     		map.put("loisir", loisir);
-    	if (language != "")
+    	if (!language.isEmpty())
     		map.put("language", language);
-    	if (keyWordLoge != "")
-    		map.put("keyWordLoge", keyWordLoge);
+//    	if (!logement.isEmpty())
+//    		map.put("keyWordLoge", logement);
     	
     	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
     	String content = JsonHelper.serilisation(amc);
@@ -146,7 +146,7 @@ public class SearchController {
 		model.addAttribute("nationnalite", nationnalite);
 		model.addAttribute("loisir", loisir);
 		model.addAttribute("language", language);
-		model.addAttribute("logement", keyWordLoge);
+		model.addAttribute("logement", logement);
 		return "recherche";
 	}
 }
