@@ -28,8 +28,7 @@
 <script src=<c:url value="${path}/ressources/js/jquery-1.11.1.min.js" />></script>
 <script src=<c:url value="${path}/ressources/js/bootstrap.js" />></script>
 <script src=<c:url value="${path}/ressources/js/moment.min.js" />></script>
-<script
-	src=<c:url value="${path}/ressources/js/bootstrap-datetimepicker.min.js" />></script>
+<script src=<c:url value="${path}/ressources/js/bootstrap-datetimepicker.min.js" />></script>
 <script src=<c:url value="${path}/ressources/js/yomate.js" />></script>
 <!-- //js -->
 
@@ -64,7 +63,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#datetimepicker1').datetimepicker({
-			format : 'DD/MM/YYYY'
+			format : 'YYYY-MM-DD'
 		});
 	});
 </script>
@@ -74,7 +73,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#datetimepicker2').datetimepicker({
-			format : 'DD/MM/YYYY'
+			format : 'YYYY-MM-DD'
 		});
 	});
 </script>
@@ -91,8 +90,7 @@
 
 <!-- search -->
 <script type="text/javascript">
-	function search() {
-		alert("search!");
+	function searchCritere() {
 		var city = document.getElementById("search-city").value;
 		var budget_min = document.getElementById("search-budget-min").value;
 		var budget_max = document.getElementById("search-budget-max").value;
@@ -105,6 +103,7 @@
 		if (sex === undefined) {
 			sex = "";
 		}
+		alert(sex);
 		var age_min = document.getElementById("search-age-min").value;
 		var age_max = document.getElementById("search-age-max").value;
 		var animal = $('input[name=animal]:checked').val();
@@ -118,17 +117,13 @@
 		var langue = document.getElementById("search-langue").value;
 		var loisir = document.getElementById("search-loisir").value;
 
-		var warning = "";
-		if (city === "") {
-			warning = warning + "Veuillez saisissez une ville\n";
-		}
-		if (logement === "") {
-			warning = warning + "Veuillez choisir votre status de logement\n";
-		}
-		if (warning !== "") {
-			alert(warning);
+		if (city === "" && budget_min === "" && budget_max === "" && period_begin === "" && period_end === "" && logement === ""
+			&& sex === "" && age_min === "" && age_max === "" &&  animal === "" && situation_familale === "" && situation === ""
+				&& nationalite === "" && langue === "" && loisir === "") {
+			alert("Saisissez au moins un critère, svp");
 			return;
 		}
+		
 		var searchCriteres = new Object();
 		searchCriteres.lieu = city.split(",")[0].toLowerCase();
 		searchCriteres.budgetMax = budget_max;
@@ -144,12 +139,30 @@
 		searchCriteres.nationnalite = nationalite;
 		searchCriteres.loisir = loisir;
 		searchCriteres.language = langue;
-		searchCriteres.keyWordLoge = logement;
+		searchCriteres.logement = logement;
 		post("/Yomate/search/criteres/", searchCriteres);
 	}
 </script>
 <!-- //search -->
 
+<!-- create annonce -->
+<script type="text/javascript">
+	function createAnnonce() {
+		var warning = "";
+		if (city === "") {
+			warning = warning + "Veuillez saisissez une ville\n";
+		}
+		if (logement === "") {
+			warning = warning + "Veuillez choisir votre status de logement\n";
+		}
+		if (warning !== "") {
+			alert(warning);
+			return;
+		}
+	}
+</script>
+<!-- //create annonce -->
+	
 <!-- set search field -->
 <script type="text/javascript">
 	function setSearchField(city, budgetMax, budgetMin, dateDebut, dateFin,
@@ -276,7 +289,7 @@
 
 					<!-- begin datepicker -->
 					<div class="row top-margin-3">
-						<div class="col-md-3 search-filter-item-name">Période</div>
+						<div class="col-md-3 search-filter-item-name">Durée</div>
 						<div class="col-md-9">
 							<div class="col-md-2 padding-0"
 								style="font-weight: bold; vertical-align: middle;">Du</div>
@@ -316,9 +329,8 @@
 						<div class="col-md-9">
 							<select class="form-control input-sm" id="search-logement">
 								<option value="" selected disabled></option>
-								<option value="1">J'ai besoin de logement</option>
-								<option value="2">J'ai un logement</option>
-								<option value="3">Pas de logement, mais peu n'importe</option>
+								<option value="0">J'ai besoin de logement</option>
+								<option value="1">J'ai un logement</option>
 							</select>
 						</div>
 					</div>
@@ -383,7 +395,7 @@
 
 					<!-- Situation -->
 					<div class="row">
-						<div class="col-md-4 search-filter-item-name">Situation</div>
+						<div class="col-md-4 search-filter-item-name">Profession</div>
 						<div class="form-group col-md-8">
 							<select id="search-situation" name="search-situation"
 								class="form-control input-sm">
@@ -417,7 +429,7 @@
 
 					<!-- Langue -->
 					<div class="row">
-						<div class="col-md-4 search-filter-item-name">Langue parlée</div>
+						<div class="col-md-4 search-filter-item-name">Langue</div>
 						<div class="col-md-8 form-group">
 							<select id="search-langue" name="search-langue"
 								class="form-control input-sm">
@@ -457,7 +469,7 @@
 				<div class="search-buttons">
 					<!-- search button -->
 					<div class="row">
-						<a class="btn btn-success search-btn" onclick="search()"> <i
+						<a class="btn btn-success search-btn" onclick="searchCritere()"> <i
 							class="icon-search icon-white"></i> Rechercher
 						</a>
 					</div>
@@ -516,8 +528,7 @@
 		<!-- create annonce button -->
 		<div class="row">
 			<div class="search-create-annonce">
-				<p>Pas de résultats satisfaisants ? Envie d'ajouter une priorité
-					à vos critères de cherche ?</p>
+				<p>Pas de résultats satisfaisants ? Envie d'ajouter une priorité à vos critères de cherche ?</p>
 				<a class="btn btn-warning" href="PageAnnonce.jsp"><i
 					class="icon-edit icon-white"></i>Créer votre Annonce</a>
 			</div>

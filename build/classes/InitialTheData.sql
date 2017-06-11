@@ -43,3 +43,12 @@ select * from user;
 show variables like '%character%';
 
 show variables like '%collation%';
+
+select * from user;
+select * from Profession;
+
+
+insert into yomate.profession (profession) value ('autre');
+insert into yomate.loisir (loisir) value ('autre');
+insert into yomate.language (language) value ('autre');
+insert into yomate.nationnalite (nationnalite) value ('autre');
