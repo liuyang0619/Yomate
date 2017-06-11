@@ -12,9 +12,9 @@ public class SqlRequest {
 			+ "YOMATE.user_language as ula, YOMATE.language as la "
 			+ "WHERE temp.idUser = ula.user AND ula.language = la.id "
 			+ "GROUP BY temp.idUser;";
-	public final static String SELECT_PROFIL_BY_ID = "SELECT temp.*, GROUP_CONCAT(la.language SEPARATOR ',') as language  FROM "
+	public final static String SELECT_PROFIL_BY_ID = "SELECT temp.*, GROUP_CONCAT(la.id SEPARATOR ',') as language  FROM "
 			+ "("
-			+ "SELECT u.idUser, u.nom, u.prenom, u.birthday, u.sex, u.email, u.haspet, u.situationFam, u.ecole, p.profession, n.nationnalite, up.image, GROUP_CONCAT(l.loisir SEPARATOR ',') as loisir "
+			+ "SELECT u.idUser, u.nom, u.prenom, u.birthday, u.sex, u.email, u.haspet, u.situationFam, u.ecole, p.id as profession, n.id as nationnalite, up.image, GROUP_CONCAT(l.id SEPARATOR ',') as loisir "
 			+ "FROM YOMATE.USER as u "
 			+ "LEFT JOIN YOMATE.user_loisir as ul on u.idUser = ul.user "
 			+ "LEFT JOIN YOMATE.loisir as l on ul.loisir = l.id "
