@@ -69,7 +69,7 @@ function checkUserId(info){
 <!-- check value vide -->
 <script type="text/javascript">
 function checkVide(input,value) {
-	if (value === "null"){
+	if (value === "null" || value === "undefined"){
 	}
 	else{
 		document.getElementById(input).innerHTML = value;
@@ -967,11 +967,13 @@ function newAnnonce() {
 	var dateProposer = "2017-06-12";
 	var ageMin = document.getElementById("ageMin").value;
 	var ageMax = document.getElementById("ageMax").value;
+	var logement = document.getElementById("logement").value;
 	var profession = document.getElementById("annonceProfession").value;
 	var situationFam = document.getElementById("annonceSituation").value;
 	var nationnalite = document.getElementById("annonceNationnalite").value;
 	var loisir = document.getElementById("annonceLoisir").value;
 	var langue = document.getElementById("annonceLangue").value;
+	var description = document.getElementById("description").value;
 	// Verify 
 	if (date_debut == "" || date_fin == "" || lieu == "" || budget == "" || ageMin == "" || ageMax == "" ||
 			profession == "" || situationFam == "" || nationnalite == "" || loisir == "" ||
@@ -981,6 +983,7 @@ function newAnnonce() {
 		var annonceInfo = new Object();
 		annonceInfo.ageMin = ageMin;
 		annonceInfo.ageMax = ageMax;
+		annonceInfo.logement = logement;
 		annonceInfo.haspet = haspet;
 		annonceInfo.sex = sex;
 		annonceInfo.dateProposer = dateProposer;
@@ -993,7 +996,9 @@ function newAnnonce() {
 		annonceInfo.nationnalite = nationnalite;
 		annonceInfo.loisir = loisir;
 		annonceInfo.langue =  langue;
+		annonceInfo.description = description;
 		annonceInfo.annonce = '${AnnonceFavorite}';
+		annonceInfo.profile = '${userProfile}';
 		post('/Yomate/espacePersonnel/newAnnonce/'+user['idUser'], annonceInfo);
 	}
 }

@@ -33,8 +33,8 @@ public class SimulationJadegateWay {
 //    	map.put("sex", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ACCOUNT, map);
 //Test the "select user's profil by using id" method 
-    	map.put("idUser", "2");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map);
+//    	map.put("idUser", "2");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map);
 //Test the "update the profil" method
 //    	map.put("idUser", "3");
 //    	map.put("nom", "LOU");
@@ -80,30 +80,30 @@ public class SimulationJadegateWay {
 //    	map.put("idUser", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_HISTORYS_COLO, map);
 //Test the "create annonce" method
-//    	map.put("dateProposer", "1940-11-11");
-//		map.put("dateDebut", "1940-11-11");
-//		map.put("dateFin", "1940-11-11");
-//		map.put("proposer", "1");
-//		map.put("description", "asdfadsf");
-//		map.put("budget", "344");
-//		map.put("nbPersonneBesoin", "3");
-//		map.put("lieu", "wenzhou");
-//		map.put("descriptionLogement", "good location");
-//		map.put("sex", "0");
-//		map.put("ageMin", "1");
-//		map.put("ageMax", "78");
-//		map.put("status", "1");
-//		map.put("haspet", "0");
-//		map.put("situationFam", "celibataire");
-//		map.put("ecole", "UTC");
-//		map.put("profession", "11");
-//		map.put("nationnalite", "6");
-//    	map.put("loisir", "1, 3, 5");
-//    	map.put("language", "4, 7");
-//    	map.put("peutetre", "sex, haspet");
-//    	map.put("obligatoire", "age, language");
-//    	map.put("important", "nationnalite");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ANNONCE, map);
+    	map.put("dateProposer", "1940-11-11");
+		map.put("dateDebut", "1940-11-11");
+		map.put("dateFin", "1940-11-11");
+		map.put("proposer", "1");
+		map.put("description", "asdfadsf");
+		map.put("budget", "344");
+		map.put("nbPersonneBesoin", "3");
+		map.put("lieu", "wenzhou");
+		map.put("descriptionLogement", "good location");
+		map.put("sex", "0");
+		map.put("ageMin", "1");
+		map.put("ageMax", "78");
+		map.put("status", "1");
+		map.put("haspet", "0");
+		map.put("situationFam", "celibataire");
+		map.put("ecole", "UTC");
+		map.put("profession", "11");
+		map.put("nationnalite", "6");
+    	map.put("loisir", "1, 3, 5");
+    	map.put("language", "4, 7");
+    	map.put("peutetre", "sex, haspet");
+    	map.put("obligatoire", "age, language");
+    	map.put("important", "nationnalite");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ANNONCE, map);
 //Test the "search the annonces" method 
 //    	map.put("lieu", "paris");
 //    	map.put("budgetMax", "600");
