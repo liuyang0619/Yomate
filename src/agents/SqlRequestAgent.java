@@ -1,5 +1,6 @@
 package agents;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,7 +56,7 @@ public class SqlRequestAgent  extends Agent{
 		}
 		@Override
 		public void action() {
-			String sqlRequest = msgReceived.getContent();
+			String sqlRequest = encodeFromPage(msgReceived.getContent());
 			ACLMessage reply = msgReceived.createReply();
 			Connection cnx=null;
 			try {
@@ -93,7 +94,7 @@ public class SqlRequestAgent  extends Agent{
 		public void action() {
 			ACLMessage reply = msgReceived.createReply();
 			reply.setPerformative(ACLMessage.INFORM);
-			String sqlRequest = msgReceived.getContent();
+			String sqlRequest = encodeFromPage(msgReceived.getContent());
 			String jsonResult = "";
 			Connection cnx=null;
 			try {
@@ -126,5 +127,16 @@ public class SqlRequestAgent  extends Agent{
 			reply.setContent(jsonResult);
 			send(reply);
 		}	
+	}
+
+	protected String encodeFromPage(String s){
+		byte[] bytes;
+		try {
+			bytes = s.getBytes("ISO-8859-1");
+			s = new String(bytes, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return s;
 	}
 }
