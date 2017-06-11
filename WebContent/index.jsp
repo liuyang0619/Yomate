@@ -81,7 +81,7 @@ function searchcity(city) {
     	$('#header #login').modal('show');
     } else {
     	if (city != "") {
-    		post('search/' + city);
+    		post('search/city/' + city);
         }
     }
 }
@@ -106,7 +106,7 @@ function searchcity(city) {
 	     <div class="overlay-desc">
 	     	<div class ="container">
 		        <div class="row">
-		        	<div class="col-md-12 home-text">Trouvez votre colocataire idéal</div>
+		        	<div class="col-md-12 home-text">Trouvez votre colocataire idï¿½al</div>
 		        </div>
 		        <div class="row top-margin-20">
 			        <div class="col-md-12 input-group"
@@ -141,7 +141,7 @@ function searchcity(city) {
 				</span> <span class="index-span " style="padding-right: 20px"> <a
 						style="cursor: pointer;" onclick="searchcity('toulouse')">Toulouse</a>
 				</span> <span class="index-span " style="padding-right: 20px"> <a
-						style="cursor: pointer;" onclick="searchcity('compiegne')">Compiègne</a>
+						style="cursor: pointer;" onclick="searchcity('compiegne')">Compiï¿½gne</a>
 				</span>
 				</span>
 			</div>
@@ -159,8 +159,8 @@ function searchcity(city) {
 					<div class="row">
 						<p style="font-weight: bolder; font-size: 12px">Oksanae</p>
 						<p style="font-size: 12px">Femme, 19 ans</p>
-						<p style="font-size: 12px">Nous somme un couple de futur étudiants de Clermont-Ferrand qui recherchons une 
-							chambre idéalement dans un 1er étage/RDC</div>
+						<p style="font-size: 12px">Nous somme un couple de futur ï¿½tudiants de Clermont-Ferrand qui recherchons une 
+							chambre idï¿½alement dans un 1er ï¿½tage/RDC</div>
 				</div>
 
 				<div class="col-md-3 inline-block">
@@ -171,7 +171,7 @@ function searchcity(city) {
 						<p style="font-size: 12px">Femme, 20 ans</p>
 						<p style="font-size: 12px">Bonjour tout le monde,
 							je reprend les cours Ã  Lille en septembre et je recherche une colocation avec des personnes sympa. 
-							Je souhaiterais emmènager en août et rester pour un peu plus de 6 mois.</p>
+							Je souhaiterais emmï¿½nager en aoï¿½t et rester pour un peu plus de 6 mois.</p>
 					</div>
 				</div>
 				<div class="col-md-3 inline-block">
@@ -181,7 +181,7 @@ function searchcity(city) {
 						<p style="font-weight: bolder; font-size: 12px">Sara</p>
 						<p style="font-size: 12px">Femme, 28 ans</p>
 						<p style="font-size: 12px">Bonjour, Je m'appelle Sara, je cherche une chambre dans une colocation avec un loyer de 600 euro. 
-							Si mon profil vous intéresse, envoyez moi un Message Flash ou un email. Merci, Sara</p>
+							Si mon profil vous intï¿½resse, envoyez moi un Message Flash ou un email. Merci, Sara</p>
 					</div>
 				</div>
 				<div class="col-md-3 inline-block">
@@ -191,7 +191,7 @@ function searchcity(city) {
 						<p style="font-weight: bolder; font-size: 12px">Benjy</p>
 						<p style="font-size: 12px">Homme, 19 ans</p>
 						<p style="font-size: 12px">Bonjour, Je m'appelle Benjy, je cherche une chambre dans une colocation avec un loyer de 600 euro. 
-						Si mon profil vous intéresse, envoyez moi un Message Flash ou un email. Merci, Benjy</p>
+						Si mon profil vous intï¿½resse, envoyez moi un Message Flash ou un email. Merci, Benjy</p>
 					</div>
 				</div>
 			</div>
@@ -200,7 +200,7 @@ function searchcity(city) {
 
 		<!-- about us  -->
 		<div class="row banner-info-left text-center bottom-margin-25">
-			<h3>YoMate! Trouvez votre colocataire idéal</h3>
+			<h3>YoMate! Trouvez votre colocataire idï¿½al</h3>
 		</div>
 		<!-- //about us  -->
 	</div>

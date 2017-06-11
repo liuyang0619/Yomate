@@ -90,7 +90,7 @@
 
 <!-- search -->
 <script type="text/javascript">
-	function searchCritere() {
+	function getValues() {
 		var city = document.getElementById("search-city").value;
 		var budget_min = document.getElementById("search-budget-min").value;
 		var budget_max = document.getElementById("search-budget-max").value;
@@ -103,7 +103,6 @@
 		if (sex === undefined) {
 			sex = "";
 		}
-		alert(sex);
 		var age_min = document.getElementById("search-age-min").value;
 		var age_max = document.getElementById("search-age-max").value;
 		var animal = $('input[name=animal]:checked').val();
@@ -116,16 +115,10 @@
 		var nationalite = document.getElementById("search-nationalite").value;
 		var langue = document.getElementById("search-langue").value;
 		var loisir = document.getElementById("search-loisir").value;
-
-		if (city === "" && budget_min === "" && budget_max === "" && period_begin === "" && period_end === "" && logement === ""
-			&& sex === "" && age_min === "" && age_max === "" &&  animal === "" && situation_familale === "" && situation === ""
-				&& nationalite === "" && langue === "" && loisir === "") {
-			alert("Saisissez au moins un critère, svp");
-			return;
-		}
 		
 		var searchCriteres = new Object();
 		searchCriteres.lieu = city.split(",")[0].toLowerCase();
+		searchCriteres.budget = budget_max;
 		searchCriteres.budgetMax = budget_max;
 		searchCriteres.budgetMin = budget_min;
 		searchCriteres.dateDebut = period_begin;
@@ -140,7 +133,18 @@
 		searchCriteres.loisir = loisir;
 		searchCriteres.language = langue;
 		searchCriteres.logement = logement;
-		post("/Yomate/search/criteres/", searchCriteres);
+		return searchCriteres;
+	}
+
+	function searchCritere() {
+		var values = getValues();
+		if (values.lieu === "" && values.budgetMin === "" && values.budgetMax === "" && values.dateDebut === "" && values.dateFin === "" && values.logement === ""
+			&& values.sex === "" && values.ageMin === "" && values.ageMax === "" && values.haspet === "" && values.situationFam === "" && values.profession === ""
+				&& values.nationnalite === "" && values.language === "" && values.loisir === "") {
+			alert("Saisissez au moins un critère, svp");
+			return;
+		}
+		post("/Yomate/search/criteres/", values);
 	}
 </script>
 <!-- //search -->
@@ -148,17 +152,15 @@
 <!-- create annonce -->
 <script type="text/javascript">
 	function createAnnonce() {
-		var warning = "";
-		if (city === "") {
-			warning = warning + "Veuillez saisissez une ville\n";
-		}
-		if (logement === "") {
-			warning = warning + "Veuillez choisir votre status de logement\n";
-		}
-		if (warning !== "") {
-			alert(warning);
+		var values = getValues();
+		if (values.lieu === "" || values.budgetMin === "" || values.budgetMax === "" || values.dateDebut === "" || values.dateFin === "" || values.logement === ""
+			|| values.sex === "" || values.ageMin === "" || values.ageMax === "" || values.haspet === "" || values.situationFam === "" || values.profession === ""
+				|| values.nationnalite === "" || values.language === "" || values.loisir === "") {
+			alert("Veuillez remplir tous les champs pour créer une annonce, svp");
 			return;
 		}
+		values.userId = getCookie("idUser");
+		post("/Yomate/search/createAnnonce", values);
 	}
 </script>
 <!-- //create annonce -->
@@ -447,7 +449,7 @@
 
 					<!-- Loisir -->
 					<div class="row">
-						<div class="col-md-4 search-filter-item-name">Nationalité</div>
+						<div class="col-md-4 search-filter-item-name">Loisir</div>
 						<div class="col-md-8 form-group">
 							<select id="search-loisir" name="selectLoisir"
 								class="form-control input-sm">
@@ -529,7 +531,7 @@
 		<div class="row">
 			<div class="search-create-annonce">
 				<p>Pas de résultats satisfaisants ? Envie d'ajouter une priorité à vos critères de cherche ?</p>
-				<a class="btn btn-warning" href="PageAnnonce.jsp"><i
+				<a class="btn btn-warning"onclick="createAnnonce()"><i
 					class="icon-edit icon-white"></i>Créer votre Annonce</a>
 			</div>
 		</div>
