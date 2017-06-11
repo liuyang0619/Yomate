@@ -344,6 +344,7 @@ public class ManageAnnonceAgent extends Agent{
 					reply.setPerformative(response.getPerformative());
 					send(reply);
 					if(response.getPerformative() != ACLMessage.FAILURE && idAnnonce != null){
+						//addBehaviour(new SendToMatchingBehaviour(idAnnonce));
 					}
 					flag = true;
 				}
@@ -358,6 +359,7 @@ public class ManageAnnonceAgent extends Agent{
 		}
 		
 	}
+	protected class SendToMatchingBehaviour extends OneShotBehaviour{
 		String idAnnonce;
 		
 		public SendToMatchingBehaviour(String idAnnonce) {
