@@ -34,6 +34,7 @@ public class ManageAnnonceAgent extends Agent{
 				case Constants.Action.CREATE_ANNONCE:
 					sql = sqlCreateAnnonce(params);
 					performative = ACLMessage.REQUEST;
+					System.out.println(sql);
 					addBehaviour(new SendToSqlBehaviour(msg, sql, performative));
 					break;	
 				case Constants.Action.MODIFY_ANNONCE:
@@ -75,7 +76,7 @@ public class ManageAnnonceAgent extends Agent{
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("budget") + "\"");
 //			sql = sql.replaceFirst("###", "\""+ (String) params.get("nbPersonneBesoin") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("lieu") + "\"");
-//			sql = sql.replaceFirst("###", "\""+ (String) params.get("descriptionLogement") + "\"");
+			sql = sql.replaceFirst("###", "\""+ (String) params.get("descriptionLogement") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("sex") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMin") + "\"");
 			sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMax") + "\"");
@@ -344,7 +345,7 @@ public class ManageAnnonceAgent extends Agent{
 					reply.setPerformative(response.getPerformative());
 					send(reply);
 					if(response.getPerformative() != ACLMessage.FAILURE && idAnnonce != null){
-						//addBehaviour(new SendToMatchingBehaviour(idAnnonce));
+						addBehaviour(new SendToMatchingBehaviour(idAnnonce));
 					}
 					flag = true;
 				}
