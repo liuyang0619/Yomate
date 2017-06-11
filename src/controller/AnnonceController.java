@@ -52,13 +52,6 @@ public class AnnonceController {
 		}
 		String result = behaviour.getAnswer();
 		System.out.println("res----------------------"+result);
-		/*if(result == null){
-			System.out.println("result null");
-		}
-		else{
-			System.out.println("result not null");
-		}*/
-		
 		model.addAttribute("annonceInfo", result);
 		
 		
@@ -100,7 +93,7 @@ public class AnnonceController {
 		System.out.println("resUUUU----------------------"+resultU);
 		
 		model.addAttribute("userProfile", resultU);
-		return "PageAnnonce";
+		return "PageAnnonce.jsp";
 	}
 	
 	//supprimer une annonce depuis l'espace personnel
@@ -134,7 +127,7 @@ public class AnnonceController {
 		return "PageAnnonce";
 	}
 	
-	@RequestMapping(value = "/modifierTest/{idAnnonce}/{dateD}", method = {RequestMethod.GET, RequestMethod.POST}) 
+	/*@RequestMapping(value = "/modifierTest/{idAnnonce}/{dateD}", method = {RequestMethod.GET, RequestMethod.POST}) 
 	public String modifierTest(@PathVariable(value="idAnnonce") String idAnnonce, @PathVariable(value="dateD") String dateD){
 		
 		System.out.println("testing modifier");
@@ -183,7 +176,7 @@ public class AnnonceController {
 		System.out.println("res----------------------"+result);
 		//return "annonce/"+idAnnonce;
 		return "PageAnnonce";
-	}
+	}*/
 	
 	//modifier une annonce
 	@RequestMapping(value = "/modifier/{idAnnonce}/{dateD}/{dateF}/{description}/{budget}/{nbPersonneBesoin}/{lieu}/{descriptionLogement}/{sex}/"
@@ -250,97 +243,5 @@ public class AnnonceController {
 			
 		return "annonce/"+idAnnonce;
 	}
-	
-	@RequestMapping(value = "/new/{userId}", method = {RequestMethod.POST}) 
-	public String modify(
-			@PathVariable(value="userId", required=false) String userId,
-			@RequestParam(value="date_debut", required=false) String dateDebut,
-			@RequestParam(value="date_fin", required=false) String dateFin,
-			@RequestParam(value="sex", required=false) String sex,
-			@RequestParam(value="budget", required=false) String budget,
-			@RequestParam(value="haspet", required=false) String haspet, 
-			@RequestParam(value="situationFam", required=false) String situationFam,
-			@RequestParam(value="profession", required=false) String profession, 
-			@RequestParam(value="nationnalite", required=false) String nationnalite, 
-			@RequestParam(value="ageMin", required=false) String ageMin, 
-			@RequestParam(value="ageMax", required=false) String ageMax, 
-			@RequestParam(value="loisir", required=false) String loisir, 
-			@RequestParam(value="langue", required=false) String language, 
-			@RequestParam(value="lieu", required=false) String lieu, 
-			@RequestParam(value="dateProposer", required=false) String dateProposer, 
-			Model model ){ 
-		Properties pp = new Properties();
-    	pp.setProperty(Profile.MAIN_HOST, "localhost");
-    	pp.setProperty(Profile.MAIN_PORT, "2000");
-    	JadeGateway.init(null, pp);
-    	Map<String, String> map = new HashMap<String, String>();
-    	map.put("dateProposer", dateProposer);
-    	map.put("dateDebut", dateDebut);
-    	map.put("dateFin", dateFin);
-    	map.put("proposer", userId);
-    	map.put("budget", budget);
-    	map.put("lieu", lieu);
-    	map.put("sex", sex);
-    	map.put("ageMin",ageMin);
-    	map.put("ageMax", ageMax);
-    	map.put("status", "1");
-    	map.put("haspet", haspet);
-    	map.put("situationFam", situationFam);
-    	map.put("profession", profession);
-    	map.put("nationnalite", nationnalite);
-    	map.put("loisir", loisir);
-    	map.put("language", language);
-		map.put("descriptionLogement", "");
-		map.put("description", "");
-		map.put("nbPersonneBesoin", "");
-		map.put("ecole", "");
-    	System.out.println("modify annonce _____"+ map);
-    	
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_PROFILE, map);
-    	String content = JsonHelper.serilisation(amc);
-    	ProcessBehaviour behaviour = new ProcessBehaviour(content);
-		try {
-			JadeGateway.execute(behaviour);
-		} catch (StaleProxyException e) {
-			e.printStackTrace();
-		} catch (ControllerException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		String result = behaviour.getAnswer();
-		System.out.println("success-------"+result);
-	
-		
-		if (result.equals(Constants.Message.SUCCESS_MODIFY_DATABASE)){
-	    	Map<String, String> map1 = new HashMap<String, String>();
-	    	map1.put("idUser", userId);
-	    	ActionMessageContent amc1 = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map1);
-	    	String content1 = JsonHelper.serilisation(amc1);
-	    	ProcessBehaviour behaviourProfile = new ProcessBehaviour(content1);
-	    	try {
-				JadeGateway.execute(behaviourProfile);
-			} catch (StaleProxyException e) {
-				e.printStackTrace();
-			} catch (ControllerException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			String resultProfile = behaviourProfile.getAnswer();
-			model.addAttribute("userProfile", resultProfile);    	
-
-			
-		}
-		else{
-			
-			return "espacePersonnel";
-		}
-		return "espacePersonnel";
-		
-		
-	}
-	
 
 }

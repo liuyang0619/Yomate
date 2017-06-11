@@ -60,7 +60,7 @@ public class UserController {
 			model.addAttribute("idUser", (String)res[0].get("idUser"));
 		}
 		model.addAttribute("rememberMe", remember);
-		return "index";
+		return "index.jsp";
 	}
 	
 	@RequestMapping(value = "/signup", method = {RequestMethod.GET, RequestMethod.POST}) //inscription
@@ -98,7 +98,7 @@ public class UserController {
 		
 		if (result.equals(Constants.Message.ERROR_WITH_DATABASE)) {
 			model.addAttribute("result", "error");
-			return "inscription";
+			return "inscription.jsp";
 		} else {
 			Map<String, String> map2 = new HashMap<String, String>();
 			map2.put("email", email);
@@ -119,7 +119,7 @@ public class UserController {
 			Map<String, Object>[] res = JsonHelper.deserilisationArray(result2);			
 			model.addAttribute("idUser", (String)res[0].get("idUser"));
 			model.addAttribute("rememberMe", false);
-			return "index";
+			return "index.jsp";
 		}
 	}
 }

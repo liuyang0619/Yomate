@@ -56,14 +56,14 @@
 <!-- date debut picker -->
 <script type="text/javascript">
 $(function () {
-    $('#dateDebutPicker').datetimepicker({format: 'DD-MM-YYYY'});
+    $('#dateDebutPicker').datetimepicker({format: 'YYYY-MM-DD'});
 });
 </script>
 
 <!-- date fin picker -->
 <script type="text/javascript">
 $(function () {
-    $('#dateFinPicker').datetimepicker({format: 'DD-MM-YYYY'});
+    $('#dateFinPicker').datetimepicker({format: 'YYYY-MM-DD'});
 });
 </script>
 
@@ -330,7 +330,7 @@ function drop(ev)
 									</div>
 									<div class = "row">
 										<div class = "col-md-12">
-											<a href="/Yomate/espacePersonnel/2" id="editerProfil" class = "btn btn-success search-btn perso-edit-btn">Editer<span class="glyphicon glyphicon-edit"></span></a>
+											<a id="editerProfil" class = "btn btn-success search-btn perso-edit-btn" onClick="goToProfil()">Editer<span class="glyphicon glyphicon-edit"></span></a>
 										</div>
 									</div> 
 								</div>
@@ -418,10 +418,41 @@ function drop(ev)
 				<br />
 			</div>
 			
-			<div class="row">
+			<div class="row" id="filtre">
+			<div class="col-md-12">
+				<div class="sap_tabs perso-profile">	
+					<div id="horizontalTabFiltre">
+						<ul class="resp-tabs-list">
+							<li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Filtre de profil</span></li>
+						</ul>
+						<div class="resp-tabs-container perso-profile-info">
+							<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+								<div class="row top-margin-5">
+									<div class="col-md-12">
+										<strong><span style="font-size:20px" id="obligatoire" ondrop="drop(event)" ondragover="allowDrop(event)">Obligatoires:</span></strong>
+									</div>
+								</div>
+								<div class="row top-margin-5">
+									<div class="col-md-12">
+										<strong><span style="font-size:20px" id="important" ondrop="drop(event)" ondragover="allowDrop(event)">Importants:</span></strong>
+									</div>
+								</div>
+								<div class="row top-margin-5">
+									<div class="col-md-12">
+										<strong><span style="font-size:20px" id="vautMieux" ondrop="drop(event)" ondragover="allowDrop(event)">Vaut mieux:</span></strong>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="row" id="filtreModifiable">
 			<div class="col-md-9">
 			<div class="sap_tabs perso-profile">	
-				<div id="horizontalTabFiltre">
+				<div id="horizontalTabFiltreModifiable">
 					<ul class="resp-tabs-list">
 						<li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab" style = "padding:10px 10px 10px 10px"><span>Filtre de profil</span></li>
 					</ul>
@@ -450,14 +481,14 @@ function drop(ev)
 			</div>
 			<div class="col-md-3" style="border-radius:5px 5px 5px 5px; border:3px solid #408080">
 							<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px" >
-								<p draggable="true" ondragstart="drag(event)" id="tag1" style="color: #8a6d3b; background-color: #fcf8e3; display: inline-block" >sexe</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag1" style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >sexe</p>
 								<!-- <p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p> -->
 							</div>
 							<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag2" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >age</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag2" style="margin:2px; color: #3c763d; background-color: #dff0d8; border-style:dotted; border-color: white; display: inline-block" >age</p>
 							</div>
 							<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag3" style="color: #3c763d; background-color: #fcf8e3; display: inline-block" >budget</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag3" style="color: #3c763d; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >budget</p>
 							</div>
 							<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
 								<p draggable="true" ondragstart="drag(event)" id="tag4" style="color: #3c763d; background-color: #dff0d8; display: inline-block" >loisir</p>
@@ -526,7 +557,7 @@ function drop(ev)
 			</div>
 			<div class="row">
 				<span style="font-size:20px; margin-left:40px"><strong>Colocataires concernés</strong></span>
-				<div class="row" style="margin: 30px">
+				<div class="row" style="margin: 30px; text-align:center"">
 					<div id="id_avatar4" style="display: inline">
 				   		<img style="height: 50px; width: 50px" src="/Yomate/ressources/images/1.png">
 					</div>
@@ -538,12 +569,12 @@ function drop(ev)
 			<div class="row">
 				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
-			<div class="row" >
-				<span style="font-size:20px; margin-left:40px"><strong>Correspondance à votre profil:</strong></span>
-				<div id="correspondance" style="font-size:30px; background-color: lightblue; text-align:center; margin:30px">78%</div>
+			<div class="row" id="correspondance">
+				<span style="font-size:20px; margin-left:40px"><strong>Correspondance à votre profil</strong></span>
+				<div style="font-size:30px; background-color: lightblue; text-align:center; margin:30px">78%</div>
 			</div>
 			<div class="row">
-				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
+				<hr id="line" style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
 			<div class="row">
 				<script>
@@ -608,8 +639,6 @@ function drop(ev)
 							</div>
 			    		</div>
                 	
-	                	
-			    		
 			    		<!-- Date de naissance -->
 			    		<div class="row top-margin-10">
 			    			<label class="col-md-2">Durée</label>
@@ -721,8 +750,13 @@ function drop(ev)
 	
 	<div id="footer"></div>
 	
-	
-	
+	<script type="text/javascript"> 
+	function goToProfil(){
+		var user = getCookie("idUser");
+		alert("ready to go?");
+		document.location.href="http://localhost:8080/Yomate/espacePersonnel/"+idUser;
+	}
+	</script>
 	
 	<script type="text/javascript"> 
 	function go(){
@@ -748,6 +782,13 @@ function drop(ev)
 		});		
 		$(document).ready(function () {		
 			$('#horizontalTabFiltre').easyResponsiveTabs({		
+				type: 'default', //Types: default, vertical, accordion           		
+				width: 'auto', //auto or any width like 600px		
+				fit: true   // 100% fit in a container		
+			});		
+		});	
+		$(document).ready(function () {		
+			$('#horizontalTabFiltreModifiable').easyResponsiveTabs({		
 				type: 'default', //Types: default, vertical, accordion           		
 				width: 'auto', //auto or any width like 600px		
 				fit: true   // 100% fit in a container		
@@ -810,6 +851,9 @@ function drop(ev)
 			alert("hide contact!");
 			var interest = document.getElementById("interest");
 			interest.style.display="none";
+			document.getElementById("correspondance").style.display="none";
+			document.getElementById("line").style.display="none";
+			document.getElementById("filtre").style.display="none";
 		}
 		else{
 			alert("You are watching others' annonce!");
@@ -819,6 +863,7 @@ function drop(ev)
 			alert("status hidden!");
 			document.getElementById("editerProfil").style.display="none";
 			document.getElementById("editerAnnonce").style.display="none";
+			document.getElementById("filtreModifiable").style.display="none";
 		}
 			
 		
@@ -857,9 +902,9 @@ function drop(ev)
 		var nationnalite = annonce[0]['nationnalite'];
 		var loisir = annonce[0]['loisir'];
 		var language = annonce[0]['language'];
-		var peutetre = annonce[0]['peutetre'];
-		var obligatoire = annonce[0]['obligatoire'];
-		var important = annonce[0]['important'];
+		var peutetre = annonce[0]['peutetrecritere'];
+		var obligatoire = annonce[0]['obligatoirecritere'];
+		var important = annonce[0]['importantcritere'];
 
 		document.location.href="http://localhost:8080/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 		+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisir+"/"+language+"/"+peutetre
@@ -879,11 +924,10 @@ function updateAnnonce(){
 	var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
 	var situationF = annonce[0]['situationFam'];
 	var ecole = annonce[0]['ecole'];
-	var profession = annonce[0]['profession'];
-	alert
-	var nationnalite = annonce[0]['nationnalite'];
+	var profession = annonce[0]['professionName'];
+	var nationnalite = annonce[0]['nationnaliteName'];
 	//var loisir = annonce[0]['loisir'];
-	var language = annonce[0]['language'];
+	var language = annonce[0]['languages'];
 	alert(language);
 	//var peutetre = annonce[0]['peutetre'];
 	//var obligatoire = annonce[0]['obligatoire'];
