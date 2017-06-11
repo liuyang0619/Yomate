@@ -111,21 +111,22 @@ public class SqlRequest {
 			+ "FROM yomate.user as u, annonce as a "
 			+ "WHERE u.idUser = ### AND u.idUser = a.proposer ";
 	public final static String SEARCH_ANNONCE_MAIN = "SELECT  a.*, lan.language as language, loi.loisir as loisir , u.nom as proposer_nom, u.prenom as proposer_prenom, u.birthday as proposer_birthday, u.sex as proposer_sex , uphoto.image "
-			+ "FROM yomate.annonce as a, yomate.annonce_loisir as aloi, yomate.annonce_language as alan, yomate.loisir as loi, yomate.language as lan, yomate.user as u , yomate.user_photo as uphoto "
-			+ "WHERE a.idAnnonce = aloi.annonce AND a.idAnnonce = alan.annonce AND aloi.loisir = loi.id AND alan.language = lan.id AND u.idUser = a.proposer AND uphoto.user = u.idUser ";
+			+ "FROM yomate.annonce as a, yomate.user_loisir as uloi, yomate.user_language as ulan, yomate.loisir as loi, yomate.language as lan, yomate.user as u , yomate.user_photo as uphoto "
+			+ "WHERE u.idUser = uloi.user AND u.idUser = ulan.user AND uloi.loisir = loi.id AND ulan.language = lan.id AND u.idUser = a.proposer AND uphoto.user = u.idUser ";
 	public final static String SEARCH_ANNONCE_BUDGET = "AND a.budget<= ### AND a.budget >= ### ";
 	public final static String SEARCH_ANNONCE_LIEU = "AND a.lieu = ### ";
-	public final static String SEARCH_ANNONCE_SEX = "AND a.sex = ### ";
-	public final static String SEARCH_ANNONCE_AGE = "AND a.age_min >= ### AND a.age_max < ### ";
-	public final static String SEARCH_ANNONCE_PET = "AND a.haspet = ### ";
-	public final static String SEARCH_ANNONCE_SITUATIONFAM = "AND a.situationFam = ### ";
-	public final static String SEARCH_ANNONCE_SCHOOL = "AND a.ecole = ### ";
-	public final static String SEARCH_ANNONCE_PROFESSION = "AND a.profession = ### ";
-	public final static String SEARCH_ANNONCE_NATIONNALITY = "AND a.nationnalite = ### ";
+	public final static String SEARCH_ANNONCE_SEX = "AND u.sex = ### ";
+	public final static String SEARCH_ANNONCE_MINAGE = "AND u.birthday >= ### ";
+	public final static String SEARCH_ANNONCE_MAXAGE = "AND u.birthday < ### ";
+	public final static String SEARCH_ANNONCE_PET = "AND u.haspet = ### ";
+	public final static String SEARCH_ANNONCE_SITUATIONFAM = "AND u.situationFam = ### ";
+	public final static String SEARCH_ANNONCE_SCHOOL = "AND u.ecole = ### ";
+	public final static String SEARCH_ANNONCE_PROFESSION = "AND u.profession = ### ";
+	public final static String SEARCH_ANNONCE_NATIONNALITY = "AND u.nationnalite = ### ";
 	public final static String SEARCH_ANNONCE_DATE_DEBUT = "AND a.date_debut >= ### AND  a.date_debut <= ### ";
 	public final static String SEARCH_ANNONCE_DATE_FIN = "AND a.date_fin >= ### AND  a.date_fin <= ### ";
-	public final static String SEARCH_ANNONCE_HOBBY = "AND aloi.loisir = ### ";
-	public final static String SEARCH_ANNONCE_LANGUAGE = "AND alan.language = ### ";
+	public final static String SEARCH_ANNONCE_HOBBY = "AND uloi.loisir = ### ";
+	public final static String SEARCH_ANNONCE_LANGUAGE = "AND ulan.language = ### ";
 	public final static String SEARCH_ANNONCE_DESCRIPTION_LOGE = "AND a.description_logement LIKE ### ";
 	public final static String ADD_USER_TO_ANNONCE = "INSERT INTO annonc_user (annonce, user) VALUES (###, ###);";
 	public final static String GET_USER_RECOMMENDED_BY_ID_ANNONCE = "select u.*, m.rate from yomate.matching as m, yomate.user as u "

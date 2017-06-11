@@ -107,9 +107,12 @@ public class SearchAgent extends Agent{
 				sql += SqlRequest.SEARCH_ANNONCE_SEX;
 				sql = sql.replaceFirst("###", "\""+ (String) params.get("sex") + "\"");
 			}
-			if (params.get("ageMin") != null || params.get("ageMax") != null){
-				sql += SqlRequest.SEARCH_ANNONCE_AGE;
+			if (params.get("ageMin") != null){
+				sql += SqlRequest.SEARCH_ANNONCE_MINAGE;
 				sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMin") + "\"");
+			}
+			if (params.get("ageMax") != null){
+				sql += SqlRequest.SEARCH_ANNONCE_MAXAGE;
 				sql = sql.replaceFirst("###", "\""+ (String) params.get("ageMax") + "\"");
 			}
 			if (params.get("haspet") != null){

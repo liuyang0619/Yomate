@@ -33,8 +33,8 @@ public class SimulationJadegateWay {
 //    	map.put("sex", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ACCOUNT, map);
 //Test the "select user's profil by using id" method 
-    	map.put("idUser", "2");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map);
+//    	map.put("idUser", "2");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_PROFILE, map);
 //Test the "update the profil" method
 //    	map.put("idUser", "3");
 //    	map.put("nom", "LOU");
@@ -105,15 +105,15 @@ public class SimulationJadegateWay {
 //    	map.put("important", "nationnalite");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CREATE_ANNONCE, map);
 //Test the "search the annonces" method 
-//    	map.put("lieu", "paris");
-//    	map.put("budgetMax", "600");
-//    	map.put("budgetMin", "250");
-//    	map.put("dateDebut", "2016-09-01");
-//    	map.put("dateFin", "2017-02-01");
-//
-//    	map.put("sex", "1");
-//    	map.put("ageMin", "18");
-//    	map.put("ageMax", "30");
+    	map.put("lieu", "paris");
+    	map.put("budgetMax", "600");
+    	map.put("budgetMin", "250");
+    	map.put("dateDebut", "2016-09-01");
+    	map.put("dateFin", "2017-02-01");
+
+    	map.put("sex", "0");
+    	map.put("ageMin", "1800-09-01");
+    	map.put("ageMax", "2001-09-01");
 //    	map.put("keyWordLoge", "good,quite");
 //    	map.put("haspet", "0");
 //		map.put("situationFam", "couple");
@@ -122,7 +122,7 @@ public class SimulationJadegateWay {
 //		map.put("nationnalite", "1");
 //    	map.put("loisir", "2");
 //    	map.put("language", "3");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SEARCH_ANNONCE, map);
 //Test the "close annonce" method 
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.CLOSE_ANNONCE, map);
