@@ -52,13 +52,13 @@ public class SearchController {
 		System.out.println(result);
 		model.addAttribute("results", result);
 		model.addAttribute("city", city);
-		return "recherche";
+		return "recherche.jsp";
 	}
 	
 	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST}) 
 	public String pageDeRecherche(Model model) {
 		model.addAttribute("results", "return");
-		return "recherche";
+		return "recherche.jsp";
 	}
 	
 	@RequestMapping(value = "/criteres", method = {RequestMethod.GET, RequestMethod.POST}) 
@@ -147,6 +147,6 @@ public class SearchController {
 		model.addAttribute("loisir", loisir);
 		model.addAttribute("language", language);
 		model.addAttribute("logement", keyWordLoge);
-		return "recherche";
+		return "recherche.jsp";
 	}
 }

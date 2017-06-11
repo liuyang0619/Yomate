@@ -360,24 +360,27 @@ function setSelector(select,val) {
 					<div class="sap_tabs perso-posts">	
 						<div id="horizontalTabAnnonce">
 							<ul class="resp-tabs-list">
-							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Annonces favoris</span></li>
 							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Mes Annonces</span></li>
+							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Annonces favoris</span></li>
+							  	<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+									<ul class="list-group top-margin-3" id="history-list-group">
+									<div class="col-md-12" style="text-align: center; color: #000000;" id="no-history">
+										Vous n'avais pas d'annonce historique, veuillez créer les annonces.</div>
+									</div>
+									</ul>
+									
+								</div>
 								 <div class="resp-tabs-container">
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<ul class="list-group top-margin-3" id="favorite-list-group">
-										</ul>
 										<div class="col-md-12" style="text-align:center;color:#000000;" id="no-favorite">
 											Vous n'avais pas d'annonce favoris, veuillez trouver les annonces.
 										</div>
+										</ul>
+										
 									</div>
 								
-								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<ul class="list-group top-margin-3" id="history-list-group">
-									</ul>
-									<div class="col-md-12" style="text-align: center; color: #000000;" id="no-history">
-									Vous n'avais pas d'annonce historique, veuillez créer les annonces.</div>
-									</div>
-								</div>
+								
 							</ul>
 						
 							 
@@ -401,7 +404,7 @@ function setSelector(select,val) {
 	    <div class="modal-content">
 	    	<div class="modal-header">
 	    		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	    		<h4 class="modal-title">Editer votre profil</h4>
+	    		<h4 class="modal-title">Editez votre profil</h4>
 	    	</div>
 	    	<div class="modal-body">
 	    		<!-- Nom & prénom -->
@@ -582,7 +585,7 @@ function setSelector(select,val) {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="purchaseLabel">Editez votre annonce</h4>
+                    <h4 class="modal-title" id="purchaseLabel">Créez votre annonce</h4>
                 </div>
                 <div class="modal-body">
                 	<div class="container-fluid">
@@ -667,8 +670,19 @@ function setSelector(select,val) {
 								<label class="radio-inline"><input id = "annoncePet-non" type="radio" value="0" name="animalNew">non</label>
 							</div>
 		    			</div>
-		    			
-		    	<!-- Situation -->
+
+						<div class="row top-margin-3">
+							<div class="col-md-3 search-filter-item-name">Logement</div>
+							<div class="col-md-9">
+								<select class="form-control input-sm" id="logement">
+									<option value="" selected disabled></option>
+									<option value="0">J'ai besoin de logement</option>
+									<option value="1">J'ai un logement</option>
+								</select>
+							</div>
+						</div>
+
+				<!-- Situation -->
 	    		<div class="row top-margin-10">
 	    			<label class="col-md-4" for="situation">Situation/Profession</label>
 	    			<div class="form-group col-md-8">
@@ -732,9 +746,11 @@ function setSelector(select,val) {
 					</div>
 				</div>
 	    		<!-- Langue parlé-->
+	    		
 	    		<!-- Loisirs-->
-	    				<label class="col-md-4" for="annonceLoisir">Loisir</label>
-	    				<div class="col-md-8 form-group">
+	    		<div>
+	    			<label class="col-md-4" for="annonceLoisir">Loisir</label>
+	    			<div class="col-md-8 form-group">
 	    				<select id="annonceLoisir" name="annonceLoisir" class="form-control" required>
 							<option value="0" selected disabled></option>
 							<option value="2">voyage</option>
@@ -747,7 +763,19 @@ function setSelector(select,val) {
 					</div>
 	    		</div>
 	    		<!-- //Loisirs-->
-               </div>
+	    		
+	    		<!-- Description -->
+	    		<div class="row">
+	    			<div class = "col-mod-6">
+	    				<label>Description</label>
+	    			</div>
+	    			<div class="col-mod-6 top-margin-5"></div>
+	    				<input id = "description" type="text" class="form-control input-sm " placeholder="Bonjour, je suis..."  required></input>
+	    			</div>
+	    		</div>
+	    		<!-- //Description -->
+	    		
+             
                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -755,6 +783,9 @@ function setSelector(select,val) {
                 </div>
             </div>
           </div>
+       </div>
+     </div>
+    </div>
            
 
 
@@ -962,7 +993,8 @@ function newAnnonce() {
 		annonceInfo.nationnalite = nationnalite;
 		annonceInfo.loisir = loisir;
 		annonceInfo.langue =  langue;
-		post('/Yomate/annonce/new/'+user['idUser'], annonceInfo);
+		annonceInfo.annonce = '${AnnonceFavorite}';
+		post('/Yomate/espacePersonnel/newAnnonce/'+user['idUser'], annonceInfo);
 	}
 }
 </script>
