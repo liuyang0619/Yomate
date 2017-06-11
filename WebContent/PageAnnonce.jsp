@@ -386,8 +386,23 @@ function drop(ev)
 			</div>
 	<div class="container">
 	<div class="row top-margin-20 bottom-margin-20"> 
-		<div class="col-md-8" >
+		<div class="col-md-12" >
 			<div class="row" style="vertical-align:middle">
+				<div class="col-md-2">
+					<div id="id_avatar">
+						<img src="/Yomate/ressources/images/1.png">
+					</div>
+				</div>		
+				<div class="col-md-4">
+					<label style="font-size:30px"><strong><span id="nom"></span><span id="prenom" style="margin:10px"></span></strong></label>
+					<div><span id="sexe"></span></div>
+					<div><span id="age"></span></div>
+					<div><span id="description"></span></div>
+				</div>
+			</div> 
+		</div>
+		<div class="col-md-8" >
+			<!-- <div class="row" style="vertical-align:middle">
 				<div class="col-md-4">
 					<div id="id_avatar">
 				   		<img src="/Yomate/ressources/images/1.png">
@@ -399,7 +414,7 @@ function drop(ev)
 					<div><span id="age"></span></div>
 					<div><span id="description"></span></div>
 				</div>
-			</div>
+			</div> -->
 			<div class="row">
 				<br />
 			</div>
