@@ -115,10 +115,11 @@
 		var nationalite = document.getElementById("search-nationalite").value;
 		var langue = document.getElementById("search-langue").value;
 		var loisir = document.getElementById("search-loisir").value;
+		var user = getCookie("idUser");
 		
 		var searchCriteres = new Object();
+		searchCriteres.userId = user;
 		searchCriteres.lieu = city.split(",")[0].toLowerCase();
-		searchCriteres.budget = budget_max;
 		searchCriteres.budgetMax = budget_max;
 		searchCriteres.budgetMin = budget_min;
 		searchCriteres.dateDebut = period_begin;
@@ -156,10 +157,9 @@
 		if (values.lieu === "" || values.budgetMin === "" || values.budgetMax === "" || values.dateDebut === "" || values.dateFin === "" || values.logement === ""
 			|| values.sex === "" || values.ageMin === "" || values.ageMax === "" || values.haspet === "" || values.situationFam === "" || values.profession === ""
 				|| values.nationnalite === "" || values.language === "" || values.loisir === "") {
-			alert("Veuillez remplir tous les champs pour créer une annonce, svp");
+			alert("Veuillez remplir tous les champs pour créer une annonce, vous pouvz changer leurs priorités plus tard");
 			return;
 		}
-		values.userId = getCookie("idUser");
 		post("/Yomate/search/createAnnonce", values);
 	}
 </script>
@@ -528,13 +528,13 @@
 		</div>
 
 		<!-- create annonce button -->
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="search-create-annonce">
 				<p>Pas de résultats satisfaisants ? Envie d'ajouter une priorité à vos critères de cherche ?</p>
 				<a class="btn btn-warning"onclick="createAnnonce()"><i
 					class="icon-edit icon-white"></i>Créer votre Annonce</a>
 			</div>
-		</div>
+		</div> -->
 		<!-- create annonce button -->
 	</div>
 
