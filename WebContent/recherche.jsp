@@ -91,7 +91,6 @@
 <!-- search -->
 <script type="text/javascript">
 	function searchCritere() {
-		alert("search!");
 		var city = document.getElementById("search-city").value;
 		var budget_min = document.getElementById("search-budget-min").value;
 		var budget_max = document.getElementById("search-budget-max").value;
@@ -104,6 +103,7 @@
 		if (sex === undefined) {
 			sex = "";
 		}
+		alert(sex);
 		var age_min = document.getElementById("search-age-min").value;
 		var age_max = document.getElementById("search-age-max").value;
 		var animal = $('input[name=animal]:checked').val();
@@ -117,17 +117,13 @@
 		var langue = document.getElementById("search-langue").value;
 		var loisir = document.getElementById("search-loisir").value;
 
-		var warning = "";
-		if (city === "") {
-			warning = warning + "Veuillez saisissez une ville\n";
-		}
-		if (logement === "") {
-			warning = warning + "Veuillez choisir votre status de logement\n";
-		}
-		if (warning !== "") {
-			alert(warning);
+		if (city === "" && budget_min === "" && budget_max === "" && period_begin === "" && period_end === "" && logement === ""
+			&& sex === "" && age_min === "" && age_max === "" &&  animal === "" && situation_familale === "" && situation === ""
+				&& nationalite === "" && langue === "" && loisir === "") {
+			alert("Saisissez au moins un critère, svp");
 			return;
 		}
+		
 		var searchCriteres = new Object();
 		searchCriteres.lieu = city.split(",")[0].toLowerCase();
 		searchCriteres.budgetMax = budget_max;
@@ -149,6 +145,24 @@
 </script>
 <!-- //search -->
 
+<!-- create annonce -->
+<script type="text/javascript">
+	function createAnnonce() {
+		var warning = "";
+		if (city === "") {
+			warning = warning + "Veuillez saisissez une ville\n";
+		}
+		if (logement === "") {
+			warning = warning + "Veuillez choisir votre status de logement\n";
+		}
+		if (warning !== "") {
+			alert(warning);
+			return;
+		}
+	}
+</script>
+<!-- //create annonce -->
+	
 <!-- set search field -->
 <script type="text/javascript">
 	function setSearchField(city, budgetMax, budgetMin, dateDebut, dateFin,
