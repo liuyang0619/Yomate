@@ -397,7 +397,7 @@ function setSelector(select,val) {
 		<div class="container">
 			<div class = "row top-margin-20 bottom-margin-20">
 				<div class="col-md-2" style = "text-align:center">
-					<img src="/Yomate/ressources/${'user["image"]'}" class="img-thumbnail" style = "width:100px;height:100px">
+					<img id = "userImage" class="img-thumbnail" style = "width:100px;height:100px">
 				</div>
 				<div class="col-md-10">
 					<p style = "font-weight:bolder;font-size:25px"><span id="nom"></span> <span id="prenom"></span></p>
@@ -947,6 +947,7 @@ function setSelector(select,val) {
 	checkUserId(user['idUser']);
 	checkVide("nom", user['nom']);
 	checkVide("prenom", user['prenom']);
+	$("#userImage").attr("src", "/Yomate/ressources/"+user['image']);
 	document.getElementById("sexe").innerHTML = checkSex(user["sex"]);
 	document.getElementById("haspet").innerHTML=checkHasPet(user["haspet"]);
 	if (jsGetAge(user['birthday']) != -1){
@@ -982,6 +983,7 @@ if (jsonHistory === "") {
 <!-- //tab switching -->
 <script type="text/javascript"> 
 function editer() {
+	
 	document.getElementById("reNom").value = document.getElementById("nom").innerHTML;
 	document.getElementById("rePrenom").value = document.getElementById("prenom").innerHTML;
 	document.getElementById("reLieu").value = document.getElementById("lieu").innerHTML;
