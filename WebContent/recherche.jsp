@@ -528,13 +528,13 @@
 		</div>
 
 		<!-- create annonce button -->
-<!-- 		<div class="row">
+		<div class="row">
 			<div class="search-create-annonce">
 				<p>Pas de résultats satisfaisants ? Envie d'ajouter une priorité à vos critères de cherche ?</p>
 				<a class="btn btn-warning"onclick="createAnnonce()"><i
 					class="icon-edit icon-white"></i>Créer votre Annonce</a>
 			</div>
-		</div> -->
+		</div>
 		<!-- create annonce button -->
 	</div>
 
