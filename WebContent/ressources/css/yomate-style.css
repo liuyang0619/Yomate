@@ -331,6 +331,20 @@ h2.resp-accordion:hover{
   	color: #808080; 
 }
 
+.search-create-annonce {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: 2px #c0c0c0 solid;
+	border-radius: 25px;
+	padding: 10px;
+	text-align: center;
+}
+
+.search-create-annonce p {
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-family: 'YesevaOne-Regular';
+}
 
 .glyphicon-ring {
   width: 70px;
