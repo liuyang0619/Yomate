@@ -977,7 +977,7 @@ function newAnnonce() {
 	// Verify 
 	if (date_debut == "" || date_fin == "" || lieu == "" || budget == "" || ageMin == "" || ageMax == "" ||
 			profession == "" || situationFam == "" || nationnalite == "" || loisir == "" ||
-			langue == "") {
+			langue == ""|| description == "" || logement =="") {
 		alert("Saisissez tous les informations de votre profile, svp");
 	} else {
 		var annonceInfo = new Object();

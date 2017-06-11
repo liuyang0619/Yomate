@@ -121,3 +121,9 @@ function setSelector(select,val) {
     }
 	
 }
+
+//set profession value 
+function setProfession(pro){
+	
+	
+}
