@@ -350,8 +350,8 @@ function setResultHistoryList(jsonResults) {
 				    "<div style = 'height:100px'>" +
 			
 						"<div style='float: left;margin-left:10px'>" +
-							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:18px'>" + "Lieu : " + results[i]['lieu']  + "</p>" +
-							"<p class='list-group-item-text'>" + "Durée : " + results[i]['date_debut'].split('-').join('/') + " - " + results[i]['date_fin'].split('-').join('/') + "</p>" +
+							"<p class='list-group-item-text'>" + "Lieu : " + results[i]['lieu']  + "</p>" +
+							"<p class='list-group-item-text'>" + "Période : " + results[i]['date_debut'].split('-').join('/') + " - " + results[i]['date_fin'].split('-').join('/') + "</p>" +
 							"<p class='list-group-item-text'>"+ "Status : "+ checkAnnonceStatus(results[i]['status']) + "</p>" +
 							"<p class='list-group-item-text'>"+ "Description :" + results[i]['description'] + "</p>" +
 						"</div>" +
@@ -745,7 +745,7 @@ function setSelector(select,val) {
 			    		
 			    		<!-- Durée -->
 			    		<div class="row top-margin-10">
-			    			<label class="col-md-2">Durée</label>
+			    			<label class="col-md-2">Période</label>
 				    			<div class="col-md-4">
 					    			<div class="input-group" id="dateDebutPicker">
 					                    <input type="text" class="form-control input-sm" id="dateStart" placeholder="Date de debut"/>
