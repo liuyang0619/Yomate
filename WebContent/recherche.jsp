@@ -142,7 +142,7 @@
 		if (values.lieu === "" && values.budgetMin === "" && values.budgetMax === "" && values.dateDebut === "" && values.dateFin === "" && values.logement === ""
 			&& values.sex === "" && values.ageMin === "" && values.ageMax === "" && values.haspet === "" && values.situationFam === "" && values.profession === ""
 				&& values.nationnalite === "" && values.language === "" && values.loisir === "") {
-			alert("Saisissez au moins un critÃ¨re, svp");
+			alert("Saisissez au moins un critère, svp");
 			return;
 		}
 		post("/Yomate/search/criteres/", values);
@@ -157,7 +157,7 @@
 		if (values.lieu === "" || values.budgetMin === "" || values.budgetMax === "" || values.dateDebut === "" || values.dateFin === "" || values.logement === ""
 			|| values.sex === "" || values.ageMin === "" || values.ageMax === "" || values.haspet === "" || values.situationFam === "" || values.profession === ""
 				|| values.nationnalite === "" || values.language === "" || values.loisir === "") {
-			alert("Veuillez remplir tous les champs pour crÃ©er une annonce, vous pouvz changer leurs prioritÃ©s plus tard");
+			alert("Veuillez remplir tous les champs pour créer une annonce, vous pouvz changer leurs priorités plus tard");
 			return;
 		}
 		post("/Yomate/search/createAnnonce", values);
@@ -294,7 +294,7 @@
 
 					<!-- begin datepicker -->
 					<div class="row top-margin-3">
-						<div class="col-md-3 search-filter-item-name">PÃ©riode</div>
+						<div class="col-md-3 search-filter-item-name">Période</div>
 						<div class="col-md-9">
 							<div class="col-md-2 padding-0"
 								style="font-weight: bold; vertical-align: middle;">Du</div>
@@ -389,9 +389,9 @@
 							<select id="search-situation-fam" name="search-situation-fam"
 								class="form-control input-sm">
 								<option value=""></option>
-								<option value="CÃ©libataire">CÃ©libataire</option>
+								<option value="Célibataire">Célibataire</option>
 								<option value="Couple">Couple</option>
-								<option value="MariÃ©">MariÃ©</option>
+								<option value="Marié">Marié</option>
 								<option value="Autre">Autre</option>
 							</select>
 						</div>
@@ -406,8 +406,8 @@
 								class="form-control input-sm">
 								<option value=""></option>
 								<option value="39">Etudiant</option>
-								<option value="69">SalariÃ©</option>
-								<option value="68">RetraitÃ©</option>
+								<option value="69">Salarié</option>
+								<option value="68">Retraité</option>
 								<option value="13">Autre cadres</option>
 							</select>
 						</div>
@@ -416,12 +416,12 @@
 
 					<!-- Nationalite -->
 					<div class="row">
-						<div class="col-md-4 search-filter-item-name">NationalitÃ©</div>
+						<div class="col-md-4 search-filter-item-name">Nationalité</div>
 						<div class="col-md-8 form-group">
 							<select id="search-nationalite" name="search-nationalite"
 								class="form-control input-sm">
 								<option value=""></option>
-								<option value="64">FranÃ§aise</option>
+								<option value="64">Française</option>
 								<option value="41">Chinoise</option>
 								<option value="83">Italienne</option>
 								<option value="148">Russee</option>
@@ -439,7 +439,7 @@
 							<select id="search-langue" name="search-langue"
 								class="form-control input-sm">
 								<option value=""></option>
-								<option value="27">FranÃ§ais</option>
+								<option value="27">Français</option>
 								<option value="20">Chinois mandarin</option>
 								<option value="3">Anglais</option>
 								<option value="1">Allemand</option>
@@ -460,7 +460,7 @@
 								<option value="2">Voyage</option>
 								<option value="3">Sport</option>
 								<option value="5">Cuisine</option>
-								<option value="19">Jeux vidÃ©o</option>
+								<option value="19">Jeux vidéo</option>
 								<option value="9">Lecture</option>
 								<option value="35">Autre</option>
 							</select>
@@ -491,7 +491,7 @@
 				<!-- amelioration de profil -->
 				<div class="search-improve-profile" style="cursor: pointer;"
 					onclick="goToEP()">
-					<h3>3 Ã©tapes pour un meilleur matching de profile</h3>
+					<h3>3 étapes pour un meilleur matching de profile</h3>
 					<div class="row top-margin-5">
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
@@ -504,13 +504,13 @@
 								<span
 									class="glyphicon glyphicon-question-sign search-improve-icon"></span>
 							</div>
-							<p>RÃ©pondre aux 5 questions</p>
+							<p>Répondre aux 5 questions</p>
 						</div>
 						<div class="col-md-4">
 							<div class="glyphicon-ring">
 								<span class="glyphicon glyphicon-th-list search-improve-icon"></span>
 							</div>
-							<p>ComplÃ©ter votre profile</p>
+							<p>Compléter votre profile</p>
 						</div>
 					</div>
 				</div>
@@ -518,12 +518,12 @@
 
 				<!-- resultats de recherche -->
 				<div class="search-result">
-					<div id="result-nb" style="font-size:">RÃ©sultats :</div>
+					<div id="result-nb" style="font-size:">Résultats :</div>
 					<ul class="list-group top-margin-3" id="result-list-group">
 					</ul>
 					<div class="col-md-12" style="text-align: center; color: #000000;"
-						id="no-result">DÃ©solÃ©, aucun rÃ©sultat ne correspond Ã  vos
-						critÃ¨res de sÃ©lection.</div>
+						id="no-result">Désolé, aucun résultat ne correspond à vos
+						critères de sélection.</div>
 				</div>
 				<!-- //resultats de recherche -->
 			</div>
@@ -533,9 +533,9 @@
 		<!-- create annonce button -->
 		<div class="row">
 			<div class="search-create-annonce">
-				<p>Pas de rÃ©sultats satisfaisants ? Envie d'ajouter une prioritÃ© Ã  vos critÃ¨res de cherche ?</p>
+				<p>Pas de résultats satisfaisants ? Envie d'ajouter une priorité à vos critères de cherche ?</p>
 				<a class="btn btn-warning"onclick="createAnnonce()"><i
-					class="icon-edit icon-white"></i>CrÃ©er votre Annonce</a>
+					class="icon-edit icon-white"></i>Créer votre Annonce</a>
 			</div>
 		</div>
 		<!-- create annonce button -->

@@ -1147,7 +1147,7 @@ function drop(ev)
 		document.getElementById("loisirA").innerHTML = annonce[0]['loisirs'];
 
 		//priorite de matching
-		alert(annonce[0]['obligatoirecritere']);
+		//alert(annonce[0]['obligatoirecritere']);
 		if(annonce[0]['obligatoirecritere'] === ""){
 		}
 		else{
@@ -1161,7 +1161,7 @@ function drop(ev)
 		}
 		}
 
-		alert(annonce[0]['importantcritere']);
+		//alert(annonce[0]['importantcritere']);
 		if(annonce[0]['importantcritere'] === ""){
 		}
 		else{
@@ -1176,7 +1176,7 @@ function drop(ev)
 		}
 
 		
-		alert(annonce[0]['peutetrecritere']);
+		//alert(annonce[0]['peutetrecritere']);
 		if(annonce[0]['peutetrecritere'] === ""){
 		}
 		else{
@@ -1293,9 +1293,9 @@ function updateAnnonce(){
 	var obligatoire = "age, language"; */
 	
 	var peutetre = annonce[0]['peutetrecritere'];
-	alert(peutetre);
+	//alert(peutetre);
 	var important = annonce[0]['importantcritere'];
-	alert(important);
+	//alert(important);
 	var obligatoire = annonce[0]['obligatoirecritere'];
 	//var descriptionLogement = "grand";
 	
@@ -1378,20 +1378,20 @@ function updateAnnonce(){
 		var json = '${annonceInfo}';
 		
 		var obligatoire = document.getElementById("obligatoire2").childNodes;
-		alert(obligatoire.length);
+		//alert(obligatoire.length);
 		var obl="";
 		for(var i=1; i<obligatoire.length; i++){
 			////alert(obligatoire[i]);
 			////alert(obligatoire[i].innerText);
 			obl = obl+","+obligatoire[i].innerText;
-			alert("after: "+obl);
+			//alert("after: "+obl);
 			////alert(obligatoire[i].textContent);//
 			////alert(obligatoire[i].innerHTML);
 			//////alert(obligatoire[i].text);
 			////alert(obligatoire[i].value);
 		}
 		obl = obl.substring(1, obl.length);
-		alert("obligatoire: "+obl);
+		//alert("obligatoire: "+obl);
 
 		//important
 		var important = document.getElementById("important2").childNodes;
@@ -1496,11 +1496,11 @@ function updateAnnonce(){
 		//alert(descriptionLogement); 
 
 		peutetre = ptt;
-		alert(peutetre);
+		//alert(peutetre);
 		obligatoire = obl;
-		alert(obligatoire);
+		//alert(obligatoire);
 		important = imp;
-		alert(important);
+		//alert(important);
 		/* var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 		+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
 		+"/"+obligatoire+"/"+important; 
