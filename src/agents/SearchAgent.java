@@ -56,9 +56,12 @@ public class SearchAgent extends Agent{
 		}
 		protected String sqlSearchAnnonce(Map<String, String> params){
 			sql = SqlRequest.SEARCH_ANNONCE_MAIN;
-			if (params.get("budgetMax") != null || params.get("budgetMin") != null){
-				sql += SqlRequest.SEARCH_ANNONCE_BUDGET;
+			if (params.get("budgetMax") != null){
+				sql += SqlRequest.SEARCH_ANNONCE_MAXBUDGET;
 				sql = sql.replaceFirst("###", "\""+ (String) params.get("budgetMax") + "\"");
+			}
+			if (params.get("budgetMax") != null || params.get("budgetMin") != null){
+				sql += SqlRequest.SEARCH_ANNONCE_MINBUDGET;
 				sql = sql.replaceFirst("###", "\""+ (String) params.get("budgetMin") + "\"");
 			}
 			if (params.get("dateFin") != null){

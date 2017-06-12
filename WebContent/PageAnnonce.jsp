@@ -188,7 +188,7 @@ function checkLangue(langueValue){
 	var langue;
 	switch(langueValue) {
     case "27":
-    	langue = "français";
+    	langue = "fran�ais";
         break;
     case "20":
     	langue = "chinois";
@@ -219,14 +219,14 @@ function checkProfession(professionValue){
 	var profession;
 	switch(professionValue) {
     case "39":
-    	profession = "étudiant";
-    	////alert("profession étudiant");
+    	profession = "�tudiant";
+    	////alert("profession �tudiant");
         break;
     case "69":
-    	profession = "salarié";
+    	profession = "salari�";
         break;
     case "68":
-    	profession = "retraité";
+    	profession = "retrait�";
         break;
     case "13":
     	profession = "autres";
@@ -245,7 +245,7 @@ function checkNationnalite(nationnaliteValue){
 	var nationnalite;
 	switch(nationnaliteValue) {
     case "64":
-    	nationnalite = "Français";
+    	nationnalite = "Fran�ais";
         break;
     case "41":
     	nationnalite = "Chinois";
@@ -285,7 +285,7 @@ function checkLoisir(loisirValue) {
     	loisir = "cuisine";
         break;
     case "19":
-    	loisir = "jeux vidéo";
+    	loisir = "jeux vid�o";
         break;
     case "9":
     	loisir = "lecture";
@@ -319,7 +319,6 @@ function checkSex(strSex) {
 
 <!-- calculate age -->
 <script type="text/javascript">
-/*æ ¹æ®åºçæ¥æç®åºå¹´é¾*/
 function jsGetAge(strBirthday) {var returnAge;
 			var strBirthdayArr = strBirthday.split("-");
 			var birthYear = strBirthdayArr[0];
@@ -352,10 +351,10 @@ function jsGetAge(strBirthday) {var returnAge;
 						}
 					}
 				} else {
-					returnAge = -1;//è¿å-1 è¡¨ç¤ºåºçæ¥æè¾å¥éè¯¯ æäºä»å¤©  
+					returnAge = -1;
 				}
 			}
-			return returnAge;//è¿åå¨å²å¹´é¾  
+			return returnAge;  
 		}
 </script>
 <!-- //calculate age -->
@@ -437,7 +436,7 @@ function drop(ev)
 								<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 									<div class = "row">
 										<div class = "col-md-6">
-											<span style = "font-weight: bold">Nationnalité:</span>
+											<span style = "font-weight: bold">Nationnalit�:</span>
 											<span id = "nationnalite"></span>
 										</div>
 										<div class = "col-md-6">
@@ -502,7 +501,7 @@ function drop(ev)
 							</div>
 							<div class = "row">
 								<div class = "col-md-6">
-									<span style = "font-weight: bold">Période:</span>
+									<span style = "font-weight: bold">P�riode:</span>
 									<span id="dateD"></span><span> - </span><span id="dateF"></span>
 								</div>
 							</div>
@@ -540,13 +539,13 @@ function drop(ev)
 							</div>
 							<div class = "row">
 								<div class = "col-md-6">
-									<span style = "font-weight: bold">Nationnalité:</span>
+									<span style = "font-weight: bold">Nationnalit�:</span>
 									<span id="nationnaliteA"></span>
 								</div>
 							</div>
 							<div class = "row">
 								<div class = "col-md-6">
-									<span style = "font-weight: bold">Langues parlées:</span>
+									<span style = "font-weight: bold">Langues parl�es:</span>
 									<span id="langueA"></span>
 								</div>
 							</div>
@@ -661,7 +660,7 @@ function drop(ev)
 								<p draggable="true" ondragstart="drag(event)" id="tag4" style="margin:2px; color: #3c763d; background-color: #dff0d8; border-style:dotted; border-color: white; display: inline-block" >loisir</p>
 							</div>
 							<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
-								<p draggable="true" ondragstart="drag(event)" id="tag5" style="margin:2px; color: #3c763d; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >nationnalité</p>
+								<p draggable="true" ondragstart="drag(event)" id="tag5" style="margin:2px; color: #3c763d; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block" >nationnalit�</p>
 							</div>
 							<div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 15px">
 								<p draggable="true" ondragstart="drag(event)" id="tag6" style="margin:2px; color: #3c763d; background-color: #dff0d8; border-style:dotted; border-color: white; display: inline-block" >langue</p>
@@ -723,7 +722,7 @@ function drop(ev)
 				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
 			<div class="row">
-				<span style="font-size:20px; margin-left:40px"><strong>Colocataires concernés</strong></span>
+				<span style="font-size:20px; margin-left:40px"><strong>Colocataires concern�s</strong></span>
 				<div class="row" style="margin: 30px; text-align:center"">
 					<div id="id_avatar4" style="display: inline">
 				   		<img style="height: 50px; width: 50px" src="/Yomate/ressources/images/1.png">
@@ -737,7 +736,7 @@ function drop(ev)
 				<hr style="width: 80%; color: #408080; height: 2px; background-color:#408080;" />
 			</div>
 			<div class="row" id="correspondance">
-				<span style="font-size:20px; margin-left:40px"><strong>Correspondance à votre profil</strong></span>
+				<span style="font-size:20px; margin-left:40px"><strong>Correspondance � votre profil</strong></span>
 				<div style="font-size:30px; background-color: lightblue; text-align:center; margin:30px">78%</div>
 			</div>
 			<div class="row">
@@ -808,7 +807,7 @@ function drop(ev)
                 	
 			    		<!-- Date de naissance -->
 			    		<div class="row top-margin-10">
-			    			<label class="col-md-2">Période</label>
+			    			<label class="col-md-2">P�riode</label>
 				    			<div class="col-md-4">
 					    			<div class="input-group" id="dateDebutPicker">
 					                    <input type="text" class="form-control input-sm" id="dateDNew" placeholder="Date de debut"/>
@@ -872,9 +871,9 @@ function drop(ev)
 			    			<div class="form-group col-md-8">
 								<select id="professionNew" class="form-control">
 									<option value="0" selected disabled></option>
-									<option value="39">étudiant</option>
-									<option value="69">salarié</option>
-									<option value="68">retraité</option>
+									<option value="39">�tudiant</option>
+									<option value="69">salari�</option>
+									<option value="68">retrait�</option>
 									<option value="13">autres</option>
 							    </select>
 							</div>
@@ -887,9 +886,9 @@ function drop(ev)
 			    			<div class="form-group col-md-8">
 								<select id="situationFNew" class="form-control" required>
 									<option value="0" selected disabled></option>
-									<option value="Célibataire">Célibataire</option>
+									<option value="C�libataire">C�libataire</option>
 									<option value="Couple">Couple</option>
-									<option value="Marié">Marié</option>
+									<option value="Mari�">Mari�</option>
 									<option value="Autre">Autre</option>
 							    </select>
 							</div>
@@ -898,11 +897,11 @@ function drop(ev)
 					    		
 					    <!-- NationalitÃ©-->
 			    		<div class="row">
-			    			<label class="col-md-4" for="selectnationalite">Nationalité</label>
+			    			<label class="col-md-4" for="selectnationalite">Nationalit�</label>
 			    			<div class="col-md-8 form-group">
 			    				<select id="nationnaliteNew" class="form-control" required>
 									<option value="0" selected disabled></option>
-									<option value="64">Française</option>
+									<option value="64">Fran�aise</option>
 									<option value="41">Chinoise</option>
 									<option value="83">Italienne</option>
 									<option value="148">Russee</option>
@@ -911,16 +910,16 @@ function drop(ev)
 							    </select>
 							</div>
 			    		</div>
-			    		<!-- //Nationalité-->
+			    		<!-- //Nationalit�-->
 			    		
-			    		<!-- Langue parlé -->
+			    		<!-- Langue parl� -->
 			    		<div class="row">
-			    			<!-- Langue parlé-->
+			    			<!-- Langue parl�-->
 			    			<label class="col-md-4" for="annonceLangue">Langue</label>
 			    			<div class="col-md-8 form-group">
 			    				<select id="langueNew" class="form-control" required>
 									<option value="0" selected disabled></option>
-									<option value="27">française</option>
+									<option value="27">fran�aise</option>
 									<option value="20">chinoise mandarin</option>
 									<option value="3">anglaise</option>
 									<option value="1">allemande</option>
@@ -929,7 +928,7 @@ function drop(ev)
 							    </select>
 							</div>
 						</div>
-			    		<!-- Langue parlé-->
+			    		<!-- Langue parl�-->
 			    		
 			    		<!-- Loisirs-->
 			    		<div class="row">
@@ -940,7 +939,7 @@ function drop(ev)
 									<option value="2">voyage</option>
 									<option value="3">sport</option>
 									<option value="5">cuisine</option>
-									<option value="19">jeux vidéos</option>
+									<option value="19">jeux vid�os</option>
 									<option value="9">lecture</option>
 									<option value="35">autres</option>
 							    </select>
@@ -975,29 +974,29 @@ function drop(ev)
 										<option value="9">lecture</option>
 										<option value="10">danse</option>
 										<option value="11">jardinage</option>
-										<option value="12">expositions/musées</option>
-										<option value="13">écriture</option>
+										<option value="12">expositions/mus�es</option>
+										<option value="13">�criture</option>
 										<option value="14">animaux</option>
-										<option value="15">télévision</option>
+										<option value="15">t�l�vision</option>
 										<option value="16">automobiles</option>
 										<option value="17">informatique/internet</option>
 										<option value="18">photo</option>
-										<option value="19">jeux vidéos</option>
+										<option value="19">jeux vid�os</option>
 										<option value="20">chant/instrument musical</option>
-										<option value="21">décoration</option>
+										<option value="21">d�coration</option>
 										<option value="22">l'art</option>
-										<option value="23">cinéma</option>
+										<option value="23">cin�ma</option>
 										<option value="24">jeux de cartes</option>
 										<option value="25">nologie</option>
 										<option value="26">peinture/dessin</option>
-										<option value="27">jeux de sociétés</option>
-										<option value="28">théâtre</option>
+										<option value="27">jeux de soci�t�s</option>
+										<option value="28">th�âtre</option>
 										<option value="29">restaurant</option>
 										<option value="30">les sorties</option>
 										<option value="31">voir des amis</option>
-										<option value="32">activités caritative</option>
+										<option value="32">activit�s caritative</option>
 										<option value="33">pche/chasse</option>
-										<option value="34">loisirs créatifs</option>
+										<option value="34">loisirs cr�atifs</option>
 									</select>
 								</div>
 			    		</div> -->
@@ -1483,7 +1482,7 @@ function updateAnnonce(){
 		case "cuisine":
 			loisirValue = "5";
 			break;
-		case "jeux vidéos":
+		case "jeux vid�os":
 			loisirValue = "19";
 			break;
 		case "autres":

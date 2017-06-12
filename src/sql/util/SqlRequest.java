@@ -114,7 +114,9 @@ public class SqlRequest {
 	public final static String SEARCH_ANNONCE_MAIN = "SELECT  a.*, lan.language as language, loi.loisir as loisir , u.nom as proposer_nom, u.prenom as proposer_prenom, u.birthday as proposer_birthday, u.sex as proposer_sex , uphoto.image "
 			+ "FROM yomate.annonce as a, yomate.user_loisir as uloi, yomate.user_language as ulan, yomate.loisir as loi, yomate.language as lan, yomate.user as u , yomate.user_photo as uphoto "
 			+ "WHERE u.idUser = uloi.user AND u.idUser = ulan.user AND uloi.loisir = loi.id AND ulan.language = lan.id AND u.idUser = a.proposer AND uphoto.user = u.idUser ";
-	public final static String SEARCH_ANNONCE_BUDGET = "AND a.budget<= ### AND a.budget >= ### ";
+	//public final static String SEARCH_ANNONCE_BUDGET = "AND a.budget<= ### AND a.budget >= ### ";
+	public final static String SEARCH_ANNONCE_MAXBUDGET = "AND a.budget<= ### ";
+	public final static String SEARCH_ANNONCE_MINBUDGET = "AND a.budget >= ### ";
 	public final static String SEARCH_ANNONCE_LIEU = "AND a.lieu = ### ";
 	public final static String SEARCH_ANNONCE_SEX = "AND u.sex = ### ";
 	public final static String SEARCH_ANNONCE_MINAGE = "AND u.birthday >= ### ";
