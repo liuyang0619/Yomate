@@ -1126,7 +1126,12 @@ function drop(ev)
 		document.getElementById("ageMin").innerHTML = annonce[0]['age_min'];
 		document.getElementById("ageMax").innerHTML = annonce[0]['age_max'];
 		document.getElementById("animalA").innerHTML = checkPet(annonce[0]['haspet']);
-		document.getElementById("logementA").innerHTML = annonce[0]['description_logement'];
+		var logementValue = annonce[0]['description_logement'];
+		if(logementValue === "0")
+			document.getElementById("logementA").innerHTML = "Pas de logement";
+		else
+			document.getElementById("logementA").innerHTML = "Avec un logement";
+		//document.getElementById("logementA").innerHTML = annonce[0]['description_logement'];
 		var professionValue = annonce[0]['professionName'];
 		var profession = checkProfession(professionValue);
 		////alert(profession);
@@ -1142,8 +1147,11 @@ function drop(ev)
 	
 		document.getElementById("loisirA").innerHTML = annonce[0]['loisirs'];
 
-
 		//priorite de matching
+		alert(annonce[0]['obligatoirecritere']);
+		if(annonce[0]['obligatoirecritere'] === ""){
+		}
+		else{
 		var obligatoirecritere = annonce[0]['obligatoirecritere'];
 		var obligatoire = obligatoirecritere.split(",");
 		for(var i=0; i<obligatoire.length; i++){
@@ -1152,7 +1160,12 @@ function drop(ev)
 			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+obligatoire[i]+'</p>';
 			o1.insertAdjacentHTML('beforeend', tag);
 		}
+		}
 
+		alert(annonce[0]['importantcritere']);
+		if(annonce[0]['importantcritere'] === ""){
+		}
+		else{
 		var importantcritere = annonce[0]['importantcritere'];
 		var important = importantcritere.split(",");
 		for(var i=0; i<important.length; i++){
@@ -1161,7 +1174,13 @@ function drop(ev)
 			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+important[i]+'</p>';
 			i1.insertAdjacentHTML('beforeend', tag);
 		}
+		}
 
+		
+		alert(annonce[0]['peutetrecritere']);
+		if(annonce[0]['peutetrecritere'] === ""){
+		}
+		else{
 		var peutetrecritere = annonce[0]['peutetrecritere'];
 		var peutetre = peutetrecritere.split(",");
 		for(var i=0; i<peutetre.length; i++){
@@ -1169,6 +1188,7 @@ function drop(ev)
 			var p1 = document.getElementById('p1');
 			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+peutetre[i]+'</p>';
 			p1.insertAdjacentHTML('beforeend', tag);
+		}
 		}
 		
 		//check le droit 
@@ -1265,13 +1285,19 @@ function updateAnnonce(){
 	var annonce = JSON.parse(json);
 	var idAnnonce = annonce[0]['idAnnonce'];
 	//alert(idAnnonce);
-	var description = annonce[0]['description'];
+	
 	var nbPersonneBesoin = "2";
 	//var situationF = annonce[0]['situationFam'];
 	var ecole = "UTC";
-	var peutetre = "sex, haspet";
+	/*var peutetre = "sex, haspet";
 	var important = "nationnalite";
-	var obligatoire = "age, language";
+	var obligatoire = "age, language"; */
+	
+	var peutetre = annonce[0]['peutetrecritere'];
+	alert(peutetre);
+	var important = annonce[0]['importantcritere'];
+	alert(important);
+	var obligatoire = annonce[0]['obligatoirecritere'];
 	//var descriptionLogement = "grand";
 	
 	var lieu = document.getElementById("lieuNew").value;
@@ -1309,14 +1335,39 @@ function updateAnnonce(){
 	var listLoisir = document.getElementById("loisirNew");
 	var loisirValue = listLoisir.options[listLoisir.selectedIndex].value;
 	////alert(loisirValue);
-	var descriptionLogement = document.getElementById("descriptionNew").value;
+	var descriptionLogement = document.getElementById("logementNew").value;
 	////alert(descriptionLogement);
+	var description = document.getElementById("descriptionNew").value;
 	
-	var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
+	/* var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 	+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
 	+"/"+obligatoire+"/"+important; 
 	//var url = "http://localhost:8080/Yomate/annonce/modifierTest/"+idAnnonce+"/"+dateD;
-	document.location.href = url; 
+	document.location.href = url;  */
+	var info = new Object();
+	info.idAnnonce = idAnnonce;
+	info.dateD = dateD;
+	info.dateF = dateF;
+	info.description = description;
+	info.budget = budget;
+	info.nbPersonneBesoin = nbPersonneBesoin;
+	info.lieu = lieu;
+	info.descriptionLogement = descriptionLogement;
+	info.sex = sex;
+	info.ageMin = ageMin;
+	info.ageMax = ageMax;
+	info.pet = pet;
+	info.situationF = situationF;
+	info.ecole = ecole;
+	info.profession = profession;
+	info.nationnalite = nationnalite;
+	info.loisirValue = loisirValue;
+	info.language = language;
+	info.peutetre = peutetre;
+	info.obligatoire = obligatoire;
+	info.important = important;
+	post('/Yomate/annonce/modifier/'+idAnnonce, info);
+	
 
 	}
 	
@@ -1328,20 +1379,20 @@ function updateAnnonce(){
 		var json = '${annonceInfo}';
 		
 		var obligatoire = document.getElementById("obligatoire2").childNodes;
-		////alert(obligatoire.length);
+		alert(obligatoire.length);
 		var obl="";
 		for(var i=1; i<obligatoire.length; i++){
 			////alert(obligatoire[i]);
 			////alert(obligatoire[i].innerText);
 			obl = obl+","+obligatoire[i].innerText;
-			////alert("after: "+obl);
+			alert("after: "+obl);
 			////alert(obligatoire[i].textContent);//
 			////alert(obligatoire[i].innerHTML);
 			//////alert(obligatoire[i].text);
 			////alert(obligatoire[i].value);
 		}
 		obl = obl.substring(1, obl.length);
-		////alert("obligatoire: "+obl);
+		alert("obligatoire: "+obl);
 
 		//important
 		var important = document.getElementById("important2").childNodes;
@@ -1381,8 +1432,8 @@ function updateAnnonce(){
 		var idAnnonce = annonce[0]['idAnnonce'];
 		//alert(idAnnonce);
 		var description = annonce[0]['description'];
-		var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
-		var ecole = annonce[0]['ecole'];
+		var nbPersonneBesoin = "2";
+		var ecole = "UTC";
 		//var peutetre = "sex, haspet";
 		//var important = "nationnalite";
 		//var obligatoire = "age, language";
@@ -1446,16 +1497,40 @@ function updateAnnonce(){
 		//alert(descriptionLogement); 
 
 		peutetre = ptt;
-		//alert(peutetre);
+		alert(peutetre);
 		obligatoire = obl;
-		//alert(obligatoire);
+		alert(obligatoire);
 		important = imp;
-		//alert(important);
-		var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
+		alert(important);
+		/* var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 		+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
 		+"/"+obligatoire+"/"+important; 
 		//var url = "http://localhost:8080/Yomate/annonce/modifierTest/"+idAnnonce+"/"+dateD;
-		document.location.href = url; 
+		document.location.href = url;  */
+
+		var info = new Object();
+		info.idAnnonce = idAnnonce;
+		info.dateD = dateD;
+		info.dateF = dateF;
+		info.description = description;
+		info.budget = budget;
+		info.nbPersonneBesoin = nbPersonneBesoin;
+		info.lieu = lieu;
+		info.descriptionLogement = descriptionLogement;
+		info.sex = sex;
+		info.ageMin = ageMin;
+		info.ageMax = ageMax;
+		info.pet = pet;
+		info.situationF = situationF;
+		info.ecole = ecole;
+		info.profession = profession;
+		info.nationnalite = nationnalite;
+		info.loisirValue = loisirValue;
+		info.language = language;
+		info.peutetre = peutetre;
+		info.obligatoire = obligatoire;
+		info.important = important;
+		post('/Yomate/annonce/modifier/'+idAnnonce, info);
 		
 	}
 	</script>
