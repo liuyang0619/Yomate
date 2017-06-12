@@ -317,28 +317,28 @@ function checkAnnonceStatus(status){
 <script type="text/javascript">
 function setResultList(jsonResults) {
 	results = jsonResults;
-		for (var i = 0; i < results.length; i++) {
-			if (results[i]['image'] === null) {
-				results[i]['image'] = "photo/photo.png";
-			}
-			var listitem = 
-				"<a href=/Yomate/annonce/"+results[i]['idAnnonce']+" class='list-group-item'>" +
-					"<div>" +
-			    	"<h4 class='list-group-item-heading' style = 'font-size:18px'>Annonce 00" + results[i]['idAnnonce'] + "</h4>" +
-				    "<div style = 'height:100px'>" +
-				    	"<div style='float: left;'>" +
-				    		"<img src='/Yomate/ressources/" + results[i]['image'] + "' class='img-thumbnail' style = 'height:100px;height:100px;'>" +
-						"</div>" +
-						"<div style='float: left;margin-left:10px'>" +
-							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>" + results[i]['proposer_prenom']+ " "+ results[i]['proposer_nom'] + "</p>" +
-							"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ checkSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ results[i]['lieu'] + ", France</p>" +
-							"<p class='list-group-item-text'>" +results[i]['description'] + "</p>" +
-						"</div>" +
-					"</div>" +
-			    "</div>" +
-				"</a>";
-			$('#favorite-list-group').append(listitem);
+	for (var i = 0; i < results.length; i++) {
+		if (results[i]['image'] === null) {
+			results[i]['image'] = "photo/photo.png";
 		}
+		var listitem = 
+			"<a href=/Yomate/annonce/"+results[i]['idAnnonce']+" class='list-group-item'>" +
+				"<div>" +
+		    	"<h4 class='list-group-item-heading' style = 'font-size:18px'>Annonce 00" + results[i]['idAnnonce'] + "</h4>" +
+			    "<div style = 'height:100px'>" +
+			    	"<div style='float: left;'>" +
+			    		"<img src='/Yomate/ressources/" + results[i]['image'] + "' class='img-thumbnail' style = 'height:100px;height:100px;'>" +
+					"</div>" +
+					"<div style='float: left;margin-left:10px'>" +
+						"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>" + results[i]['proposer_prenom']+ " "+ results[i]['proposer_nom'] + "</p>" +
+						"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ checkSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ results[i]['lieu'] + ", France</p>" +
+						"<p class='list-group-item-text'>" +results[i]['description'] + "</p>" +
+					"</div>" +
+				"</div>" +
+		    "</div>" +
+			"</a>";
+		$('#favorite-list-group').append(listitem);
+	}
 	
 }
 </script>
@@ -400,7 +400,7 @@ function setSelector(select,val) {
 		<div class="container">
 			<div class = "row top-margin-20 bottom-margin-20">
 				<div class="col-md-2" style = "text-align:center">
-					<img src="/Yomate/ressources/images/4.png" class="img-thumbnail" style = "width:100px;height:100px">
+					<img id = "userImage" class="img-thumbnail" style = "width:100px;height:100px">
 				</div>
 				<div class="col-md-10">
 					<p style = "font-weight:bolder;font-size:25px"><span id="nom"></span> <span id="prenom"></span></p>
@@ -953,6 +953,12 @@ function setSelector(select,val) {
 	checkVide("prenom", user['prenom']);
 	document.getElementById("sexe").innerHTML = checkSex(user["sex"]);
 	document.getElementById("haspet").innerHTML=checkHasPet(user["haspet"]);
+	if (user['image'] === null){
+		$("#userImage").attr("src", "/Yomate/ressources/photo/photo.png");
+	}
+	else{
+		$("#userImage").attr("src", "/Yomate/ressources/"+user['image']);
+	}
 	if (jsGetAge(user['birthday']) != -1){
 		document.getElementById("age").innerHTML = ", " +jsGetAge(user['birthday'])+" ans";
 	}
@@ -969,11 +975,12 @@ function setSelector(select,val) {
 <script type="text/javascript">
 var jsonAnnonce = '${AnnonceFavorite}';
 var jsonHistory = '${AnnonceHistorique}';
-var favorite = JSON.parse(jsonAnnonce);
+
 if (jsonAnnonce === "") {
 	$('#no-favorite').show();
 } else {
 	$('#no-favorite').hide();
+	var favorite = JSON.parse(jsonAnnonce);
 	setResultList(favorite);
 }
 if (jsonHistory === "") {

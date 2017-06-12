@@ -44,7 +44,7 @@ public class SqlRequest {
 	public final static String SELECT_FAVORITE_ANNONCE = "SELECT a.idAnnonce, a.proposer, a.budget, a.lieu, u.prenom as proposer_prenom, " 
 			+"u.birthday as proposer_birthday, u.sex as proposer_sex, a.description, u.nom as proposer_nom, uphoto.image "
 			+"from yomate.annonce as a, yomate.user as u, yomate.favoriser as f, yomate.user_photo as uphoto "
-			+"WHERE f.user = ### and a.idAnnonce = f.annonce and a.proposer = u.idUser ";
+			+"WHERE f.user = ### and a.idAnnonce = f.annonce and a.proposer = u.idUser AND f.user = u.idUser";
 	public final static String DELETE_FAVORITE_ANNONCE = "DELETE FROM yomate.favoriser WHERE user = ### AND annonce = ###;";
 	public final static String ADD_EVALUATION = "INSERT INTO yomate.evaluation (user_commenter, user_commented, note, desription, date_evaluation) values (###, ###, ###, ###, ###)";
 	public final static String SELECT_HISTORY_ANNONCES  = "SELECT idAnnonce, budget, lieu, description "
