@@ -77,7 +77,7 @@ function checkCookie() {
 <script type="text/javascript">
 function logout() {
 	deleteCookie("idUser");
-	window.location.reload();
+	window.location.href = "/Yomate/index.jsp";
 }
 </script>
 <!-- //delete user session -->
