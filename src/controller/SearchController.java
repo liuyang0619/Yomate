@@ -140,7 +140,7 @@ public class SearchController {
 			model.addAttribute("nationnalite", nationnalite);
 			model.addAttribute("loisir", loisir);
 			model.addAttribute("language", language);
-			model.addAttribute("logement", logement);
+			model.addAttribute("descriptionLogement", logement);
 			return "search/criteres";
 		}
 	}

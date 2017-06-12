@@ -207,7 +207,7 @@ public class EspacePersonnelController {
     	map.put("nationnalite", nationnalite);
     	map.put("loisir", loisir);
     	map.put("language", language);
-    	map.put("logement", logement);
+    	map.put("descriptionLogement", logement);
 		map.put("descriptionLogement", "");
 		map.put("description", description);
 		map.put("nbPersonneBesoin", "");
