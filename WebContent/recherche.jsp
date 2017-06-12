@@ -546,6 +546,9 @@
 
 	<!-- set value -->
 	<script type="text/javascript">
+		if ('${results["image"]}' === null){
+			'${results["image"]}' = photo.png
+		}
 		setResultList('${results}');
 		setSearchField('${city}', '${budgetMax}', '${budgetMin}',
 				'${dateDebut}', '${dateFin}', '${sex}', '${ageMin}',
