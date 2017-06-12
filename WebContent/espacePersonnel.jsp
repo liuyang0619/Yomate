@@ -316,11 +316,11 @@ function checkAnnonceStatus(status){
 <!-- //captical letter -->
 <script type="text/javascript">
 function setResultList(jsonResults) {
-		var results = JSON.parse(jsonResults);
-		if (results[i]['image'] === null) {
-			results[i]['image'] = "photo/photo.png";
-		}
+	results = jsonResults;
 		for (var i = 0; i < results.length; i++) {
+			if (results[i]['image'] === null) {
+				results[i]['image'] = "photo/photo.png";
+			}
 			var listitem = 
 				"<a href=/Yomate/annonce/"+results[i]['idAnnonce']+" class='list-group-item'>" +
 					"<div>" +
@@ -330,8 +330,8 @@ function setResultList(jsonResults) {
 				    		"<img src='/Yomate/ressources/" + results[i]['image'] + "' class='img-thumbnail' style = 'height:100px;height:100px;'>" +
 						"</div>" +
 						"<div style='float: left;margin-left:10px'>" +
-							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>" + setUCfirst(results[i]['proposer_prenom']) + " "+ results[i]['proposer_nom'].toUpperCase() + "</p>" +
-							"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ checkSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ setUCfirst(results[i]['lieu']) + ", France</p>" +
+							"<p class='list-group-item-text'  style = 'font-weight: bolder; font-size:25px'>" + results[i]['proposer_prenom']+ " "+ results[i]['proposer_nom'] + "</p>" +
+							"<p class='list-group-item-text'  style = 'font-weight: bolder'>"+ checkSex(results[i]['proposer_sex']) +", "+ jsGetAge(results[i]['proposer_birthday']) + " ans, "+ results[i]['lieu'] + ", France</p>" +
 							"<p class='list-group-item-text'>" +results[i]['description'] + "</p>" +
 						"</div>" +
 					"</div>" +
@@ -400,7 +400,7 @@ function setSelector(select,val) {
 		<div class="container">
 			<div class = "row top-margin-20 bottom-margin-20">
 				<div class="col-md-2" style = "text-align:center">
-					<img id = "userImage" class="img-thumbnail" style = "width:100px;height:100px">
+					<img src="/Yomate/ressources/images/4.png" class="img-thumbnail" style = "width:100px;height:100px">
 				</div>
 				<div class="col-md-10">
 					<p style = "font-weight:bolder;font-size:25px"><span id="nom"></span> <span id="prenom"></span></p>
@@ -489,24 +489,25 @@ function setSelector(select,val) {
 							  <li class="resp-tab-item perso-profile-tab" aria-controls="tab_item-0" role="tab"><span>Annonces favoris</span></li>
 							  	<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
 									<ul class="list-group top-margin-3" id="history-list-group">
-									<div class="col-md-12" style="text-align: center; color: #000000;" id="no-history">
+										<div class="col-md-12" style="text-align: center; color: #000000;" id="no-history">
 										Vous n'avais pas d'annonce historique, veuillez créer les annonces.</div>
-									</div>
+										
 									</ul>
-									
 								</div>
+									
+								
 								 <div class="resp-tabs-container">
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<ul class="list-group top-margin-3" id="favorite-list-group">
-										<div class="col-md-12" style="text-align:center;color:#000000;" id="no-favorite">
+											<div class="col-md-12" style="text-align:center;color:#000000;" id="no-favorite">
 											Vous n'avais pas d'annonce favoris, veuillez trouver les annonces.
-										</div>
+											</div>
 										</ul>
 										
 									</div>
-								
-								
+								</div>	
 							</ul>
+						</div>
 						
 							 
 											  	 
@@ -797,8 +798,8 @@ function setSelector(select,val) {
 		    			</div>
 
 						<div class="row top-margin-3">
-							<div class="col-md-3 search-filter-item-name">Logement</div>
-							<div class="col-md-9">
+							<label class="col-md-4 search-filter-item-name">Logement</label>
+							<div class="col-md-8">
 								<select class="form-control input-sm" id="logement">
 									<option value="" selected disabled></option>
 									<option value="0">J'ai besoin de logement</option>
@@ -873,7 +874,7 @@ function setSelector(select,val) {
 	    		<!-- Langue parlé-->
 	    		
 	    		<!-- Loisirs-->
-	    		<div>
+	    		<div class="row">
 	    			<label class="col-md-4" for="annonceLoisir">Loisir</label>
 	    			<div class="col-md-8 form-group">
 	    				<select id="annonceLoisir" name="annonceLoisir" class="form-control" required>
@@ -891,14 +892,14 @@ function setSelector(select,val) {
 	    		
 	    		<!-- Description -->
 	    		<div class="row">
-	    			<div class = "col-mod-6">
+	    			<div class="col-md-12">
 	    				<label>Description</label>
 	    			</div>
-	    			<div class="col-mod-6 top-margin-5"></div>
+	    			<div class="col-md-12 top-margin-5">
 	    				<input id = "description" type="text" class="form-control input-sm " placeholder="Bonjour, je suis..."  required></input>
 	    			</div>
 	    		</div>
-	    		<!-- //Description -->
+			    <!-- //Description -->
 	    		
              
                
@@ -950,12 +951,6 @@ function setSelector(select,val) {
 	checkUserId(user['idUser']);
 	checkVide("nom", user['nom']);
 	checkVide("prenom", user['prenom']);
-	if (user['image'] === null){
-		$("#userImage").attr("src", "/Yomate/ressources/photo/photo.png");
-	}
-	else{
-		$("#userImage").attr("src", "/Yomate/ressources/"+user['image']);
-	}
 	document.getElementById("sexe").innerHTML = checkSex(user["sex"]);
 	document.getElementById("haspet").innerHTML=checkHasPet(user["haspet"]);
 	if (jsGetAge(user['birthday']) != -1){
@@ -974,11 +969,12 @@ function setSelector(select,val) {
 <script type="text/javascript">
 var jsonAnnonce = '${AnnonceFavorite}';
 var jsonHistory = '${AnnonceHistorique}';
+var favorite = JSON.parse(jsonAnnonce);
 if (jsonAnnonce === "") {
 	$('#no-favorite').show();
 } else {
 	$('#no-favorite').hide();
-	setResultList(jsonAnnonce);
+	setResultList(favorite);
 }
 if (jsonHistory === "") {
 	$('#no-history').show();
@@ -991,7 +987,6 @@ if (jsonHistory === "") {
 <!-- //tab switching -->
 <script type="text/javascript"> 
 function editer() {
-	
 	document.getElementById("reNom").value = document.getElementById("nom").innerHTML;
 	document.getElementById("rePrenom").value = document.getElementById("prenom").innerHTML;
 	document.getElementById("reLieu").value = document.getElementById("lieu").innerHTML;
