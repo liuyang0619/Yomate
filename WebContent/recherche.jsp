@@ -218,6 +218,9 @@
 			$('#no-result').hide();
 			var results = JSON.parse(jsonResults);
 			for (var i = 0; i < results.length; i++) {
+				if (results[i]['image'] === null){
+					results[i]['image'] = "photo/photo.png";
+				}
 				var listitem = "<a href=/Yomate/annonce/"+results[i]['idAnnonce']+" class='list-group-item'>"
 						+ "<div>"
 						+ "<h4 class='list-group-item-heading' style = 'font-size:18px'>Annonce 00"
@@ -240,7 +243,7 @@
 						+ " ans, "
 						+ setUCfirst(results[i]['lieu'])
 						+ ", France</p>"
-						+ "<p class='list-group-item-text'>"
+						+ "<p class='list-group-item-text' style='font-size: 15px; overflow:hidden; height: 80px; width:350px;'>"
 						+ results[i]['description']
 						+ "</p>"
 						+ "</div>"
@@ -546,9 +549,6 @@
 
 	<!-- set value -->
 	<script type="text/javascript">
-		if ('${results["image"]}' === null){
-			'${results["image"]}' = photo.png
-		}
 		setResultList('${results}');
 		setSearchField('${city}', '${budgetMax}', '${budgetMin}',
 				'${dateDebut}', '${dateFin}', '${sex}', '${ageMin}',
