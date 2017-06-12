@@ -220,7 +220,7 @@ function checkProfession(professionValue){
 	switch(professionValue) {
     case "39":
     	profession = "étudiant";
-    	//alert("profession étudiant");
+    	////alert("profession étudiant");
         break;
     case "69":
     	profession = "salarié";
@@ -1031,14 +1031,14 @@ function drop(ev)
 	<script type="text/javascript"> 
 	function goToProfil(){
 		var user = getCookie("idUser");
-		alert("ready to go?");
+		////alert("ready to go?");
 		document.location.href="http://localhost:8080/Yomate/espacePersonnel/"+idUser;
 	}
 	</script>
 	
 	<script type="text/javascript"> 
 	function go(){
-		alert("ready to go?");
+		////alert("ready to go?");
 		document.location.href="http://localhost:8080/Yomate/annonce/2";
 	}
 	</script>
@@ -1075,7 +1075,7 @@ function drop(ev)
 	</script>
 	
 	<script type="text/javascript"> 
-		alert("hello"); 
+		////alert("hello"); 
 		var user = getCookie("idUser");
 		
 		//get user profil info
@@ -1091,29 +1091,29 @@ function drop(ev)
 		//profil info
 		var nationnaliteValue = profil[0]['nationnalite'];
 		document.getElementById("nationnalite").innerHTML = checkNationnalite(nationnaliteValue);
-		//alert("nationnalite user");
+		////alert("nationnalite user");
 		
 		var langueValue = profil[0]['language'];
 		document.getElementById("langue").innerHTML = checkLangue(langueValue);
-		//alert("langue user");
+		////alert("langue user");
 		
 		var professionValue = profil[0]['profession'];
 		document.getElementById("profession").innerHTML = checkProfession(professionValue);
-		//alert("profession user");
+		////alert("profession user");
 		
 		var loisirValue =  profil[0]['loisir'];
 		document.getElementById("loisir").innerHTML = checkLoisir(loisirValue);
-		//alert("loisir user");
+		////alert("loisir user");
 		
 		document.getElementById("situationF").innerHTML = profil[0]['situationFam'];
-		//alert("situation fam user");
+		////alert("situation fam user");
 		
 		document.getElementById("animal").innerHTML = checkPet(profil[0]['haspet']);
-		//alert("animal user");
+		////alert("animal user");
 		
 		//get annonce info
 		var json = '${annonceInfo}';
-		//alert(json);
+		////alert(json);
 		var annonce = JSON.parse(json);
 
 		document.getElementById("description").innerHTML = annonce[0]['description'];
@@ -1129,7 +1129,7 @@ function drop(ev)
 		document.getElementById("logementA").innerHTML = annonce[0]['description_logement'];
 		var professionValue = annonce[0]['professionName'];
 		var profession = checkProfession(professionValue);
-		//alert(profession);
+		////alert(profession);
 		document.getElementById("situationP").innerHTML = profession;
 		document.getElementById("situationFA").innerHTML = annonce[0]['situationFam'];
 		var nationnaliteValue = annonce[0]['nationnaliteName'];
@@ -1147,7 +1147,7 @@ function drop(ev)
 		var obligatoirecritere = annonce[0]['obligatoirecritere'];
 		var obligatoire = obligatoirecritere.split(",");
 		for(var i=0; i<obligatoire.length; i++){
-			//alert(obligatoire[i]);
+			////alert(obligatoire[i]);
 			var o1 = document.getElementById('o1');
 			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+obligatoire[i]+'</p>';
 			o1.insertAdjacentHTML('beforeend', tag);
@@ -1156,7 +1156,7 @@ function drop(ev)
 		var importantcritere = annonce[0]['importantcritere'];
 		var important = importantcritere.split(",");
 		for(var i=0; i<important.length; i++){
-			//alert(important[i]);
+			////alert(important[i]);
 			var i1 = document.getElementById('i1');
 			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+important[i]+'</p>';
 			i1.insertAdjacentHTML('beforeend', tag);
@@ -1165,7 +1165,7 @@ function drop(ev)
 		var peutetrecritere = annonce[0]['peutetrecritere'];
 		var peutetre = peutetrecritere.split(",");
 		for(var i=0; i<peutetre.length; i++){
-			//alert(peutetre[i]);
+			////alert(peutetre[i]);
 			var p1 = document.getElementById('p1');
 			var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+peutetre[i]+'</p>';
 			p1.insertAdjacentHTML('beforeend', tag);
@@ -1173,10 +1173,10 @@ function drop(ev)
 		
 		//check le droit 
 		if(user === idUser){
-			alert("You are watching your annonce!");
+			////alert("You are watching your annonce!");
 			var contact = document.getElementById("contactButton");
 			contact.style.display="none";
-			alert("hide contact!");
+			////alert("hide contact!");
 			var interest = document.getElementById("interest");
 			interest.style.display="none";
 			document.getElementById("correspondance").style.display="none";
@@ -1188,7 +1188,7 @@ function drop(ev)
 			/* var obligatoirecritere = annonce[0]['obligatoirecritere'];
 			var obligatoire = obligatoirecritere.split(",");
 			for(var i=0; i<obligatoire.length; i++){
-				//alert(obligatoire[i]);
+				////alert(obligatoire[i]);
 				var o2 = document.getElementById('o2');
 				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+obligatoire[i]+'</p>';
 				o2.insertAdjacentHTML('beforeend', tag);
@@ -1197,7 +1197,7 @@ function drop(ev)
 			var importantcritere = annonce[0]['importantcritere'];
 			var important = importantcritere.split(",");
 			for(var i=0; i<important.length; i++){
-				//alert(important[i]);
+				////alert(important[i]);
 				var i2 = document.getElementById('i2');
 				var tag = '<p draggable="true" ondragstart="drag(event)" style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+important[i]+'</p>';
 				i2.insertAdjacentHTML('beforeend', tag);
@@ -1206,18 +1206,18 @@ function drop(ev)
 			var peutetrecritere = annonce[0]['peutetrecritere'];
 			var peutetre = peutetrecritere.split(",");
 			for(var i=0; i<peutetre.length; i++){
-				//alert(peutetre[i]);
+				////alert(peutetre[i]);
 				var p2 = document.getElementById('p2');
 				var tag = '<p draggable="true" ondragstart="drag(event)" style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+peutetre[i]+'</p>';
 				p2.insertAdjacentHTML('beforeend', tag);
 			} */
 		}
 		else{
-			alert("You are watching others' annonce!");
+			////alert("You are watching others' annonce!");
 			/* var status = document.getElementById("status");
 			status.style.display="none"; */
 			document.getElementById("status").style.display="none";
-			alert("status hidden!");
+			////alert("status hidden!");
 			document.getElementById("editerProfil").style.display="none";
 			document.getElementById("editerAnnonce").style.display="none";
 			document.getElementById("editerFiltre").style.display="none";
@@ -1227,7 +1227,7 @@ function drop(ev)
 			var obligatoirecritere = annonce[0]['obligatoirecritere'];
 			var obligatoire = obligatoirecritere.split(",");
 			for(var i=0; i<obligatoire.length; i++){
-				//alert(obligatoire[i]);
+				////alert(obligatoire[i]);
 				var o1 = document.getElementById('o1');
 				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+obligatoire[i]+'</p>';
 				o1.insertAdjacentHTML('beforeend', tag);
@@ -1236,7 +1236,7 @@ function drop(ev)
 			var importantcritere = annonce[0]['importantcritere'];
 			var important = importantcritere.split(",");
 			for(var i=0; i<important.length; i++){
-				//alert(important[i]);
+				////alert(important[i]);
 				var i1 = document.getElementById('i1');
 				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+important[i]+'</p>';
 				i1.insertAdjacentHTML('beforeend', tag);
@@ -1245,7 +1245,7 @@ function drop(ev)
 			var peutetrecritere = annonce[0]['peutetrecritere'];
 			var peutetre = peutetrecritere.split(",");
 			for(var i=0; i<peutetre.length; i++){
-				//alert(peutetre[i]);
+				////alert(peutetre[i]);
 				var p1 = document.getElementById('p1');
 				var tag = '<p style="margin:2px; color: #8a6d3b; background-color: #fcf8e3; border-style:dotted; border-color: white; display: inline-block">'+peutetre[i]+'</p>';
 				p1.insertAdjacentHTML('beforeend', tag);
@@ -1264,53 +1264,53 @@ function updateAnnonce(){
 	var json = '${annonceInfo}';
 	var annonce = JSON.parse(json);
 	var idAnnonce = annonce[0]['idAnnonce'];
-	alert(idAnnonce);
+	//alert(idAnnonce);
 	var description = annonce[0]['description'];
-	var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
+	var nbPersonneBesoin = "2";
 	//var situationF = annonce[0]['situationFam'];
-	var ecole = annonce[0]['ecole'];
+	var ecole = "UTC";
 	var peutetre = "sex, haspet";
 	var important = "nationnalite";
 	var obligatoire = "age, language";
 	//var descriptionLogement = "grand";
 	
 	var lieu = document.getElementById("lieuNew").value;
-	alert(lieu); 
+	////alert(lieu); 
 	var budget = document.getElementById("budgetNew").value; 
-	alert(budget);
+	////alert(budget);
 	var sex = document.querySelector('input[name="sexeNew"]:checked').value;
-	alert(sex);
+	////alert(sex);
 	var dateD = document.getElementById("dateDNew").value;
-	alert(dateD);  
+	////alert(dateD);  
 	var dateF = document.getElementById("dateFNew").value;
-	alert(dateF);
+	////alert(dateF);
 	var ageMin = document.getElementById("ageMinNew").value;
-	alert(ageMin); 
+	////alert(ageMin); 
 	var ageMax = document.getElementById("ageMaxNew").value;
-	alert(ageMax);
+	////alert(ageMax);
 	var pet = document.querySelector('input[name="animalNew"]:checked').value;
-	alert(pet); 
+	////alert(pet); 
 	var listLogement = document.getElementById("logementNew");
 	var logement = listLogement.options[listLogement.selectedIndex].value;
-	alert(logement);
-	alert("what profession?");
+	////alert(logement);
+	////alert("what profession?");
 	var listProfession = document.getElementById("professionNew");
 	var profession = listProfession.options[listProfession.selectedIndex].value;
-	alert(profession);
+	////alert(profession);
 	var listSituationF = document.getElementById("situationFNew");
 	var situationF = listSituationF.options[listSituationF.selectedIndex].value;
-	alert(situationF);
+	////alert(situationF);
 	var listNationnalite = document.getElementById("nationnaliteNew");
 	var nationnalite = listNationnalite.options[listNationnalite.selectedIndex].value;
-	alert(nationnalite);
+	////alert(nationnalite);
 	var listLangue = document.getElementById("langueNew");
 	var language = listLangue.options[listLangue.selectedIndex].value;
-	alert(language);
+	////alert(language);
 	var listLoisir = document.getElementById("loisirNew");
 	var loisirValue = listLoisir.options[listLoisir.selectedIndex].value;
-	alert(loisirValue);
+	////alert(loisirValue);
 	var descriptionLogement = document.getElementById("descriptionNew").value;
-	alert(descriptionLogement);
+	////alert(descriptionLogement);
 	
 	var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 	+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
@@ -1328,58 +1328,58 @@ function updateAnnonce(){
 		var json = '${annonceInfo}';
 		
 		var obligatoire = document.getElementById("obligatoire2").childNodes;
-		//alert(obligatoire.length);
+		////alert(obligatoire.length);
 		var obl="";
 		for(var i=1; i<obligatoire.length; i++){
-			//alert(obligatoire[i]);
-			//alert(obligatoire[i].innerText);
+			////alert(obligatoire[i]);
+			////alert(obligatoire[i].innerText);
 			obl = obl+","+obligatoire[i].innerText;
-			//alert("after: "+obl);
-			//alert(obligatoire[i].textContent);//
-			//alert(obligatoire[i].innerHTML);
-			////alert(obligatoire[i].text);
-			//alert(obligatoire[i].value);
+			////alert("after: "+obl);
+			////alert(obligatoire[i].textContent);//
+			////alert(obligatoire[i].innerHTML);
+			//////alert(obligatoire[i].text);
+			////alert(obligatoire[i].value);
 		}
 		obl = obl.substring(1, obl.length);
-		//alert("obligatoire: "+obl);
+		////alert("obligatoire: "+obl);
 
 		//important
 		var important = document.getElementById("important2").childNodes;
-		//alert(obligatoire.length);
+		////alert(obligatoire.length);
 		var imp="";
 		for(var i=1; i<important.length; i++){
-			//alert(obligatoire[i]);
-			//alert(obligatoire[i].innerText);
+			////alert(obligatoire[i]);
+			////alert(obligatoire[i].innerText);
 			imp = imp+","+important[i].innerText;
-			//alert("after: "+obl);
-			//alert(obligatoire[i].textContent);//
-			//alert(obligatoire[i].innerHTML);
-			////alert(obligatoire[i].text);
-			//alert(obligatoire[i].value);
+			////alert("after: "+obl);
+			////alert(obligatoire[i].textContent);//
+			////alert(obligatoire[i].innerHTML);
+			//////alert(obligatoire[i].text);
+			////alert(obligatoire[i].value);
 		}
 		imp = imp.substring(1, imp.length);
-		//alert("important: "+ imp);
+		////alert("important: "+ imp);
 
 		//peutetre
 		var peutetre = document.getElementById("peutetre2").childNodes;
-		//alert(obligatoire.length);
+		////alert(obligatoire.length);
 		var ptt="";
 		for(var i=1; i<peutetre.length; i++){
-			//alert(obligatoire[i]);
-			//alert(obligatoire[i].innerText);
+			////alert(obligatoire[i]);
+			////alert(obligatoire[i].innerText);
 			ptt = ptt+","+peutetre[i].innerText;
-			//alert("after: "+obl);
-			//alert(obligatoire[i].textContent);//
-			//alert(obligatoire[i].innerHTML);
-			////alert(obligatoire[i].text);
-			//alert(obligatoire[i].value);
+			////alert("after: "+obl);
+			////alert(obligatoire[i].textContent);//
+			////alert(obligatoire[i].innerHTML);
+			//////alert(obligatoire[i].text);
+			////alert(obligatoire[i].value);
 		}
 		ptt = ptt.substring(1, ptt.length);
-		//alert("peutetre: "+ ptt);
+		////alert("peutetre: "+ ptt);
 
 		var annonce = JSON.parse(json);
 		var idAnnonce = annonce[0]['idAnnonce'];
-		alert(idAnnonce);
+		//alert(idAnnonce);
 		var description = annonce[0]['description'];
 		var nbPersonneBesoin = annonce[0]['nbPersonneBesoin'];
 		var ecole = annonce[0]['ecole'];
@@ -1388,34 +1388,34 @@ function updateAnnonce(){
 		//var obligatoire = "age, language";
 
 		var lieu = annonce[0]['lieu'];
-		alert(lieu); 
+		////alert(lieu); 
 		var budget = annonce[0]['budget']; 
-		alert(budget);
+		////alert(budget);
 		var sex = annonce[0]['sex'];
-		alert(sex);
+		////alert(sex);
 		var dateD = annonce[0]['date_debut'];
-		alert(dateD);  
+		////alert(dateD);  
 		var dateF = annonce[0]['date_fin'];
-		alert(dateF);
+		////alert(dateF);
 		var ageMin = annonce[0]['age_min'];
-		alert(ageMin); 
+		////alert(ageMin); 
 		var ageMax = annonce[0]['age_max'];
-		alert(ageMax);
+		////alert(ageMax);
 		var pet = annonce[0]['haspet'];
-		alert(pet); 
+		////alert(pet); 
 		/* var logement = annonce[0]['sex']; 
-		alert(logement); */
+		//alert(logement); */
 		var profession = annonce[0]['professionName'];
-		alert(profession);
+		////alert(profession);
 		
 		var situationF = annonce[0]['situationFam'];
-		alert(situationF);
+		////alert(situationF);
 		
 		var nationnalite = annonce[0]['nationnaliteName'];
-		alert(nationnalite);
+		////alert(nationnalite);
 		
 		var language = annonce[0]['languages'];
-		alert(language);
+		////alert(language);
 
 		var loisirValue;
 		var loisir = annonce[0]['loisirs'];
@@ -1441,16 +1441,16 @@ function updateAnnonce(){
 		default:
 			loisirValue = "35";
 		}
-		alert("loisir: "+loisirValue);
+		//alert("loisir: "+loisirValue);
 		var descriptionLogement = annonce[0]['description_logement'];
-		alert(descriptionLogement); 
+		//alert(descriptionLogement); 
 
 		peutetre = ptt;
-		alert(peutetre);
+		//alert(peutetre);
 		obligatoire = obl;
-		alert(obligatoire);
+		//alert(obligatoire);
 		important = imp;
-		alert(important);
+		//alert(important);
 		var url = "/Yomate/annonce/modifier/"+idAnnonce+"/"+dateD+"/"+dateF+"/"+description+"/"+budget+"/"+nbPersonneBesoin
 		+"/"+lieu+"/"+descriptionLogement+"/"+sex+"/"+ageMin+"/"+ageMax+"/"+pet+"/"+situationF+"/"+ecole+"/"+profession+"/"+nationnalite+"/"+loisirValue+"/"+language+"/"+peutetre
 		+"/"+obligatoire+"/"+important; 
