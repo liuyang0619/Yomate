@@ -317,6 +317,9 @@ function checkAnnonceStatus(status){
 <script type="text/javascript">
 function setResultList(jsonResults) {
 		var results = JSON.parse(jsonResults);
+		if (results[i]['image'] === null) {
+			results[i]['image'] = "photo/photo.png";
+		}
 		for (var i = 0; i < results.length; i++) {
 			var listitem = 
 				"<a href=/Yomate/annonce/"+results[i]['idAnnonce']+" class='list-group-item'>" +

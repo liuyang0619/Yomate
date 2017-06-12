@@ -243,7 +243,7 @@
 						+ " ans, "
 						+ setUCfirst(results[i]['lieu'])
 						+ ", France</p>"
-						+ "<p class='list-group-item-text' style='font-size: 15px; overflow:hidden; height: 80px; width:350px;'>"
+						+ "<p class='list-group-item-text'>"
 						+ results[i]['description']
 						+ "</p>"
 						+ "</div>"
