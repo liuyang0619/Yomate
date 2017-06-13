@@ -22,6 +22,8 @@ public class Annonce {
 	private String peutEtreCritere;
 	private String sex;
 	private String haspet;
+	
+
 	private String situationFam;
 	private String ecole;
 	private String professionName;
@@ -45,7 +47,7 @@ public class Annonce {
 		loisirs = (String) map.get("loisirs");
 		obligatoirecritere = (String) map.get("obligatoirecritere");
 		importantcritere = (String) map.get("importantcritere");
-		peutEtreCritere = (String) map.get("peutEtreCritere");
+		peutEtreCritere = (String) map.get("peutetrecritere");
 		sex = (String) map.get("sex");
 		haspet = (String) map.get("haspet");
 		situationFam = (String) map.get("situationFam");
@@ -58,6 +60,26 @@ public class Annonce {
 
 	public String getIdAnnonce() {
 		return idAnnonce;
+	}
+	
+	public String getAge_min() {
+		return age_min;
+	}
+
+	public void setAge_min(String age_min) {
+		this.age_min = age_min;
+	}
+
+	public String getAge_max() {
+		return age_max;
+	}
+
+	public void setAge_max(String age_max) {
+		this.age_max = age_max;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 
 	public void setIdAnnonce(String idAnnonce) {
@@ -247,6 +269,12 @@ public class Annonce {
 	public void setAgeMax(String age_max) {
 		this.age_max = age_max;
 	}
-	
+
+	public String getSex() {
+		return sex;
+	}
+	public String getHaspet() {
+		return haspet;
+	}
 	
 }

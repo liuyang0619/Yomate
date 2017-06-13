@@ -2,11 +2,14 @@ package agents;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import agents.ManageAnnonceAgent.SendToMatchingBehaviour;
 import agents.ManageAnnonceAgent.SendToSqlBehaviour;
 import jade.core.AID;
 import jade.core.Agent;
@@ -96,16 +99,24 @@ public class CalculateMatchAgent extends Agent{
 				if(response != null){
 					String res = response.getContent();
 					res = res.substring(1,res.length() - 1);
-					Map<String, Object> map = JsonHelper.deserilisation(res);
-					annonce = new Annonce(map);
-					sql = this.getAnnonceByLieuDateDebutDateFin(annonce);
-					msg = new ACLMessage();
-					msg.setPerformative(ACLMessage.QUERY_REF);
-					msg.addReceiver(new AID(Constants.Agent.SQL_REQUEST_AGENT, AID.ISLOCALNAME));
-					msg.setContent(sql);
-					msg.setConversationId(conversationId);
-					send(msg);
-					step++;
+
+					Map<String, Object> annonceMap = JsonHelper.deserilisation(res);
+					annonce = new Annonce(annonceMap);
+					if(annonce.getStatus().equals("1")){
+						sql = this.getAnnonceByLieuDateDebutDateFin(annonce);
+						msg = new ACLMessage();
+						msg.setPerformative(ACLMessage.QUERY_REF);
+						msg.addReceiver(new AID(Constants.Agent.SQL_REQUEST_AGENT, AID.ISLOCALNAME));
+						msg.setContent(sql);
+						msg.setConversationId(conversationId);
+						send(msg);
+						step++;
+					}
+					else{
+						flag = true;
+					}
+					
+					
 				}
 				break;
 			case 3:
@@ -114,9 +125,7 @@ public class CalculateMatchAgent extends Agent{
 				if(response != null){
 					Map<String, Object>[] array = JsonHelper.deserilisationArray(response.getContent());
 					for(Map<String, Object> map : array){
-						String idAnnonceOfProposer = (String) map.get("idAnnonce");
 						String idProposer = (String) map.get("proposer");
-						System.out.println(idProposer);
 						addBehaviour(new UpdateMatchTableBehaviour(idProposer, annonce));
 					}
 					flag = true;
@@ -186,8 +195,8 @@ public class CalculateMatchAgent extends Agent{
 		int step = 1;
 		
 		public UpdateMatchTableBehaviour(String idProposer, Annonce annonce) {
-			this.annonce = annonce;
 			this.idProposer = idProposer;
+			this.annonce = annonce;
 			conversationId = String.valueOf(System.currentTimeMillis());
 		}
 		
@@ -210,7 +219,32 @@ public class CalculateMatchAgent extends Agent{
 				response = receive(mt);
 				if(response != null){
 					String res = response.getContent();
+					System.out.println(res);
+					Map<String, Object> mapProposer = JsonHelper.deserilisationArray(res)[0];
+					int rate = 50;
+					String[] importants = annonce.getImportantcritere().split(",");
+					String[] obligatoires = annonce.getObligatoirecritere().split(",");
+					String[] peutetres = annonce.getPeutEtreCritere().split(",");
+					int rateImportant = (int) (4 * checkMatchCritere(importants, mapProposer));
+					int rateOblige = 6 * checkMatchCritere(obligatoires, mapProposer);
+					int ratePeut = (int) (3 * checkMatchCritere(peutetres, mapProposer));
+					rate = rateImportant + rateOblige + ratePeut;
+					System.out.println(rate);
 					
+					sql = SqlRequest.DELETE_MATCHING_BY_ID;
+					sql = sql.replaceFirst("###", "\""+ annonce.getIdAnnonce() + "\"");
+					sql = sql.replaceFirst("###", "\""+ mapProposer.get("idUser") + "\"");
+					sql += SqlRequest.UPDATE_MATCHING;
+					sql = sql.replaceFirst("###", "\""+ annonce.getIdAnnonce() + "\"");
+					sql = sql.replaceFirst("###", "\""+ mapProposer.get("idUser") + "\"");
+					sql = sql.replaceFirst("###", "\""+ rate + "\"");
+					System.out.println(sql);
+					msg = new ACLMessage();
+					msg.setPerformative(ACLMessage.REQUEST);
+					msg.addReceiver(new AID(Constants.Agent.SQL_REQUEST_AGENT, AID.ISLOCALNAME));
+					msg.setContent(sql);
+					msg.setConversationId(conversationId);
+					send(msg);
 					
 					step++;
 				}
@@ -219,11 +253,7 @@ public class CalculateMatchAgent extends Agent{
 				mt = MessageTemplate.MatchConversationId(conversationId); 
 				response = receive(mt);
 				if(response != null){
-					Map<String, Object>[] array = JsonHelper.deserilisationArray(response.getContent());
-					for(Map<String, Object> map : array){
-						String idAnnonceOfProposer = (String) map.get("idAnnonce");
-						String idProposer = (String) map.get("proposer");
-					}
+					System.out.println(response.getContent());
 					flag = true;
 				}
 				break;
@@ -234,6 +264,81 @@ public class CalculateMatchAgent extends Agent{
 		@Override
 		public boolean done() {
 			return flag;
+		}
+		
+		protected int checkMatchCritere(String[] criteres, Map<String, Object> mapProposer){
+			int rate = 0;
+			if(criteres != null){
+				for(String critere : criteres){
+					switch(critere){
+					case "sex":
+						int sexInAnnonce = Integer.parseInt(annonce.getSex());
+						int sexUser = Integer.parseInt((String) mapProposer.get(critere));
+						if(sexInAnnonce == sexUser) {
+							rate += 20;
+						}
+						else
+							rate -=20;
+						break;
+					case "age":
+						int ageMaxInAnnonce = Integer.parseInt(annonce.getAgeMax());
+						int ageMinInAnnonce = Integer.parseInt(annonce.getAgeMin());
+						
+						String birthdayString = (String) mapProposer.get("birthday");
+						int year = Integer.parseInt(birthdayString.split("-")[0]);
+						int month = Integer.parseInt(birthdayString.split("-")[1]);
+						int day = Integer.parseInt(birthdayString.split("-")[2]);
+						LocalDate today = LocalDate.now();
+						LocalDate birthday = LocalDate.of(year, month, day);
+						Period p = Period.between(birthday, today);
+						int ageUser = p.getYears();
+						if(ageUser <= ageMaxInAnnonce && ageMinInAnnonce <= ageUser) {
+							rate += 20;
+						}
+						else
+							rate -=20;
+						break;
+					case "haspet":
+						int petInAnnonce = Integer.parseInt(annonce.getHaspet());
+						int petUser = Integer.parseInt((String) mapProposer.get(critere));
+						if(petUser == petInAnnonce) {
+							rate += 20;
+						}
+						else
+							rate -=20;
+						break;
+					case "situationFam":
+						String situationFamInAnnonce = annonce.getSituationFam();
+						String situationFamUser = (String) mapProposer.get(critere);
+						if(situationFamUser.equals(situationFamInAnnonce)) {
+							rate += 20;
+						}
+						else
+							rate -=20;
+						break;
+					case "profession":
+						int professionInAnnonce = Integer.parseInt(annonce.getProfessionName());
+						int professionUser = Integer.parseInt((String) mapProposer.get(critere));
+						if(professionUser == professionInAnnonce) {
+							rate += 20;
+						}
+						else
+							rate -=20;
+						break;
+					case "nationnalite":
+						int nationnaliteInAnnonce = Integer.parseInt(annonce.getNationnaliteName());
+						int nationnaliteUser = Integer.parseInt((String) mapProposer.get(critere));
+						if(nationnaliteUser == nationnaliteInAnnonce) {
+							rate += 20;
+						}
+						else
+							rate -=20;
+						break;
+					}
+					
+				}
+			}
+			return rate;
 		}
 	}
 	
