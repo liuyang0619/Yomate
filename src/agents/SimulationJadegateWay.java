@@ -74,8 +74,8 @@ public class SimulationJadegateWay {
 //    	map.put("date_evaluation", "1940-11-11");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.ADD_EVALUATION_TO_USER, map);
 //Test the "select the favorite annonces" method 
-    	map.put("idUser", "1");
-    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_FAVORITE_ANNONCES, map);
+//    	map.put("idUser", "1");
+//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_FAVORITE_ANNONCES, map);
 //Test the "select the history of annonces" method 
 //    	map.put("idUser", "1");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.SELECT_HISTORYS_COLO, map);
@@ -131,28 +131,28 @@ public class SimulationJadegateWay {
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.REOPEN_ANNONCE, map);
 //Test the "modify annonce" method
-//    	map.put("idAnnonce", "8");
-//		map.put("dateDebut", "1940-11-11");
-//		map.put("dateFin", "1940-11-11");
-//		map.put("description", "asdfadsf");
-//		map.put("budget", "344");
-//		map.put("nbPersonneBesoin", "3");
-//		map.put("lieu", "wenzhou");
-//		map.put("descriptionLogement", "good location");
-//		map.put("sex", "0");
-//		map.put("ageMin", "1");
-//		map.put("ageMax", "78");
-//		map.put("haspet", "0");
-//		map.put("situationFam", "celibataire");
-//		map.put("ecole", "UTC");
-//		map.put("profession", "11");
-//		map.put("nationnalite", "6");
-//    	map.put("loisir", "1,3,5");
-//    	map.put("language", "4,7");
-//    	map.put("peutetre", "age,sex,haspet");
-//    	map.put("obligatoire", "language");
-//    	map.put("important", "nationnalite");
-//    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_ANNONCE, map);    	
+    	map.put("idAnnonce", "3");
+		map.put("dateDebut", "2017-09-01");
+		map.put("dateFin", "2018-02-28");
+		map.put("description", "Bonjour, je cherche un superwomen!");
+		map.put("budget", "600");
+		map.put("nbPersonneBesoin", "3");
+		map.put("lieu", "paris");
+		map.put("descriptionLogement", "1");
+		map.put("sex", "0");
+		map.put("ageMin", "15");
+		map.put("ageMax", "30");
+		map.put("haspet", "0");
+		map.put("situationFam", "celibataire");
+		map.put("ecole", "UTC");
+		map.put("profession", "39");
+		map.put("nationnalite", "64");
+    	map.put("loisir", "1,3,5");
+    	map.put("language", "4,7");
+    	map.put("peutetre", "age,haspet");
+    	map.put("obligatoire", "sex");
+    	map.put("important", "nationnalite");
+    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.MODIFY_ANNONCE, map);    	
 //Test the "find the annonce by id" method 
 //    	map.put("idAnnonce", "5");
 //    	ActionMessageContent amc = new ActionMessageContent(Constants.Action.GET_ANNONCE, map);

@@ -123,10 +123,16 @@ public class CalculateMatchAgent extends Agent{
 				mt = MessageTemplate.MatchConversationId(conversationId); 
 				response = receive(mt);
 				if(response != null){
-					Map<String, Object>[] array = JsonHelper.deserilisationArray(response.getContent());
-					for(Map<String, Object> map : array){
-						String idProposer = (String) map.get("proposer");
-						addBehaviour(new UpdateMatchTableBehaviour(idProposer, annonce));
+					System.out.println(response.getContent());
+					if(response.getContent() != null && response.getContent() != ""){
+						Map<String, Object>[] array = JsonHelper.deserilisationArray(response.getContent());
+						if(array != null){
+							for(Map<String, Object> map : array){
+								String idProposer = (String) map.get("proposer");
+								System.out.println(idProposer);
+								addBehaviour(new UpdateMatchTableBehaviour(idProposer, annonce));
+							}
+						}
 					}
 					flag = true;
 				}
